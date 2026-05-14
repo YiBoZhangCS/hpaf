@@ -602,7 +602,7 @@ This makes the repository a practical stepping stone from concept to a fuller em
 If you find this repository useful, please cite the project and star the GitHub repository:
 
 ```text
-https://github.com/zyb45/hpaf
+https://github.com/YiBoZhangCS/hpaf
 ```
 
 ---
