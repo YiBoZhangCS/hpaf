@@ -1,636 +1,257 @@
-# HPAF: Hierarchical Program-Aided Framework for Real-World Robotic Task Execution
+# HPAF
 
-> A practical stage-one implementation of our HPAF idea: a complex language instruction is decomposed into atomic tasks, each atomic task is compiled into an executable program over a bounded runtime API, executed on a real PiPER arm with RGB-D perception, and confirmed before the pipeline proceeds to the next step.
+## Hierarchical Program-Aided Framework for Long-Horizon Robot Task Execution
 
-## Overview
+HPAF studies long-horizon robot task execution with LLM-generated programs. Instead of generating one monolithic program for the whole instruction, HPAF explicitly decomposes a complex instruction into independently verifiable semantic atomic tasks and executes them against refreshed environment state.
 
-This repository is the first runnable real-world prototype of our HPAF pipeline. It targets **complex tabletop manipulation tasks** and asks a concrete question:
+The repository contains the frozen VirtualHome evaluation, its complete audit trail, and a separate PiPER/RGB-D engineering prototype. The reported VirtualHome results evaluate symbolic task planning and execution; they are not real-robot evaluation results.
 
-**Can an LLM decompose a complex user instruction, generate executable programs grounded in a small robot API library, and complete a real hardware task loop?**
+## Motivation
 
-For the stage-one minimal demo in this repository, the answer is **yes**.
+One-shot whole-program generation becomes increasingly fragile when an instruction contains multiple semantic checkpoints and causal dependencies. Typical failures include:
 
-The current implementation connects:
+- semantic goal omission;
+- reasoning from stale state;
+- spatial alignment or action-precondition failure;
+- propagation of an early error through the remainder of a long program; and
+- incomplete process lifecycles, such as starting an appliance without completing the requested process.
 
-- a **TaskAgent** for complex-task decomposition,
-- a **ProgramAgent** for API-grounded executable code generation,
-- a **foundation-vision-based perception stack**,
-- a **PiPER robot backend**,
-- and a **task-verification module** that supports both **manual confirmation** and **AI-based atomic-task verification**.
+HPAF introduces explicit semantic execution boundaries. Each boundary creates a point at which the system can ground against current state, execute a bounded stage, verify its semantic commitment, and localize one repair before proceeding.
 
-The project follows the core idea below:
+## Method
 
-1. A user provides a **complex task**.
-2. HPAF performs the **first-layer decomposition** and splits it into a sequence of **atomic tasks**.
-3. Each atomic task is then handled by a **second-layer execution loop**:
-   - **Perception**: detect the relevant object or target region from the current image.
-   - **Execution**: generate and run an executable program over the runtime API.
-   - **Confirmation**: decide whether the current atomic task has been completed.
-4. Once the current atomic task is confirmed complete, the system moves on to the next atomic task until the whole instruction is finished.
+HPAF is a two-layer framework.
 
-This repository is therefore an engineering realization of the main paper direction: **dual-layer decomposition + automatic program generation from bottom-level APIs**.
+### Layer 1: semantic task decomposition
 
----
+The TaskAgent maps a natural-language instruction to a **Structured Semantic Atomic Task IR**. One atomic task is one dominant, independently verifiable semantic commitment—not a primitive action and not a fixed number of primitives.
 
-## What This Repository Contributes
+Each atomic record contains:
 
-### 1. Dual-layer decomposition for embodied execution
+- an atomic type;
+- one focal object;
+- optional source and target objects;
+- a state or process completion mode;
+- a semantic goal; and
+- explicit `depends_on` edges.
 
-Instead of treating the problem as a flat “instruction -> action” mapping, HPAF explicitly introduces two layers:
+The frozen atomic types are:
 
-- **Layer 1: complex task -> atomic tasks**
-- **Layer 2: atomic task -> perception / execution / confirmation**
+- `TRANSFER`
+- `STATE_CHANGE`
+- `PROCESS`
+- `MULTI_OBJECT_COUPLED`
+- `INTERACTION`
 
-This improves controllability, interpretability, and debugging efficiency in real-world robotic execution.
+The semantic boundary determines **where** the instruction is split; the atomic type describes **what the resulting atomic means**. A process atomic may therefore contain loading, activation, and lifecycle completion, while navigation and manipulation primitives remain internal to that atomic.
 
-### 2. Program generation over a bounded runtime API
+Task-level terminal constraints are represented separately. They describe states that must hold when the whole instruction finishes, but they are not automatically promoted into standalone atomic tasks.
 
-Rather than asking the model to output unconstrained free-form plans, HPAF exposes a **runtime API library** and requires the ProgramAgent to generate a **directly executable Python script body** over that API.
+### Dependency-aware execution
 
-As a result, generated code is:
-
-- grounded in available robot capabilities,
-- easier to inspect,
-- easier to debug,
-- and much closer to a deployable robotics workflow than pure natural-language planning.
-
-### 3. Unified atomic-task verification module
-
-Beyond code generation and execution, the repository now includes a **unified verification module** for atomic-task completion.
-
-The key design is that generated programs do **not** rely on object-specific hard-coded verification logic at the script level. Instead, they terminate with a **generic verification call**:
-
-```python
-result = ai_verify_atomic_task()
-```
-
-This function uses:
-
-- the **current atomic task text**,
-- the **post-execution observation image**,
-- and the **global auxiliary camera view**,
-
-then asks the LLM to judge whether the current atomic task has been successfully completed.
-
-This design improves:
-
-- **generality**, because the same verification entry point is reused across different atomic tasks,
-- **cleanliness of generated programs**, because ad hoc task-specific verification logic is avoided,
-- and **pipeline consistency**, because both `manual` and `auto` modes can share the same completion signal.
-
-### 4. Human-confirmed stage-one real-world closed loop
-
-This repository focuses on a practical first milestone: **running the full head-to-tail loop on a real robot**.
-
-The system already completes:
-
-- task decomposition,
-- program generation,
-- real execution through a robot backend,
-- and per-atomic-task completion confirmation.
-
-At this stage, HPAF supports two confirmation styles:
-
-- **manual confirmation**, where the user remains in the loop,
-- **AI-based verification**, where the program itself outputs a boolean result via `ai_verify_atomic_task()`.
-
-This makes the repository a meaningful transition point between a human-supervised stage-one system and a more autonomous embodied-agent pipeline.
-
-### 5. Chinese prompting for better practical generation quality
-
-The prompt templates in this project are intentionally written mainly in **Chinese**, while most task outputs and generated executable programs are required to be in **English**.
-
-This is a deliberate design choice. In our experiments on the current platform, Chinese prompting produced **more stable and more accurate decomposition / code-generation behavior**. We therefore keep Chinese prompts in the released version and document this choice explicitly rather than forcing an English-only prompting setup.
-
----
-
-## System Pipeline
-
-## 1. TaskAgent: first-layer decomposition
-
-Input:
-
-- a global-view image,
-- a user instruction describing a complex task.
-
-Output:
-
-- a scene summary,
-- a list of atomic tasks.
-
-The TaskAgent is required to split the task into fine-grained steps such as:
-
-- `Grab the blue rectangular prism`
-- `Put the grabbed blue rectangular prism into the red metal box`
-
-A grasp step and a placement step are never merged into a single atomic task.
-
-## 2. ProgramAgent: second-layer executable generation
-
-For each atomic task, the ProgramAgent receives:
-
-- the current close-up image,
-- the current atomic task,
-- the execution mode,
-- the runtime API documentation.
-
-It then outputs:
-
-- `plan_brief`
-- `program`
-
-The generated program is constrained to a **linear executable structure** and is only allowed to call registered runtime APIs.
-
-In the current implementation, each generated atomic program is organized in the form of:
-
-- **perception**
-- **alignment**
-- **interaction**
-- **verification**
-
-This is the executable realization of the broader second-layer design:
-
-- **perception**
-- **execution**
-- **confirmation**
-
-## 3. Execution
-
-In `manual` mode, the system saves the generated script under the corresponding atomic-task log directory, and the user runs it in another terminal.
-
-In `review` or `auto` mode, the system can directly execute the generated program through the executor.
-
-## 4. Confirmation and Verification
-
-After execution, the system checks whether the current atomic task has been completed.
-
-There are now two supported paths:
-
-### Manual path
-
-In `manual` mode, the user can still inspect execution results and decide whether to continue to the next atomic task. At the same time, the generated program also ends with:
-
-```python
-result = ai_verify_atomic_task()
-```
-
-which provides an LLM-based completion judgment for the current atomic task.
-
-### Automatic path
-
-In `auto` mode, the pipeline executes each generated program directly and uses the returned boolean result from:
-
-```python
-result = ai_verify_atomic_task()
-```
-
-as the completion signal for deciding whether to proceed to the next atomic task.
-
-This means that **manual and auto modes now share the same generic AI verification backend**, while differing only in whether the human remains in the execution loop.
-
----
-
-## Runtime API Design
-
-The ProgramAgent is not allowed to invent arbitrary functions. It must use the provided runtime API only. The current API includes:
-
-- `debug`
-- `detect_object_by_text`
-- `estimate_top_grasp_pose`
-- `build_pregrasp_pose`
-- `estimate_place_pose`
-- `open_gripper`
-- `close_gripper`
-- `stabilize_grasp`
-- `move_to_pose`
-- `retreat`
-- `return_to_observe_pose`
-- `ai_verify_atomic_task`
-
-The verification stage is intentionally centered on the **generic** API:
-
-- `ai_verify_atomic_task`
-
-rather than task-specific verification calls embedded in generated programs.
-
-This bounded API design is essential because it:
-
-- narrows the code-generation action space,
-- improves execution safety,
-- makes generated programs much more interpretable,
-- and keeps the verification logic unified across different atomic tasks.
-
----
-
-## AI Verification Module
-
-The newly added verification module is designed to judge whether an atomic task has succeeded **after the generated program finishes execution**.
-
-### Verification entry point
-
-Every generated atomic-task program is expected to end with:
-
-```python
-result = ai_verify_atomic_task()
-```
-
-### What `ai_verify_atomic_task()` uses
-
-The function gathers:
-
-- the **current atomic task description**,
-- the **latest post-execution observation**,
-- the **global-view auxiliary image** from the secondary camera,
-- and the current execution context.
-
-It then sends this information to the LLM and requests a structured success/failure judgment for the current atomic task.
-
-### Why this matters
-
-This design has three advantages:
-
-1. **Task-level generality**  
-   The same verification function can judge grasping tasks, placement tasks, and future atomic-task variants without requiring new task-specific verification APIs.
-
-2. **Cleaner generated programs**  
-   The ProgramAgent no longer needs to invent or call mid-program object-specific verification utilities such as `verify_object_grasped(...)`.
-
-3. **Shared logic across modes**  
-   Manual and automatic execution both depend on the same verification mechanism, making the system behavior more consistent and easier to debug.
-
-### Verification artifacts
-
-The verification result is saved to the corresponding atomic-task log directory, typically as a structured artifact such as:
+`depends_on` forms a DAG of genuine causal precedence rather than forcing the total order of a reference program. The executor selects a ready atomic in stable topological order and marks it complete only after online verification.
 
 ```text
-artifacts/ai_verify_output.json
+A1 PROCESS: Heat salmon
+        |
+        v
+A2 TRANSFER: Place salmon on table
+
+Terminal constraint: microwave OFF
 ```
 
-This allows later inspection of:
+The terminal constraint belongs to whole-task completion. It does not imply a separate “switch off microwave” atomic.
 
-- the verification prompt context,
-- the model judgment,
-- and the final success/failure decision.
+### Layer 2: current-state atomic execution
 
----
+Each ready atomic executes as:
 
-## Hardware and Software Stack
+```text
+P -> (A -> I)^k -> V
+```
 
-### Hardware
+- **P — Perception/current-state grounding:** obtain fresh local symbolic state.
+- **A — Alignment:** establish the spatial and primitive preconditions for the next interaction.
+- **I — Interaction:** execute the state-changing primitive operation.
+- **V — Verification:** judge the current semantic atomic from current observation and its attempt trace.
 
-- **Robot arm**: PiPER
-- **Primary camera**: Gemini RGB-D camera mounted eye-in-hand
-- **Secondary camera**: Astra camera used as a global auxiliary view
-- **Depth source for manipulation**: the primary eye-in-hand RGB-D camera
+An atomic may contain several alignment–interaction pairs because its source and target are often different. After successful verification, HPAF refreshes state before generating the next ready atomic. If verification returns `done=false`, the frozen method permits at most one localized repair (**Retry-1**); a second failure stops execution.
 
-### Software
+The complete frozen definition is in [`HPAF_METHOD_FINAL.md`](experiments/progprompt_vh/phase10/HPAF_METHOD_FINAL.md).
 
-- Python package project structure (`pyproject.toml`)
-- ROS2-based camera bridge
-- PiPER SDK backend
-- Doubao API as the LLM backend
-- Foundation-vision perception stack combining:
-  - Florence-2
-  - GroundingDINO
-  - RGB-D geometry projection
+### Example
 
-### Coordinate convention
+```mermaid
+flowchart TD
+    I["Heat salmon in the microwave,<br/>then place it on the coffeetable"] --> T[TaskAgent]
+    T --> A1["A1 · PROCESS<br/>Heat salmon"]
+    A1 -->|depends_on| A2["A2 · TRANSFER<br/>Place salmon on coffeetable"]
+    T -. whole-task terminal .-> C["Microwave OFF"]
 
-The project is built around the **eye-in-hand camera transform**. The current implementation uses the hand-eye calibration result configured in the repository and performs manipulation-oriented perception under that convention.
+    subgraph E["A1 execution"]
+        P[Perceive] --> AS[Align salmon]
+        AS --> G[Grab]
+        G --> AM[Align microwave]
+        AM --> L[Load and run lifecycle]
+        L --> V[Verify]
+        V --> R[State refresh]
+    end
+```
 
----
+The successor transfer is generated only after the process atomic verifies and the environment state has been refreshed.
 
-## Repository Structure
+## Compared methods
+
+- **ProgPrompt-Compat:** released three-example whole-program generation with assertions and adjacent local recovery; no full replanning.
+- **HPAF-Flat:** one whole-task ProgramAgent followed by whole-task verification. It has no TaskAgent, structured atomic IR, dependency DAG, per-atomic Retry-1, or access to Full's decomposition.
+- **HPAF-Full:** structured semantic decomposition, dependency-aware ready-node execution, current-state per-atomic generation, atomic verification, terminal handling, state refresh, and Retry-1.
+
+The Full-versus-Flat comparison is a comparison between these two frozen systems. It does **not** isolate decomposition alone, because Full also adds dependency scheduling, state refresh, atomic verification, terminal handling, and localized repair.
+
+## Evaluation
+
+### VH-40 Unified Regression Matrix
+
+The primary public result is the Phase-10R **VH-40 Unified Regression Matrix**. VH-40 is a regression suite, not an unseen test set. It contains:
+
+- 29 official-source evaluable regression instances; and
+- 11 pre-frozen causal long-horizon extensions.
+
+All 40 tasks had been observed during earlier development or failure analysis. Phase-10R reran exactly `40 tasks × 3 methods × 1 run = 120` unique task–method records under one frozen method, evaluator, backend, and runtime identity.
+
+| Method | VH-40 Task SR | Long-15 SR | Macro Exec | Calls/task | Tokens/task |
+|---|---:|---:|---:|---:|---:|
+| ProgPrompt-Compat | 22/40 (55.0%) | 2/15 (13.3%) | 0.956 | 11.32 | 6812.9 |
+| HPAF-Flat | 26/40 (65.0%) | 11/15 (73.3%) | 0.817 | 2.00 | 2716.2 |
+| HPAF-Full | 32/40 (80.0%) | 12/15 (80.0%) | 0.951 | 4.45 | 5940.9 |
+
+HPAF-Full completed 32/40 tasks in the unified regression matrix and 12/15 Long tasks, while using 60.7% fewer LLM calls and approximately 12.8% fewer tokens per task than ProgPrompt-Compat.
+
+The result supports a frozen-version regression comparison, not an unseen-generalization claim. See the [final report](experiments/progprompt_vh/phase10_regression/PHASE10R_FINAL_REPORT.md), [unified CSV](experiments/progprompt_vh/phase10_regression/results/VH40_UNIFIED_REGRESSION.csv), [integrity audit](experiments/progprompt_vh/phase10_regression/INTEGRITY_AUDIT.md), and [formal records](experiments/progprompt_vh/phase10_regression/results/formal/PHASE10R_FORMAL_RECORDS.jsonl).
+
+### Independent causal holdout
+
+Phase 10 separately evaluated a single pre-frozen synthetic causal holdout with one run per pair:
+
+| Method | Success/12 |
+|---|---:|
+| ProgPrompt-Compat | 0/12 |
+| HPAF-Flat | 6/12 |
+| HPAF-Full | 10/12 |
+
+This 12-task holdout remains separate independent validation evidence. It is not pooled with VH-40. See the [Phase-10 report](experiments/progprompt_vh/phase10/PHASE10_FINAL_REPORT.md).
+
+## Repository structure
 
 ```text
 hpaf/
-├── configs/
-│   ├── demo.yaml
-│   ├── prompts.yaml
-│   └── api_registry.yaml
-├── hpaf/
-│   ├── agents/
-│   │   ├── task_agent.py
-│   │   ├── program_agent.py
-│   │   └── verify_agent.py
-│   ├── api/
-│   │   └── runtime_api.py
-│   ├── camera/
-│   │   └── shared_dir_camera.py
-│   ├── core/
-│   │   ├── app.py
-│   │   ├── config.py
-│   │   └── models.py
-│   ├── execution/
-│   │   ├── executor.py
-│   │   └── program_validator.py
-│   ├── geometry/
-│   │   └── transforms.py
-│   ├── llm/
-│   │   ├── factory.py
-│   │   └── openai_compatible.py
-│   ├── perception/
-│   │   ├── foundation_vision_perception.py
-│   │   ├── llm_perception.py
-│   │   └── classic_cv_perception.py
-│   ├── pipeline/
-│   │   └── orchestrator.py
-│   └── robot/
-│       ├── piper_backend.py
-│       └── dummy_backend.py
-├── ros_bridge/
-│   ├── ros2_camera_dump.py
-│   └── ros2_dual_camera_dump.py
-├── scripts/
-│   ├── run_pipeline.py
-│   └── ...
-├── tools/
-│   └── init_stage1_env.sh
-└── shared_scene/
+├── hpaf/                         # PiPER/RGB-D engineering prototype package
+├── configs/                      # Robot, perception, LLM, and API configuration
+├── scripts/                      # Real-system entry points and utilities
+├── experiments/
+│   └── progprompt_vh/
+│       ├── phase10/              # Frozen method and independent 12-task holdout
+│       └── phase10_regression/   # Final VH-40 regression, records, and audits
+├── third_party/
+│   ├── progprompt-vh/            # Pinned upstream submodule
+│   └── virtualhome/              # Pinned upstream submodule
+└── docs/                         # Project page and real-system media
 ```
 
----
+Historical experiment artifacts are retained under `experiments/progprompt_vh/` for auditability; the README intentionally does not present Phases 1–9 as the current headline result.
 
-## Installation
+## Setup and reproduction
 
-### 1. Enter the project and activate the environment
+Run commands from the repository root. Python 3.9 is the recorded VirtualHome experiment environment.
+
+### 1. Clone and initialize pinned upstream sources
 
 ```bash
-cd hpaf
-conda activate piper
+git clone --recurse-submodules git@github.com:zyb45/hpaf5.git
+cd hpaf5
+git submodule update --init --recursive
 ```
 
-### 2. Install the package
+For an existing checkout, only the last command is required. The submodules are pinned to the exact commits listed in [Attribution](#attribution).
+
+VirtualHome needs the compatibility change recommended by the released ProgPrompt README. Apply the checked-in patch once:
 
 ```bash
+git -C third_party/virtualhome apply --check ../../experiments/progprompt_vh/adapters/virtualhome_f84ee28_compat.patch
+git -C third_party/virtualhome apply ../../experiments/progprompt_vh/adapters/virtualhome_f84ee28_compat.patch
+```
+
+### 2. Create the Python environment
+
+```bash
+conda create -n hpaf-vh python=3.9
+conda activate hpaf-vh
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install "networkx==2.8.8" "numpy==1.26.4" "opencv-python-headless==4.11.0.86"
+python -m pip install --no-deps -e third_party/virtualhome
 python -m pip install -e .
 ```
 
-### 3. Set the API key
+The official VirtualHome 2.3.0 Unity executable is a separate upstream download and is intentionally not versioned. If simulator execution is needed, place it at the relative path configured in `experiments/progprompt_vh/phase10/configs/benchmark.yaml`.
+
+### 3. Environment variables
+
+Live LLM execution requires an ARK credential supplied only through the environment:
 
 ```bash
-export ARK_API_KEY=YOUR_API_KEY
+export ARK_API_KEY="..."
 ```
 
-### 4. Recommended proxy cleanup
+`ARK_MODEL` is optional for the VirtualHome adapter; the frozen configuration provides `doubao-seed-2-1-pro-260628` as its default. Offline tests and result inspection do not require an API key. Never commit credentials.
+
+### 4. Offline integrity and tests
+
+These commands do not call the LLM or rerun the formal experiment:
 
 ```bash
-unset ALL_PROXY
-unset all_proxy
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q \
+  experiments/progprompt_vh/phase10/tests \
+  experiments/progprompt_vh/phase10_regression/tests
+
+python -c "from experiments.progprompt_vh.phase10_regression.protocol import verify_protocol_lock; verify_protocol_lock(); print('Phase-10R protocol: PASS')"
 ```
 
----
-
-## Environment Startup
-
-A convenient stage-one startup script is provided:
+Inspect the frozen result and record count directly:
 
 ```bash
-bash tools/init_stage1_env.sh
+sed -n '1,4p' experiments/progprompt_vh/phase10_regression/results/VH40_UNIFIED_REGRESSION.csv
+wc -l experiments/progprompt_vh/phase10_regression/results/formal/PHASE10R_FORMAL_RECORDS.jsonl
 ```
 
-This script is used to bring up the first-stage real-execution environment, including:
+The formal 120-record LLM experiment is frozen and should not be rerun for ordinary reproduction or inspection.
 
-- Gemini camera
-- Gemini mirror/depth-related service handling
-- Astra camera
-- ROS bridge for dumping camera data into shared directories
-- CAN activation
-- gamepad / human control terminal
-- RViz (optional)
-- project terminal
+### 5. PiPER/RGB-D prototype entry point
 
-The project relies on the shared camera directories:
-
-- `shared_scene/primary`
-- `shared_scene/secondary`
-
----
-
-## Configuration
-
-The main configuration file is:
-
-```text
-configs/demo.yaml
-```
-
-Important fields include:
-
-- LLM backend (`doubao-seed-2-0-pro-260215`)
-- primary / secondary shared camera directories
-- primary extrinsic (`./assets/eyeinhand.json`)
-- observe pose
-- gripper width and force
-- perception backend (`foundation_vision`)
-- Florence-2 and GroundingDINO paths
-- pipeline retry settings
-- manual / review / auto execution mode behavior
-- AI verification behavior and log output
-
----
-
-## Quick Start
-
-Run the pipeline with a complex task:
+The hardware prototype has different dependencies and claims from the VirtualHome evaluation. After configuring camera paths, model paths, calibration, CAN, and PiPER hardware in `configs/demo.yaml`, its real entry point is:
 
 ```bash
-python scripts/run_pipeline.py \
+PYTHONPATH=. python scripts/run_pipeline.py \
   --config configs/demo.yaml \
-  --task "Put the blue rectangular prism into the red metal box,Put the green cube into the yellow box." \
+  --task "Put the blue rectangular prism into the red metal box, then put the green cube into the yellow box." \
   --mode manual
 ```
 
-Available modes:
+Available modes are `manual`, `review`, and `auto`. Review generated programs and hardware safety limits before allowing robot execution.
 
-- `manual`: generate each atomic-task script, save it, run it manually in another terminal, then inspect / confirm
-- `review`: generate and display the program, ask for approval before direct execution
-- `auto`: direct execution and automatic continuation based on `ai_verify_atomic_task()`
+## Limitations
 
-For `manual` mode, inspect the generated program and verify that it ends with:
+1. VH-40 is a previously observed regression matrix, not an unseen evaluation.
+2. The independent causal holdout contains only 12 synthetic tasks, one run per pair, and does not estimate stochastic variance.
+3. VirtualHome uses symbolic environment state and does not establish broader real-robot generalization.
+4. Formal generated-action execution uses Evolving Graph after Unity reset/inventory sanity; this shared runtime deviation is documented in the experiment audit.
+5. The PiPER/RGB-D prototype is an engineering demonstration with perception, calibration, and hardware-safety limitations; its logs are not pooled with VirtualHome scores.
 
-```python
-result = ai_verify_atomic_task()
-```
+## Attribution
 
----
+The evaluation retains upstream source, attribution, and licenses as pinned submodules:
 
-## Minimal Real-World Demo
+- **ProgPrompt** — [NVlabs/progprompt-vh](https://github.com/NVlabs/progprompt-vh/tree/56e65510747dff809c1b0bac9318508da9d9a2d4), commit `56e65510747dff809c1b0bac9318508da9d9a2d4`, [NVIDIA License](https://github.com/NVlabs/progprompt-vh/blob/56e65510747dff809c1b0bac9318508da9d9a2d4/LICENSE) (non-commercial research/evaluation terms apply).
+- **VirtualHome** — [xavierpuigf/virtualhome](https://github.com/xavierpuigf/virtualhome/tree/f84ee28a75b23318ee1bf652862b1c993269cd06), commit `f84ee28a75b23318ee1bf652862b1c993269cd06`, [MIT License](https://github.com/xavierpuigf/virtualhome/blob/f84ee28a75b23318ee1bf652862b1c993269cd06/LICENSE).
 
-### Task
-
-```text
-Put the blue rectangular prism into the red metal box,Put the green cube into the yellow box.
-```
-
-### First-layer decomposition result
-
-The TaskAgent decomposed the complex instruction into four atomic tasks:
-
-1. `Grab the blue rectangular prism`
-2. `Put the grabbed blue rectangular prism into the red metal box`
-3. `Grab the green cube`
-4. `Put the grabbed green cube into the yellow box`
-
-### Example generated program for Atomic Task 1
-
-For the first atomic task, the ProgramAgent generated a grasp program following this sequence:
-
-- detect the target object,
-- estimate the top grasp pose,
-- build a pre-grasp pose,
-- move to the pre-grasp pose,
-- move to the grasp pose,
-- close the gripper,
-- stabilize the grasp,
-- retreat,
-- return to the observe pose,
-- and call `ai_verify_atomic_task()` as the final completion judgment.
-
-### AI generation time in the demo
-
-In the recorded real demo:
-
-- **TaskAgent** took **15.130 s**
-- **ProgramAgent** took **23.570 s**, **27.861 s**, **27.156 s**, and **22.515 s** for the four atomic tasks
-
-Therefore, the **total AI generation time** for this four-step demo was:
-
-- **116.232 s**
-
-We intentionally **do not use total wall-clock execution time as a key metric** in the README, because it includes manual execution and human confirmation latency and therefore does not accurately represent model-side generation efficiency.
-
-### Why this demo matters
-
-This demo shows that the repository already completes the entire first-stage loop:
-
-- complex instruction input,
-- automatic decomposition,
-- per-step code generation,
-- real hardware execution,
-- atomic-task completion verification,
-- and continuation to the next atomic task.
-
-In other words, the **full head-to-tail chain is already running on a real robot**.
-
----
-
-## Why the Current Version Still Supports Manual Confirmation
-
-This repository is a **stage-one practical system**, not yet a fully autonomous production stack.
-
-The current design deliberately keeps **manual supervision available** because:
-
-1. the current goal is to validate the end-to-end generation-and-execution pipeline on real hardware;
-2. automatic verification is useful, but real-scene perception and execution can still be noisy;
-3. manual supervision makes failure localization clearer and keeps debugging costs low.
-
-Therefore, the current second layer should be understood as:
-
-- **Perception**
-- **Execution**
-- **Confirmation / Verification**
-
-where confirmation may be:
-
-- **human-assisted**, or
-- **AI-based through `ai_verify_atomic_task()`**.
-
-This is a deliberate engineering design rather than an accidental inconsistency.
-
----
-
-## Current Strengths
-
-- Runs on a **real PiPER robot**
-- Uses **real RGB-D perception**
-- Supports **complex-task decomposition**
-- Generates **directly executable code**
-- Grounds generation in a **bounded runtime API**
-- Preserves **interpretability** via atomic tasks and linear programs
-- Supports **manual / review / auto** workflows
-- Produces complete logs for each run and each atomic task
-- Includes a **generic AI verification entry point** for atomic-task completion
-
----
-
-## Current Limitations
-
-This repository is a stage-one real-execution prototype, so several limitations are explicit:
-
-1. **Automatic verification is not perfect**  
-   Although `ai_verify_atomic_task()` improves automation, complex cluttered scenes can still challenge visual judgment.
-
-2. **Execution is atomic-task sequential**  
-   The current implementation advances only after each atomic task is judged complete.
-
-3. **Program generation is constrained but still LLM-dependent**  
-   Code quality depends on the current prompt design, runtime API design, and the specific model backend.
-
-4. **Perception remains fragile in visually ambiguous scenes**  
-   Similar-colored objects, occlusions, and ambiguous regions remain difficult.
-
-5. **Current task generality is still limited**  
-   The present focus is tabletop pick-and-place style manipulation rather than arbitrary open-world robotics.
-
----
-
-## Relation to the Paper Direction
-
-This repository is not meant to be “just another robotics demo.” It is the engineering realization of the paper idea in its first executable form.
-
-The mapping is direct:
-
-- **Paper idea:** dual-layer decomposition  
-  **Repository implementation:** TaskAgent decomposition + atomic-task execution loop
-
-- **Paper idea:** dynamic API-based program generation  
-  **Repository implementation:** ProgramAgent generates executable code over `runtime_api`
-
-- **Paper idea:** perception / execution / confirmation  
-  **Repository implementation:** grounded perception + executable code + generic AI verification or manual confirmation
-
-- **Paper idea:** use LLMs as structured task-to-program translators rather than end-to-end motor policies  
-  **Repository implementation:** Doubao generates executable scripts from the current atomic task and allowed API docs
-
-This makes the repository a practical stepping stone from concept to a fuller embodied-agent framework.
-
----
-
-## Citation
-
-If you find this repository useful, please cite the project and star the GitHub repository:
-
-```text
-https://github.com/YiBoZhangCS/hpaf
-```
-
----
-
-## Acknowledgement
-
-This repository is inspired by and developed in dialogue with prior work on:
-
-- large-language-model-based robot planning,
-- vision-language-action models,
-- dynamic program generation for embodied tasks,
-- and multi-task / few-shot robot learning.
-
-The goal is not to directly reproduce any single prior system, but to build a practical framework oriented toward:
-
-- **dual-layer task decomposition**,
-- **API-grounded code generation**,
-- **generic atomic-task verification**,
-- and **real robot execution**.
-
----
-
-## Final Note
-
-HPAF is currently at the stage of **“the first real executable closed loop”** rather than **“the final autonomous embodied system.”**
-
-That is exactly why this repository matters: it already proves that the central chain can run on real hardware:
-
-**complex task -> atomic tasks -> executable code -> robot execution -> completion verification -> next atomic task**
-
-This is the foundation on which stronger perception, richer APIs, more reliable automatic verification, and larger-scale experiments can be built.
+The single VirtualHome `JoinedExecutor.execute(..., *args)` compatibility change is stored as [`virtualhome_f84ee28_compat.patch`](experiments/progprompt_vh/adapters/virtualhome_f84ee28_compat.patch) and matches the fix documented by upstream ProgPrompt.

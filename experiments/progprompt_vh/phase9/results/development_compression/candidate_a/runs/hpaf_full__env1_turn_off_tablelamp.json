@@ -1,0 +1,698 @@
+{
+  "run_id": "phase9_compression_candidate_a_2026-08-26T130833.631941_0000_hpaf_full_env1_turn_off_tablelamp",
+  "phase": "phase9_compression_candidate_a",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T13:08:33.631941+00:00",
+  "task_id": "env1::turn_off_tablelamp",
+  "task": "turn off tablelamp",
+  "split": "env1",
+  "scene": 1,
+  "goal_count": null,
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "77cb43058b3e2b42ed9241e6f44889e9e6bd413772dd14d77dfcdd1508da0160",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "switch off the tablelamp",
+        "manipulated_object": "tablelamp",
+        "target_object": null,
+        "completion_mode": "process",
+        "process_intent": "the tablelamp is turned off and no longer emitting light"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: chicken, coffeemaker is OFF, cookingpot ON stove, cookingpot is CLOSED, dishwasher is CLOSED and OFF, fryingpan, fryingpan ON stove, kitchencabinet is CLOSED, microwave ON dishwasher, microwave is CLOSED and OFF, pillow, rug, stove is OFF and CLOSED, stovefan, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; coffeepot ON kitchencounter; cookingpot ON stove; fryingpan ON stove; kitchencounter INSIDE dishwasher; kitchentable ON rug; microwave ON dishwasher; microwave ON kitchencounter; oventray INSIDE stove; plate INSIDE microwave; toaster ON kitchencounter.",
+      "initial_program": "# Locate and switch off the tablelamp\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and switch off the tablelamp",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": null
+        },
+        {
+          "line": "find('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": "<char0> [find] <tablelamp> (125)"
+        },
+        {
+          "line": "walk('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": "<char0> [walk] <tablelamp> (125)"
+        },
+        {
+          "line": "switchoff('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": "<char0> [switchoff] <tablelamp> (125)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')\n",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [find] <tablelamp> (125)"
+        },
+        {
+          "line": "walk('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [walk] <tablelamp> (125)"
+        },
+        {
+          "line": "switchoff('tablelamp')",
+          "event": "action",
+          "success": false,
+          "detail": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [switchoff] <tablelamp> (125)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+          "line": "switchoff('tablelamp')"
+        }
+      ],
+      "repair_verifier": {
+        "done": true
+      },
+      "final_done": true
+    }
+  ],
+  "generated_program": "# atomic 1: switch off the tablelamp\n# Locate and switch off the tablelamp\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')\n# atomic 1 Retry-1\n# repair\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')\n",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "switch off the tablelamp",
+      "manipulated_object": "tablelamp",
+      "target_object": null,
+      "completion_mode": "process",
+      "process_intent": "the tablelamp is turned off and no longer emitting light"
+    }
+  ],
+  "number_of_atomic_tasks": 1,
+  "atomic_tasks_attempted": 1,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "switch off the tablelamp",
+        "manipulated_object": "tablelamp",
+        "target_object": null,
+        "completion_mode": "process",
+        "process_intent": "the tablelamp is turned off and no longer emitting light"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: chicken, coffeemaker is OFF, cookingpot ON stove, cookingpot is CLOSED, dishwasher is CLOSED and OFF, fryingpan, fryingpan ON stove, kitchencabinet is CLOSED, microwave ON dishwasher, microwave is CLOSED and OFF, pillow, rug, stove is OFF and CLOSED, stovefan, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; coffeepot ON kitchencounter; cookingpot ON stove; fryingpan ON stove; kitchencounter INSIDE dishwasher; kitchentable ON rug; microwave ON dishwasher; microwave ON kitchencounter; oventray INSIDE stove; plate INSIDE microwave; toaster ON kitchencounter.",
+      "initial_program": "# Locate and switch off the tablelamp\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and switch off the tablelamp",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": null
+        },
+        {
+          "line": "find('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": "<char0> [find] <tablelamp> (125)"
+        },
+        {
+          "line": "walk('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": "<char0> [walk] <tablelamp> (125)"
+        },
+        {
+          "line": "switchoff('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and switch off the tablelamp",
+          "compiled_action": "<char0> [switchoff] <tablelamp> (125)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')\n",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [find] <tablelamp> (125)"
+        },
+        {
+          "line": "walk('tablelamp')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [walk] <tablelamp> (125)"
+        },
+        {
+          "line": "switchoff('tablelamp')",
+          "event": "action",
+          "success": false,
+          "detail": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [switchoff] <tablelamp> (125)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+          "line": "switchoff('tablelamp')"
+        }
+      ],
+      "repair_verifier": {
+        "done": true
+      },
+      "final_done": true
+    }
+  ],
+  "retry_count": 1,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true,\"reason\":\"evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR the same fields with done=false and an actionable hint\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nRELEVANT CLASSES: [\"tablelamp\"]\nATTEMPT: {\"program\": \"# Locate and switch off the tablelamp\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\", \"execution_trace\": [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}], \"errors\": []}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The current symbolic state contains a contradictory state for the tablelamp, listing it as both OFF and ON, so there is no consistent evidence that the tablelamp is turned off and no longer emitting light as required by the process completion mode.\",\"failure_stage\":\"post_action_state_consistency\",\"regeneration_hint\":\"Re-verify the tablelamp's power state after the switchoff action, ensuring the state consistently reflects the tablelamp is OFF (not ON) and no longer emitting light before concluding the task.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The current symbolic state contains a contradictory state for the tablelamp, listing it as both OFF and ON, so there is no consistent evidence that the tablelamp is turned off and no longer emitting light as required by the process completion mode.\",\"failure_stage\":\"post_action_state_consistency\",\"regeneration_hint\":\"Re-verify the tablelamp's power state after the switchoff action, ensuring the state consistently reflects the tablelamp is OFF (not ON) and no longer emitting light before concluding the task.\"}",
+      "prompt_tokens": 517,
+      "completion_tokens": 109,
+      "latency_s": 6.1219712250021985,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749726618b0569a3163ef1c14e46181870ffec9977ec3be",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true,\"reason\":\"evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR the same fields with done=false and an actionable hint\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nRELEVANT CLASSES: [\"tablelamp\"]\nATTEMPT: {\"program\": \"# repair\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\\n\", \"execution_trace\": [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": false, \"detail\": \"<tablelamp> (125) is not on when executing \\\"[SWITCHOFF] <tablelamp> (125) [0]\\\"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<tablelamp> (125) is not on when executing \\\"[SWITCHOFF] <tablelamp> (125) [0]\\\"\", \"line\": \"switchoff('tablelamp')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The tablelamp is already in the OFF state per the current symbolic state, satisfying the process intent that the tablelamp is turned off and no longer emitting light; the switchoff action failed because the lamp was already off, and the target off state is achieved.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The tablelamp is already in the OFF state per the current symbolic state, satisfying the process intent that the tablelamp is turned off and no longer emitting light; the switchoff action failed because the lamp was already off, and the target off state is achieved.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 637,
+      "completion_tokens": 72,
+      "latency_s": 4.6859828180022305,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749735566b0569a3163ef1c14e46181870ffec997d6da27",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": 1,
+      "attempt": "initial",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The current symbolic state contains a contradictory state for the tablelamp, listing it as both OFF and ON, so there is no consistent evidence that the tablelamp is turned off and no longer emitting light as required by the process completion mode.\",\"failure_stage\":\"post_action_state_consistency\",\"regeneration_hint\":\"Re-verify the tablelamp's power state after the switchoff action, ensuring the state consistently reflects the tablelamp is OFF (not ON) and no longer emitting light before concluding the task.\"}"
+    },
+    {
+      "atomic_id": 1,
+      "attempt": "repair",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The tablelamp is already in the OFF state per the current symbolic state, satisfying the process intent that the tablelamp is turned off and no longer emitting light; the switchoff action failed because the lamp was already off, and the target off state is achieved.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 2,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Locate and switch off the tablelamp",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and switch off the tablelamp",
+      "compiled_action": null
+    },
+    {
+      "line": "find('tablelamp')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and switch off the tablelamp",
+      "compiled_action": "<char0> [find] <tablelamp> (125)"
+    },
+    {
+      "line": "walk('tablelamp')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and switch off the tablelamp",
+      "compiled_action": "<char0> [walk] <tablelamp> (125)"
+    },
+    {
+      "line": "switchoff('tablelamp')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and switch off the tablelamp",
+      "compiled_action": "<char0> [switchoff] <tablelamp> (125)"
+    },
+    {
+      "line": "# repair",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": null
+    },
+    {
+      "line": "find('tablelamp')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [find] <tablelamp> (125)"
+    },
+    {
+      "line": "walk('tablelamp')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [walk] <tablelamp> (125)"
+    },
+    {
+      "line": "switchoff('tablelamp')",
+      "event": "action",
+      "success": false,
+      "detail": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [switchoff] <tablelamp> (125)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <tablelamp> (125)",
+      "parsed_action": "[FIND] <tablelamp> (125) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <tablelamp> (125)",
+      "parsed_action": "[WALK] <tablelamp> (125) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <tablelamp> (125)",
+      "parsed_action": "[SWITCHOFF] <tablelamp> (125) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <tablelamp> (125)",
+      "parsed_action": "[FIND] <tablelamp> (125) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <tablelamp> (125)",
+      "parsed_action": "[WALK] <tablelamp> (125) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <tablelamp> (125)",
+      "parsed_action": "[SWITCHOFF] <tablelamp> (125) [0]",
+      "success": false,
+      "error": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <tablelamp> (125)",
+    "<char0> [walk] <tablelamp> (125)",
+    "<char0> [switchoff] <tablelamp> (125)",
+    "<char0> [find] <tablelamp> (125)",
+    "<char0> [walk] <tablelamp> (125)",
+    "<char0> [switchoff] <tablelamp> (125)"
+  ],
+  "program_length": 6,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(tablelamp, OFF)",
+        "predicate": "STATE",
+        "object": "tablelamp",
+        "value": "OFF",
+        "rationale": "The instruction explicitly requests the lamp to be off."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[125]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 1.0,
+  "Exec": 0.8333333333333334,
+  "generation_calls": 2,
+  "verification_calls": 2,
+  "repair_calls": 1,
+  "total_calls": 5,
+  "generation_prompt_tokens": 1913,
+  "generation_completion_tokens": 112,
+  "verification_prompt_tokens": 1154,
+  "verification_completion_tokens": 181,
+  "repair_prompt_tokens": 1246,
+  "repair_completion_tokens": 72,
+  "repair_tokens": 1318,
+  "prompt_tokens": 4313,
+  "completion_tokens": 365,
+  "total_prompt_tokens": 4313,
+  "total_completion_tokens": 365,
+  "total_tokens": 4678,
+  "planning_latency": 6.931225257001643,
+  "verification_latency": 10.807954043004429,
+  "total_llm_latency": 17.73917930000607,
+  "wall_clock_total_s": 18.64441445600096,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF VirtualHome TaskAgent. Decompose WHAT is required into the\nfewest ordered object-centric semantic operations; ProgramAgent handles navigation\nand preconditions.\nRules: (1) one operation per atomic, centered on one manipulated object and optional\ntarget; (2) no locate/find/walk atomics, and prerequisite open/close is not an atomic;\n(3) completion_mode=state for persistent state/relation, process for a completed\noperation; keep one lifecycle in one process atomic; (4) process_intent is natural\nlanguage completion intent only, never calls/evaluator/GT/answers; null for state;\n(5) no primitive calls, IDs, invented objects, or time; (6) 1-6 atomics using exact\navailable object classes.\nJSON only: {\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\nTASK: turn off tablelamp\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the tablelamp\",\"manipulated_object\":\"tablelamp\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the tablelamp is turned off and no longer emitting light\"}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the tablelamp\",\"manipulated_object\":\"tablelamp\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the tablelamp is turned off and no longer emitting light\"}]}",
+      "prompt_tokens": 779,
+      "completion_tokens": 54,
+      "latency_s": 1.528697777997877,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749722405b0569a3163ef1c14e46181870ffec9978c5eae",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF VirtualHome ProgramAgent. Compile only the current atomic into\na short executable program; do not redo earlier or plan future atomics.\nJSON only: {\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off tablelamp\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: chicken, coffeemaker is OFF, cookingpot ON stove, cookingpot is CLOSED, dishwasher is CLOSED and OFF, fryingpan, fryingpan ON stove, kitchencabinet is CLOSED, microwave ON dishwasher, microwave is CLOSED and OFF, pillow, rug, stove is OFF and CLOSED, stovefan, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; coffeepot ON kitchencounter; cookingpot ON stove; fryingpan ON stove; kitchencounter INSIDE dishwasher; kitchentable ON rug; microwave ON dishwasher; microwave ON kitchencounter; oventray INSIDE stove; plate INSIDE microwave; toaster ON kitchencounter.\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions.",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the tablelamp, approach it, then switch it off to stop it emitting light.\",\"program\":\"# Locate and switch off the tablelamp\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the tablelamp, approach it, then switch it off to stop it emitting light.\",\"program\":\"# Locate and switch off the tablelamp\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\"}",
+      "prompt_tokens": 1134,
+      "completion_tokens": 58,
+      "latency_s": 2.6058036940012244,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749723939b0569a3163ef1c14e46181870ffec997e6d711",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true,\"reason\":\"evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR the same fields with done=false and an actionable hint\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nRELEVANT CLASSES: [\"tablelamp\"]\nATTEMPT: {\"program\": \"# Locate and switch off the tablelamp\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\", \"execution_trace\": [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}], \"errors\": []}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The current symbolic state contains a contradictory state for the tablelamp, listing it as both OFF and ON, so there is no consistent evidence that the tablelamp is turned off and no longer emitting light as required by the process completion mode.\",\"failure_stage\":\"post_action_state_consistency\",\"regeneration_hint\":\"Re-verify the tablelamp's power state after the switchoff action, ensuring the state consistently reflects the tablelamp is OFF (not ON) and no longer emitting light before concluding the task.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The current symbolic state contains a contradictory state for the tablelamp, listing it as both OFF and ON, so there is no consistent evidence that the tablelamp is turned off and no longer emitting light as required by the process completion mode.\",\"failure_stage\":\"post_action_state_consistency\",\"regeneration_hint\":\"Re-verify the tablelamp's power state after the switchoff action, ensuring the state consistently reflects the tablelamp is OFF (not ON) and no longer emitting light before concluding the task.\"}",
+      "prompt_tokens": 517,
+      "completion_tokens": 109,
+      "latency_s": 6.1219712250021985,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749726618b0569a3163ef1c14e46181870ffec9977ec3be",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "repair_program_agent",
+      "broad_role": "repair",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF VirtualHome ProgramAgent, single local Retry-1 for the current\natomic. Repair from current state; do not blindly replay successes or plan future atomics.\nJSON only: {\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off tablelamp\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nPREVIOUS PROGRAM: # Locate and switch off the tablelamp\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')\nCURRENT-ATOMIC TRACE: [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}]\nTYPED ERRORS: []\nVERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions.",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "raw_output": "{\"repair_brief\":\"Verifier reports schema violation despite successful switchoff trace; re-establish proximity to tablelamp and re-issue switchoff to ensure a valid, verifiable off state without intervening unrelated alignment.\",\"program\":\"# repair\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\\n\"}",
+      "output_text": "{\"repair_brief\":\"Verifier reports schema violation despite successful switchoff trace; re-establish proximity to tablelamp and re-issue switchoff to ensure a valid, verifiable off state without intervening unrelated alignment.\",\"program\":\"# repair\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\\n\"}",
+      "prompt_tokens": 1246,
+      "completion_tokens": 72,
+      "latency_s": 2.7967237850025413,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749732746b0569a3163ef1c14e46181870ffec997fb9a61",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true,\"reason\":\"evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR the same fields with done=false and an actionable hint\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nRELEVANT CLASSES: [\"tablelamp\"]\nATTEMPT: {\"program\": \"# repair\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\\n\", \"execution_trace\": [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": false, \"detail\": \"<tablelamp> (125) is not on when executing \\\"[SWITCHOFF] <tablelamp> (125) [0]\\\"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<tablelamp> (125) is not on when executing \\\"[SWITCHOFF] <tablelamp> (125) [0]\\\"\", \"line\": \"switchoff('tablelamp')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The tablelamp is already in the OFF state per the current symbolic state, satisfying the process intent that the tablelamp is turned off and no longer emitting light; the switchoff action failed because the lamp was already off, and the target off state is achieved.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The tablelamp is already in the OFF state per the current symbolic state, satisfying the process intent that the tablelamp is turned off and no longer emitting light; the switchoff action failed because the lamp was already off, and the target off state is achieved.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 637,
+      "completion_tokens": 72,
+      "latency_s": 4.6859828180022305,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787749735566b0569a3163ef1c14e46181870ffec997d6da27",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "input": "HPAF VirtualHome TaskAgent. Decompose WHAT is required into the\nfewest ordered object-centric semantic operations; ProgramAgent handles navigation\nand preconditions.\nRules: (1) one operation per atomic, centered on one manipulated object and optional\ntarget; (2) no locate/find/walk atomics, and prerequisite open/close is not an atomic;\n(3) completion_mode=state for persistent state/relation, process for a completed\noperation; keep one lifecycle in one process atomic; (4) process_intent is natural\nlanguage completion intent only, never calls/evaluator/GT/answers; null for state;\n(5) no primitive calls, IDs, invented objects, or time; (6) 1-6 atomics using exact\navailable object classes.\nJSON only: {\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\nTASK: turn off tablelamp\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "HPAF VirtualHome ProgramAgent. Compile only the current atomic into\na short executable program; do not redo earlier or plan future atomics.\nJSON only: {\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off tablelamp\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: chicken, coffeemaker is OFF, cookingpot ON stove, cookingpot is CLOSED, dishwasher is CLOSED and OFF, fryingpan, fryingpan ON stove, kitchencabinet is CLOSED, microwave ON dishwasher, microwave is CLOSED and OFF, pillow, rug, stove is OFF and CLOSED, stovefan, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; coffeepot ON kitchencounter; cookingpot ON stove; fryingpan ON stove; kitchencounter INSIDE dishwasher; kitchentable ON rug; microwave ON dishwasher; microwave ON kitchencounter; oventray INSIDE stove; plate INSIDE microwave; toaster ON kitchencounter.\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions."
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true,\"reason\":\"evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR the same fields with done=false and an actionable hint\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nRELEVANT CLASSES: [\"tablelamp\"]\nATTEMPT: {\"program\": \"# Locate and switch off the tablelamp\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\", \"execution_trace\": [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}], \"errors\": []}"
+    },
+    {
+      "role": "repair_program_agent",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "input": "HPAF VirtualHome ProgramAgent, single local Retry-1 for the current\natomic. Repair from current state; do not blindly replay successes or plan future atomics.\nJSON only: {\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off tablelamp\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nPREVIOUS PROGRAM: # Locate and switch off the tablelamp\nfind('tablelamp')\nwalk('tablelamp')\nswitchoff('tablelamp')\nCURRENT-ATOMIC TRACE: [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}]\nTYPED ERRORS: []\nVERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions."
+    },
+    {
+      "role": "post_repair_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true,\"reason\":\"evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR the same fields with done=false and an actionable hint\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the tablelamp\", \"manipulated_object\": \"tablelamp\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the tablelamp is turned off and no longer emitting light\"}\nSTATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: nightstand is CLOSED, tablelamp ON nightstand, tablelamp is OFF, tablelamp is ON. One-hop INSIDE/ON relations connected to nearby objects: facecream ON nightstand; tablelamp ON nightstand.\nRELEVANT CLASSES: [\"tablelamp\"]\nATTEMPT: {\"program\": \"# repair\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\\n\", \"execution_trace\": [{\"line\": \"find('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tablelamp> (125)\"}, {\"line\": \"walk('tablelamp')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <tablelamp> (125)\"}, {\"line\": \"switchoff('tablelamp')\", \"event\": \"action\", \"success\": false, \"detail\": \"<tablelamp> (125) is not on when executing \\\"[SWITCHOFF] <tablelamp> (125) [0]\\\"\", \"compiled_action\": \"<char0> [switchoff] <tablelamp> (125)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<tablelamp> (125) is not on when executing \\\"[SWITCHOFF] <tablelamp> (125) [0]\\\"\", \"line\": \"switchoff('tablelamp')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}}"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the tablelamp\",\"manipulated_object\":\"tablelamp\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the tablelamp is turned off and no longer emitting light\"}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the tablelamp, approach it, then switch it off to stop it emitting light.\",\"program\":\"# Locate and switch off the tablelamp\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":false,\"reason\":\"The current symbolic state contains a contradictory state for the tablelamp, listing it as both OFF and ON, so there is no consistent evidence that the tablelamp is turned off and no longer emitting light as required by the process completion mode.\",\"failure_stage\":\"post_action_state_consistency\",\"regeneration_hint\":\"Re-verify the tablelamp's power state after the switchoff action, ensuring the state consistently reflects the tablelamp is OFF (not ON) and no longer emitting light before concluding the task.\"}"
+    },
+    {
+      "role": "repair_program_agent",
+      "output": "{\"repair_brief\":\"Verifier reports schema violation despite successful switchoff trace; re-establish proximity to tablelamp and re-issue switchoff to ensure a valid, verifiable off state without intervening unrelated alignment.\",\"program\":\"# repair\\nfind('tablelamp')\\nwalk('tablelamp')\\nswitchoff('tablelamp')\\n\"}"
+    },
+    {
+      "role": "post_repair_verifier",
+      "output": "{\"done\":true,\"reason\":\"The tablelamp is already in the OFF state per the current symbolic state, satisfying the process intent that the tablelamp is turned off and no longer emitting light; the switchoff action failed because the lamp was already off, and the target off state is achieved.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "Atomic 1: verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "Atomic 1: verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<tablelamp> (125) is not on when executing \"[SWITCHOFF] <tablelamp> (125) [0]\"",
+      "line": "switchoff('tablelamp')"
+    }
+  ],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the tablelamp\",\"manipulated_object\":\"tablelamp\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the tablelamp is turned off and no longer emitting light\"}]}"
+}

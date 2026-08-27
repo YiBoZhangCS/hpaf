@@ -1,0 +1,679 @@
+{
+  "run_id": "2026-08-25T144821.631486_0000_hpaf_decomp_closedloop_eat_chips_on_the_sofa",
+  "timestamp": "2026-08-25T14:48:21.631486+00:00",
+  "task": "eat chips on the sofa",
+  "method": "HPAF-Decomp-ClosedLoop",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "ground_truth_action_length": 5,
+  "difficulty_bucket": "Short",
+  "goal_condition_count": 8,
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "task": "Locate and obtain the chips"
+    },
+    {
+      "id": 2,
+      "task": "Move to the sofa"
+    },
+    {
+      "id": 3,
+      "task": "Sit on the sofa"
+    },
+    {
+      "id": 4,
+      "task": "Eat the chips while on the sofa"
+    }
+  ],
+  "number_of_atomic_tasks": 4,
+  "atomic_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "task": "Locate and obtain the chips"
+      },
+      "program_data": {
+        "atomic_task": "Locate and obtain the chips",
+        "plan_brief": "First locate the chips by finding them, then move to the chips and grab them to hold them.",
+        "program": "# Locate and pick up the chips\nfind('chips')\nwalk('chips')\ngrab('chips')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "HOLDS",
+            "object": "chips"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": true,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "task": "Move to the sofa"
+      },
+      "program_data": {
+        "atomic_task": "Move to the sofa",
+        "plan_brief": "Locate the sofa and navigate to it to be positioned near the sofa.",
+        "program": "# Locate and move to the sofa\nfind('sofa')\nwalk('sofa')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "CLOSE",
+            "object": "sofa"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": true,
+      "state_used": "chips, wallshelf. You have chips."
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "task": "Sit on the sofa"
+      },
+      "program_data": {
+        "atomic_task": "Sit on the sofa",
+        "plan_brief": "Navigate to the sofa and sit down on it while holding the chips.",
+        "program": "# Locate and move to the sofa then sit on it\nfind('sofa')\nwalk('sofa')\nsit('sofa')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "ON",
+            "object": "sofa"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": true,
+      "state_used": "chips, rug, sofa, sofa ON rug. You have chips."
+    },
+    {
+      "atomic_task": {
+        "id": 4,
+        "task": "Eat the chips while on the sofa"
+      },
+      "program_data": {
+        "atomic_task": "Eat the chips while on the sofa",
+        "plan_brief": "First sit on the sofa since the character is holding chips, then eat the chips.",
+        "program": "# Sit on sofa and eat held chips\nwalktowards('sofa')\nsit('sofa')\ndrink('chips')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "ON",
+            "object": "sofa"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": true,
+      "state_used": "chips, rug, sofa, sofa ON rug. You have chips."
+    }
+  ],
+  "atomic_verifications": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "task": "Locate and obtain the chips"
+      },
+      "verified": true,
+      "completion_conditions": [
+        {
+          "predicate": "RELATION",
+          "subject": "character",
+          "relation": "HOLDS",
+          "object": "chips"
+        }
+      ],
+      "condition_details": [
+        {
+          "condition": {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "HOLDS",
+            "object": "chips"
+          },
+          "satisfied": true,
+          "evidence": "direct graph edge"
+        }
+      ],
+      "attempted_actions": 3,
+      "successful_actions": 3,
+      "boundary_executable": true,
+      "can_continue": true,
+      "reason": "symbolic conditions satisfied"
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "task": "Move to the sofa"
+      },
+      "verified": true,
+      "completion_conditions": [
+        {
+          "predicate": "RELATION",
+          "subject": "character",
+          "relation": "CLOSE",
+          "object": "sofa"
+        }
+      ],
+      "condition_details": [
+        {
+          "condition": {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "CLOSE",
+            "object": "sofa"
+          },
+          "satisfied": true,
+          "evidence": "direct graph edge"
+        }
+      ],
+      "attempted_actions": 2,
+      "successful_actions": 2,
+      "boundary_executable": true,
+      "can_continue": true,
+      "reason": "symbolic conditions satisfied"
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "task": "Sit on the sofa"
+      },
+      "verified": true,
+      "completion_conditions": [
+        {
+          "predicate": "RELATION",
+          "subject": "character",
+          "relation": "ON",
+          "object": "sofa"
+        }
+      ],
+      "condition_details": [
+        {
+          "condition": {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "ON",
+            "object": "sofa"
+          },
+          "satisfied": true,
+          "evidence": "direct graph edge"
+        }
+      ],
+      "attempted_actions": 3,
+      "successful_actions": 3,
+      "boundary_executable": true,
+      "can_continue": true,
+      "reason": "symbolic conditions satisfied"
+    },
+    {
+      "atomic_task": {
+        "id": 4,
+        "task": "Eat the chips while on the sofa"
+      },
+      "verified": true,
+      "completion_conditions": [
+        {
+          "predicate": "RELATION",
+          "subject": "character",
+          "relation": "ON",
+          "object": "sofa"
+        }
+      ],
+      "condition_details": [
+        {
+          "condition": {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "ON",
+            "object": "sofa"
+          },
+          "satisfied": true,
+          "evidence": "direct graph edge"
+        }
+      ],
+      "attempted_actions": 3,
+      "successful_actions": 0,
+      "boundary_executable": false,
+      "can_continue": false,
+      "reason": "symbolic conditions satisfied"
+    }
+  ],
+  "raw_prompts": [
+    {
+      "instructions": null,
+      "input": "You are the HPAF TaskAgent for a VirtualHome symbolic benchmark.\n\nDecompose the complex household instruction into an ordered list of explicit\nsemantic atomic tasks. TaskAgent decides WHAT must be achieved; ProgramAgent\nwill later decide HOW to call primitive actions.\n\nRules:\n1. Each atomic task has one clear semantic operation or subgoal.\n2. Do not merge independent target objects into one atomic task.\n3. Do not emit primitive API calls or instance IDs.\n4. Do not invent objects absent from AVAILABLE OBJECTS.\n5. Preserve necessary ordering and do not add optional cleanup unrelated to the instruction.\n6. Return strict JSON only, exactly shaped as:\n{\"atomic_tasks\":[{\"id\":1,\"task\":\"...\"}]}\n\nORIGINAL TASK:\neat chips on the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nINITIAL SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nLocate and obtain the chips\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nMove to the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nchips, wallshelf. You have chips.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nSit on the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nchips, rug, sofa, sofa ON rug. You have chips.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nEat the chips while on the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nchips, rug, sofa, sofa ON rug. You have chips.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "{\"atomic_tasks\":[{\"id\":1,\"task\":\"Locate and obtain the chips\"},{\"id\":2,\"task\":\"Move to the sofa\"},{\"id\":3,\"task\":\"Sit on the sofa\"},{\"id\":4,\"task\":\"Eat the chips while on the sofa\"}]}",
+    "{\n  \"atomic_task\": \"Locate and obtain the chips\",\n  \"plan_brief\": \"First locate the chips by finding them, then move to the chips and grab them to hold them.\",\n  \"program\": \"# Locate and pick up the chips\\nfind('chips')\\nwalk('chips')\\ngrab('chips')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"HOLDS\", \"object\": \"chips\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Move to the sofa\",\n  \"plan_brief\": \"Locate the sofa and navigate to it to be positioned near the sofa.\",\n  \"program\": \"# Locate and move to the sofa\\nfind('sofa')\\nwalk('sofa')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"CLOSE\", \"object\": \"sofa\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Sit on the sofa\",\n  \"plan_brief\": \"Navigate to the sofa and sit down on it while holding the chips.\",\n  \"program\": \"# Locate and move to the sofa then sit on it\\nfind('sofa')\\nwalk('sofa')\\nsit('sofa')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"character\",\"relation\":\"ON\",\"object\":\"sofa\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Eat the chips while on the sofa\",\n  \"plan_brief\": \"First sit on the sofa since the character is holding chips, then eat the chips.\",\n  \"program\": \"# Sit on sofa and eat held chips\\nwalktowards('sofa')\\nsit('sofa')\\ndrink('chips')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"character\",\"relation\":\"ON\",\"object\":\"sofa\"}\n  ]\n}"
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome symbolic benchmark.\n\nDecompose the complex household instruction into an ordered list of explicit\nsemantic atomic tasks. TaskAgent decides WHAT must be achieved; ProgramAgent\nwill later decide HOW to call primitive actions.\n\nRules:\n1. Each atomic task has one clear semantic operation or subgoal.\n2. Do not merge independent target objects into one atomic task.\n3. Do not emit primitive API calls or instance IDs.\n4. Do not invent objects absent from AVAILABLE OBJECTS.\n5. Preserve necessary ordering and do not add optional cleanup unrelated to the instruction.\n6. Return strict JSON only, exactly shaped as:\n{\"atomic_tasks\":[{\"id\":1,\"task\":\"...\"}]}\n\nORIGINAL TASK:\neat chips on the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nINITIAL SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n",
+      "instructions": null,
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"task\":\"Locate and obtain the chips\"},{\"id\":2,\"task\":\"Move to the sofa\"},{\"id\":3,\"task\":\"Sit on the sofa\"},{\"id\":4,\"task\":\"Eat the chips while on the sofa\"}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"task\":\"Locate and obtain the chips\"},{\"id\":2,\"task\":\"Move to the sofa\"},{\"id\":3,\"task\":\"Sit on the sofa\"},{\"id\":4,\"task\":\"Eat the chips while on the sofa\"}]}",
+      "prompt_tokens": 977,
+      "completion_tokens": 59,
+      "latency_s": 1.9937185400012822,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787669310363efc00680cc97b448c97df3ed8237441f7d78b6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nLocate and obtain the chips\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Locate and obtain the chips\",\n  \"plan_brief\": \"First locate the chips by finding them, then move to the chips and grab them to hold them.\",\n  \"program\": \"# Locate and pick up the chips\\nfind('chips')\\nwalk('chips')\\ngrab('chips')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"HOLDS\", \"object\": \"chips\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Locate and obtain the chips\",\n  \"plan_brief\": \"First locate the chips by finding them, then move to the chips and grab them to hold them.\",\n  \"program\": \"# Locate and pick up the chips\\nfind('chips')\\nwalk('chips')\\ngrab('chips')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"HOLDS\", \"object\": \"chips\"}\n  ]\n}",
+      "prompt_tokens": 1270,
+      "completion_tokens": 122,
+      "latency_s": 4.242324061000545,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787669312392efc00680cc97b448c97df3ed8237441fa49fd9",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nMove to the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nchips, wallshelf. You have chips.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Move to the sofa\",\n  \"plan_brief\": \"Locate the sofa and navigate to it to be positioned near the sofa.\",\n  \"program\": \"# Locate and move to the sofa\\nfind('sofa')\\nwalk('sofa')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"CLOSE\", \"object\": \"sofa\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Move to the sofa\",\n  \"plan_brief\": \"Locate the sofa and navigate to it to be positioned near the sofa.\",\n  \"program\": \"# Locate and move to the sofa\\nfind('sofa')\\nwalk('sofa')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"CLOSE\", \"object\": \"sofa\"}\n  ]\n}",
+      "prompt_tokens": 1041,
+      "completion_tokens": 107,
+      "latency_s": 3.4322740550014714,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787669316682efc00680cc97b448c97df3ed8237441fd52f14",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nSit on the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nchips, rug, sofa, sofa ON rug. You have chips.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Sit on the sofa\",\n  \"plan_brief\": \"Navigate to the sofa and sit down on it while holding the chips.\",\n  \"program\": \"# Locate and move to the sofa then sit on it\\nfind('sofa')\\nwalk('sofa')\\nsit('sofa')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"character\",\"relation\":\"ON\",\"object\":\"sofa\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Sit on the sofa\",\n  \"plan_brief\": \"Navigate to the sofa and sit down on it while holding the chips.\",\n  \"program\": \"# Locate and move to the sofa then sit on it\\nfind('sofa')\\nwalk('sofa')\\nsit('sofa')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"character\",\"relation\":\"ON\",\"object\":\"sofa\"}\n  ]\n}",
+      "prompt_tokens": 1047,
+      "completion_tokens": 110,
+      "latency_s": 3.9168322890000127,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787669320199efc00680cc97b448c97df3ed8237441f910d73",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition. RELATION values must use VirtualHome\nsemantics: INSIDE, ON, CLOSE, or HOLDS (character HOLDS object).\n\nORIGINAL TASK:\neat chips on the sofa\n\nCURRENT ATOMIC TASK:\nEat the chips while on the sofa\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nchips, rug, sofa, sofa ON rug. You have chips.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Eat the chips while on the sofa\",\n  \"plan_brief\": \"First sit on the sofa since the character is holding chips, then eat the chips.\",\n  \"program\": \"# Sit on sofa and eat held chips\\nwalktowards('sofa')\\nsit('sofa')\\ndrink('chips')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"character\",\"relation\":\"ON\",\"object\":\"sofa\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Eat the chips while on the sofa\",\n  \"plan_brief\": \"First sit on the sofa since the character is holding chips, then eat the chips.\",\n  \"program\": \"# Sit on sofa and eat held chips\\nwalktowards('sofa')\\nsit('sofa')\\ndrink('chips')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"character\",\"relation\":\"ON\",\"object\":\"sofa\"}\n  ]\n}",
+      "prompt_tokens": 1049,
+      "completion_tokens": 113,
+      "latency_s": 3.2875317219986755,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787669324156efc00680cc97b448c97df3ed8237441ff7b6df",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# HPAF atomic 1: Locate and obtain the chips\n# Locate and pick up the chips\nfind('chips')\nwalk('chips')\ngrab('chips')\n# HPAF atomic 2: Move to the sofa\n# Locate and move to the sofa\nfind('sofa')\nwalk('sofa')\n# HPAF atomic 3: Sit on the sofa\n# Locate and move to the sofa then sit on it\nfind('sofa')\nwalk('sofa')\nsit('sofa')\n# HPAF atomic 4: Eat the chips while on the sofa\n# Sit on sofa and eat held chips\nwalktowards('sofa')\nsit('sofa')\ndrink('chips')",
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <chips> (329)",
+    "<char0> [walk] <chips> (329)",
+    "<char0> [grab] <chips> (329)",
+    "<char0> [find] <sofa> (368)",
+    "<char0> [walk] <sofa> (368)",
+    "<char0> [find] <sofa> (368)",
+    "<char0> [walk] <sofa> (368)",
+    "<char0> [sit] <sofa> (368)",
+    "<char0> [walktowards] <sofa> (368)",
+    "<char0> [sit] <sofa> (368)",
+    "<char0> [drink] <chips> (329)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# Locate and pick up the chips",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the chips",
+      "compiled_action": null
+    },
+    {
+      "line": "find('chips')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the chips",
+      "compiled_action": "<char0> [find] <chips> (329)"
+    },
+    {
+      "line": "walk('chips')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the chips",
+      "compiled_action": "<char0> [walk] <chips> (329)"
+    },
+    {
+      "line": "grab('chips')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the chips",
+      "compiled_action": "<char0> [grab] <chips> (329)"
+    },
+    {
+      "line": "# Locate and move to the sofa",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa",
+      "compiled_action": "<char0> [find] <sofa> (368)"
+    },
+    {
+      "line": "walk('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa",
+      "compiled_action": "<char0> [walk] <sofa> (368)"
+    },
+    {
+      "line": "# Locate and move to the sofa then sit on it",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa then sit on it",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa then sit on it",
+      "compiled_action": "<char0> [find] <sofa> (368)"
+    },
+    {
+      "line": "walk('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa then sit on it",
+      "compiled_action": "<char0> [walk] <sofa> (368)"
+    },
+    {
+      "line": "sit('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and move to the sofa then sit on it",
+      "compiled_action": "<char0> [sit] <sofa> (368)"
+    },
+    {
+      "line": "# Sit on sofa and eat held chips",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Sit on sofa and eat held chips",
+      "compiled_action": null
+    },
+    {
+      "line": "walktowards('sofa')",
+      "event": "action",
+      "success": false,
+      "detail": "Unknown action \"WALKTOWARDS\"",
+      "subgoal": "Sit on sofa and eat held chips",
+      "compiled_action": "<char0> [walktowards] <sofa> (368)"
+    },
+    {
+      "line": "sit('sofa')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is sitting when executing \"[SIT] <sofa> (368) [0]\"",
+      "subgoal": "Sit on sofa and eat held chips",
+      "compiled_action": "<char0> [sit] <sofa> (368)"
+    },
+    {
+      "line": "drink('chips')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is sitting when executing \"[SIT] <sofa> (368) [0]\",<chips> (329) is not drinkable or not recipient when executing \"[DRINK] <chips> (329) [0]\"",
+      "subgoal": "Sit on sofa and eat held chips",
+      "compiled_action": "<char0> [drink] <chips> (329)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <chips> (329)",
+      "parsed_action": "[FIND] <chips> (329) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <chips> (329)",
+      "parsed_action": "[WALK] <chips> (329) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <chips> (329)",
+      "parsed_action": "[GRAB] <chips> (329) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sofa> (368)",
+      "parsed_action": "[FIND] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <sofa> (368)",
+      "parsed_action": "[WALK] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sofa> (368)",
+      "parsed_action": "[FIND] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <sofa> (368)",
+      "parsed_action": "[WALK] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [sit] <sofa> (368)",
+      "parsed_action": "[SIT] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walktowards] <sofa> (368)",
+      "parsed_action": null,
+      "success": false,
+      "error": "Unknown action \"WALKTOWARDS\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [sit] <sofa> (368)",
+      "parsed_action": "[SIT] <sofa> (368) [0]",
+      "success": false,
+      "error": "<character> (1) is sitting when executing \"[SIT] <sofa> (368) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [drink] <chips> (329)",
+      "parsed_action": "[DRINK] <chips> (329) [0]",
+      "success": false,
+      "error": "<character> (1) is sitting when executing \"[SIT] <sofa> (368) [0]\",<chips> (329) is not drinkable or not recipient when executing \"[DRINK] <chips> (329) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 1,
+  "GCR": 1.0,
+  "PSR": 1.0,
+  "Precision": 1.0,
+  "Exec": 0.7272727272727273,
+  "program_length": 11,
+  "llm_calls": 5,
+  "prompt_tokens": 5384,
+  "completion_tokens": 511,
+  "planning_latency": 16.872680667001987,
+  "wall_clock_total_s": 17.92974052199861,
+  "error_type": "atomic_verification_failure",
+  "error_message": "Atomic 4 did not pass its boundary check",
+  "errors": [
+    {
+      "error_type": "atomic_verification_failure",
+      "message": "Atomic 4 did not pass its boundary check"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "Unknown action \"WALKTOWARDS\"",
+      "line": "walktowards('sofa')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is sitting when executing \"[SIT] <sofa> (368) [0]\"",
+      "line": "sit('sofa')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is sitting when executing \"[SIT] <sofa> (368) [0]\",<chips> (329) is not drinkable or not recipient when executing \"[DRINK] <chips> (329) [0]\"",
+      "line": "drink('chips')"
+    }
+  ],
+  "missing_goal_relations": [],
+  "missing_goal_states": []
+}

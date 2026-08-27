@@ -1,0 +1,469 @@
+{
+  "run_id": "confirmatory_formal_2026-08-26T082357.841755_0000_hpaf_flat_env2_wash_the_cutlery_in_dishwasher",
+  "phase": "confirmatory_formal",
+  "timestamp": "2026-08-26T08:23:57.841755+00:00",
+  "task_id": "env2::wash_the_cutlery_in_dishwasher",
+  "task": "wash the cutlery in dishwasher",
+  "split": "env2",
+  "scene": 2,
+  "gt_action_length": 10,
+  "horizon": "Medium",
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "a7912dcf9c2f97a7a097185169d01491f3432559b8efb22fa8cba38baa97f724",
+  "task_manifest_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "semantic_goals_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "long_horizon_manifest_sha256": "0e7ec66f08f397d777632474e3a2847fe98148c77261d629ec65267f6f424987",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "1ff91d8ef302acf6a349659834ee1e5900f344fc6cca0b0e6b25d6a3c9578546",
+  "generated_programs": [
+    "# locate and pick up the fork from the kitchen table\nfind('cutleryfork')\ngrab('cutleryfork')\n# locate and open the dishwasher\nfind('dishwasher')\nopen('dishwasher')\n# load the fork into the dishwasher\nputin('cutleryfork', 'dishwasher')\n# return to the table and pick up the knife\nfind('cutleryknife')\ngrab('cutleryknife')\n# return to the dishwasher and load the knife\nfind('dishwasher')\nputin('cutleryknife', 'dishwasher')\n# close and run the dishwasher to wash the cutlery\nclose('dishwasher')\nswitchon('dishwasher')"
+  ],
+  "generated_program": "# locate and pick up the fork from the kitchen table\nfind('cutleryfork')\ngrab('cutleryfork')\n# locate and open the dishwasher\nfind('dishwasher')\nopen('dishwasher')\n# load the fork into the dishwasher\nputin('cutleryfork', 'dishwasher')\n# return to the table and pick up the knife\nfind('cutleryknife')\ngrab('cutleryknife')\n# return to the dishwasher and load the knife\nfind('dishwasher')\nputin('cutleryknife', 'dishwasher')\n# close and run the dishwasher to wash the cutlery\nclose('dishwasher')\nswitchon('dishwasher')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nwash the cutlery in dishwasher\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is CLOSED and ON. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON dishwasher; coffeemaker ON kitchencounter; cutleryfork INSIDE dishwasher; cutleryknife INSIDE dishwasher; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"clothespile\", \"cutleryfork\", \"cutleryknife\", \"dishwasher\", \"washingmachine\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate and pick up the fork from the kitchen table\\nfind('cutleryfork')\\ngrab('cutleryfork')\\n# locate and open the dishwasher\\nfind('dishwasher')\\nopen('dishwasher')\\n# load the fork into the dishwasher\\nputin('cutleryfork', 'dishwasher')\\n# return to the table and pick up the knife\\nfind('cutleryknife')\\ngrab('cutleryknife')\\n# return to the dishwasher and load the knife\\nfind('dishwasher')\\nputin('cutleryknife', 'dishwasher')\\n# close and run the dishwasher to wash the cutlery\\nclose('dishwasher')\\nswitchon('dishwasher')\", \"execution_trace\": [{\"line\": \"find('cutleryfork')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cutleryfork> (77)\"}, {\"line\": \"grab('cutleryfork')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cutleryfork> (77)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (165)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (165)\"}, {\"line\": \"putin('cutleryfork', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cutleryfork> (77) <dishwasher> (165)\"}, {\"line\": \"find('cutleryknife')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cutleryknife> (81)\"}, {\"line\": \"grab('cutleryknife')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cutleryknife> (81)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (165)\"}, {\"line\": \"putin('cutleryknife', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cutleryknife> (81) <dishwasher> (165)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (165)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (165)\"}], \"errors\": []}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":true,\"reason\":\"The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1192,
+      "completion_tokens": 56,
+      "latency_s": 2.4560229249982513,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877326617778f5df55c078e9f0cf923961e89d651d1cdb33e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task": "wash the cutlery in dishwasher",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is CLOSED and ON. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON dishwasher; coffeemaker ON kitchencounter; cutleryfork INSIDE dishwasher; cutleryknife INSIDE dishwasher; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; toaster ON kitchencounter.",
+      "result": {
+        "done": true,
+        "reason": "The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.",
+        "failure_stage": "none",
+        "regeneration_hint": ""
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# locate and pick up the fork from the kitchen table",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and pick up the fork from the kitchen table",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cutleryfork')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and pick up the fork from the kitchen table",
+      "compiled_action": "<char0> [find] <cutleryfork> (77)"
+    },
+    {
+      "line": "grab('cutleryfork')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and pick up the fork from the kitchen table",
+      "compiled_action": "<char0> [grab] <cutleryfork> (77)"
+    },
+    {
+      "line": "# locate and open the dishwasher",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and open the dishwasher",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and open the dishwasher",
+      "compiled_action": "<char0> [find] <dishwasher> (165)"
+    },
+    {
+      "line": "open('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and open the dishwasher",
+      "compiled_action": "<char0> [open] <dishwasher> (165)"
+    },
+    {
+      "line": "# load the fork into the dishwasher",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "load the fork into the dishwasher",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('cutleryfork', 'dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "load the fork into the dishwasher",
+      "compiled_action": "<char0> [putin] <cutleryfork> (77) <dishwasher> (165)"
+    },
+    {
+      "line": "# return to the table and pick up the knife",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "return to the table and pick up the knife",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cutleryknife')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "return to the table and pick up the knife",
+      "compiled_action": "<char0> [find] <cutleryknife> (81)"
+    },
+    {
+      "line": "grab('cutleryknife')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "return to the table and pick up the knife",
+      "compiled_action": "<char0> [grab] <cutleryknife> (81)"
+    },
+    {
+      "line": "# return to the dishwasher and load the knife",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "return to the dishwasher and load the knife",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "return to the dishwasher and load the knife",
+      "compiled_action": "<char0> [find] <dishwasher> (165)"
+    },
+    {
+      "line": "putin('cutleryknife', 'dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "return to the dishwasher and load the knife",
+      "compiled_action": "<char0> [putin] <cutleryknife> (81) <dishwasher> (165)"
+    },
+    {
+      "line": "# close and run the dishwasher to wash the cutlery",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "close and run the dishwasher to wash the cutlery",
+      "compiled_action": null
+    },
+    {
+      "line": "close('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "close and run the dishwasher to wash the cutlery",
+      "compiled_action": "<char0> [close] <dishwasher> (165)"
+    },
+    {
+      "line": "switchon('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "close and run the dishwasher to wash the cutlery",
+      "compiled_action": "<char0> [switchon] <dishwasher> (165)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <cutleryfork> (77)",
+      "parsed_action": "[FIND] <cutleryfork> (77) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <cutleryfork> (77)",
+      "parsed_action": "[GRAB] <cutleryfork> (77) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (165)",
+      "parsed_action": "[FIND] <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <dishwasher> (165)",
+      "parsed_action": "[OPEN] <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <cutleryfork> (77) <dishwasher> (165)",
+      "parsed_action": "[PUTIN] <cutleryfork> (77) <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cutleryknife> (81)",
+      "parsed_action": "[FIND] <cutleryknife> (81) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <cutleryknife> (81)",
+      "parsed_action": "[GRAB] <cutleryknife> (81) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (165)",
+      "parsed_action": "[FIND] <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <cutleryknife> (81) <dishwasher> (165)",
+      "parsed_action": "[PUTIN] <cutleryknife> (81) <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <dishwasher> (165)",
+      "parsed_action": "[CLOSE] <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <dishwasher> (165)",
+      "parsed_action": "[SWITCHON] <dishwasher> (165) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <cutleryfork> (77)",
+    "<char0> [grab] <cutleryfork> (77)",
+    "<char0> [find] <dishwasher> (165)",
+    "<char0> [open] <dishwasher> (165)",
+    "<char0> [putin] <cutleryfork> (77) <dishwasher> (165)",
+    "<char0> [find] <cutleryknife> (81)",
+    "<char0> [grab] <cutleryknife> (81)",
+    "<char0> [find] <dishwasher> (165)",
+    "<char0> [putin] <cutleryknife> (81) <dishwasher> (165)",
+    "<char0> [close] <dishwasher> (165)",
+    "<char0> [switchon] <dishwasher> (165)"
+  ],
+  "program_length": 11,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "trace_goal": {
+        "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+        "item": "cutleryfork",
+        "appliance": "dishwasher",
+        "controller": "dishwasher",
+        "load_required": true,
+        "rationale": "The released path has a loaded dishwasher ON->OFF cycle but no persistent WASHED rule."
+      },
+      "satisfied": false,
+      "evidence": "successful appliance ON->OFF cycle absent"
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+      "item": "cutleryfork",
+      "appliance": "dishwasher",
+      "controller": "dishwasher",
+      "load_required": true,
+      "rationale": "The released path has a loaded dishwasher ON->OFF cycle but no persistent WASHED rule."
+    }
+  ],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 0.9969512195121951,
+  "Exec": 1.0,
+  "official_goal_condition_count": 7,
+  "official_missing_goal_relations": [],
+  "official_missing_goal_states": [],
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1379,
+  "generation_completion_tokens": 214,
+  "verification_prompt_tokens": 1192,
+  "verification_completion_tokens": 56,
+  "repair_tokens": 0,
+  "prompt_tokens": 2571,
+  "completion_tokens": 270,
+  "total_prompt_tokens": 2571,
+  "total_completion_tokens": 270,
+  "total_tokens": 2841,
+  "planning_latency": 6.113607018996845,
+  "verification_latency": 2.4560229249982513,
+  "total_llm_latency": 8.569629943995096,
+  "wall_clock_total_s": 9.601808761999564,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nwash the cutlery in dishwasher\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, juice, juice ON kitchentable, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; juice ON kitchentable; kitchentable ON rug; plate ON kitchentable; waterglass ON kitchentable.\n\nAVAILABLE OBJECTS:\n[\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Collect the cutlery from the kitchen table, open the dishwasher, load the cutlery into it, close the dishwasher, and start it to wash the cutlery.\",\"program\":\"# locate and pick up the fork from the kitchen table\\nfind('cutleryfork')\\ngrab('cutleryfork')\\n# locate and open the dishwasher\\nfind('dishwasher')\\nopen('dishwasher')\\n# load the fork into the dishwasher\\nputin('cutleryfork', 'dishwasher')\\n# return to the table and pick up the knife\\nfind('cutleryknife')\\ngrab('cutleryknife')\\n# return to the dishwasher and load the knife\\nfind('dishwasher')\\nputin('cutleryknife', 'dishwasher')\\n# close and run the dishwasher to wash the cutlery\\nclose('dishwasher')\\nswitchon('dishwasher')\"}",
+      "output_text": "{\"plan_brief\":\"Collect the cutlery from the kitchen table, open the dishwasher, load the cutlery into it, close the dishwasher, and start it to wash the cutlery.\",\"program\":\"# locate and pick up the fork from the kitchen table\\nfind('cutleryfork')\\ngrab('cutleryfork')\\n# locate and open the dishwasher\\nfind('dishwasher')\\nopen('dishwasher')\\n# load the fork into the dishwasher\\nputin('cutleryfork', 'dishwasher')\\n# return to the table and pick up the knife\\nfind('cutleryknife')\\ngrab('cutleryknife')\\n# return to the dishwasher and load the knife\\nfind('dishwasher')\\nputin('cutleryknife', 'dishwasher')\\n# close and run the dishwasher to wash the cutlery\\nclose('dishwasher')\\nswitchon('dishwasher')\"}",
+      "prompt_tokens": 1379,
+      "completion_tokens": 214,
+      "latency_s": 6.113607018996845,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877326554338f5df55c078e9f0cf923961e89d651d1a83cc6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nwash the cutlery in dishwasher\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is CLOSED and ON. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON dishwasher; coffeemaker ON kitchencounter; cutleryfork INSIDE dishwasher; cutleryknife INSIDE dishwasher; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"clothespile\", \"cutleryfork\", \"cutleryknife\", \"dishwasher\", \"washingmachine\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate and pick up the fork from the kitchen table\\nfind('cutleryfork')\\ngrab('cutleryfork')\\n# locate and open the dishwasher\\nfind('dishwasher')\\nopen('dishwasher')\\n# load the fork into the dishwasher\\nputin('cutleryfork', 'dishwasher')\\n# return to the table and pick up the knife\\nfind('cutleryknife')\\ngrab('cutleryknife')\\n# return to the dishwasher and load the knife\\nfind('dishwasher')\\nputin('cutleryknife', 'dishwasher')\\n# close and run the dishwasher to wash the cutlery\\nclose('dishwasher')\\nswitchon('dishwasher')\", \"execution_trace\": [{\"line\": \"find('cutleryfork')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cutleryfork> (77)\"}, {\"line\": \"grab('cutleryfork')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cutleryfork> (77)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (165)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (165)\"}, {\"line\": \"putin('cutleryfork', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cutleryfork> (77) <dishwasher> (165)\"}, {\"line\": \"find('cutleryknife')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cutleryknife> (81)\"}, {\"line\": \"grab('cutleryknife')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cutleryknife> (81)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (165)\"}, {\"line\": \"putin('cutleryknife', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cutleryknife> (81) <dishwasher> (165)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (165)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (165)\"}], \"errors\": []}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":true,\"reason\":\"The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1192,
+      "completion_tokens": 56,
+      "latency_s": 2.4560229249982513,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877326617778f5df55c078e9f0cf923961e89d651d1cdb33e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nwash the cutlery in dishwasher\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, juice, juice ON kitchentable, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; juice ON kitchentable; kitchentable ON rug; plate ON kitchentable; waterglass ON kitchentable.\n\nAVAILABLE OBJECTS:\n[\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nwash the cutlery in dishwasher\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is CLOSED and ON. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON dishwasher; coffeemaker ON kitchencounter; cutleryfork INSIDE dishwasher; cutleryknife INSIDE dishwasher; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"clothespile\", \"cutleryfork\", \"cutleryknife\", \"dishwasher\", \"washingmachine\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate and pick up the fork from the kitchen table\\nfind('cutleryfork')\\ngrab('cutleryfork')\\n# locate and open the dishwasher\\nfind('dishwasher')\\nopen('dishwasher')\\n# load the fork into the dishwasher\\nputin('cutleryfork', 'dishwasher')\\n# return to the table and pick up the knife\\nfind('cutleryknife')\\ngrab('cutleryknife')\\n# return to the dishwasher and load the knife\\nfind('dishwasher')\\nputin('cutleryknife', 'dishwasher')\\n# close and run the dishwasher to wash the cutlery\\nclose('dishwasher')\\nswitchon('dishwasher')\", \"execution_trace\": [{\"line\": \"find('cutleryfork')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cutleryfork> (77)\"}, {\"line\": \"grab('cutleryfork')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cutleryfork> (77)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (165)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (165)\"}, {\"line\": \"putin('cutleryfork', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cutleryfork> (77) <dishwasher> (165)\"}, {\"line\": \"find('cutleryknife')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cutleryknife> (81)\"}, {\"line\": \"grab('cutleryknife')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cutleryknife> (81)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (165)\"}, {\"line\": \"putin('cutleryknife', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cutleryknife> (81) <dishwasher> (165)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (165)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (165)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Collect the cutlery from the kitchen table, open the dishwasher, load the cutlery into it, close the dishwasher, and start it to wash the cutlery.\",\"program\":\"# locate and pick up the fork from the kitchen table\\nfind('cutleryfork')\\ngrab('cutleryfork')\\n# locate and open the dishwasher\\nfind('dishwasher')\\nopen('dishwasher')\\n# load the fork into the dishwasher\\nputin('cutleryfork', 'dishwasher')\\n# return to the table and pick up the knife\\nfind('cutleryknife')\\ngrab('cutleryknife')\\n# return to the dishwasher and load the knife\\nfind('dishwasher')\\nputin('cutleryknife', 'dishwasher')\\n# close and run the dishwasher to wash the cutlery\\nclose('dishwasher')\\nswitchon('dishwasher')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"The cutlery (cutleryfork and cutleryknife) are inside the closed, powered-on dishwasher, which is running to wash them, completing the task.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, juice, juice ON kitchentable, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; juice ON kitchentable; kitchentable ON rug; plate ON kitchentable; waterglass ON kitchentable.",
+  "phase7_set": "confirmatory",
+  "evaluator_type": "generic_trace",
+  "trace_goal": {
+    "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+    "item": "cutleryfork",
+    "appliance": "dishwasher",
+    "controller": "dishwasher",
+    "load_required": true,
+    "rationale": "The released path has a loaded dishwasher ON->OFF cycle but no persistent WASHED rule."
+  }
+}

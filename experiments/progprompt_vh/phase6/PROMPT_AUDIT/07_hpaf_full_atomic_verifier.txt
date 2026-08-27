@@ -1,0 +1,66 @@
+SOURCE RUN: formal_2026-08-26T033749.484760_0000_hpaf_full_test_unseen_ambiguous_goals_collect_4_fruits_such_as_apple_banana_etc_in_the_dishbowl
+TASK: test_unseen_ambiguous_goals::collect_4_fruits_such_as_apple,_banana,_etc_in_the_dishbowl
+ROLE: atomic_verifier
+
+REQUEST METADATA:
+{
+  "call_role": "atomic_verifier",
+  "broad_role": "verification",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "stop": null,
+  "frequency_penalty": null,
+  "extra_body": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "prompt_tokens": 736,
+  "completion_tokens": 42,
+  "response_id": "resp_02178771546937814713b2deea0810671b986a10f293e395548a9",
+  "error_type": "",
+  "error_message": ""
+}
+
+INSTRUCTIONS FIELD (sent separately):
+Return only the strict JSON object requested by the online verifier protocol.
+
+USER INPUT/PROMPT (complete):
+You are the online HPAF execution verifier for VirtualHome.
+
+Judge whether the CURRENT TASK is complete using only the post-execution symbolic
+observation and execution context below. Do not assume an action succeeded merely
+because it was generated. Do not request future work outside the current task.
+Persistent states/relations in the observation are evidence; a successful trace
+may support that an event occurred, but never invent an unseen object or state.
+Object-class names can refer to multiple simulator instances. For a singular or
+otherwise unspecified object request, a successful interaction with one instance
+plus a matching observed outcome is sufficient; another same-class instance that
+retains an opposite state is not a contradiction. Require every instance only
+when the task explicitly says all/every/both.
+
+Return strict JSON only:
+{"done":true,"reason":"short explanation","failure_stage":"perception|alignment|interaction|verification|none","regeneration_hint":"short repair suggestion"}
+
+CURRENT TASK:
+Put the apple into the dishbowl.
+
+POST-EXECUTION SYMBOLIC OBSERVATION:
+Character room=livingroom; states=[]; holds=[]. Nearby visible graph: apple, apple INSIDE dishbowl, coffeetable, dishbowl, dishbowl ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple INSIDE dishbowl; apple ON coffeetable; bananas ON dishbowl; cellphone ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable.
+
+RELEVANT/AVAILABLE OBJECT CLASSES:
+["apple", "bananas", "clothespants", "clothespile", "clothesshirt", "dishbowl"]
+
+CURRENT EXECUTION CONTEXT:
+{"original_task": "collect 4 fruits such as apple, banana, etc in the dishbowl", "program": "# find and grab the apple\nfind('apple')\ngrab('apple')\n# approach the dishbowl and place the apple inside\nfind('dishbowl')\nputin('apple', 'dishbowl')", "execution_trace": [{"line": "find('apple')", "event": "action", "success": true, "detail": "", "compiled_action": "<char0> [find] <apple> (438)"}, {"line": "grab('apple')", "event": "action", "success": true, "detail": "", "compiled_action": "<char0> [grab] <apple> (438)"}, {"line": "find('dishbowl')", "event": "action", "success": true, "detail": "", "compiled_action": "<char0> [find] <dishbowl> (445)"}, {"line": "putin('apple', 'dishbowl')", "event": "action", "success": true, "detail": "", "compiled_action": "<char0> [putin] <apple> (438) <dishbowl> (445)"}], "errors": []}
+
+
+RAW MODEL OUTPUT (complete):
+{"done":true,"reason":"The post-execution observation confirms the apple is inside the dishbowl, satisfying the current task requirement.","failure_stage":"none","regeneration_hint":""}
+
+PARSED OUTPUT_TEXT USED BY RUNTIME:
+{"done":true,"reason":"The post-execution observation confirms the apple is inside the dishbowl, satisfying the current task requirement.","failure_stage":"none","regeneration_hint":""}

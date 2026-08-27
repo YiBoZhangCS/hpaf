@@ -1,0 +1,476 @@
+{
+  "run_id": "formal_2026-08-26T105920.545124_0000_hpaf_flat_vhcsb_s1_g3_15",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T10:59:20.545124+00:00",
+  "task_id": "vhcsb_s1_g3_15",
+  "task": "Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.",
+  "split": "synthetic_composition",
+  "scene": 1,
+  "goal_count": 3,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "9eb12933135939eb6465e81090247155293cd641d5772face2adde30e1f3f36e",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    "# Locate and turn on the coffeemaker in the kitchen\nfind('coffeemaker')\nswitchon('coffeemaker')\n# Acquire the coffeepot\nfind('coffeepot')\ngrab('coffeepot')\n# Move to the bathroom and place the coffeepot in the toilet\nwalk('bathroom')\nfind('toilet')\nputin('coffeepot', 'toilet')\n# Find the toothbrush and place it on the bathroomcabinet\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcabinet')\nputback('toothbrush', 'bathroomcabinet')"
+  ],
+  "generated_program": "# Locate and turn on the coffeemaker in the kitchen\nfind('coffeemaker')\nswitchon('coffeemaker')\n# Acquire the coffeepot\nfind('coffeepot')\ngrab('coffeepot')\n# Move to the bathroom and place the coffeepot in the toilet\nwalk('bathroom')\nfind('toilet')\nputin('coffeepot', 'toilet')\n# Find the toothbrush and place it on the bathroomcabinet\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcabinet')\nputback('toothbrush', 'bathroomcabinet')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=['coffeepot']. Nearby visible graph: bathroomcabinet is CLOSED, coffeepot is CLOSED, toothbrush, toothbrush ON bathroomcabinet. You have coffeepot. One-hop INSIDE/ON relations connected to nearby objects: toothbrush ON bathroomcabinet.\nRELEVANT OBJECT CLASSES: [\"bathroom\", \"bathroomcabinet\", \"cabinet\", \"coffeemaker\", \"coffeepot\", \"toilet\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and turn on the coffeemaker in the kitchen\\nfind('coffeemaker')\\nswitchon('coffeemaker')\\n# Acquire the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Move to the bathroom and place the coffeepot in the toilet\\nwalk('bathroom')\\nfind('toilet')\\nputin('coffeepot', 'toilet')\\n# Find the toothbrush and place it on the bathroomcabinet\\nfind('toothbrush')\\ngrab('toothbrush')\\nfind('bathroomcabinet')\\nputback('toothbrush', 'bathroomcabinet')\", \"execution_trace\": [{\"line\": \"find('coffeemaker')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeemaker> (229)\"}, {\"line\": \"switchon('coffeemaker')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <coffeemaker> (229)\"}, {\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (24)\"}, {\"line\": \"putin('coffeepot', 'toilet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toilet> (24) is not open or is not openable when executing \\\"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <coffeepot> (230) <toilet> (24)\"}, {\"line\": \"find('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothbrush> (32)\"}, {\"line\": \"grab('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothbrush> (32)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (26)\"}, {\"line\": \"putback('toothbrush', 'bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothbrush> (32) <bathroomcabinet> (26)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toilet> (24) is not open or is not openable when executing \\\"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\\\"\", \"line\": \"putin('coffeepot', 'toilet')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"Coffeemaker was turned on and toothbrush was placed on the bathroomcabinet, but putting the coffeepot in the toilet failed because the toilet was not open/openable; the character still holds the coffeepot.\",\"failure_stage\":\"putin('coffeepot', 'toilet')\",\"regeneration_hint\":\"Open the toilet before putting the coffeepot inside it, then confirm the coffeepot is in the toilet rather than still held.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"Coffeemaker was turned on and toothbrush was placed on the bathroomcabinet, but putting the coffeepot in the toilet failed because the toilet was not open/openable; the character still holds the coffeepot.\",\"failure_stage\":\"putin('coffeepot', 'toilet')\",\"regeneration_hint\":\"Open the toilet before putting the coffeepot inside it, then confirm the coffeepot is in the toilet rather than still held.\"}",
+      "prompt_tokens": 1310,
+      "completion_tokens": 107,
+      "latency_s": 4.153698808004265,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774198292815a741db9058723ed34b56d0ce5c7d9c78dda4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=bathroom; states=[]; holds=['coffeepot']. Nearby visible graph: bathroomcabinet is CLOSED, coffeepot is CLOSED, toothbrush, toothbrush ON bathroomcabinet. You have coffeepot. One-hop INSIDE/ON relations connected to nearby objects: toothbrush ON bathroomcabinet.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"Coffeemaker was turned on and toothbrush was placed on the bathroomcabinet, but putting the coffeepot in the toilet failed because the toilet was not open/openable; the character still holds the coffeepot.\",\"failure_stage\":\"putin('coffeepot', 'toilet')\",\"regeneration_hint\":\"Open the toilet before putting the coffeepot inside it, then confirm the coffeepot is in the toilet rather than still held.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Locate and turn on the coffeemaker in the kitchen",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn on the coffeemaker in the kitchen",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeemaker')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn on the coffeemaker in the kitchen",
+      "compiled_action": "<char0> [find] <coffeemaker> (229)"
+    },
+    {
+      "line": "switchon('coffeemaker')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn on the coffeemaker in the kitchen",
+      "compiled_action": "<char0> [switchon] <coffeemaker> (229)"
+    },
+    {
+      "line": "# Acquire the coffeepot",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the coffeepot",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeepot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the coffeepot",
+      "compiled_action": "<char0> [find] <coffeepot> (230)"
+    },
+    {
+      "line": "grab('coffeepot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the coffeepot",
+      "compiled_action": "<char0> [grab] <coffeepot> (230)"
+    },
+    {
+      "line": "# Move to the bathroom and place the coffeepot in the toilet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move to the bathroom and place the coffeepot in the toilet",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('bathroom')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move to the bathroom and place the coffeepot in the toilet",
+      "compiled_action": "<char0> [walk] <bathroom> (11)"
+    },
+    {
+      "line": "find('toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move to the bathroom and place the coffeepot in the toilet",
+      "compiled_action": "<char0> [find] <toilet> (24)"
+    },
+    {
+      "line": "putin('coffeepot', 'toilet')",
+      "event": "action",
+      "success": false,
+      "detail": "<toilet> (24) is not open or is not openable when executing \"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\"",
+      "subgoal": "Move to the bathroom and place the coffeepot in the toilet",
+      "compiled_action": "<char0> [putin] <coffeepot> (230) <toilet> (24)"
+    },
+    {
+      "line": "# Find the toothbrush and place it on the bathroomcabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find the toothbrush and place it on the bathroomcabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toothbrush')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find the toothbrush and place it on the bathroomcabinet",
+      "compiled_action": "<char0> [find] <toothbrush> (32)"
+    },
+    {
+      "line": "grab('toothbrush')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find the toothbrush and place it on the bathroomcabinet",
+      "compiled_action": "<char0> [grab] <toothbrush> (32)"
+    },
+    {
+      "line": "find('bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find the toothbrush and place it on the bathroomcabinet",
+      "compiled_action": "<char0> [find] <bathroomcabinet> (26)"
+    },
+    {
+      "line": "putback('toothbrush', 'bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find the toothbrush and place it on the bathroomcabinet",
+      "compiled_action": "<char0> [putback] <toothbrush> (32) <bathroomcabinet> (26)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <coffeemaker> (229)",
+      "parsed_action": "[FIND] <coffeemaker> (229) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <coffeemaker> (229)",
+      "parsed_action": "[SWITCHON] <coffeemaker> (229) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <coffeepot> (230)",
+      "parsed_action": "[FIND] <coffeepot> (230) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <coffeepot> (230)",
+      "parsed_action": "[GRAB] <coffeepot> (230) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <bathroom> (11)",
+      "parsed_action": "[WALK] <bathroom> (11) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toilet> (24)",
+      "parsed_action": "[FIND] <toilet> (24) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <coffeepot> (230) <toilet> (24)",
+      "parsed_action": "[PUTIN] <coffeepot> (230) <toilet> (24) [0]",
+      "success": false,
+      "error": "<toilet> (24) is not open or is not openable when executing \"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toothbrush> (32)",
+      "parsed_action": "[FIND] <toothbrush> (32) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothbrush> (32)",
+      "parsed_action": "[GRAB] <toothbrush> (32) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bathroomcabinet> (26)",
+      "parsed_action": "[FIND] <bathroomcabinet> (26) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toothbrush> (32) <bathroomcabinet> (26)",
+      "parsed_action": "[PUTBACK] <toothbrush> (32) <bathroomcabinet> (26) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <coffeemaker> (229)",
+    "<char0> [switchon] <coffeemaker> (229)",
+    "<char0> [find] <coffeepot> (230)",
+    "<char0> [grab] <coffeepot> (230)",
+    "<char0> [walk] <bathroom> (11)",
+    "<char0> [find] <toilet> (24)",
+    "<char0> [putin] <coffeepot> (230) <toilet> (24)",
+    "<char0> [find] <toothbrush> (32)",
+    "<char0> [grab] <toothbrush> (32)",
+    "<char0> [find] <bathroomcabinet> (26)",
+    "<char0> [putback] <toothbrush> (32) <bathroomcabinet> (26)"
+  ],
+  "program_length": 11,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.6666666666666666,
+  "semantic_goal_condition_count": 3,
+  "semantic_satisfied_condition_count": 2,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(coffeemaker, ON)",
+        "predicate": "STATE",
+        "object": "coffeemaker",
+        "value": "ON",
+        "rationale": "Direct persistent state requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[229]"
+    },
+    {
+      "condition": {
+        "condition": "INSIDE(coffeepot, toilet)",
+        "predicate": "RELATION",
+        "subject": "coffeepot",
+        "relation": "INSIDE",
+        "object": "toilet",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": false,
+      "evidence": ""
+    },
+    {
+      "condition": {
+        "condition": "ON(toothbrush, bathroomcabinet)",
+        "predicate": "RELATION",
+        "subject": "toothbrush",
+        "relation": "ON",
+        "object": "bathroomcabinet",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['32-ON-26']"
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "condition": "INSIDE(coffeepot, toilet)",
+      "predicate": "RELATION",
+      "subject": "coffeepot",
+      "relation": "INSIDE",
+      "object": "toilet",
+      "rationale": "Direct persistent relation requested by the generated atomic goal."
+    }
+  ],
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 0.9090909090909091,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1205,
+  "generation_completion_tokens": 214,
+  "verification_prompt_tokens": 1310,
+  "verification_completion_tokens": 107,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2515,
+  "completion_tokens": 321,
+  "total_prompt_tokens": 2515,
+  "total_completion_tokens": 321,
+  "total_tokens": 2836,
+  "planning_latency": 5.9774460539993015,
+  "verification_latency": 4.153698808004265,
+  "total_llm_latency": 10.131144862003566,
+  "wall_clock_total_s": 11.052053535000596,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Start in the kitchen, locate and turn on the coffeemaker, then retrieve the coffeepot, move to the bathroom, place the coffeepot in the toilet, find the toothbrush, and place it on the bathroomcabinet.\",\"program\":\"# Locate and turn on the coffeemaker in the kitchen\\nfind('coffeemaker')\\nswitchon('coffeemaker')\\n# Acquire the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Move to the bathroom and place the coffeepot in the toilet\\nwalk('bathroom')\\nfind('toilet')\\nputin('coffeepot', 'toilet')\\n# Find the toothbrush and place it on the bathroomcabinet\\nfind('toothbrush')\\ngrab('toothbrush')\\nfind('bathroomcabinet')\\nputback('toothbrush', 'bathroomcabinet')\"}",
+      "output_text": "{\"plan_brief\":\"Start in the kitchen, locate and turn on the coffeemaker, then retrieve the coffeepot, move to the bathroom, place the coffeepot in the toilet, find the toothbrush, and place it on the bathroomcabinet.\",\"program\":\"# Locate and turn on the coffeemaker in the kitchen\\nfind('coffeemaker')\\nswitchon('coffeemaker')\\n# Acquire the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Move to the bathroom and place the coffeepot in the toilet\\nwalk('bathroom')\\nfind('toilet')\\nputin('coffeepot', 'toilet')\\n# Find the toothbrush and place it on the bathroomcabinet\\nfind('toothbrush')\\ngrab('toothbrush')\\nfind('bathroomcabinet')\\nputback('toothbrush', 'bathroomcabinet')\"}",
+      "prompt_tokens": 1205,
+      "completion_tokens": 214,
+      "latency_s": 5.9774460539993015,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774197680315a741db9058723ed34b56d0ce5c7d9cd7a9ab",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=['coffeepot']. Nearby visible graph: bathroomcabinet is CLOSED, coffeepot is CLOSED, toothbrush, toothbrush ON bathroomcabinet. You have coffeepot. One-hop INSIDE/ON relations connected to nearby objects: toothbrush ON bathroomcabinet.\nRELEVANT OBJECT CLASSES: [\"bathroom\", \"bathroomcabinet\", \"cabinet\", \"coffeemaker\", \"coffeepot\", \"toilet\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and turn on the coffeemaker in the kitchen\\nfind('coffeemaker')\\nswitchon('coffeemaker')\\n# Acquire the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Move to the bathroom and place the coffeepot in the toilet\\nwalk('bathroom')\\nfind('toilet')\\nputin('coffeepot', 'toilet')\\n# Find the toothbrush and place it on the bathroomcabinet\\nfind('toothbrush')\\ngrab('toothbrush')\\nfind('bathroomcabinet')\\nputback('toothbrush', 'bathroomcabinet')\", \"execution_trace\": [{\"line\": \"find('coffeemaker')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeemaker> (229)\"}, {\"line\": \"switchon('coffeemaker')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <coffeemaker> (229)\"}, {\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (24)\"}, {\"line\": \"putin('coffeepot', 'toilet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toilet> (24) is not open or is not openable when executing \\\"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <coffeepot> (230) <toilet> (24)\"}, {\"line\": \"find('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothbrush> (32)\"}, {\"line\": \"grab('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothbrush> (32)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (26)\"}, {\"line\": \"putback('toothbrush', 'bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothbrush> (32) <bathroomcabinet> (26)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toilet> (24) is not open or is not openable when executing \\\"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\\\"\", \"line\": \"putin('coffeepot', 'toilet')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"Coffeemaker was turned on and toothbrush was placed on the bathroomcabinet, but putting the coffeepot in the toilet failed because the toilet was not open/openable; the character still holds the coffeepot.\",\"failure_stage\":\"putin('coffeepot', 'toilet')\",\"regeneration_hint\":\"Open the toilet before putting the coffeepot inside it, then confirm the coffeepot is in the toilet rather than still held.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"Coffeemaker was turned on and toothbrush was placed on the bathroomcabinet, but putting the coffeepot in the toilet failed because the toilet was not open/openable; the character still holds the coffeepot.\",\"failure_stage\":\"putin('coffeepot', 'toilet')\",\"regeneration_hint\":\"Open the toilet before putting the coffeepot inside it, then confirm the coffeepot is in the toilet rather than still held.\"}",
+      "prompt_tokens": 1310,
+      "completion_tokens": 107,
+      "latency_s": 4.153698808004265,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774198292815a741db9058723ed34b56d0ce5c7d9c78dda4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Turn on the coffeemaker, put the coffeepot in the toilet, and place the toothbrush on the bathroomcabinet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=['coffeepot']. Nearby visible graph: bathroomcabinet is CLOSED, coffeepot is CLOSED, toothbrush, toothbrush ON bathroomcabinet. You have coffeepot. One-hop INSIDE/ON relations connected to nearby objects: toothbrush ON bathroomcabinet.\nRELEVANT OBJECT CLASSES: [\"bathroom\", \"bathroomcabinet\", \"cabinet\", \"coffeemaker\", \"coffeepot\", \"toilet\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and turn on the coffeemaker in the kitchen\\nfind('coffeemaker')\\nswitchon('coffeemaker')\\n# Acquire the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Move to the bathroom and place the coffeepot in the toilet\\nwalk('bathroom')\\nfind('toilet')\\nputin('coffeepot', 'toilet')\\n# Find the toothbrush and place it on the bathroomcabinet\\nfind('toothbrush')\\ngrab('toothbrush')\\nfind('bathroomcabinet')\\nputback('toothbrush', 'bathroomcabinet')\", \"execution_trace\": [{\"line\": \"find('coffeemaker')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeemaker> (229)\"}, {\"line\": \"switchon('coffeemaker')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <coffeemaker> (229)\"}, {\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (24)\"}, {\"line\": \"putin('coffeepot', 'toilet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toilet> (24) is not open or is not openable when executing \\\"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <coffeepot> (230) <toilet> (24)\"}, {\"line\": \"find('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothbrush> (32)\"}, {\"line\": \"grab('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothbrush> (32)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (26)\"}, {\"line\": \"putback('toothbrush', 'bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothbrush> (32) <bathroomcabinet> (26)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toilet> (24) is not open or is not openable when executing \\\"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\\\"\", \"line\": \"putin('coffeepot', 'toilet')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Start in the kitchen, locate and turn on the coffeemaker, then retrieve the coffeepot, move to the bathroom, place the coffeepot in the toilet, find the toothbrush, and place it on the bathroomcabinet.\",\"program\":\"# Locate and turn on the coffeemaker in the kitchen\\nfind('coffeemaker')\\nswitchon('coffeemaker')\\n# Acquire the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Move to the bathroom and place the coffeepot in the toilet\\nwalk('bathroom')\\nfind('toilet')\\nputin('coffeepot', 'toilet')\\n# Find the toothbrush and place it on the bathroomcabinet\\nfind('toothbrush')\\ngrab('toothbrush')\\nfind('bathroomcabinet')\\nputback('toothbrush', 'bathroomcabinet')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"Coffeemaker was turned on and toothbrush was placed on the bathroomcabinet, but putting the coffeepot in the toilet failed because the toilet was not open/openable; the character still holds the coffeepot.\",\"failure_stage\":\"putin('coffeepot', 'toilet')\",\"regeneration_hint\":\"Open the toilet before putting the coffeepot inside it, then confirm the coffeepot is in the toilet rather than still held.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<toilet> (24) is not open or is not openable when executing \"[PUTIN] <coffeepot> (230) <toilet> (24) [0]\"",
+      "line": "putin('coffeepot', 'toilet')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate."
+}

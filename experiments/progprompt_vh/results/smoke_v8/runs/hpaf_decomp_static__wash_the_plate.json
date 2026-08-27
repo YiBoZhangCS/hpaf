@@ -1,0 +1,928 @@
+{
+  "run_id": "2026-08-25T142947.460874_0000_hpaf_decomp_static_wash_the_plate",
+  "timestamp": "2026-08-25T14:29:47.460874+00:00",
+  "task": "wash the plate",
+  "method": "HPAF-Decomp-Static",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "ground_truth_action_length": 18,
+  "difficulty_bucket": "Long",
+  "goal_condition_count": 11,
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "task": "Bring the plate to the sink area"
+    },
+    {
+      "id": 2,
+      "task": "Turn on the faucet to get water for washing"
+    },
+    {
+      "id": 3,
+      "task": "Apply dishwashing liquid to the plate"
+    },
+    {
+      "id": 4,
+      "task": "Scrub the plate with a washing sponge to clean it"
+    },
+    {
+      "id": 5,
+      "task": "Rinse the plate under running water to remove soap residue"
+    },
+    {
+      "id": 6,
+      "task": "Turn off the faucet after washing the plate"
+    }
+  ],
+  "number_of_atomic_tasks": 6,
+  "atomic_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "task": "Bring the plate to the sink area"
+      },
+      "program_data": {
+        "atomic_task": "Bring the plate to the sink area",
+        "plan_brief": "First locate the plate on the kitchen table, pick it up, then move to the sink to place the plate in the sink area.",
+        "program": "# Locate and retrieve the plate, then bring it to the sink\nfind('plate')\ngrab('plate')\nfind('sink')\nputback('plate', 'sink')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "plate",
+            "relation": "ON",
+            "object": "sink"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "task": "Turn on the faucet to get water for washing"
+      },
+      "program_data": {
+        "atomic_task": "Turn on the faucet to get water for washing",
+        "plan_brief": "First locate the faucet, then activate it to supply running water for washing the plate.",
+        "program": "# Locate and turn on the faucet to get running water\nfind('faucet')\nswitchon('faucet')",
+        "completion_conditions": [
+          {
+            "predicate": "STATE",
+            "object": "faucet",
+            "value": "ON"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "task": "Apply dishwashing liquid to the plate"
+      },
+      "program_data": {
+        "atomic_task": "Apply dishwashing liquid to the plate",
+        "plan_brief": "First locate the dishwashing liquid, pick it up, then find the plate on the kitchen table, and apply the dishwashing liquid to the plate.",
+        "program": "# Locate and retrieve dishwashing liquid\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\n# Navigate to the plate to apply soap\nfind('plate')\nputon('dishwashingliquid', 'plate')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "dishwashingliquid",
+            "relation": "ON",
+            "object": "plate"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 4,
+        "task": "Scrub the plate with a washing sponge to clean it"
+      },
+      "program_data": {
+        "atomic_task": "Scrub the plate with a washing sponge to clean it",
+        "plan_brief": "First locate the plate and washing sponge, pick up the sponge, then use it to scrub the plate clean at the sink area.",
+        "program": "# Locate plate and washing sponge to clean the plate\nfind('plate')\nfind('washingsponge')\ngrab('washingsponge')\nwalktowards('sink')\nscrub('plate', 'washingsponge')",
+        "completion_conditions": [
+          {
+            "predicate": "STATE",
+            "object": "plate",
+            "value": "CLEAN"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 5,
+        "task": "Rinse the plate under running water to remove soap residue"
+      },
+      "program_data": {
+        "atomic_task": "Rinse the plate under running water to remove soap residue",
+        "plan_brief": "Navigate to the plate, pick it up, move to the sink, turn on the faucet to rinse the plate under running water.",
+        "program": "# Rinse plate under running water to remove soap residue\nfind('plate')\ngrab('plate')\nfind('sink')\nfind('faucet')\nswitchon('faucet')",
+        "completion_conditions": [
+          {
+            "predicate": "STATE",
+            "object": "faucet",
+            "value": "ON"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 6,
+        "task": "Turn off the faucet after washing the plate"
+      },
+      "program_data": {
+        "atomic_task": "Turn off the faucet after washing the plate",
+        "plan_brief": "Navigate to the faucet and switch it off to stop water flow after completing plate washing.",
+        "program": "# Locate and turn off the faucet\nfind('faucet')\nswitchoff('faucet')",
+        "completion_conditions": [
+          {
+            "predicate": "STATE",
+            "object": "faucet",
+            "value": "OFF"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    }
+  ],
+  "atomic_verifications": [],
+  "raw_prompts": [
+    {
+      "instructions": null,
+      "input": "You are the HPAF TaskAgent for a VirtualHome symbolic benchmark.\n\nDecompose the complex household instruction into an ordered list of explicit\nsemantic atomic tasks. TaskAgent decides WHAT must be achieved; ProgramAgent\nwill later decide HOW to call primitive actions.\n\nRules:\n1. Each atomic task has one clear semantic operation or subgoal.\n2. Do not merge independent target objects into one atomic task.\n3. Do not emit primitive API calls or instance IDs.\n4. Do not invent objects absent from AVAILABLE OBJECTS.\n5. Preserve necessary ordering and do not add optional cleanup unrelated to the instruction.\n6. Return strict JSON only, exactly shaped as:\n{\"atomic_tasks\":[{\"id\":1,\"task\":\"...\"}]}\n\nORIGINAL TASK:\nwash the plate\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nINITIAL SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nBring the plate to the sink area\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nTurn on the faucet to get water for washing\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nApply dishwashing liquid to the plate\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nScrub the plate with a washing sponge to clean it\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nRinse the plate under running water to remove soap residue\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nTurn off the faucet after washing the plate\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "{\"atomic_tasks\": [{\"id\": 1, \"task\": \"Bring the plate to the sink area\"}, {\"id\": 2, \"task\": \"Turn on the faucet to get water for washing\"}, {\"id\": 3, \"task\": \"Apply dishwashing liquid to the plate\"}, {\"id\": 4, \"task\": \"Scrub the plate with a washing sponge to clean it\"}, {\"id\": 5, \"task\": \"Rinse the plate under running water to remove soap residue\"}, {\"id\": 6, \"task\": \"Turn off the faucet after washing the plate\"}]}",
+    "{\n  \"atomic_task\": \"Bring the plate to the sink area\",\n  \"plan_brief\": \"First locate the plate on the kitchen table, pick it up, then move to the sink to place the plate in the sink area.\",\n  \"program\": \"# Locate and retrieve the plate, then bring it to the sink\\nfind('plate')\\ngrab('plate')\\nfind('sink')\\nputback('plate', 'sink')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"plate\", \"relation\": \"ON\", \"object\": \"sink\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Turn on the faucet to get water for washing\",\n  \"plan_brief\": \"First locate the faucet, then activate it to supply running water for washing the plate.\",\n  \"program\": \"# Locate and turn on the faucet to get running water\\nfind('faucet')\\nswitchon('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"faucet\",\"value\":\"ON\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Apply dishwashing liquid to the plate\",\n  \"plan_brief\": \"First locate the dishwashing liquid, pick it up, then find the plate on the kitchen table, and apply the dishwashing liquid to the plate.\",\n  \"program\": \"# Locate and retrieve dishwashing liquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Navigate to the plate to apply soap\\nfind('plate')\\nputon('dishwashingliquid', 'plate')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"dishwashingliquid\",\"relation\":\"ON\",\"object\":\"plate\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Scrub the plate with a washing sponge to clean it\",\n  \"plan_brief\": \"First locate the plate and washing sponge, pick up the sponge, then use it to scrub the plate clean at the sink area.\",\n  \"program\": \"# Locate plate and washing sponge to clean the plate\\nfind('plate')\\nfind('washingsponge')\\ngrab('washingsponge')\\nwalktowards('sink')\\nscrub('plate', 'washingsponge')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"plate\",\"value\":\"CLEAN\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Rinse the plate under running water to remove soap residue\",\n  \"plan_brief\": \"Navigate to the plate, pick it up, move to the sink, turn on the faucet to rinse the plate under running water.\",\n  \"program\": \"# Rinse plate under running water to remove soap residue\\nfind('plate')\\ngrab('plate')\\nfind('sink')\\nfind('faucet')\\nswitchon('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"STATE\", \"object\": \"faucet\", \"value\": \"ON\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Turn off the faucet after washing the plate\",\n  \"plan_brief\": \"Navigate to the faucet and switch it off to stop water flow after completing plate washing.\",\n  \"program\": \"# Locate and turn off the faucet\\nfind('faucet')\\nswitchoff('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"faucet\",\"value\":\"OFF\"}\n  ]\n}"
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome symbolic benchmark.\n\nDecompose the complex household instruction into an ordered list of explicit\nsemantic atomic tasks. TaskAgent decides WHAT must be achieved; ProgramAgent\nwill later decide HOW to call primitive actions.\n\nRules:\n1. Each atomic task has one clear semantic operation or subgoal.\n2. Do not merge independent target objects into one atomic task.\n3. Do not emit primitive API calls or instance IDs.\n4. Do not invent objects absent from AVAILABLE OBJECTS.\n5. Preserve necessary ordering and do not add optional cleanup unrelated to the instruction.\n6. Return strict JSON only, exactly shaped as:\n{\"atomic_tasks\":[{\"id\":1,\"task\":\"...\"}]}\n\nORIGINAL TASK:\nwash the plate\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nINITIAL SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n",
+      "instructions": null,
+      "raw_output": "{\"atomic_tasks\": [{\"id\": 1, \"task\": \"Bring the plate to the sink area\"}, {\"id\": 2, \"task\": \"Turn on the faucet to get water for washing\"}, {\"id\": 3, \"task\": \"Apply dishwashing liquid to the plate\"}, {\"id\": 4, \"task\": \"Scrub the plate with a washing sponge to clean it\"}, {\"id\": 5, \"task\": \"Rinse the plate under running water to remove soap residue\"}, {\"id\": 6, \"task\": \"Turn off the faucet after washing the plate\"}]}",
+      "output_text": "{\"atomic_tasks\": [{\"id\": 1, \"task\": \"Bring the plate to the sink area\"}, {\"id\": 2, \"task\": \"Turn on the faucet to get water for washing\"}, {\"id\": 3, \"task\": \"Apply dishwashing liquid to the plate\"}, {\"id\": 4, \"task\": \"Scrub the plate with a washing sponge to clean it\"}, {\"id\": 5, \"task\": \"Rinse the plate under running water to remove soap residue\"}, {\"id\": 6, \"task\": \"Turn off the faucet after washing the plate\"}]}",
+      "prompt_tokens": 975,
+      "completion_tokens": 125,
+      "latency_s": 3.265824542999326,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876681805411bf4585e48db892caa0c2994c3199374b04731",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nBring the plate to the sink area\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Bring the plate to the sink area\",\n  \"plan_brief\": \"First locate the plate on the kitchen table, pick it up, then move to the sink to place the plate in the sink area.\",\n  \"program\": \"# Locate and retrieve the plate, then bring it to the sink\\nfind('plate')\\ngrab('plate')\\nfind('sink')\\nputback('plate', 'sink')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"plate\", \"relation\": \"ON\", \"object\": \"sink\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Bring the plate to the sink area\",\n  \"plan_brief\": \"First locate the plate on the kitchen table, pick it up, then move to the sink to place the plate in the sink area.\",\n  \"program\": \"# Locate and retrieve the plate, then bring it to the sink\\nfind('plate')\\ngrab('plate')\\nfind('sink')\\nputback('plate', 'sink')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"plate\", \"relation\": \"ON\", \"object\": \"sink\"}\n  ]\n}",
+      "prompt_tokens": 1239,
+      "completion_tokens": 143,
+      "latency_s": 4.98578724699837,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876681838061bf4585e48db892caa0c2994c3199374dfaae6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nTurn on the faucet to get water for washing\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Turn on the faucet to get water for washing\",\n  \"plan_brief\": \"First locate the faucet, then activate it to supply running water for washing the plate.\",\n  \"program\": \"# Locate and turn on the faucet to get running water\\nfind('faucet')\\nswitchon('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"faucet\",\"value\":\"ON\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Turn on the faucet to get water for washing\",\n  \"plan_brief\": \"First locate the faucet, then activate it to supply running water for washing the plate.\",\n  \"program\": \"# Locate and turn on the faucet to get running water\\nfind('faucet')\\nswitchon('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"faucet\",\"value\":\"ON\"}\n  ]\n}",
+      "prompt_tokens": 1241,
+      "completion_tokens": 109,
+      "latency_s": 3.486749605002842,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876681887921bf4585e48db892caa0c2994c3199374c721be",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nApply dishwashing liquid to the plate\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Apply dishwashing liquid to the plate\",\n  \"plan_brief\": \"First locate the dishwashing liquid, pick it up, then find the plate on the kitchen table, and apply the dishwashing liquid to the plate.\",\n  \"program\": \"# Locate and retrieve dishwashing liquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Navigate to the plate to apply soap\\nfind('plate')\\nputon('dishwashingliquid', 'plate')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"dishwashingliquid\",\"relation\":\"ON\",\"object\":\"plate\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Apply dishwashing liquid to the plate\",\n  \"plan_brief\": \"First locate the dishwashing liquid, pick it up, then find the plate on the kitchen table, and apply the dishwashing liquid to the plate.\",\n  \"program\": \"# Locate and retrieve dishwashing liquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Navigate to the plate to apply soap\\nfind('plate')\\nputon('dishwashingliquid', 'plate')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"RELATION\",\"subject\":\"dishwashingliquid\",\"relation\":\"ON\",\"object\":\"plate\"}\n  ]\n}",
+      "prompt_tokens": 1239,
+      "completion_tokens": 152,
+      "latency_s": 4.295192982001026,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876681922801bf4585e48db892caa0c2994c3199374678248",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nScrub the plate with a washing sponge to clean it\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Scrub the plate with a washing sponge to clean it\",\n  \"plan_brief\": \"First locate the plate and washing sponge, pick up the sponge, then use it to scrub the plate clean at the sink area.\",\n  \"program\": \"# Locate plate and washing sponge to clean the plate\\nfind('plate')\\nfind('washingsponge')\\ngrab('washingsponge')\\nwalktowards('sink')\\nscrub('plate', 'washingsponge')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"plate\",\"value\":\"CLEAN\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Scrub the plate with a washing sponge to clean it\",\n  \"plan_brief\": \"First locate the plate and washing sponge, pick up the sponge, then use it to scrub the plate clean at the sink area.\",\n  \"program\": \"# Locate plate and washing sponge to clean the plate\\nfind('plate')\\nfind('washingsponge')\\ngrab('washingsponge')\\nwalktowards('sink')\\nscrub('plate', 'washingsponge')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"plate\",\"value\":\"CLEAN\"}\n  ]\n}",
+      "prompt_tokens": 1243,
+      "completion_tokens": 144,
+      "latency_s": 7.274331911998161,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876681965751bf4585e48db892caa0c2994c319937497ec50",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nRinse the plate under running water to remove soap residue\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Rinse the plate under running water to remove soap residue\",\n  \"plan_brief\": \"Navigate to the plate, pick it up, move to the sink, turn on the faucet to rinse the plate under running water.\",\n  \"program\": \"# Rinse plate under running water to remove soap residue\\nfind('plate')\\ngrab('plate')\\nfind('sink')\\nfind('faucet')\\nswitchon('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"STATE\", \"object\": \"faucet\", \"value\": \"ON\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Rinse the plate under running water to remove soap residue\",\n  \"plan_brief\": \"Navigate to the plate, pick it up, move to the sink, turn on the faucet to rinse the plate under running water.\",\n  \"program\": \"# Rinse plate under running water to remove soap residue\\nfind('plate')\\ngrab('plate')\\nfind('sink')\\nfind('faucet')\\nswitchon('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"STATE\", \"object\": \"faucet\", \"value\": \"ON\"}\n  ]\n}",
+      "prompt_tokens": 1243,
+      "completion_tokens": 143,
+      "latency_s": 4.970872997000697,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876682038491bf4585e48db892caa0c2994c3199374f55191",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nwash the plate\n\nCURRENT ATOMIC TASK:\nTurn off the faucet after washing the plate\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Turn off the faucet after washing the plate\",\n  \"plan_brief\": \"Navigate to the faucet and switch it off to stop water flow after completing plate washing.\",\n  \"program\": \"# Locate and turn off the faucet\\nfind('faucet')\\nswitchoff('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"faucet\",\"value\":\"OFF\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Turn off the faucet after washing the plate\",\n  \"plan_brief\": \"Navigate to the faucet and switch it off to stop water flow after completing plate washing.\",\n  \"program\": \"# Locate and turn off the faucet\\nfind('faucet')\\nswitchoff('faucet')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"faucet\",\"value\":\"OFF\"}\n  ]\n}",
+      "prompt_tokens": 1240,
+      "completion_tokens": 104,
+      "latency_s": 4.140119921001315,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217876682088201bf4585e48db892caa0c2994c31993743caea9",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# HPAF atomic 1: Bring the plate to the sink area\n# Locate and retrieve the plate, then bring it to the sink\nfind('plate')\ngrab('plate')\nfind('sink')\nputback('plate', 'sink')\n# HPAF atomic 2: Turn on the faucet to get water for washing\n# Locate and turn on the faucet to get running water\nfind('faucet')\nswitchon('faucet')\n# HPAF atomic 3: Apply dishwashing liquid to the plate\n# Locate and retrieve dishwashing liquid\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\n# Navigate to the plate to apply soap\nfind('plate')\nputon('dishwashingliquid', 'plate')\n# HPAF atomic 4: Scrub the plate with a washing sponge to clean it\n# Locate plate and washing sponge to clean the plate\nfind('plate')\nfind('washingsponge')\ngrab('washingsponge')\nwalktowards('sink')\nscrub('plate', 'washingsponge')\n# HPAF atomic 5: Rinse the plate under running water to remove soap residue\n# Rinse plate under running water to remove soap residue\nfind('plate')\ngrab('plate')\nfind('sink')\nfind('faucet')\nswitchon('faucet')\n# HPAF atomic 6: Turn off the faucet after washing the plate\n# Locate and turn off the faucet\nfind('faucet')\nswitchoff('faucet')",
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <plate> (285)",
+    "<char0> [grab] <plate> (285)",
+    "<char0> [find] <sink> (247)",
+    "<char0> [putback] <plate> (285) <sink> (247)",
+    "<char0> [find] <faucet> (50)",
+    "<char0> [switchon] <faucet> (50)",
+    "<char0> [find] <dishwashingliquid> (267)",
+    "<char0> [grab] <dishwashingliquid> (267)",
+    "<char0> [find] <plate> (314)",
+    "<char0> [find] <plate> (285)",
+    "<char0> [find] <washingsponge> (266)",
+    "<char0> [grab] <washingsponge> (266)",
+    "<char0> [walktowards] <sink> (247)",
+    "<char0> [find] <plate> (314)",
+    "<char0> [grab] <plate> (314)",
+    "<char0> [find] <sink> (247)",
+    "<char0> [find] <faucet> (50)",
+    "<char0> [switchon] <faucet> (50)",
+    "<char0> [find] <faucet> (50)",
+    "<char0> [switchoff] <faucet> (50)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# HPAF atomic 1: Bring the plate to the sink area",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 1: Bring the plate to the sink area",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and retrieve the plate, then bring it to the sink",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the plate, then bring it to the sink",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the plate, then bring it to the sink",
+      "compiled_action": "<char0> [find] <plate> (285)"
+    },
+    {
+      "line": "grab('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the plate, then bring it to the sink",
+      "compiled_action": "<char0> [grab] <plate> (285)"
+    },
+    {
+      "line": "find('sink')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the plate, then bring it to the sink",
+      "compiled_action": "<char0> [find] <sink> (247)"
+    },
+    {
+      "line": "putback('plate', 'sink')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the plate, then bring it to the sink",
+      "compiled_action": "<char0> [putback] <plate> (285) <sink> (247)"
+    },
+    {
+      "line": "# HPAF atomic 2: Turn on the faucet to get water for washing",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 2: Turn on the faucet to get water for washing",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and turn on the faucet to get running water",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn on the faucet to get running water",
+      "compiled_action": null
+    },
+    {
+      "line": "find('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn on the faucet to get running water",
+      "compiled_action": "<char0> [find] <faucet> (50)"
+    },
+    {
+      "line": "switchon('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn on the faucet to get running water",
+      "compiled_action": "<char0> [switchon] <faucet> (50)"
+    },
+    {
+      "line": "# HPAF atomic 3: Apply dishwashing liquid to the plate",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 3: Apply dishwashing liquid to the plate",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and retrieve dishwashing liquid",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve dishwashing liquid",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwashingliquid')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve dishwashing liquid",
+      "compiled_action": "<char0> [find] <dishwashingliquid> (267)"
+    },
+    {
+      "line": "grab('dishwashingliquid')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve dishwashing liquid",
+      "compiled_action": "<char0> [grab] <dishwashingliquid> (267)"
+    },
+    {
+      "line": "# Navigate to the plate to apply soap",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the plate to apply soap",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the plate to apply soap",
+      "compiled_action": "<char0> [find] <plate> (314)"
+    },
+    {
+      "line": "puton('dishwashingliquid', 'plate')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: puton",
+      "subgoal": "Navigate to the plate to apply soap",
+      "compiled_action": null
+    },
+    {
+      "line": "# HPAF atomic 4: Scrub the plate with a washing sponge to clean it",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 4: Scrub the plate with a washing sponge to clean it",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate plate and washing sponge to clean the plate",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate plate and washing sponge to clean the plate",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate plate and washing sponge to clean the plate",
+      "compiled_action": "<char0> [find] <plate> (285)"
+    },
+    {
+      "line": "find('washingsponge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate plate and washing sponge to clean the plate",
+      "compiled_action": "<char0> [find] <washingsponge> (266)"
+    },
+    {
+      "line": "grab('washingsponge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate plate and washing sponge to clean the plate",
+      "compiled_action": "<char0> [grab] <washingsponge> (266)"
+    },
+    {
+      "line": "walktowards('sink')",
+      "event": "action",
+      "success": false,
+      "detail": "Unknown action \"WALKTOWARDS\"",
+      "subgoal": "Locate plate and washing sponge to clean the plate",
+      "compiled_action": "<char0> [walktowards] <sink> (247)"
+    },
+    {
+      "line": "scrub('plate', 'washingsponge')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: scrub",
+      "subgoal": "Locate plate and washing sponge to clean the plate",
+      "compiled_action": null
+    },
+    {
+      "line": "# HPAF atomic 5: Rinse the plate under running water to remove soap residue",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 5: Rinse the plate under running water to remove soap residue",
+      "compiled_action": null
+    },
+    {
+      "line": "# Rinse plate under running water to remove soap residue",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Rinse plate under running water to remove soap residue",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Rinse plate under running water to remove soap residue",
+      "compiled_action": "<char0> [find] <plate> (314)"
+    },
+    {
+      "line": "grab('plate')",
+      "event": "action",
+      "success": false,
+      "detail": "<plate> (314) is inside other closed thing when executing \"[GRAB] <plate> (314) [0]\"",
+      "subgoal": "Rinse plate under running water to remove soap residue",
+      "compiled_action": "<char0> [grab] <plate> (314)"
+    },
+    {
+      "line": "find('sink')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Rinse plate under running water to remove soap residue",
+      "compiled_action": "<char0> [find] <sink> (247)"
+    },
+    {
+      "line": "find('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Rinse plate under running water to remove soap residue",
+      "compiled_action": "<char0> [find] <faucet> (50)"
+    },
+    {
+      "line": "switchon('faucet')",
+      "event": "action",
+      "success": false,
+      "detail": "<faucet> (50) is not off when executing \"[SWITCHON] <faucet> (50) [0]\"",
+      "subgoal": "Rinse plate under running water to remove soap residue",
+      "compiled_action": "<char0> [switchon] <faucet> (50)"
+    },
+    {
+      "line": "# HPAF atomic 6: Turn off the faucet after washing the plate",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 6: Turn off the faucet after washing the plate",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and turn off the faucet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn off the faucet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn off the faucet",
+      "compiled_action": "<char0> [find] <faucet> (50)"
+    },
+    {
+      "line": "switchoff('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and turn off the faucet",
+      "compiled_action": "<char0> [switchoff] <faucet> (50)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <plate> (285)",
+      "parsed_action": "[FIND] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <plate> (285)",
+      "parsed_action": "[GRAB] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sink> (247)",
+      "parsed_action": "[FIND] <sink> (247) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <plate> (285) <sink> (247)",
+      "parsed_action": "[PUTBACK] <plate> (285) <sink> (247) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <faucet> (50)",
+      "parsed_action": "[FIND] <faucet> (50) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <faucet> (50)",
+      "parsed_action": "[SWITCHON] <faucet> (50) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwashingliquid> (267)",
+      "parsed_action": "[FIND] <dishwashingliquid> (267) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <dishwashingliquid> (267)",
+      "parsed_action": "[GRAB] <dishwashingliquid> (267) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <plate> (314)",
+      "parsed_action": "[FIND] <plate> (314) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "puton('dishwashingliquid', 'plate')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: puton",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <plate> (285)",
+      "parsed_action": "[FIND] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <washingsponge> (266)",
+      "parsed_action": "[FIND] <washingsponge> (266) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <washingsponge> (266)",
+      "parsed_action": "[GRAB] <washingsponge> (266) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walktowards] <sink> (247)",
+      "parsed_action": null,
+      "success": false,
+      "error": "Unknown action \"WALKTOWARDS\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "scrub('plate', 'washingsponge')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: scrub",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <plate> (314)",
+      "parsed_action": "[FIND] <plate> (314) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <plate> (314)",
+      "parsed_action": "[GRAB] <plate> (314) [0]",
+      "success": false,
+      "error": "<plate> (314) is inside other closed thing when executing \"[GRAB] <plate> (314) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sink> (247)",
+      "parsed_action": "[FIND] <sink> (247) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <faucet> (50)",
+      "parsed_action": "[FIND] <faucet> (50) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <faucet> (50)",
+      "parsed_action": "[SWITCHON] <faucet> (50) [0]",
+      "success": false,
+      "error": "<faucet> (50) is not off when executing \"[SWITCHON] <faucet> (50) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <faucet> (50)",
+      "parsed_action": "[FIND] <faucet> (50) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <faucet> (50)",
+      "parsed_action": "[SWITCHOFF] <faucet> (50) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 0,
+  "GCR": 0.6363636363636364,
+  "PSR": 0.6363636363636364,
+  "Precision": 0.9975845410628019,
+  "Exec": 0.7727272727272727,
+  "program_length": 22,
+  "llm_calls": 7,
+  "prompt_tokens": 8420,
+  "completion_tokens": 920,
+  "planning_latency": 32.41887920700174,
+  "wall_clock_total_s": 33.570292512999,
+  "error_type": "hallucinated_action",
+  "error_message": "hallucinated action: puton",
+  "errors": [
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: puton",
+      "line": "puton('dishwashingliquid', 'plate')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "Unknown action \"WALKTOWARDS\"",
+      "line": "walktowards('sink')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: scrub",
+      "line": "scrub('plate', 'washingsponge')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<plate> (314) is inside other closed thing when executing \"[GRAB] <plate> (314) [0]\"",
+      "line": "grab('plate')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<faucet> (50) is not off when executing \"[SWITCHON] <faucet> (50) [0]\"",
+      "line": "switchon('faucet')"
+    }
+  ],
+  "missing_goal_relations": [
+    "dishwashingliquid CLOSE sink",
+    "dishwashingliquid INSIDE sink",
+    "plate INSIDE sink",
+    "sink CLOSE dishwashingliquid"
+  ],
+  "missing_goal_states": []
+}

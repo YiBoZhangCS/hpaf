@@ -1,0 +1,1672 @@
+{
+  "run_id": "formal_2026-08-27T015427.905680_0000_hpaf_full_p10_s2_crossloc_3",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-27T01:54:27.905680+00:00",
+  "task_id": "p10_s2_crossloc_3",
+  "task": "Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.",
+  "split": "phase10_final_holdout",
+  "scene": 2,
+  "goal_count": null,
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+  "task_manifest_sha256": "42472000c74754de8055ef41fe7bea90875bc325b7bd4ebeecd6ed75d7a6f80b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": "A1",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": null,
+        "target": "coffeetable",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is staged on the coffeetable.",
+        "depends_on": []
+      },
+      "dependencies_ready": [],
+      "terminal_constraints_active": [],
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.",
+      "initial_program": "# Align to the toy since it is not visible nearby\nfind('toy')\n# Acquire the toy\ngrab('toy')\n# Align to the target coffeetable before placing\nfind('coffeetable')\n# Stage the toy on the coffeetable\nputback('toy', 'coffeetable')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Align to the toy since it is not visible nearby",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the toy since it is not visible nearby",
+          "compiled_action": null
+        },
+        {
+          "line": "find('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the toy since it is not visible nearby",
+          "compiled_action": "<char0> [find] <toy> (387)"
+        },
+        {
+          "line": "# Acquire the toy",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy",
+          "compiled_action": "<char0> [grab] <toy> (387)"
+        },
+        {
+          "line": "# Align to the target coffeetable before placing",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target coffeetable before placing",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target coffeetable before placing",
+          "compiled_action": "<char0> [find] <coffeetable> (215)"
+        },
+        {
+          "line": "# Stage the toy on the coffeetable",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Stage the toy on the coffeetable",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('toy', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Stage the toy on the coffeetable",
+          "compiled_action": "<char0> [putback] <toy> (387) <coffeetable> (215)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": "A2",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": "coffeetable",
+        "target": "cabinet",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is temporarily stored inside the cabinet.",
+        "depends_on": [
+          "A1"
+        ]
+      },
+      "dependencies_ready": [
+        "A1"
+      ],
+      "terminal_constraints_active": [],
+      "initial_observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.",
+      "initial_program": "# Align to source coffeetable and pick up the toy\nfind('coffeetable')\ngrab('toy')\n# Align to target cabinet, open it, and place the toy inside\nfind('cabinet')\nopen('cabinet')\nputin('toy', 'cabinet')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Align to source coffeetable and pick up the toy",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to source coffeetable and pick up the toy",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to source coffeetable and pick up the toy",
+          "compiled_action": "<char0> [find] <coffeetable> (215)"
+        },
+        {
+          "line": "grab('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to source coffeetable and pick up the toy",
+          "compiled_action": "<char0> [grab] <toy> (387)"
+        },
+        {
+          "line": "# Align to target cabinet, open it, and place the toy inside",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": "<char0> [find] <cabinet> (396)"
+        },
+        {
+          "line": "open('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": "<char0> [open] <cabinet> (396)"
+        },
+        {
+          "line": "putin('toy', 'cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": "<char0> [putin] <toy> (387) <cabinet> (396)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": "A3",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": "cabinet",
+        "target": "mousemat",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is delivered to the mousemat.",
+        "depends_on": [
+          "A2"
+        ]
+      },
+      "dependencies_ready": [
+        "A2"
+      ],
+      "terminal_constraints_active": [
+        {
+          "predicate": "STATE",
+          "object": "cabinet",
+          "value": "CLOSED",
+          "semantic_goal": "The cabinet is left closed after delivering the toy."
+        }
+      ],
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.",
+      "initial_program": "# Align to the open cabinet containing the toy\nfind('cabinet')\n# Acquire the toy from the cabinet\ngrab('toy')\n# Align to the target mousemat\nfind('mousemat')\n# Place the toy onto the mousemat to complete delivery\nputback('toy', 'mousemat')\n# Restore terminal constraint: leave the cabinet closed\nfind('cabinet')\nclose('cabinet')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Align to the open cabinet containing the toy",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the open cabinet containing the toy",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the open cabinet containing the toy",
+          "compiled_action": "<char0> [find] <cabinet> (396)"
+        },
+        {
+          "line": "# Acquire the toy from the cabinet",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy from the cabinet",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy from the cabinet",
+          "compiled_action": "<char0> [grab] <toy> (387)"
+        },
+        {
+          "line": "# Align to the target mousemat",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target mousemat",
+          "compiled_action": null
+        },
+        {
+          "line": "find('mousemat')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target mousemat",
+          "compiled_action": "<char0> [find] <mousemat> (399)"
+        },
+        {
+          "line": "# Place the toy onto the mousemat to complete delivery",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toy onto the mousemat to complete delivery",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('toy', 'mousemat')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toy onto the mousemat to complete delivery",
+          "compiled_action": "<char0> [putback] <toy> (387) <mousemat> (399)"
+        },
+        {
+          "line": "# Restore terminal constraint: leave the cabinet closed",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Restore terminal constraint: leave the cabinet closed",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Restore terminal constraint: leave the cabinet closed",
+          "compiled_action": "<char0> [find] <cabinet> (396)"
+        },
+        {
+          "line": "close('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Restore terminal constraint: leave the cabinet closed",
+          "compiled_action": "<char0> [close] <cabinet> (396)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    }
+  ],
+  "generated_program": "# atomic A1: The toy is staged on the coffeetable.\n# Align to the toy since it is not visible nearby\nfind('toy')\n# Acquire the toy\ngrab('toy')\n# Align to the target coffeetable before placing\nfind('coffeetable')\n# Stage the toy on the coffeetable\nputback('toy', 'coffeetable')\n# atomic A2: The toy is temporarily stored inside the cabinet.\n# Align to source coffeetable and pick up the toy\nfind('coffeetable')\ngrab('toy')\n# Align to target cabinet, open it, and place the toy inside\nfind('cabinet')\nopen('cabinet')\nputin('toy', 'cabinet')\n# atomic A3: The toy is delivered to the mousemat.\n# Align to the open cabinet containing the toy\nfind('cabinet')\n# Acquire the toy from the cabinet\ngrab('toy')\n# Align to the target mousemat\nfind('mousemat')\n# Place the toy onto the mousemat to complete delivery\nputback('toy', 'mousemat')\n# Restore terminal constraint: leave the cabinet closed\nfind('cabinet')\nclose('cabinet')",
+  "atomic_tasks": [
+    {
+      "id": "A1",
+      "type": "TRANSFER",
+      "focal_object": "toy",
+      "source": null,
+      "target": "coffeetable",
+      "completion_mode": "state",
+      "semantic_goal": "The toy is staged on the coffeetable.",
+      "depends_on": []
+    },
+    {
+      "id": "A2",
+      "type": "TRANSFER",
+      "focal_object": "toy",
+      "source": "coffeetable",
+      "target": "cabinet",
+      "completion_mode": "state",
+      "semantic_goal": "The toy is temporarily stored inside the cabinet.",
+      "depends_on": [
+        "A1"
+      ]
+    },
+    {
+      "id": "A3",
+      "type": "TRANSFER",
+      "focal_object": "toy",
+      "source": "cabinet",
+      "target": "mousemat",
+      "completion_mode": "state",
+      "semantic_goal": "The toy is delivered to the mousemat.",
+      "depends_on": [
+        "A2"
+      ]
+    }
+  ],
+  "number_of_atomic_tasks": 3,
+  "atomic_tasks_attempted": 3,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": "A1",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": null,
+        "target": "coffeetable",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is staged on the coffeetable.",
+        "depends_on": []
+      },
+      "dependencies_ready": [],
+      "terminal_constraints_active": [],
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.",
+      "initial_program": "# Align to the toy since it is not visible nearby\nfind('toy')\n# Acquire the toy\ngrab('toy')\n# Align to the target coffeetable before placing\nfind('coffeetable')\n# Stage the toy on the coffeetable\nputback('toy', 'coffeetable')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Align to the toy since it is not visible nearby",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the toy since it is not visible nearby",
+          "compiled_action": null
+        },
+        {
+          "line": "find('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the toy since it is not visible nearby",
+          "compiled_action": "<char0> [find] <toy> (387)"
+        },
+        {
+          "line": "# Acquire the toy",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy",
+          "compiled_action": "<char0> [grab] <toy> (387)"
+        },
+        {
+          "line": "# Align to the target coffeetable before placing",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target coffeetable before placing",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target coffeetable before placing",
+          "compiled_action": "<char0> [find] <coffeetable> (215)"
+        },
+        {
+          "line": "# Stage the toy on the coffeetable",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Stage the toy on the coffeetable",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('toy', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Stage the toy on the coffeetable",
+          "compiled_action": "<char0> [putback] <toy> (387) <coffeetable> (215)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": "A2",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": "coffeetable",
+        "target": "cabinet",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is temporarily stored inside the cabinet.",
+        "depends_on": [
+          "A1"
+        ]
+      },
+      "dependencies_ready": [
+        "A1"
+      ],
+      "terminal_constraints_active": [],
+      "initial_observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.",
+      "initial_program": "# Align to source coffeetable and pick up the toy\nfind('coffeetable')\ngrab('toy')\n# Align to target cabinet, open it, and place the toy inside\nfind('cabinet')\nopen('cabinet')\nputin('toy', 'cabinet')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Align to source coffeetable and pick up the toy",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to source coffeetable and pick up the toy",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to source coffeetable and pick up the toy",
+          "compiled_action": "<char0> [find] <coffeetable> (215)"
+        },
+        {
+          "line": "grab('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to source coffeetable and pick up the toy",
+          "compiled_action": "<char0> [grab] <toy> (387)"
+        },
+        {
+          "line": "# Align to target cabinet, open it, and place the toy inside",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": "<char0> [find] <cabinet> (396)"
+        },
+        {
+          "line": "open('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": "<char0> [open] <cabinet> (396)"
+        },
+        {
+          "line": "putin('toy', 'cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to target cabinet, open it, and place the toy inside",
+          "compiled_action": "<char0> [putin] <toy> (387) <cabinet> (396)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": "A3",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": "cabinet",
+        "target": "mousemat",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is delivered to the mousemat.",
+        "depends_on": [
+          "A2"
+        ]
+      },
+      "dependencies_ready": [
+        "A2"
+      ],
+      "terminal_constraints_active": [
+        {
+          "predicate": "STATE",
+          "object": "cabinet",
+          "value": "CLOSED",
+          "semantic_goal": "The cabinet is left closed after delivering the toy."
+        }
+      ],
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.",
+      "initial_program": "# Align to the open cabinet containing the toy\nfind('cabinet')\n# Acquire the toy from the cabinet\ngrab('toy')\n# Align to the target mousemat\nfind('mousemat')\n# Place the toy onto the mousemat to complete delivery\nputback('toy', 'mousemat')\n# Restore terminal constraint: leave the cabinet closed\nfind('cabinet')\nclose('cabinet')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Align to the open cabinet containing the toy",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the open cabinet containing the toy",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the open cabinet containing the toy",
+          "compiled_action": "<char0> [find] <cabinet> (396)"
+        },
+        {
+          "line": "# Acquire the toy from the cabinet",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy from the cabinet",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('toy')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Acquire the toy from the cabinet",
+          "compiled_action": "<char0> [grab] <toy> (387)"
+        },
+        {
+          "line": "# Align to the target mousemat",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target mousemat",
+          "compiled_action": null
+        },
+        {
+          "line": "find('mousemat')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Align to the target mousemat",
+          "compiled_action": "<char0> [find] <mousemat> (399)"
+        },
+        {
+          "line": "# Place the toy onto the mousemat to complete delivery",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toy onto the mousemat to complete delivery",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('toy', 'mousemat')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toy onto the mousemat to complete delivery",
+          "compiled_action": "<char0> [putback] <toy> (387) <mousemat> (399)"
+        },
+        {
+          "line": "# Restore terminal constraint: leave the cabinet closed",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Restore terminal constraint: leave the cabinet closed",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Restore terminal constraint: leave the cabinet closed",
+          "compiled_action": "<char0> [find] <cabinet> (396)"
+        },
+        {
+          "line": "close('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Restore terminal constraint: leave the cabinet closed",
+          "compiled_action": "<char0> [close] <cabinet> (396)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    }
+  ],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A1\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": null, \"target\": \"coffeetable\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is staged on the coffeetable.\", \"depends_on\": [], \"terminal_constraints_at_task_end\": []}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to the toy since it is not visible nearby\\nfind('toy')\\n# Acquire the toy\\ngrab('toy')\\n# Align to the target coffeetable before placing\\nfind('coffeetable')\\n# Stage the toy on the coffeetable\\nputback('toy', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toy> (387)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"putback('toy', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <coffeetable> (215)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The current observation shows toy ON coffeetable, satisfying the semantic goal; all executed actions succeeded and the character no longer holds the toy.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The current observation shows toy ON coffeetable, satisfying the semantic goal; all executed actions succeeded and the character no longer holds the toy.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 785,
+      "completion_tokens": 48,
+      "latency_s": 2.2958805289999873,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956809163668eba1a5ab869c4433ad7bc82b08d33b2a69",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A2\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"coffeetable\", \"target\": \"cabinet\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is temporarily stored inside the cabinet.\", \"depends_on\": [\"A1\"], \"terminal_constraints_at_task_end\": []}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to source coffeetable and pick up the toy\\nfind('coffeetable')\\ngrab('toy')\\n# Align to target cabinet, open it, and place the toy inside\\nfind('cabinet')\\nopen('cabinet')\\nputin('toy', 'cabinet')\", \"execution_trace\": [{\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"putin('toy', 'cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toy> (387) <cabinet> (396)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The execution trace shows successful find, grab, open, and putin actions; current state confirms the toy is INSIDE the open cabinet, satisfying the transfer goal.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The execution trace shows successful find, grab, open, and putin actions; current state confirms the toy is INSIDE the open cabinet, satisfying the transfer goal.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 831,
+      "completion_tokens": 53,
+      "latency_s": 2.0070227030000183,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956868943668eba1a5ab869c4433ad7bc82b08d3221d2a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A3\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"cabinet\", \"target\": \"mousemat\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is delivered to the mousemat.\", \"depends_on\": [\"A2\"], \"terminal_constraints_at_task_end\": [{\"predicate\": \"STATE\", \"object\": \"cabinet\", \"value\": \"CLOSED\", \"semantic_goal\": \"The cabinet is left closed after delivering the toy.\"}]}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to the open cabinet containing the toy\\nfind('cabinet')\\n# Acquire the toy from the cabinet\\ngrab('toy')\\n# Align to the target mousemat\\nfind('mousemat')\\n# Place the toy onto the mousemat to complete delivery\\nputback('toy', 'mousemat')\\n# Restore terminal constraint: leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mousemat> (399)\"}, {\"line\": \"putback('toy', 'mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <mousemat> (399)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: toy was grabbed from cabinet, put onto mousemat, and cabinet was closed; current observation confirms cabinet is CLOSED and character holds nothing, consistent with delivery completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded: toy was grabbed from cabinet, put onto mousemat, and cabinet was closed; current observation confirms cabinet is CLOSED and character holds nothing, consistent with delivery completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 942,
+      "completion_tokens": 58,
+      "latency_s": 2.2432749230000013,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956923123668eba1a5ab869c4433ad7bc82b08d398593a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": "A1",
+      "attempt": "initial",
+      "observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The current observation shows toy ON coffeetable, satisfying the semantic goal; all executed actions succeeded and the character no longer holds the toy.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": "A2",
+      "attempt": "initial",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The execution trace shows successful find, grab, open, and putin actions; current state confirms the toy is INSIDE the open cabinet, satisfying the transfer goal.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": "A3",
+      "attempt": "initial",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: toy was grabbed from cabinet, put onto mousemat, and cabinet was closed; current observation confirms cabinet is CLOSED and character holds nothing, consistent with delivery completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 3,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Align to the toy since it is not visible nearby",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the toy since it is not visible nearby",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toy')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the toy since it is not visible nearby",
+      "compiled_action": "<char0> [find] <toy> (387)"
+    },
+    {
+      "line": "# Acquire the toy",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the toy",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('toy')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the toy",
+      "compiled_action": "<char0> [grab] <toy> (387)"
+    },
+    {
+      "line": "# Align to the target coffeetable before placing",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the target coffeetable before placing",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the target coffeetable before placing",
+      "compiled_action": "<char0> [find] <coffeetable> (215)"
+    },
+    {
+      "line": "# Stage the toy on the coffeetable",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage the toy on the coffeetable",
+      "compiled_action": null
+    },
+    {
+      "line": "putback('toy', 'coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage the toy on the coffeetable",
+      "compiled_action": "<char0> [putback] <toy> (387) <coffeetable> (215)"
+    },
+    {
+      "line": "# Align to source coffeetable and pick up the toy",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to source coffeetable and pick up the toy",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to source coffeetable and pick up the toy",
+      "compiled_action": "<char0> [find] <coffeetable> (215)"
+    },
+    {
+      "line": "grab('toy')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to source coffeetable and pick up the toy",
+      "compiled_action": "<char0> [grab] <toy> (387)"
+    },
+    {
+      "line": "# Align to target cabinet, open it, and place the toy inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to target cabinet, open it, and place the toy inside",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to target cabinet, open it, and place the toy inside",
+      "compiled_action": "<char0> [find] <cabinet> (396)"
+    },
+    {
+      "line": "open('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to target cabinet, open it, and place the toy inside",
+      "compiled_action": "<char0> [open] <cabinet> (396)"
+    },
+    {
+      "line": "putin('toy', 'cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to target cabinet, open it, and place the toy inside",
+      "compiled_action": "<char0> [putin] <toy> (387) <cabinet> (396)"
+    },
+    {
+      "line": "# Align to the open cabinet containing the toy",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the open cabinet containing the toy",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the open cabinet containing the toy",
+      "compiled_action": "<char0> [find] <cabinet> (396)"
+    },
+    {
+      "line": "# Acquire the toy from the cabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the toy from the cabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('toy')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Acquire the toy from the cabinet",
+      "compiled_action": "<char0> [grab] <toy> (387)"
+    },
+    {
+      "line": "# Align to the target mousemat",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the target mousemat",
+      "compiled_action": null
+    },
+    {
+      "line": "find('mousemat')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Align to the target mousemat",
+      "compiled_action": "<char0> [find] <mousemat> (399)"
+    },
+    {
+      "line": "# Place the toy onto the mousemat to complete delivery",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the toy onto the mousemat to complete delivery",
+      "compiled_action": null
+    },
+    {
+      "line": "putback('toy', 'mousemat')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the toy onto the mousemat to complete delivery",
+      "compiled_action": "<char0> [putback] <toy> (387) <mousemat> (399)"
+    },
+    {
+      "line": "# Restore terminal constraint: leave the cabinet closed",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Restore terminal constraint: leave the cabinet closed",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Restore terminal constraint: leave the cabinet closed",
+      "compiled_action": "<char0> [find] <cabinet> (396)"
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Restore terminal constraint: leave the cabinet closed",
+      "compiled_action": "<char0> [close] <cabinet> (396)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <toy> (387)",
+      "parsed_action": "[FIND] <toy> (387) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toy> (387)",
+      "parsed_action": "[GRAB] <toy> (387) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <coffeetable> (215)",
+      "parsed_action": "[FIND] <coffeetable> (215) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toy> (387) <coffeetable> (215)",
+      "parsed_action": "[PUTBACK] <toy> (387) <coffeetable> (215) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <coffeetable> (215)",
+      "parsed_action": "[FIND] <coffeetable> (215) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toy> (387)",
+      "parsed_action": "[GRAB] <toy> (387) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (396)",
+      "parsed_action": "[FIND] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <cabinet> (396)",
+      "parsed_action": "[OPEN] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <toy> (387) <cabinet> (396)",
+      "parsed_action": "[PUTIN] <toy> (387) <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (396)",
+      "parsed_action": "[FIND] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toy> (387)",
+      "parsed_action": "[GRAB] <toy> (387) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <mousemat> (399)",
+      "parsed_action": "[FIND] <mousemat> (399) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toy> (387) <mousemat> (399)",
+      "parsed_action": "[PUTBACK] <toy> (387) <mousemat> (399) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (396)",
+      "parsed_action": "[FIND] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (396)",
+      "parsed_action": "[CLOSE] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <toy> (387)",
+    "<char0> [grab] <toy> (387)",
+    "<char0> [find] <coffeetable> (215)",
+    "<char0> [putback] <toy> (387) <coffeetable> (215)",
+    "<char0> [find] <coffeetable> (215)",
+    "<char0> [grab] <toy> (387)",
+    "<char0> [find] <cabinet> (396)",
+    "<char0> [open] <cabinet> (396)",
+    "<char0> [putin] <toy> (387) <cabinet> (396)",
+    "<char0> [find] <cabinet> (396)",
+    "<char0> [grab] <toy> (387)",
+    "<char0> [find] <mousemat> (399)",
+    "<char0> [putback] <toy> (387) <mousemat> (399)",
+    "<char0> [find] <cabinet> (396)",
+    "<char0> [close] <cabinet> (396)"
+  ],
+  "program_length": 15,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 9,
+  "semantic_satisfied_condition_count": 9,
+  "semantic_condition_details": [
+    {
+      "kind": "semantic_event",
+      "id": "E1",
+      "description": "stage source at waypoint",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toy",
+          "second": "coffeetable"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "toy",
+        "first_id": 387,
+        "second": "coffeetable",
+        "second_id": 215,
+        "ordinal": 4
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E2",
+      "description": "store source in intermediate container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "toy",
+          "second": "cabinet"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "toy",
+        "first_id": 387,
+        "second": "cabinet",
+        "second_id": 396,
+        "ordinal": 9
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E3",
+      "description": "retrieve source from intermediate container",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "toy"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "toy",
+        "first_id": 387,
+        "second": null,
+        "second_id": null,
+        "ordinal": 11
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "deliver source to final destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toy",
+          "second": "mousemat"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "toy",
+        "first_id": 387,
+        "second": "mousemat",
+        "second_id": 399,
+        "ordinal": 13
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E1",
+      "after": "E2",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 4,
+        "after_ordinal": 9
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E2",
+      "after": "E3",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 9,
+        "after_ordinal": 11
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E5",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 11,
+        "after_ordinal": 13
+      }
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(cabinet, CLOSED)",
+        "predicate": "STATE",
+        "object": "cabinet",
+        "value": "CLOSED",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[396]"
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "ON(toy, mousemat)",
+        "predicate": "RELATION",
+        "subject": "toy",
+        "relation": "ON",
+        "object": "mousemat",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['387-ON-399']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "partial_order_assignment": {
+    "E1": 4,
+    "E2": 9,
+    "E3": 11,
+    "E5": 13
+  },
+  "implementation_rejection": false,
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 1.0,
+  "generation_calls": 4,
+  "verification_calls": 3,
+  "repair_calls": 0,
+  "total_calls": 7,
+  "generation_prompt_tokens": 5007,
+  "generation_completion_tokens": 575,
+  "verification_prompt_tokens": 2558,
+  "verification_completion_tokens": 159,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 7565,
+  "completion_tokens": 734,
+  "total_prompt_tokens": 7565,
+  "total_completion_tokens": 734,
+  "total_tokens": 8299,
+  "planning_latency": 14.724090167999918,
+  "verification_latency": 6.546178155000007,
+  "total_llm_latency": 21.270268322999925,
+  "wall_clock_total_s": 22.440773973000034,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for VirtualHome. Convert the natural-language instruction into the fewest Structured Semantic Atomic Tasks.\n\nLayer-1 definition:\n- ONE ATOMIC = ONE DOMINANT SEMANTIC COMMITMENT: one independently meaningful and verifiable state transition or completed process around a focal object.\n- An atomic is not one primitive action. Navigation, find, walk, alignment, open/close prerequisites, loading, activation, and retrieval belong inside an atomic when they serve the same semantic commitment.\n- Use 1-6 atomics. Use exact scene object class names. Do not output primitive calls, instance IDs, evaluator predicates, a reference program, or hidden final-state facts.\n\nAllowed types only:\n- TRANSFER: focal object reaches target; state completion; source may be null.\n- STATE_CHANGE: requested persistent state of focal object; state completion.\n- PROCESS: a requested lifecycle is completed for focal object; process completion. The appliance/tool is normally target, not the focal object.\n- MULTI_OBJECT_COUPLED: only when multiple objects jointly form one condition that cannot naturally be separated.\n- INTERACTION: meaningful non-persistent interaction such as watch TV; process completion.\n\nFocal-object and grouping rules:\n- `focal_object` is exactly one class copied verbatim from SCENE OBJECT CLASSES. Never concatenate classes and never put a comma-separated list in this field.\n- For MULTI_OBJECT_COUPLED, choose one principal participant as `focal_object` and name every coupled participant in `semantic_goal`.\n- Use MULTI_OBJECT_COUPLED when collecting, gathering, or staging multiple requested objects together at one target is itself a joint semantic checkpoint. Do not use it merely because unrelated objects appear in the instruction.\n- A PROCESS owns its loading/activation/completion lifecycle. Do not emit a separate TRANSFER merely to load the process object. Emit a later TRANSFER only when the instruction requests a distinct post-process delivery checkpoint.\n\nDependency and terminal rules:\n- `depends_on` expresses only required semantic predecessors and forms a DAG. Never use list position as a substitute for dependency.\n- A clause such as \"then\" normally creates a dependency when the later checkpoint requires predecessor state.\n- A final requested device/container state is a terminal constraint, not a separate atomic. Do not create close/switchoff atomics merely to restore final state.\n- A process atomic includes its complete lifecycle as one commitment; do not split load/start/stop/retrieve into primitive-like atomics.\n\nReturn strict JSON only with this exact shape:\n{\"atomic_tasks\":[{\"id\":\"A1\",\"type\":\"TRANSFER|STATE_CHANGE|PROCESS|MULTI_OBJECT_COUPLED|INTERACTION\",\"focal_object\":\"exactly-one-scene-class\",\"source\":null,\"target\":\"class-or-null\",\"completion_mode\":\"state|process\",\"semantic_goal\":\"independently verifiable semantic commitment\",\"depends_on\":[]}],\"terminal_constraints\":[{\"predicate\":\"STATE\",\"object\":\"class\",\"value\":\"OFF|ON|OPEN|CLOSED\",\"semantic_goal\":\"final required state\"}]}\n\nFor a relational terminal constraint use predicate=RELATION with subject, relation, object, and semantic_goal. Return an empty terminal_constraints list when none are explicitly required by the instruction.\n\nNATURAL-LANGUAGE INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nSCENE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\n",
+      "instructions": "Return only the requested strict Structured Atomic Task IR JSON object.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":\"A1\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":null,\"target\":\"coffeetable\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is staged on the coffeetable.\",\"depends_on\":[]},{\"id\":\"A2\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"coffeetable\",\"target\":\"cabinet\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is temporarily stored inside the cabinet.\",\"depends_on\":[\"A1\"]},{\"id\":\"A3\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"cabinet\",\"target\":\"mousemat\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is delivered to the mousemat.\",\"depends_on\":[\"A2\"]}],\"terminal_constraints\":[{\"predicate\":\"STATE\",\"object\":\"cabinet\",\"value\":\"CLOSED\",\"semantic_goal\":\"The cabinet is left closed after delivering the toy.\"}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":\"A1\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":null,\"target\":\"coffeetable\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is staged on the coffeetable.\",\"depends_on\":[]},{\"id\":\"A2\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"coffeetable\",\"target\":\"cabinet\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is temporarily stored inside the cabinet.\",\"depends_on\":[\"A1\"]},{\"id\":\"A3\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"cabinet\",\"target\":\"mousemat\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is delivered to the mousemat.\",\"depends_on\":[\"A2\"]}],\"terminal_constraints\":[{\"predicate\":\"STATE\",\"object\":\"cabinet\",\"value\":\"CLOSED\",\"semantic_goal\":\"The cabinet is left closed after delivering the toy.\"}]}",
+      "prompt_tokens": 1253,
+      "completion_tokens": 215,
+      "latency_s": 4.5266257420000215,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956729863668eba1a5ab869c4433ad7bc82b08d390850b",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current Structured Semantic Atomic Task from fresh state. The atomic may require repeated Alignment -> Interaction pairs. Complete its dominant semantic commitment without planning later atomics. If terminal constraints are attached, this is the last ready atomic: preserve or restore them by task end without turning them into high-level atomics.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STRUCTURED ATOMIC: {\"id\": \"A1\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": null, \"target\": \"coffeetable\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is staged on the coffeetable.\", \"depends_on\": [], \"terminal_constraints_at_task_end\": []}\nFRESH CURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the toy, pick it up, then place it on the coffeetable to complete staging.\",\"program\":\"# Align to the toy since it is not visible nearby\\nfind('toy')\\n# Acquire the toy\\ngrab('toy')\\n# Align to the target coffeetable before placing\\nfind('coffeetable')\\n# Stage the toy on the coffeetable\\nputback('toy', 'coffeetable')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the toy, pick it up, then place it on the coffeetable to complete staging.\",\"program\":\"# Align to the toy since it is not visible nearby\\nfind('toy')\\n# Acquire the toy\\ngrab('toy')\\n# Align to the target coffeetable before placing\\nfind('coffeetable')\\n# Stage the toy on the coffeetable\\nputback('toy', 'coffeetable')\"}",
+      "prompt_tokens": 1263,
+      "completion_tokens": 102,
+      "latency_s": 3.303162947999965,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956775183668eba1a5ab869c4433ad7bc82b08d3bb3d93",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A1\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": null, \"target\": \"coffeetable\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is staged on the coffeetable.\", \"depends_on\": [], \"terminal_constraints_at_task_end\": []}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to the toy since it is not visible nearby\\nfind('toy')\\n# Acquire the toy\\ngrab('toy')\\n# Align to the target coffeetable before placing\\nfind('coffeetable')\\n# Stage the toy on the coffeetable\\nputback('toy', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toy> (387)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"putback('toy', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <coffeetable> (215)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The current observation shows toy ON coffeetable, satisfying the semantic goal; all executed actions succeeded and the character no longer holds the toy.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The current observation shows toy ON coffeetable, satisfying the semantic goal; all executed actions succeeded and the character no longer holds the toy.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 785,
+      "completion_tokens": 48,
+      "latency_s": 2.2958805289999873,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956809163668eba1a5ab869c4433ad7bc82b08d33b2a69",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current Structured Semantic Atomic Task from fresh state. The atomic may require repeated Alignment -> Interaction pairs. Complete its dominant semantic commitment without planning later atomics. If terminal constraints are attached, this is the last ready atomic: preserve or restore them by task end without turning them into high-level atomics.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STRUCTURED ATOMIC: {\"id\": \"A2\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"coffeetable\", \"target\": \"cabinet\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is temporarily stored inside the cabinet.\", \"depends_on\": [\"A1\"], \"terminal_constraints_at_task_end\": []}\nFRESH CURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Transfer the toy from the coffeetable into the cabinet for temporary storage by first approaching and picking up the toy, then locating and opening the cabinet, placing the toy inside, and leaving the cabinet open for the subsequent delivery step.\",\"program\":\"# Align to source coffeetable and pick up the toy\\nfind('coffeetable')\\ngrab('toy')\\n# Align to target cabinet, open it, and place the toy inside\\nfind('cabinet')\\nopen('cabinet')\\nputin('toy', 'cabinet')\"}",
+      "output_text": "{\"plan_brief\":\"Transfer the toy from the coffeetable into the cabinet for temporary storage by first approaching and picking up the toy, then locating and opening the cabinet, placing the toy inside, and leaving the cabinet open for the subsequent delivery step.\",\"program\":\"# Align to source coffeetable and pick up the toy\\nfind('coffeetable')\\ngrab('toy')\\n# Align to target cabinet, open it, and place the toy inside\\nfind('cabinet')\\nopen('cabinet')\\nputin('toy', 'cabinet')\"}",
+      "prompt_tokens": 1225,
+      "completion_tokens": 122,
+      "latency_s": 3.6138675589999707,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956832173668eba1a5ab869c4433ad7bc82b08d37069ad",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A2\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"coffeetable\", \"target\": \"cabinet\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is temporarily stored inside the cabinet.\", \"depends_on\": [\"A1\"], \"terminal_constraints_at_task_end\": []}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to source coffeetable and pick up the toy\\nfind('coffeetable')\\ngrab('toy')\\n# Align to target cabinet, open it, and place the toy inside\\nfind('cabinet')\\nopen('cabinet')\\nputin('toy', 'cabinet')\", \"execution_trace\": [{\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"putin('toy', 'cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toy> (387) <cabinet> (396)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The execution trace shows successful find, grab, open, and putin actions; current state confirms the toy is INSIDE the open cabinet, satisfying the transfer goal.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The execution trace shows successful find, grab, open, and putin actions; current state confirms the toy is INSIDE the open cabinet, satisfying the transfer goal.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 831,
+      "completion_tokens": 53,
+      "latency_s": 2.0070227030000183,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956868943668eba1a5ab869c4433ad7bc82b08d3221d2a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current Structured Semantic Atomic Task from fresh state. The atomic may require repeated Alignment -> Interaction pairs. Complete its dominant semantic commitment without planning later atomics. If terminal constraints are attached, this is the last ready atomic: preserve or restore them by task end without turning them into high-level atomics.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STRUCTURED ATOMIC: {\"id\": \"A3\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"cabinet\", \"target\": \"mousemat\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is delivered to the mousemat.\", \"depends_on\": [\"A2\"], \"terminal_constraints_at_task_end\": [{\"predicate\": \"STATE\", \"object\": \"cabinet\", \"value\": \"CLOSED\", \"semantic_goal\": \"The cabinet is left closed after delivering the toy.\"}]}\nFRESH CURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Retrieve the toy from the open cabinet, deliver it to the mousemat, then close the cabinet to satisfy the terminal closed state.\",\"program\":\"# Align to the open cabinet containing the toy\\nfind('cabinet')\\n# Acquire the toy from the cabinet\\ngrab('toy')\\n# Align to the target mousemat\\nfind('mousemat')\\n# Place the toy onto the mousemat to complete delivery\\nputback('toy', 'mousemat')\\n# Restore terminal constraint: leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\"}",
+      "output_text": "{\"plan_brief\":\"Retrieve the toy from the open cabinet, deliver it to the mousemat, then close the cabinet to satisfy the terminal closed state.\",\"program\":\"# Align to the open cabinet containing the toy\\nfind('cabinet')\\n# Acquire the toy from the cabinet\\ngrab('toy')\\n# Align to the target mousemat\\nfind('mousemat')\\n# Place the toy onto the mousemat to complete delivery\\nputback('toy', 'mousemat')\\n# Restore terminal constraint: leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\"}",
+      "prompt_tokens": 1266,
+      "completion_tokens": 136,
+      "latency_s": 3.280433918999961,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956889063668eba1a5ab869c4433ad7bc82b08d3961262",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A3\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"cabinet\", \"target\": \"mousemat\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is delivered to the mousemat.\", \"depends_on\": [\"A2\"], \"terminal_constraints_at_task_end\": [{\"predicate\": \"STATE\", \"object\": \"cabinet\", \"value\": \"CLOSED\", \"semantic_goal\": \"The cabinet is left closed after delivering the toy.\"}]}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to the open cabinet containing the toy\\nfind('cabinet')\\n# Acquire the toy from the cabinet\\ngrab('toy')\\n# Align to the target mousemat\\nfind('mousemat')\\n# Place the toy onto the mousemat to complete delivery\\nputback('toy', 'mousemat')\\n# Restore terminal constraint: leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mousemat> (399)\"}, {\"line\": \"putback('toy', 'mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <mousemat> (399)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: toy was grabbed from cabinet, put onto mousemat, and cabinet was closed; current observation confirms cabinet is CLOSED and character holds nothing, consistent with delivery completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded: toy was grabbed from cabinet, put onto mousemat, and cabinet was closed; current observation confirms cabinet is CLOSED and character holds nothing, consistent with delivery completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 942,
+      "completion_tokens": 58,
+      "latency_s": 2.2432749230000013,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956923123668eba1a5ab869c4433ad7bc82b08d398593a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the requested strict Structured Atomic Task IR JSON object.",
+      "input": "You are the HPAF TaskAgent for VirtualHome. Convert the natural-language instruction into the fewest Structured Semantic Atomic Tasks.\n\nLayer-1 definition:\n- ONE ATOMIC = ONE DOMINANT SEMANTIC COMMITMENT: one independently meaningful and verifiable state transition or completed process around a focal object.\n- An atomic is not one primitive action. Navigation, find, walk, alignment, open/close prerequisites, loading, activation, and retrieval belong inside an atomic when they serve the same semantic commitment.\n- Use 1-6 atomics. Use exact scene object class names. Do not output primitive calls, instance IDs, evaluator predicates, a reference program, or hidden final-state facts.\n\nAllowed types only:\n- TRANSFER: focal object reaches target; state completion; source may be null.\n- STATE_CHANGE: requested persistent state of focal object; state completion.\n- PROCESS: a requested lifecycle is completed for focal object; process completion. The appliance/tool is normally target, not the focal object.\n- MULTI_OBJECT_COUPLED: only when multiple objects jointly form one condition that cannot naturally be separated.\n- INTERACTION: meaningful non-persistent interaction such as watch TV; process completion.\n\nFocal-object and grouping rules:\n- `focal_object` is exactly one class copied verbatim from SCENE OBJECT CLASSES. Never concatenate classes and never put a comma-separated list in this field.\n- For MULTI_OBJECT_COUPLED, choose one principal participant as `focal_object` and name every coupled participant in `semantic_goal`.\n- Use MULTI_OBJECT_COUPLED when collecting, gathering, or staging multiple requested objects together at one target is itself a joint semantic checkpoint. Do not use it merely because unrelated objects appear in the instruction.\n- A PROCESS owns its loading/activation/completion lifecycle. Do not emit a separate TRANSFER merely to load the process object. Emit a later TRANSFER only when the instruction requests a distinct post-process delivery checkpoint.\n\nDependency and terminal rules:\n- `depends_on` expresses only required semantic predecessors and forms a DAG. Never use list position as a substitute for dependency.\n- A clause such as \"then\" normally creates a dependency when the later checkpoint requires predecessor state.\n- A final requested device/container state is a terminal constraint, not a separate atomic. Do not create close/switchoff atomics merely to restore final state.\n- A process atomic includes its complete lifecycle as one commitment; do not split load/start/stop/retrieve into primitive-like atomics.\n\nReturn strict JSON only with this exact shape:\n{\"atomic_tasks\":[{\"id\":\"A1\",\"type\":\"TRANSFER|STATE_CHANGE|PROCESS|MULTI_OBJECT_COUPLED|INTERACTION\",\"focal_object\":\"exactly-one-scene-class\",\"source\":null,\"target\":\"class-or-null\",\"completion_mode\":\"state|process\",\"semantic_goal\":\"independently verifiable semantic commitment\",\"depends_on\":[]}],\"terminal_constraints\":[{\"predicate\":\"STATE\",\"object\":\"class\",\"value\":\"OFF|ON|OPEN|CLOSED\",\"semantic_goal\":\"final required state\"}]}\n\nFor a relational terminal constraint use predicate=RELATION with subject, relation, object, and semantic_goal. Return an empty terminal_constraints list when none are explicitly required by the instruction.\n\nNATURAL-LANGUAGE INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nSCENE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current Structured Semantic Atomic Task from fresh state. The atomic may require repeated Alignment -> Interaction pairs. Complete its dominant semantic commitment without planning later atomics. If terminal constraints are attached, this is the last ready atomic: preserve or restore them by task end without turning them into high-level atomics.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STRUCTURED ATOMIC: {\"id\": \"A1\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": null, \"target\": \"coffeetable\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is staged on the coffeetable.\", \"depends_on\": [], \"terminal_constraints_at_task_end\": []}\nFRESH CURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A1\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": null, \"target\": \"coffeetable\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is staged on the coffeetable.\", \"depends_on\": [], \"terminal_constraints_at_task_end\": []}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to the toy since it is not visible nearby\\nfind('toy')\\n# Acquire the toy\\ngrab('toy')\\n# Align to the target coffeetable before placing\\nfind('coffeetable')\\n# Stage the toy on the coffeetable\\nputback('toy', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toy> (387)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"putback('toy', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <coffeetable> (215)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current Structured Semantic Atomic Task from fresh state. The atomic may require repeated Alignment -> Interaction pairs. Complete its dominant semantic commitment without planning later atomics. If terminal constraints are attached, this is the last ready atomic: preserve or restore them by task end without turning them into high-level atomics.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STRUCTURED ATOMIC: {\"id\": \"A2\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"coffeetable\", \"target\": \"cabinet\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is temporarily stored inside the cabinet.\", \"depends_on\": [\"A1\"], \"terminal_constraints_at_task_end\": []}\nFRESH CURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: cupcake ON coffeetable; orchid ON coffeetable; plate ON coffeetable; toy ON coffeetable.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A2\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"coffeetable\", \"target\": \"cabinet\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is temporarily stored inside the cabinet.\", \"depends_on\": [\"A1\"], \"terminal_constraints_at_task_end\": []}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to source coffeetable and pick up the toy\\nfind('coffeetable')\\ngrab('toy')\\n# Align to target cabinet, open it, and place the toy inside\\nfind('cabinet')\\nopen('cabinet')\\nputin('toy', 'cabinet')\", \"execution_trace\": [{\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"putin('toy', 'cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toy> (387) <cabinet> (396)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current Structured Semantic Atomic Task from fresh state. The atomic may require repeated Alignment -> Interaction pairs. Complete its dominant semantic commitment without planning later atomics. If terminal constraints are attached, this is the last ready atomic: preserve or restore them by task end without turning them into high-level atomics.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL INSTRUCTION: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STRUCTURED ATOMIC: {\"id\": \"A3\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"cabinet\", \"target\": \"mousemat\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is delivered to the mousemat.\", \"depends_on\": [\"A2\"], \"terminal_constraints_at_task_end\": [{\"predicate\": \"STATE\", \"object\": \"cabinet\", \"value\": \"CLOSED\", \"semantic_goal\": \"The cabinet is left closed after delivering the toy.\"}]}\nFRESH CURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is OPEN, floor, toy, toy INSIDE cabinet. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet; toy INSIDE cabinet.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} OR {\"done\":false,\"reason\":\"short evidence\",\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\nOn failure, `failure_stage` must be exactly one of the five displayed enum values;\nput any action-specific detail only in `reason` or `regeneration_hint`.\n\nCURRENT TASK CONTRACT: {\"id\": \"A3\", \"type\": \"TRANSFER\", \"focal_object\": \"toy\", \"source\": \"cabinet\", \"target\": \"mousemat\", \"completion_mode\": \"state\", \"semantic_goal\": \"The toy is delivered to the mousemat.\", \"depends_on\": [\"A2\"], \"terminal_constraints_at_task_end\": [{\"predicate\": \"STATE\", \"object\": \"cabinet\", \"value\": \"CLOSED\", \"semantic_goal\": \"The cabinet is left closed after delivering the toy.\"}]}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Align to the open cabinet containing the toy\\nfind('cabinet')\\n# Acquire the toy from the cabinet\\ngrab('toy')\\n# Align to the target mousemat\\nfind('mousemat')\\n# Place the toy onto the mousemat to complete delivery\\nputback('toy', 'mousemat')\\n# Restore terminal constraint: leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mousemat> (399)\"}, {\"line\": \"putback('toy', 'mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <mousemat> (399)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":\"A1\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":null,\"target\":\"coffeetable\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is staged on the coffeetable.\",\"depends_on\":[]},{\"id\":\"A2\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"coffeetable\",\"target\":\"cabinet\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is temporarily stored inside the cabinet.\",\"depends_on\":[\"A1\"]},{\"id\":\"A3\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"cabinet\",\"target\":\"mousemat\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is delivered to the mousemat.\",\"depends_on\":[\"A2\"]}],\"terminal_constraints\":[{\"predicate\":\"STATE\",\"object\":\"cabinet\",\"value\":\"CLOSED\",\"semantic_goal\":\"The cabinet is left closed after delivering the toy.\"}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the toy, pick it up, then place it on the coffeetable to complete staging.\",\"program\":\"# Align to the toy since it is not visible nearby\\nfind('toy')\\n# Acquire the toy\\ngrab('toy')\\n# Align to the target coffeetable before placing\\nfind('coffeetable')\\n# Stage the toy on the coffeetable\\nputback('toy', 'coffeetable')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"The current observation shows toy ON coffeetable, satisfying the semantic goal; all executed actions succeeded and the character no longer holds the toy.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Transfer the toy from the coffeetable into the cabinet for temporary storage by first approaching and picking up the toy, then locating and opening the cabinet, placing the toy inside, and leaving the cabinet open for the subsequent delivery step.\",\"program\":\"# Align to source coffeetable and pick up the toy\\nfind('coffeetable')\\ngrab('toy')\\n# Align to target cabinet, open it, and place the toy inside\\nfind('cabinet')\\nopen('cabinet')\\nputin('toy', 'cabinet')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"The execution trace shows successful find, grab, open, and putin actions; current state confirms the toy is INSIDE the open cabinet, satisfying the transfer goal.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Retrieve the toy from the open cabinet, deliver it to the mousemat, then close the cabinet to satisfy the terminal closed state.\",\"program\":\"# Align to the open cabinet containing the toy\\nfind('cabinet')\\n# Acquire the toy from the cabinet\\ngrab('toy')\\n# Align to the target mousemat\\nfind('mousemat')\\n# Place the toy onto the mousemat to complete delivery\\nputback('toy', 'mousemat')\\n# Restore terminal constraint: leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"All actions succeeded: toy was grabbed from cabinet, put onto mousemat, and cabinet was closed; current observation confirms cabinet is CLOSED and character holds nothing, consistent with delivery completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":\"A1\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":null,\"target\":\"coffeetable\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is staged on the coffeetable.\",\"depends_on\":[]},{\"id\":\"A2\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"coffeetable\",\"target\":\"cabinet\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is temporarily stored inside the cabinet.\",\"depends_on\":[\"A1\"]},{\"id\":\"A3\",\"type\":\"TRANSFER\",\"focal_object\":\"toy\",\"source\":\"cabinet\",\"target\":\"mousemat\",\"completion_mode\":\"state\",\"semantic_goal\":\"The toy is delivered to the mousemat.\",\"depends_on\":[\"A2\"]}],\"terminal_constraints\":[{\"predicate\":\"STATE\",\"object\":\"cabinet\",\"value\":\"CLOSED\",\"semantic_goal\":\"The cabinet is left closed after delivering the toy.\"}]}",
+  "structured_ir": {
+    "atomic_tasks": [
+      {
+        "id": "A1",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": null,
+        "target": "coffeetable",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is staged on the coffeetable.",
+        "depends_on": []
+      },
+      {
+        "id": "A2",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": "coffeetable",
+        "target": "cabinet",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is temporarily stored inside the cabinet.",
+        "depends_on": [
+          "A1"
+        ]
+      },
+      {
+        "id": "A3",
+        "type": "TRANSFER",
+        "focal_object": "toy",
+        "source": "cabinet",
+        "target": "mousemat",
+        "completion_mode": "state",
+        "semantic_goal": "The toy is delivered to the mousemat.",
+        "depends_on": [
+          "A2"
+        ]
+      }
+    ],
+    "terminal_constraints": [
+      {
+        "predicate": "STATE",
+        "object": "cabinet",
+        "value": "CLOSED",
+        "semantic_goal": "The cabinet is left closed after delivering the toy."
+      }
+    ],
+    "dependency_depth": 3
+  },
+  "taskagent_parse_success": true,
+  "taskagent_validator_rejected": false,
+  "dependency_execution_order": [
+    "A1",
+    "A2",
+    "A3"
+  ],
+  "dependency_depth": 3,
+  "terminal_constraints": [
+    {
+      "predicate": "STATE",
+      "object": "cabinet",
+      "value": "CLOSED",
+      "semantic_goal": "The cabinet is left closed after delivering the toy."
+    }
+  ],
+  "terminal_constraint_count": 1,
+  "process_atomic_count": 0,
+  "atomic_verifier_success_count": 3
+}

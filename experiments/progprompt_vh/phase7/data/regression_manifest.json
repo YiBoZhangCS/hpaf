@@ -1,0 +1,925 @@
+{
+  "schema_version": 1,
+  "set": "regression",
+  "frozen_before_formal_execution": true,
+  "source": "ProgPrompt/VirtualHome pinned release plus Phase-6 frozen manifest",
+  "entries": [
+    {
+      "task_id": "test_unseen::turn_off_light",
+      "task_text": "turn off light",
+      "official_split": "test_unseen",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen/file3_annotated.json",
+      "gt_action_length": 3,
+      "horizon": "Short",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [walk] <livingroom> (335)",
+        "<char0> [find] <lightswitch> (71)",
+        "<char0> [switchoff] <lightswitch> (71)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen.json",
+      "final_state_index": 1,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(lightswitch, OFF)",
+            "predicate": "STATE",
+            "object": "lightswitch",
+            "value": "OFF",
+            "rationale": "The instruction explicitly requests the controlled light switch to be off."
+          }
+        ],
+        "ambiguity": "The scene represents the controlled light through the lightswitch object."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "test_unseen::throw_away_apple",
+      "task_text": "throw away apple",
+      "official_split": "test_unseen",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen/file3_annotated.json",
+      "gt_action_length": 8,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [walk] <kitchen> (205)",
+        "<char0> [find] <garbagecan> (229)",
+        "<char0> [find] <apple> (438)",
+        "<char0> [grab] <apple> (438)",
+        "<char0> [find] <garbagecan> (229)",
+        "<char0> [open] <garbagecan> (229)",
+        "<char0> [putin] <apple> (438) <garbagecan> (229)",
+        "<char0> [close] <garbagecan> (229)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen.json",
+      "final_state_index": 3,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(apple, garbagecan)",
+            "predicate": "RELATION",
+            "subject": "apple",
+            "relation": "INSIDE",
+            "object": "garbagecan",
+            "rationale": "Disposal is represented by containment in the garbage can."
+          }
+        ],
+        "ambiguity": "Container closure and character location are procedural endpoints, not goals."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "test_unseen::put_salmon_in_the_fridge",
+      "task_text": "put salmon in the fridge",
+      "official_split": "test_unseen",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen/file1_annotated.json",
+      "gt_action_length": 8,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [walk] <kitchen> (205)",
+        "<char0> [find] <fridge> (305)",
+        "<char0> [open] <fridge> (305)",
+        "<char0> [find] <salmon> (327)",
+        "<char0> [grab] <salmon> (327)",
+        "<char0> [find] <fridge> (305)",
+        "<char0> [putin] <salmon> (327) <fridge> (305)",
+        "<char0> [close] <fridge> (305)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen.json",
+      "final_state_index": 6,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(salmon, fridge)",
+            "predicate": "RELATION",
+            "subject": "salmon",
+            "relation": "INSIDE",
+            "object": "fridge",
+            "rationale": "The requested destination relation is salmon inside the fridge."
+          }
+        ],
+        "ambiguity": "Fridge-door and character states are excluded."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "test_unseen::wash_the_plate",
+      "task_text": "wash the plate",
+      "official_split": "test_unseen",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen/file1_annotated.json",
+      "gt_action_length": 18,
+      "horizon": "Long",
+      "is_long_horizon": true,
+      "gt_actions": [
+        "<char0> [walk] <kitchen> (205)",
+        "<char0> [find] <sink> (247)",
+        "<char0> [find] <faucet> (248)",
+        "<char0> [find] <faucet> (248)",
+        "<char0> [find] <faucet> (248)",
+        "<char0> [find] <faucet> (248)",
+        "<char0> [find] <faucet> (50)",
+        "<char0> [switchon] <faucet> (50)",
+        "<char0> [find] <plate> (193)",
+        "<char0> [grab] <plate> (193)",
+        "<char0> [find] <sink> (247)",
+        "<char0> [putin] <plate> (193) <sink> (247)",
+        "<char0> [find] <dishwashingliquid> (267)",
+        "<char0> [grab] <dishwashingliquid> (267)",
+        "<char0> [find] <sink> (247)",
+        "<char0> [putin] <dishwashingliquid> (267) <sink> (247)",
+        "<char0> [find] <faucet> (50)",
+        "<char0> [switchoff] <faucet> (50)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen.json",
+      "final_state_index": 7,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(plate, WASHED)",
+            "predicate": "STATE",
+            "object": "plate",
+            "value": "WASHED",
+            "rationale": "The released benchmark augmentation persistently marks an object washed when it is in a sink while a faucet is on."
+          }
+        ],
+        "ambiguity": "WASHED is a released evaluator augmentation rather than a native graph state."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "test_unseen::bring_coffeepot_and_cupcake_to_the_coffee_table",
+      "task_text": "bring coffeepot and cupcake to the coffee table",
+      "official_split": "test_unseen",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen/file1_annotated.json",
+      "gt_action_length": 8,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [walk] <kitchen> (205)",
+        "<char0> [find] <coffeepot> (307)",
+        "<char0> [grab] <coffeepot> (307)",
+        "<char0> [find] <cupcake> (195)",
+        "<char0> [grab] <cupcake> (195)",
+        "<char0> [find] <coffeetable> (111)",
+        "<char0> [putback] <coffeepot> (307) <coffeetable> (111)",
+        "<char0> [putback] <cupcake> (195) <coffeetable> (111)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen.json",
+      "final_state_index": 8,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "ON(coffeepot, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "coffeepot",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The coffeepot must reach the requested table."
+          },
+          {
+            "condition": "ON(cupcake, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "cupcake",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The cupcake must reach the requested table."
+          }
+        ],
+        "ambiguity": "Both object destinations are conjunctive."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "test_unseen::microwave_salmon",
+      "task_text": "microwave salmon",
+      "official_split": "test_unseen",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen/file1_annotated.json",
+      "gt_action_length": 11,
+      "horizon": "Long",
+      "is_long_horizon": true,
+      "gt_actions": [
+        "<char0> [find] <salmon> (327)",
+        "<char0> [grab] <salmon> (327)",
+        "<char0> [find] <microwave> (313)",
+        "<char0> [open] <microwave> (313)",
+        "<char0> [putin] <salmon> (327) <microwave> (313)",
+        "<char0> [close] <microwave> (313)",
+        "<char0> [switchon] <microwave> (313)",
+        "<char0> [switchoff] <microwave> (313)",
+        "<char0> [open] <microwave> (313)",
+        "<char0> [grab] <salmon> (327)",
+        "<char0> [close] <microwave> (313)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen.json",
+      "final_state_index": 9,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(salmon, HEATED)",
+            "predicate": "STATE",
+            "object": "salmon",
+            "value": "HEATED",
+            "rationale": "The released microwave augmentation persistently marks food HEATED."
+          }
+        ],
+        "ambiguity": "Microwave state, containment, and holding are procedural or endpoint states."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "test_unseen_ambiguous_goals::collect_4_fruits_such_as_apple,_banana,_etc_in_the_dishbowl",
+      "task_text": "collect 4 fruits such as apple, banana, etc in the dishbowl",
+      "official_split": "test_unseen_ambiguous_goals",
+      "scene": 0,
+      "source_annotation": "third_party/progprompt-vh/data/test_unseen_ambiguous_goals/file_annotated_mixed.json",
+      "gt_action_length": 14,
+      "horizon": "Long",
+      "is_long_horizon": true,
+      "gt_actions": [
+        "<char0> [find] <dishbowl> (326)",
+        "<char0> [grab] <dishbowl> (326)",
+        "<char0> [find] <apple> (437)",
+        "<char0> [grab] <apple> (437)",
+        "<char0> [putin] <apple> (437) <dishbowl> (326)",
+        "<char0> [find] <bananas> (315)",
+        "<char0> [grab] <bananas> (315)",
+        "<char0> [putin] <bananas> (315) <dishbowl> (326)",
+        "<char0> [find] <peach> (442)",
+        "<char0> [grab] <peach> (442)",
+        "<char0> [putin] <peach> (442) <dishbowl> (326)",
+        "<char0> [find] <plum> (443)",
+        "<char0> [grab] <plum> (443)",
+        "<char0> [putin] <plum> (443) <dishbowl> (326)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "experiments/progprompt_vh/results/environment_initial_state.json",
+      "initial_state_index": null,
+      "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_test_unseen_ambiguous_goals.json",
+      "final_state_index": 3,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "COUNT_DISTINCT_INSTANCES(apple|bananas|lime|peach|plum INSIDE dishbowl) >= 4",
+            "predicate": "COUNT_RELATION",
+            "subjects": [
+              "apple",
+              "bananas",
+              "lime",
+              "peach",
+              "plum"
+            ],
+            "relation": "INSIDE",
+            "object": "dishbowl",
+            "minimum": 4,
+            "distinct_instances": true,
+            "rationale": "The instruction requests any four fruits; counting distinct available fruit instances avoids selecting the annotator's particular four fruits."
+          }
+        ],
+        "ambiguity": "Fruit identities are intentionally open; the frozen goal counts any four distinct available fruit instances rather than the annotation's choices."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::turn_off_tablelamp",
+      "task_text": "turn off tablelamp",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 2,
+      "horizon": "Short",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <tablelamp> (124)",
+        "<char0> [switchoff] <tablelamp> (124)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 1,
+      "initial_state_sha256": "77cb43058b3e2b42ed9241e6f44889e9e6bd413772dd14d77dfcdd1508da0160",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 1,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(tablelamp, OFF)",
+            "predicate": "STATE",
+            "object": "tablelamp",
+            "value": "OFF",
+            "rationale": "The instruction explicitly requests the lamp to be off."
+          }
+        ],
+        "ambiguity": "No final character location is required."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::put_the_soap_in_the_bathroomcabinet",
+      "task_text": "put the soap in the bathroomcabinet",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 6,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <barsoap> (34)",
+        "<char0> [grab] <barsoap> (34)",
+        "<char0> [find] <bathroomcabinet> (26)",
+        "<char0> [open] <bathroomcabinet> (26)",
+        "<char0> [putin] <barsoap> (34) <bathroomcabinet> (26)",
+        "<char0> [close] <bathroomcabinet> (26)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 2,
+      "initial_state_sha256": "0a0c837a20c5a91f68f575f2e23ef47305f2064bd1899684c92c9d28e346b6da",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 2,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(barsoap, bathroomcabinet)",
+            "predicate": "RELATION",
+            "subject": "barsoap",
+            "relation": "INSIDE",
+            "object": "bathroomcabinet",
+            "rationale": "The soap must be contained by the requested cabinet."
+          }
+        ],
+        "ambiguity": "The annotation grounds 'soap' to the available barsoap class."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::throw_away_plum",
+      "task_text": "throw away plum",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 6,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <plum> (119)",
+        "<char0> [grab] <plum> (119)",
+        "<char0> [find] <garbagecan> (183)",
+        "<char0> [open] <garbagecan> (183)",
+        "<char0> [putin] <plum> (119) <garbagecan> (183)",
+        "<char0> [close] <garbagecan> (183)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 3,
+      "initial_state_sha256": "f89d5ad507f69d8d6588c94d38c00d0e75b795b5bcca3d22d7773caf3355e1bb",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 3,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(plum, garbagecan)",
+            "predicate": "RELATION",
+            "subject": "plum",
+            "relation": "INSIDE",
+            "object": "garbagecan",
+            "rationale": "Disposal is represented by containment in the garbage can."
+          }
+        ],
+        "ambiguity": "Container closure is not part of semantic completion."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::bring_my_book_to_the_sofa",
+      "task_text": "bring my book to the sofa",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 4,
+      "horizon": "Short",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <book> (108)",
+        "<char0> [grab] <book> (108)",
+        "<char0> [find] <sofa> (85)",
+        "<char0> [putback] <book> (108) <sofa> (85)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 5,
+      "initial_state_sha256": "400751a3591c2fbad3cef17a0f80e498cfbb669a8df89ab1f91841e8954adcc3",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 5,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "ON(book, sofa)",
+            "predicate": "RELATION",
+            "subject": "book",
+            "relation": "ON",
+            "object": "sofa",
+            "rationale": "The book must be placed on the requested sofa."
+          }
+        ],
+        "ambiguity": "Character proximity is excluded."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::put_chicken_in_the_fridge",
+      "task_text": "put chicken in the fridge",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 6,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <chicken> (241)",
+        "<char0> [grab] <chicken> (241)",
+        "<char0> [find] <fridge> (225)",
+        "<char0> [open] <fridge> (225)",
+        "<char0> [putin] <chicken> (241) <fridge> (225)",
+        "<char0> [close] <fridge> (225)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 6,
+      "initial_state_sha256": "b1d8a1d788564545a5f73ddba628bc4cc59a751ba1edda83f891424f85a0609f",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 6,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(chicken, fridge)",
+            "predicate": "RELATION",
+            "subject": "chicken",
+            "relation": "INSIDE",
+            "object": "fridge",
+            "rationale": "The chicken must be inside the fridge."
+          }
+        ],
+        "ambiguity": "Fridge-door state is procedural."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::bring_coffeepot_and_peach_to_the_coffee_table",
+      "task_text": "bring coffeepot and peach to the coffee table",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 7,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <coffeepot> (230)",
+        "<char0> [grab] <coffeepot> (230)",
+        "<char0> [find] <peach> (117)",
+        "<char0> [grab] <peach> (117)",
+        "<char0> [find] <coffeetable> (86)",
+        "<char0> [putback] <coffeepot> (230) <coffeetable> (86)",
+        "<char0> [putback] <peach> (117) <coffeetable> (86)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 8,
+      "initial_state_sha256": "34163f49762732f26f0a0dc2164d8a7d5146a35945b1c0e93028eb7ef0a5d0db",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 8,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "ON(coffeepot, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "coffeepot",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The coffeepot must reach the coffee table."
+          },
+          {
+            "condition": "ON(peach, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "peach",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The peach must reach the coffee table."
+          }
+        ],
+        "ambiguity": "Both requested objects are conjunctive."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env1::microwave_chicken",
+      "task_text": "microwave chicken",
+      "official_split": "env1",
+      "scene": 1,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+      "gt_action_length": 13,
+      "horizon": "Long",
+      "is_long_horizon": true,
+      "gt_actions": [
+        "<char0> [find] <chicken> (241)",
+        "<char0> [grab] <chicken> (241)",
+        "<char0> [find] <microwave> (234)",
+        "<char0> [open] <microwave> (234)",
+        "<char0> [putin] <chicken> (241) <microwave> (234)",
+        "<char0> [close] <microwave> (234)",
+        "<char0> [switchon] <microwave> (234)",
+        "<char0> [switchoff] <microwave> (234)",
+        "<char0> [open] <microwave> (234)",
+        "<char0> [grab] <chicken> (241)",
+        "<char0> [close] <microwave> (234)",
+        "<char0> [find] <plate> (171)",
+        "<char0> [find] <microwave> (234)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+      "initial_state_index": 9,
+      "initial_state_sha256": "15f3e9d83cb6335166040bbd6efa2413635977012fd133fe9dc6b01a37a98ff1",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+      "final_state_index": 9,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(chicken, HEATED)",
+            "predicate": "STATE",
+            "object": "chicken",
+            "value": "HEATED",
+            "rationale": "The released microwave augmentation persistently marks food HEATED."
+          }
+        ],
+        "ambiguity": "Microwave endpoint state and holding are not required."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env2::open_the_curtains",
+      "task_text": "open the curtains",
+      "official_split": "env2",
+      "scene": 2,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+      "gt_action_length": 2,
+      "horizon": "Short",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <curtains> (128)",
+        "<char0> [open] <curtains> (128)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env2.json",
+      "initial_state_index": 0,
+      "initial_state_sha256": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env2.json",
+      "final_state_index": 0,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(curtains, OPEN)",
+            "predicate": "STATE",
+            "object": "curtains",
+            "value": "OPEN",
+            "rationale": "The instruction explicitly requests open curtains."
+          }
+        ],
+        "ambiguity": "Character location is excluded."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env2::turn_on_tv",
+      "task_text": "turn on tv",
+      "official_split": "env2",
+      "scene": 2,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+      "gt_action_length": 2,
+      "horizon": "Short",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <tv> (238)",
+        "<char0> [switchon] <tv> (238)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env2.json",
+      "initial_state_index": 1,
+      "initial_state_sha256": "3fc42ed66b0378e05adbadd8172eccfcd3010f2a8a3f6ecad5b6ff0759c56432",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env2.json",
+      "final_state_index": 1,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "STATE(tv, ON)",
+            "predicate": "STATE",
+            "object": "tv",
+            "value": "ON",
+            "rationale": "The instruction explicitly requests the television to be on."
+          }
+        ],
+        "ambiguity": "Unlike 'watch tv', this task has an exact persistent requested state."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env2::put_the_soap_in_the_bathroomcabinet",
+      "task_text": "put the soap in the bathroomcabinet",
+      "official_split": "env2",
+      "scene": 2,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+      "gt_action_length": 6,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <barsoap> (341)",
+        "<char0> [grab] <barsoap> (341)",
+        "<char0> [find] <bathroomcabinet> (324)",
+        "<char0> [open] <bathroomcabinet> (324)",
+        "<char0> [putin] <barsoap> (341) <bathroomcabinet> (324)",
+        "<char0> [close] <bathroomcabinet> (324)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env2.json",
+      "initial_state_index": 2,
+      "initial_state_sha256": "71bed3173aad58c49c434e4c386fdc5714463bda68cb3c72e2b713f0ab610f1a",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env2.json",
+      "final_state_index": 2,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(barsoap, bathroomcabinet)",
+            "predicate": "RELATION",
+            "subject": "barsoap",
+            "relation": "INSIDE",
+            "object": "bathroomcabinet",
+            "rationale": "The soap must be contained by the requested cabinet."
+          }
+        ],
+        "ambiguity": "The annotation grounds 'soap' to the available barsoap class."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env2::throw_away_bananas",
+      "task_text": "throw away bananas",
+      "official_split": "env2",
+      "scene": 2,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+      "gt_action_length": 6,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <bananas> (179)",
+        "<char0> [grab] <bananas> (179)",
+        "<char0> [find] <garbagecan> (378)",
+        "<char0> [open] <garbagecan> (378)",
+        "<char0> [putin] <bananas> (179) <garbagecan> (378)",
+        "<char0> [close] <garbagecan> (378)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env2.json",
+      "initial_state_index": 3,
+      "initial_state_sha256": "f0c085449931bc4837c96eebfd917af03dee11c01895cf5cf319831564edd638",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env2.json",
+      "final_state_index": 3,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(bananas, garbagecan)",
+            "predicate": "RELATION",
+            "subject": "bananas",
+            "relation": "INSIDE",
+            "object": "garbagecan",
+            "rationale": "Disposal is represented by containment in the garbage can."
+          }
+        ],
+        "ambiguity": "Container closure is procedural."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env2::bring_my_book_to_the_sofa",
+      "task_text": "bring my book to the sofa",
+      "official_split": "env2",
+      "scene": 2,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+      "gt_action_length": 4,
+      "horizon": "Short",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <book> (265)",
+        "<char0> [grab] <book> (265)",
+        "<char0> [find] <sofa> (214)",
+        "<char0> [putback] <book> (265) <sofa> (214)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env2.json",
+      "initial_state_index": 5,
+      "initial_state_sha256": "19e699fbf256f7a84ff3c13dcc33d26ac3427512e4fff45b745779d063ea837e",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env2.json",
+      "final_state_index": 5,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "ON(book, sofa)",
+            "predicate": "RELATION",
+            "subject": "book",
+            "relation": "ON",
+            "object": "sofa",
+            "rationale": "The book must be placed on the requested sofa."
+          }
+        ],
+        "ambiguity": "Character proximity is excluded."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    },
+    {
+      "task_id": "env2::put_milk_in_the_fridge",
+      "task_text": "put milk in the fridge",
+      "official_split": "env2",
+      "scene": 2,
+      "source_annotation": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+      "gt_action_length": 6,
+      "horizon": "Medium",
+      "is_long_horizon": false,
+      "gt_actions": [
+        "<char0> [find] <milk> (177)",
+        "<char0> [grab] <milk> (177)",
+        "<char0> [find] <fridge> (162)",
+        "<char0> [open] <fridge> (162)",
+        "<char0> [putin] <milk> (177) <fridge> (162)",
+        "<char0> [close] <fridge> (162)"
+      ],
+      "has_gt_program": true,
+      "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env2.json",
+      "initial_state_index": 6,
+      "initial_state_sha256": "022cc4f70d19df0624eb27d3c2b8bc94a1b8e42e5eb8f851a8a19a1e446e058e",
+      "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env2.json",
+      "final_state_index": 6,
+      "has_final_state": true,
+      "direct_default_prompt_overlap": false,
+      "semantic_goal": {
+        "conditions": [
+          {
+            "condition": "INSIDE(milk, fridge)",
+            "predicate": "RELATION",
+            "subject": "milk",
+            "relation": "INSIDE",
+            "object": "fridge",
+            "rationale": "The milk must be inside the fridge."
+          }
+        ],
+        "ambiguity": "Fridge-door state is procedural."
+      },
+      "filter_status": "included",
+      "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+      "set": "regression",
+      "evaluator_type": "persistent_state",
+      "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design."
+    }
+  ]
+}

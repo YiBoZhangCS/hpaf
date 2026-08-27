@@ -1,0 +1,899 @@
+{
+  "run_id": "formal_2026-08-26T034550.909567_0000_hpaf_full_env1_microwave_chicken",
+  "phase": "formal",
+  "timestamp": "2026-08-26T03:45:50.909567+00:00",
+  "task_id": "env1::microwave_chicken",
+  "task": "microwave chicken",
+  "split": "env1",
+  "scene": 1,
+  "gt_action_length": 13,
+  "horizon": "Long",
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "15f3e9d83cb6335166040bbd6efa2413635977012fd133fe9dc6b01a37a98ff1",
+  "task_manifest_sha256": "b030e18ebc284885389c9f3ac23bac4ed15110dd08db1d0bc297ab18d154e5b1",
+  "semantic_goals_sha256": "26f96ce7f68d5424beca17341be3d7f12c045628b42526d3890193fa2a2a3704",
+  "long_horizon_manifest_sha256": "464b7e4056717e5237f5f1f3b033289b6b79fb70f4de63dedd414b20e9ba8d8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0daf61072d16151050ee62ad58010cc2e189f1c89f0b1ee83d31afe254891222",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Put the chicken into the microwave.",
+        "manipulated_object": "chicken",
+        "target_object": "microwave"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cellphone is OFF, condimentshaker, garbagecan is CLOSED, pillow, rug. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; cellphone INSIDE bookshelf; folder INSIDE bookshelf; kitchentable ON rug.",
+      "initial_program": "# locate chicken and microwave\nfind('chicken')\nfind('microwave')\n# pick up the chicken\ngrab('chicken')\n# open the microwave to access its interior\nopen('microwave')\n# place the chicken inside the microwave\nputin('chicken', 'microwave')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# locate chicken and microwave",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "locate chicken and microwave",
+          "compiled_action": null
+        },
+        {
+          "line": "find('chicken')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "locate chicken and microwave",
+          "compiled_action": "<char0> [find] <chicken> (241)"
+        },
+        {
+          "line": "find('microwave')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "locate chicken and microwave",
+          "compiled_action": "<char0> [find] <microwave> (234)"
+        },
+        {
+          "line": "# pick up the chicken",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "pick up the chicken",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('chicken')",
+          "event": "action",
+          "success": false,
+          "detail": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+          "subgoal": "pick up the chicken",
+          "compiled_action": "<char0> [grab] <chicken> (241)"
+        },
+        {
+          "line": "# open the microwave to access its interior",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "open the microwave to access its interior",
+          "compiled_action": null
+        },
+        {
+          "line": "open('microwave')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "open the microwave to access its interior",
+          "compiled_action": "<char0> [open] <microwave> (234)"
+        },
+        {
+          "line": "# place the chicken inside the microwave",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "place the chicken inside the microwave",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('chicken', 'microwave')",
+          "event": "action",
+          "success": false,
+          "detail": "object not in hand: chicken",
+          "subgoal": "place the chicken inside the microwave",
+          "compiled_action": null
+        }
+      ],
+      "initial_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+          "line": "grab('chicken')"
+        },
+        {
+          "error_type": "precondition_failure",
+          "message": "object not in hand: chicken",
+          "line": "putin('chicken', 'microwave')"
+        }
+      ],
+      "first_verifier": {
+        "done": false,
+        "reason": "The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First move close to the chicken, successfully grab it, then put it inside the open microwave."
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# local repair\nwalk('chicken')\ngrab('chicken')\nputin('chicken', 'microwave')",
+      "repair_execution_trace": [
+        {
+          "line": "# local repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": null
+        },
+        {
+          "line": "walk('chicken')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [walk] <chicken> (241)"
+        },
+        {
+          "line": "grab('chicken')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [grab] <chicken> (241)"
+        },
+        {
+          "line": "putin('chicken', 'microwave')",
+          "event": "action",
+          "success": false,
+          "detail": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [putin] <chicken> (241) <microwave> (234)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+          "line": "putin('chicken', 'microwave')"
+        }
+      ],
+      "repair_verifier": {
+        "done": false,
+        "reason": "The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First move close to the microwave, then put the held chicken inside the microwave."
+      },
+      "final_done": false
+    }
+  ],
+  "generated_program": "# atomic 1: Put the chicken into the microwave.\n# locate chicken and microwave\nfind('chicken')\nfind('microwave')\n# pick up the chicken\ngrab('chicken')\n# open the microwave to access its interior\nopen('microwave')\n# place the chicken inside the microwave\nputin('chicken', 'microwave')\n# atomic 1 Retry-1\n# local repair\nwalk('chicken')\ngrab('chicken')\nputin('chicken', 'microwave')",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "Put the chicken into the microwave.",
+      "manipulated_object": "chicken",
+      "target_object": "microwave"
+    },
+    {
+      "id": 2,
+      "instruction": "Turn on the microwave to cook the chicken.",
+      "manipulated_object": "microwave",
+      "target_object": null
+    }
+  ],
+  "number_of_atomic_tasks": 2,
+  "atomic_tasks_attempted": 1,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Put the chicken into the microwave.",
+        "manipulated_object": "chicken",
+        "target_object": "microwave"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cellphone is OFF, condimentshaker, garbagecan is CLOSED, pillow, rug. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; cellphone INSIDE bookshelf; folder INSIDE bookshelf; kitchentable ON rug.",
+      "initial_program": "# locate chicken and microwave\nfind('chicken')\nfind('microwave')\n# pick up the chicken\ngrab('chicken')\n# open the microwave to access its interior\nopen('microwave')\n# place the chicken inside the microwave\nputin('chicken', 'microwave')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# locate chicken and microwave",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "locate chicken and microwave",
+          "compiled_action": null
+        },
+        {
+          "line": "find('chicken')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "locate chicken and microwave",
+          "compiled_action": "<char0> [find] <chicken> (241)"
+        },
+        {
+          "line": "find('microwave')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "locate chicken and microwave",
+          "compiled_action": "<char0> [find] <microwave> (234)"
+        },
+        {
+          "line": "# pick up the chicken",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "pick up the chicken",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('chicken')",
+          "event": "action",
+          "success": false,
+          "detail": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+          "subgoal": "pick up the chicken",
+          "compiled_action": "<char0> [grab] <chicken> (241)"
+        },
+        {
+          "line": "# open the microwave to access its interior",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "open the microwave to access its interior",
+          "compiled_action": null
+        },
+        {
+          "line": "open('microwave')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "open the microwave to access its interior",
+          "compiled_action": "<char0> [open] <microwave> (234)"
+        },
+        {
+          "line": "# place the chicken inside the microwave",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "place the chicken inside the microwave",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('chicken', 'microwave')",
+          "event": "action",
+          "success": false,
+          "detail": "object not in hand: chicken",
+          "subgoal": "place the chicken inside the microwave",
+          "compiled_action": null
+        }
+      ],
+      "initial_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+          "line": "grab('chicken')"
+        },
+        {
+          "error_type": "precondition_failure",
+          "message": "object not in hand: chicken",
+          "line": "putin('chicken', 'microwave')"
+        }
+      ],
+      "first_verifier": {
+        "done": false,
+        "reason": "The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First move close to the chicken, successfully grab it, then put it inside the open microwave."
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# local repair\nwalk('chicken')\ngrab('chicken')\nputin('chicken', 'microwave')",
+      "repair_execution_trace": [
+        {
+          "line": "# local repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": null
+        },
+        {
+          "line": "walk('chicken')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [walk] <chicken> (241)"
+        },
+        {
+          "line": "grab('chicken')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [grab] <chicken> (241)"
+        },
+        {
+          "line": "putin('chicken', 'microwave')",
+          "event": "action",
+          "success": false,
+          "detail": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [putin] <chicken> (241) <microwave> (234)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+          "line": "putin('chicken', 'microwave')"
+        }
+      ],
+      "repair_verifier": {
+        "done": false,
+        "reason": "The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First move close to the microwave, then put the held chicken inside the microwave."
+      },
+      "final_done": false
+    }
+  ],
+  "retry_count": 1,
+  "early_stop_count": 1,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nPut the chicken into the microwave.\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED, microwave ON dishwasher, microwave ON kitchencounter, microwave is OFF and OPEN, plate, plate INSIDE microwave. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; plate INSIDE microwave; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"chicken\", \"microwave\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"original_task\": \"microwave chicken\", \"program\": \"# locate chicken and microwave\\nfind('chicken')\\nfind('microwave')\\n# pick up the chicken\\ngrab('chicken')\\n# open the microwave to access its interior\\nopen('microwave')\\n# place the chicken inside the microwave\\nputin('chicken', 'microwave')\", \"execution_trace\": [{\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"find('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <microwave> (234)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"open('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <microwave> (234)\"}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: chicken\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"line\": \"grab('chicken')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: chicken\", \"line\": \"putin('chicken', 'microwave')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}",
+      "prompt_tokens": 886,
+      "completion_tokens": 73,
+      "latency_s": 5.550076595000064,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771596498014713b2deea0810671b986a10f293e391fe63e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nPut the chicken into the microwave.\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['chicken']. Nearby visible graph: chicken, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter. You have chicken. One-hop INSIDE/ON relations connected to nearby objects: cutlets ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; plate ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"chicken\", \"microwave\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"original_task\": \"microwave chicken\", \"program\": \"# local repair\\nwalk('chicken')\\ngrab('chicken')\\nputin('chicken', 'microwave')\", \"execution_trace\": [{\"line\": \"walk('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <chicken> (241)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <microwave> (234) when executing \\\"[PUTIN] <chicken> (241) <microwave> (234) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <chicken> (241) <microwave> (234)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <microwave> (234) when executing \\\"[PUTIN] <chicken> (241) <microwave> (234) [0]\\\"\", \"line\": \"putin('chicken', 'microwave')\"}], \"previous_verifier\": {\"done\": false, \"reason\": \"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\", \"failure_stage\": \"interaction\", \"regeneration_hint\": \"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the microwave, then put the held chicken inside the microwave.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the microwave, then put the held chicken inside the microwave.\"}",
+      "prompt_tokens": 823,
+      "completion_tokens": 76,
+      "latency_s": 3.044438099999752,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771597403514713b2deea0810671b986a10f293e39aa6bcf",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": 1,
+      "attempt": "initial",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED, microwave ON dishwasher, microwave ON kitchencounter, microwave is OFF and OPEN, plate, plate INSIDE microwave. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; plate INSIDE microwave; toaster ON kitchencounter.",
+      "result": {
+        "done": false,
+        "reason": "The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First move close to the chicken, successfully grab it, then put it inside the open microwave."
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}"
+    },
+    {
+      "atomic_id": 1,
+      "attempt": "repair",
+      "observation": "Character room=kitchen; states=[]; holds=['chicken']. Nearby visible graph: chicken, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter. You have chicken. One-hop INSIDE/ON relations connected to nearby objects: cutlets ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; plate ON kitchencounter.",
+      "result": {
+        "done": false,
+        "reason": "The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First move close to the microwave, then put the held chicken inside the microwave."
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the microwave, then put the held chicken inside the microwave.\"}"
+    }
+  ],
+  "online_verification_count": 2,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# locate chicken and microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate chicken and microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "find('chicken')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate chicken and microwave",
+      "compiled_action": "<char0> [find] <chicken> (241)"
+    },
+    {
+      "line": "find('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate chicken and microwave",
+      "compiled_action": "<char0> [find] <microwave> (234)"
+    },
+    {
+      "line": "# pick up the chicken",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the chicken",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('chicken')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+      "subgoal": "pick up the chicken",
+      "compiled_action": "<char0> [grab] <chicken> (241)"
+    },
+    {
+      "line": "# open the microwave to access its interior",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "open the microwave to access its interior",
+      "compiled_action": null
+    },
+    {
+      "line": "open('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "open the microwave to access its interior",
+      "compiled_action": "<char0> [open] <microwave> (234)"
+    },
+    {
+      "line": "# place the chicken inside the microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "place the chicken inside the microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('chicken', 'microwave')",
+      "event": "action",
+      "success": false,
+      "detail": "object not in hand: chicken",
+      "subgoal": "place the chicken inside the microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "# local repair",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('chicken')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": "<char0> [walk] <chicken> (241)"
+    },
+    {
+      "line": "grab('chicken')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": "<char0> [grab] <chicken> (241)"
+    },
+    {
+      "line": "putin('chicken', 'microwave')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+      "subgoal": "local repair",
+      "compiled_action": "<char0> [putin] <chicken> (241) <microwave> (234)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <chicken> (241)",
+      "parsed_action": "[FIND] <chicken> (241) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <microwave> (234)",
+      "parsed_action": "[FIND] <microwave> (234) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <chicken> (241)",
+      "parsed_action": "[GRAB] <chicken> (241) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <microwave> (234)",
+      "parsed_action": "[OPEN] <microwave> (234) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "putin('chicken', 'microwave')",
+      "parsed_action": null,
+      "success": false,
+      "error": "object not in hand: chicken",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <chicken> (241)",
+      "parsed_action": "[WALK] <chicken> (241) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <chicken> (241)",
+      "parsed_action": "[GRAB] <chicken> (241) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <chicken> (241) <microwave> (234)",
+      "parsed_action": "[PUTIN] <chicken> (241) <microwave> (234) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <chicken> (241)",
+    "<char0> [find] <microwave> (234)",
+    "<char0> [grab] <chicken> (241)",
+    "<char0> [open] <microwave> (234)",
+    "<char0> [walk] <chicken> (241)",
+    "<char0> [grab] <chicken> (241)",
+    "<char0> [putin] <chicken> (241) <microwave> (234)"
+  ],
+  "program_length": 8,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(chicken, HEATED)",
+        "predicate": "STATE",
+        "object": "chicken",
+        "value": "HEATED",
+        "rationale": "The released microwave augmentation persistently marks food HEATED."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "condition": "STATE(chicken, HEATED)",
+      "predicate": "STATE",
+      "object": "chicken",
+      "value": "HEATED",
+      "rationale": "The released microwave augmentation persistently marks food HEATED."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.41666666666666663,
+  "official_PSR": 0.41666666666666663,
+  "official_Precision": 0.9968553459119497,
+  "Exec": 0.625,
+  "official_goal_condition_count": 12,
+  "official_missing_goal_relations": [
+    "character CLOSE dishwasher",
+    "character CLOSE microwave",
+    "character CLOSE plate",
+    "dishwasher CLOSE character",
+    "microwave CLOSE character",
+    "plate CLOSE character"
+  ],
+  "official_missing_goal_states": [
+    "chicken HEATED"
+  ],
+  "generation_calls": 2,
+  "verification_calls": 2,
+  "repair_calls": 1,
+  "total_calls": 5,
+  "generation_prompt_tokens": 1992,
+  "generation_completion_tokens": 169,
+  "verification_prompt_tokens": 1709,
+  "verification_completion_tokens": 149,
+  "repair_tokens": 2049,
+  "prompt_tokens": 5683,
+  "completion_tokens": 385,
+  "total_prompt_tokens": 5683,
+  "total_completion_tokens": 385,
+  "total_tokens": 6068,
+  "planning_latency": 10.536914559000252,
+  "verification_latency": 8.594514694999816,
+  "total_llm_latency": 19.131429254000068,
+  "wall_clock_total_s": 20.0305982079999,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome household task.\n\nDecompose WHAT the task requires into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles HOW: finding, walking, proximity,\ngrasp preconditions, and prerequisite container open/close actions.\n\nRules:\n1. Each atomic task describes one understandable operation centered on one\n   manipulated object and, when needed, one reference/target object.\n2. Never create Locate/Find/Walk/Navigate/Move/Position atomic tasks.\n3. Never make OPEN/CLOSE a separate atomic when it is only a prerequisite. It\n   may be atomic only when opening/closing is itself the user-requested goal.\n4. Do not output primitive calls, instance IDs, graph predicates, verification\n   answers, time-waiting steps, or invented objects.\n5. Use 1-6 atomics, keep the original task meaning, and use exact class names\n   from AVAILABLE OBJECTS for object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the apple into the fridge.\",\"manipulated_object\":\"apple\",\"target_object\":\"fridge\"}]}\nUse null for target_object when no reference object is needed.\n\nORIGINAL TASK:\nmicrowave chicken\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED ACTION NAMES (ProgramAgent only; do not output calls):\n[\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF TaskAgent protocol.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the chicken into the microwave.\",\"manipulated_object\":\"chicken\",\"target_object\":\"microwave\"},{\"id\":2,\"instruction\":\"Turn on the microwave to cook the chicken.\",\"manipulated_object\":\"microwave\",\"target_object\":null}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the chicken into the microwave.\",\"manipulated_object\":\"chicken\",\"target_object\":\"microwave\"},{\"id\":2,\"instruction\":\"Turn on the microwave to cook the chicken.\",\"manipulated_object\":\"microwave\",\"target_object\":null}]}",
+      "prompt_tokens": 857,
+      "completion_tokens": 67,
+      "latency_s": 2.9742321719995743,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771595783314713b2deea0810671b986a10f293e39bda296",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT OBJECT-CENTRIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, or emit assertions.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nmicrowave chicken\n\nCURRENT ATOMIC TASK:\n{\"id\": 1, \"instruction\": \"Put the chicken into the microwave.\", \"manipulated_object\": \"chicken\", \"target_object\": \"microwave\"}\n\nCURRENT SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: cellphone is OFF, condimentshaker, garbagecan is CLOSED, pillow, rug. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; cellphone INSIDE bookshelf; folder INSIDE bookshelf; kitchentable ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity.\n- The simulator observation persistently marks food HEATED after it is inside an ON\n  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.\n  Establish those causal conditions with the shared primitives when the instruction\n  requests heating or washing.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF atomic ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Locate the chicken and microwave in the kitchen, pick up the chicken, open the microwave, and place the chicken inside.\",\"program\":\"# locate chicken and microwave\\nfind('chicken')\\nfind('microwave')\\n# pick up the chicken\\ngrab('chicken')\\n# open the microwave to access its interior\\nopen('microwave')\\n# place the chicken inside the microwave\\nputin('chicken', 'microwave')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the chicken and microwave in the kitchen, pick up the chicken, open the microwave, and place the chicken inside.\",\"program\":\"# locate chicken and microwave\\nfind('chicken')\\nfind('microwave')\\n# pick up the chicken\\ngrab('chicken')\\n# open the microwave to access its interior\\nopen('microwave')\\n# place the chicken inside the microwave\\nputin('chicken', 'microwave')\"}",
+      "prompt_tokens": 1135,
+      "completion_tokens": 102,
+      "latency_s": 4.0854074340004445,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771596081414713b2deea0810671b986a10f293e39e68c01",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nPut the chicken into the microwave.\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED, microwave ON dishwasher, microwave ON kitchencounter, microwave is OFF and OPEN, plate, plate INSIDE microwave. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; plate INSIDE microwave; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"chicken\", \"microwave\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"original_task\": \"microwave chicken\", \"program\": \"# locate chicken and microwave\\nfind('chicken')\\nfind('microwave')\\n# pick up the chicken\\ngrab('chicken')\\n# open the microwave to access its interior\\nopen('microwave')\\n# place the chicken inside the microwave\\nputin('chicken', 'microwave')\", \"execution_trace\": [{\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"find('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <microwave> (234)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"open('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <microwave> (234)\"}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: chicken\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"line\": \"grab('chicken')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: chicken\", \"line\": \"putin('chicken', 'microwave')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}",
+      "prompt_tokens": 886,
+      "completion_tokens": 73,
+      "latency_s": 5.550076595000064,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771596498014713b2deea0810671b986a10f293e391fe63e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "repair_program_agent",
+      "broad_role": "repair",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one VirtualHome atomic task.\n\nRepair ONLY the current atomic from the CURRENT post-execution observation.\nDo not replay successful actions blindly, replan future atomics, or emit\nassertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# local repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nmicrowave chicken\n\nCURRENT ATOMIC TASK:\n{\"id\": 1, \"instruction\": \"Put the chicken into the microwave.\", \"manipulated_object\": \"chicken\", \"target_object\": \"microwave\"}\n\nCURRENT SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED, microwave ON dishwasher, microwave ON kitchencounter, microwave is OFF and OPEN, plate, plate INSIDE microwave. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; plate INSIDE microwave; toaster ON kitchencounter.\n\nPREVIOUS PROGRAM:\n# locate chicken and microwave\nfind('chicken')\nfind('microwave')\n# pick up the chicken\ngrab('chicken')\n# open the microwave to access its interior\nopen('microwave')\n# place the chicken inside the microwave\nputin('chicken', 'microwave')\n\nCURRENT-ATOMIC EXECUTION TRACE:\n[{\"line\": \"# locate chicken and microwave\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"locate chicken and microwave\", \"compiled_action\": null}, {\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"locate chicken and microwave\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"find('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"locate chicken and microwave\", \"compiled_action\": \"<char0> [find] <microwave> (234)\"}, {\"line\": \"# pick up the chicken\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"pick up the chicken\", \"compiled_action\": null}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"subgoal\": \"pick up the chicken\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"# open the microwave to access its interior\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"open the microwave to access its interior\", \"compiled_action\": null}, {\"line\": \"open('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"open the microwave to access its interior\", \"compiled_action\": \"<char0> [open] <microwave> (234)\"}, {\"line\": \"# place the chicken inside the microwave\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"place the chicken inside the microwave\", \"compiled_action\": null}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: chicken\", \"subgoal\": \"place the chicken inside the microwave\", \"compiled_action\": null}]\n\nTYPED ERRORS:\n[{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"line\": \"grab('chicken')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: chicken\", \"line\": \"putin('chicken', 'microwave')\"}]\n\nONLINE VERIFIER FEEDBACK:\n{\"done\": false, \"reason\": \"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\", \"failure_stage\": \"interaction\", \"regeneration_hint\": \"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity.\n- The simulator observation persistently marks food HEATED after it is inside an ON\n  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.\n  Establish those causal conditions with the shared primitives when the instruction\n  requests heating or washing.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF local Retry-1 protocol.",
+      "raw_output": "{\"repair_brief\":\"The previous grab failed because the character was not close to the chicken. Approach the chicken, grab it, then place it into the already open microwave.\",\"program\":\"# local repair\\nwalk('chicken')\\ngrab('chicken')\\nputin('chicken', 'microwave')\"}",
+      "output_text": "{\"repair_brief\":\"The previous grab failed because the character was not close to the chicken. Approach the chicken, grab it, then place it into the already open microwave.\",\"program\":\"# local repair\\nwalk('chicken')\\ngrab('chicken')\\nputin('chicken', 'microwave')\"}",
+      "prompt_tokens": 1982,
+      "completion_tokens": 67,
+      "latency_s": 3.477274953000233,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771597053014713b2deea0810671b986a10f293e39b84999",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nPut the chicken into the microwave.\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['chicken']. Nearby visible graph: chicken, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter. You have chicken. One-hop INSIDE/ON relations connected to nearby objects: cutlets ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; plate ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"chicken\", \"microwave\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"original_task\": \"microwave chicken\", \"program\": \"# local repair\\nwalk('chicken')\\ngrab('chicken')\\nputin('chicken', 'microwave')\", \"execution_trace\": [{\"line\": \"walk('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <chicken> (241)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <microwave> (234) when executing \\\"[PUTIN] <chicken> (241) <microwave> (234) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <chicken> (241) <microwave> (234)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <microwave> (234) when executing \\\"[PUTIN] <chicken> (241) <microwave> (234) [0]\\\"\", \"line\": \"putin('chicken', 'microwave')\"}], \"previous_verifier\": {\"done\": false, \"reason\": \"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\", \"failure_stage\": \"interaction\", \"regeneration_hint\": \"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the microwave, then put the held chicken inside the microwave.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the microwave, then put the held chicken inside the microwave.\"}",
+      "prompt_tokens": 823,
+      "completion_tokens": 76,
+      "latency_s": 3.044438099999752,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771597403514713b2deea0810671b986a10f293e39aa6bcf",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF TaskAgent protocol.",
+      "input": "You are the HPAF TaskAgent for a VirtualHome household task.\n\nDecompose WHAT the task requires into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles HOW: finding, walking, proximity,\ngrasp preconditions, and prerequisite container open/close actions.\n\nRules:\n1. Each atomic task describes one understandable operation centered on one\n   manipulated object and, when needed, one reference/target object.\n2. Never create Locate/Find/Walk/Navigate/Move/Position atomic tasks.\n3. Never make OPEN/CLOSE a separate atomic when it is only a prerequisite. It\n   may be atomic only when opening/closing is itself the user-requested goal.\n4. Do not output primitive calls, instance IDs, graph predicates, verification\n   answers, time-waiting steps, or invented objects.\n5. Use 1-6 atomics, keep the original task meaning, and use exact class names\n   from AVAILABLE OBJECTS for object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the apple into the fridge.\",\"manipulated_object\":\"apple\",\"target_object\":\"fridge\"}]}\nUse null for target_object when no reference object is needed.\n\nORIGINAL TASK:\nmicrowave chicken\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED ACTION NAMES (ProgramAgent only; do not output calls):\n[\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF atomic ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT OBJECT-CENTRIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, or emit assertions.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nmicrowave chicken\n\nCURRENT ATOMIC TASK:\n{\"id\": 1, \"instruction\": \"Put the chicken into the microwave.\", \"manipulated_object\": \"chicken\", \"target_object\": \"microwave\"}\n\nCURRENT SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: cellphone is OFF, condimentshaker, garbagecan is CLOSED, pillow, rug. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; cellphone INSIDE bookshelf; folder INSIDE bookshelf; kitchentable ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity.\n- The simulator observation persistently marks food HEATED after it is inside an ON\n  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.\n  Establish those causal conditions with the shared primitives when the instruction\n  requests heating or washing.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nPut the chicken into the microwave.\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED, microwave ON dishwasher, microwave ON kitchencounter, microwave is OFF and OPEN, plate, plate INSIDE microwave. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; plate INSIDE microwave; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"chicken\", \"microwave\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"original_task\": \"microwave chicken\", \"program\": \"# locate chicken and microwave\\nfind('chicken')\\nfind('microwave')\\n# pick up the chicken\\ngrab('chicken')\\n# open the microwave to access its interior\\nopen('microwave')\\n# place the chicken inside the microwave\\nputin('chicken', 'microwave')\", \"execution_trace\": [{\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"find('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <microwave> (234)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"open('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <microwave> (234)\"}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: chicken\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"line\": \"grab('chicken')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: chicken\", \"line\": \"putin('chicken', 'microwave')\"}]}\n"
+    },
+    {
+      "role": "repair_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF local Retry-1 protocol.",
+      "input": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one VirtualHome atomic task.\n\nRepair ONLY the current atomic from the CURRENT post-execution observation.\nDo not replay successful actions blindly, replan future atomics, or emit\nassertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# local repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nmicrowave chicken\n\nCURRENT ATOMIC TASK:\n{\"id\": 1, \"instruction\": \"Put the chicken into the microwave.\", \"manipulated_object\": \"chicken\", \"target_object\": \"microwave\"}\n\nCURRENT SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED, microwave ON dishwasher, microwave ON kitchencounter, microwave is OFF and OPEN, plate, plate INSIDE microwave. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; plate INSIDE microwave; toaster ON kitchencounter.\n\nPREVIOUS PROGRAM:\n# locate chicken and microwave\nfind('chicken')\nfind('microwave')\n# pick up the chicken\ngrab('chicken')\n# open the microwave to access its interior\nopen('microwave')\n# place the chicken inside the microwave\nputin('chicken', 'microwave')\n\nCURRENT-ATOMIC EXECUTION TRACE:\n[{\"line\": \"# locate chicken and microwave\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"locate chicken and microwave\", \"compiled_action\": null}, {\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"locate chicken and microwave\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"find('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"locate chicken and microwave\", \"compiled_action\": \"<char0> [find] <microwave> (234)\"}, {\"line\": \"# pick up the chicken\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"pick up the chicken\", \"compiled_action\": null}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"subgoal\": \"pick up the chicken\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"# open the microwave to access its interior\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"open the microwave to access its interior\", \"compiled_action\": null}, {\"line\": \"open('microwave')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"open the microwave to access its interior\", \"compiled_action\": \"<char0> [open] <microwave> (234)\"}, {\"line\": \"# place the chicken inside the microwave\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"place the chicken inside the microwave\", \"compiled_action\": null}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: chicken\", \"subgoal\": \"place the chicken inside the microwave\", \"compiled_action\": null}]\n\nTYPED ERRORS:\n[{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <chicken> (241) when executing \\\"[GRAB] <chicken> (241) [0]\\\"\", \"line\": \"grab('chicken')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: chicken\", \"line\": \"putin('chicken', 'microwave')\"}]\n\nONLINE VERIFIER FEEDBACK:\n{\"done\": false, \"reason\": \"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\", \"failure_stage\": \"interaction\", \"regeneration_hint\": \"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity.\n- The simulator observation persistently marks food HEATED after it is inside an ON\n  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.\n  Establish those causal conditions with the shared primitives when the instruction\n  requests heating or washing.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "post_repair_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nPut the chicken into the microwave.\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['chicken']. Nearby visible graph: chicken, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter. You have chicken. One-hop INSIDE/ON relations connected to nearby objects: cutlets ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; plate ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"chicken\", \"microwave\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"original_task\": \"microwave chicken\", \"program\": \"# local repair\\nwalk('chicken')\\ngrab('chicken')\\nputin('chicken', 'microwave')\", \"execution_trace\": [{\"line\": \"walk('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <chicken> (241)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"putin('chicken', 'microwave')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <microwave> (234) when executing \\\"[PUTIN] <chicken> (241) <microwave> (234) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <chicken> (241) <microwave> (234)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <microwave> (234) when executing \\\"[PUTIN] <chicken> (241) <microwave> (234) [0]\\\"\", \"line\": \"putin('chicken', 'microwave')\"}], \"previous_verifier\": {\"done\": false, \"reason\": \"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\", \"failure_stage\": \"interaction\", \"regeneration_hint\": \"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the chicken into the microwave.\",\"manipulated_object\":\"chicken\",\"target_object\":\"microwave\"},{\"id\":2,\"instruction\":\"Turn on the microwave to cook the chicken.\",\"manipulated_object\":\"microwave\",\"target_object\":null}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the chicken and microwave in the kitchen, pick up the chicken, open the microwave, and place the chicken inside.\",\"program\":\"# locate chicken and microwave\\nfind('chicken')\\nfind('microwave')\\n# pick up the chicken\\ngrab('chicken')\\n# open the microwave to access its interior\\nopen('microwave')\\n# place the chicken inside the microwave\\nputin('chicken', 'microwave')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":false,\"reason\":\"The chicken was never successfully grabbed (character was not close to it) and was not placed inside the microwave; the microwave only contains a plate, and the character holds nothing.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the chicken, successfully grab it, then put it inside the open microwave.\"}"
+    },
+    {
+      "role": "repair_program_agent",
+      "output": "{\"repair_brief\":\"The previous grab failed because the character was not close to the chicken. Approach the chicken, grab it, then place it into the already open microwave.\",\"program\":\"# local repair\\nwalk('chicken')\\ngrab('chicken')\\nputin('chicken', 'microwave')\"}"
+    },
+    {
+      "role": "post_repair_verifier",
+      "output": "{\"done\":false,\"reason\":\"The character is holding the chicken but did not successfully place it inside the microwave; the putin action failed because the character was not close to the microwave, and the chicken is not observed inside the microwave.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First move close to the microwave, then put the held chicken inside the microwave.\"}"
+    }
+  ],
+  "error_type": "atomic_online_verification_failure",
+  "error_message": "Atomic 1 remained done=false after Retry-1",
+  "errors": [
+    {
+      "error_type": "atomic_online_verification_failure",
+      "message": "Atomic 1 remained done=false after Retry-1"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <chicken> (241) when executing \"[GRAB] <chicken> (241) [0]\"",
+      "line": "grab('chicken')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "object not in hand: chicken",
+      "line": "putin('chicken', 'microwave')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <microwave> (234) when executing \"[PUTIN] <chicken> (241) <microwave> (234) [0]\"",
+      "line": "putin('chicken', 'microwave')"
+    }
+  ],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the chicken into the microwave.\",\"manipulated_object\":\"chicken\",\"target_object\":\"microwave\"},{\"id\":2,\"instruction\":\"Turn on the microwave to cook the chicken.\",\"manipulated_object\":\"microwave\",\"target_object\":null}]}"
+}

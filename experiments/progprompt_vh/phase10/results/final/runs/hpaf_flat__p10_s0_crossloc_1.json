@@ -1,0 +1,709 @@
+{
+  "run_id": "formal_2026-08-26T162730.991514_0000_hpaf_flat_p10_s0_crossloc_1",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T16:27:30.991514+00:00",
+  "task_id": "p10_s0_crossloc_1",
+  "task": "Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.",
+  "split": "phase10_final_holdout",
+  "scene": 0,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "42472000c74754de8055ef41fe7bea90875bc325b7bd4ebeecd6ed75d7a6f80b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# Move from kitchen to bathroom and locate toothpaste\nwalk('bathroom')\nfind('toothpaste')\ngrab('toothpaste')\n# Stage toothpaste on the bathroomcounter\nfind('bathroomcounter')\nputback('toothpaste','bathroomcounter')\n# Temporarily store toothpaste in the bathroomcabinet\nfind('bathroomcabinet')\nopen('bathroomcabinet')\nfind('toothpaste')\ngrab('toothpaste')\nfind('bathroomcabinet')\nputin('toothpaste','bathroomcabinet')\n# Retrieve toothpaste and deliver it to the bed\nfind('toothpaste')\ngrab('toothpaste')\nwalk('bedroom')\nfind('bed')\nputback('toothpaste','bed')\n# Return to bathroom and leave the bathroomcabinet closed\nwalk('bathroom')\nfind('bathroomcabinet')\nclose('bathroomcabinet')\n"
+  ],
+  "generated_program": "# Move from kitchen to bathroom and locate toothpaste\nwalk('bathroom')\nfind('toothpaste')\ngrab('toothpaste')\n# Stage toothpaste on the bathroomcounter\nfind('bathroomcounter')\nputback('toothpaste','bathroomcounter')\n# Temporarily store toothpaste in the bathroomcabinet\nfind('bathroomcabinet')\nopen('bathroomcabinet')\nfind('toothpaste')\ngrab('toothpaste')\nfind('bathroomcabinet')\nputin('toothpaste','bathroomcabinet')\n# Retrieve toothpaste and deliver it to the bed\nfind('toothpaste')\ngrab('toothpaste')\nwalk('bedroom')\nfind('bed')\nputback('toothpaste','bed')\n# Return to bathroom and leave the bathroomcabinet closed\nwalk('bathroom')\nfind('bathroomcabinet')\nclose('bathroomcabinet')\n",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=[]. Nearby visible graph: bathroomcabinet ON wall, bathroomcabinet is CLOSED, wall. One-hop INSIDE/ON relations connected to nearby objects: bathroomcabinet ON wall.\nRELEVANT OBJECT CLASSES: [\"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"cabinet\", \"toothpaste\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Move from kitchen to bathroom and locate toothpaste\\nwalk('bathroom')\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Stage toothpaste on the bathroomcounter\\nfind('bathroomcounter')\\nputback('toothpaste','bathroomcounter')\\n# Temporarily store toothpaste in the bathroomcabinet\\nfind('bathroomcabinet')\\nopen('bathroomcabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nfind('bathroomcabinet')\\nputin('toothpaste','bathroomcabinet')\\n# Retrieve toothpaste and deliver it to the bed\\nfind('toothpaste')\\ngrab('toothpaste')\\nwalk('bedroom')\\nfind('bed')\\nputback('toothpaste','bed')\\n# Return to bathroom and leave the bathroomcabinet closed\\nwalk('bathroom')\\nfind('bathroomcabinet')\\nclose('bathroomcabinet')\\n\", \"execution_trace\": [{\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"find('bathroomcounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcounter> (49)\"}, {\"line\": \"putback('toothpaste','bathroomcounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothpaste> (62) <bathroomcounter> (49)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"open('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <bathroomcabinet> (48)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"putin('toothpaste','bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (62) <bathroomcabinet> (48)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"walk('bedroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bedroom> (73)\"}, {\"line\": \"find('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bed> (109)\"}, {\"line\": \"putback('toothpaste','bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothpaste> (62) <bed> (109)\"}, {\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"close('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <bathroomcabinet> (48)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: toothpaste was staged on the bathroomcounter, temporarily put in the bathroomcabinet, then delivered to the bed, and the bathroomcabinet is observed closed with no execution errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All requested steps completed successfully: toothpaste was staged on the bathroomcounter, temporarily put in the bathroomcabinet, then delivered to the bed, and the bathroomcabinet is observed closed with no execution errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1623,
+      "completion_tokens": 62,
+      "latency_s": 2.2617392900001505,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776167485108bad97b19aecd1d2e685dea670f3cae6f12d2",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=bathroom; states=[]; holds=[]. Nearby visible graph: bathroomcabinet ON wall, bathroomcabinet is CLOSED, wall. One-hop INSIDE/ON relations connected to nearby objects: bathroomcabinet ON wall.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: toothpaste was staged on the bathroomcounter, temporarily put in the bathroomcabinet, then delivered to the bed, and the bathroomcabinet is observed closed with no execution errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Move from kitchen to bathroom and locate toothpaste",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move from kitchen to bathroom and locate toothpaste",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('bathroom')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move from kitchen to bathroom and locate toothpaste",
+      "compiled_action": "<char0> [walk] <bathroom> (11)"
+    },
+    {
+      "line": "find('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move from kitchen to bathroom and locate toothpaste",
+      "compiled_action": "<char0> [find] <toothpaste> (62)"
+    },
+    {
+      "line": "grab('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move from kitchen to bathroom and locate toothpaste",
+      "compiled_action": "<char0> [grab] <toothpaste> (62)"
+    },
+    {
+      "line": "# Stage toothpaste on the bathroomcounter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage toothpaste on the bathroomcounter",
+      "compiled_action": null
+    },
+    {
+      "line": "find('bathroomcounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage toothpaste on the bathroomcounter",
+      "compiled_action": "<char0> [find] <bathroomcounter> (49)"
+    },
+    {
+      "line": "putback('toothpaste','bathroomcounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage toothpaste on the bathroomcounter",
+      "compiled_action": "<char0> [putback] <toothpaste> (62) <bathroomcounter> (49)"
+    },
+    {
+      "line": "# Temporarily store toothpaste in the bathroomcabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": "<char0> [find] <bathroomcabinet> (48)"
+    },
+    {
+      "line": "open('bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": "<char0> [open] <bathroomcabinet> (48)"
+    },
+    {
+      "line": "find('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": "<char0> [find] <toothpaste> (62)"
+    },
+    {
+      "line": "grab('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": "<char0> [grab] <toothpaste> (62)"
+    },
+    {
+      "line": "find('bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": "<char0> [find] <bathroomcabinet> (48)"
+    },
+    {
+      "line": "putin('toothpaste','bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in the bathroomcabinet",
+      "compiled_action": "<char0> [putin] <toothpaste> (62) <bathroomcabinet> (48)"
+    },
+    {
+      "line": "# Retrieve toothpaste and deliver it to the bed",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve toothpaste and deliver it to the bed",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve toothpaste and deliver it to the bed",
+      "compiled_action": "<char0> [find] <toothpaste> (62)"
+    },
+    {
+      "line": "grab('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve toothpaste and deliver it to the bed",
+      "compiled_action": "<char0> [grab] <toothpaste> (62)"
+    },
+    {
+      "line": "walk('bedroom')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve toothpaste and deliver it to the bed",
+      "compiled_action": "<char0> [walk] <bedroom> (73)"
+    },
+    {
+      "line": "find('bed')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve toothpaste and deliver it to the bed",
+      "compiled_action": "<char0> [find] <bed> (109)"
+    },
+    {
+      "line": "putback('toothpaste','bed')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve toothpaste and deliver it to the bed",
+      "compiled_action": "<char0> [putback] <toothpaste> (62) <bed> (109)"
+    },
+    {
+      "line": "# Return to bathroom and leave the bathroomcabinet closed",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to bathroom and leave the bathroomcabinet closed",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('bathroom')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to bathroom and leave the bathroomcabinet closed",
+      "compiled_action": "<char0> [walk] <bathroom> (11)"
+    },
+    {
+      "line": "find('bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to bathroom and leave the bathroomcabinet closed",
+      "compiled_action": "<char0> [find] <bathroomcabinet> (48)"
+    },
+    {
+      "line": "close('bathroomcabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to bathroom and leave the bathroomcabinet closed",
+      "compiled_action": "<char0> [close] <bathroomcabinet> (48)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [walk] <bathroom> (11)",
+      "parsed_action": "[WALK] <bathroom> (11) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toothpaste> (62)",
+      "parsed_action": "[FIND] <toothpaste> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothpaste> (62)",
+      "parsed_action": "[GRAB] <toothpaste> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bathroomcounter> (49)",
+      "parsed_action": "[FIND] <bathroomcounter> (49) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toothpaste> (62) <bathroomcounter> (49)",
+      "parsed_action": "[PUTBACK] <toothpaste> (62) <bathroomcounter> (49) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bathroomcabinet> (48)",
+      "parsed_action": "[FIND] <bathroomcabinet> (48) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <bathroomcabinet> (48)",
+      "parsed_action": "[OPEN] <bathroomcabinet> (48) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toothpaste> (62)",
+      "parsed_action": "[FIND] <toothpaste> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothpaste> (62)",
+      "parsed_action": "[GRAB] <toothpaste> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bathroomcabinet> (48)",
+      "parsed_action": "[FIND] <bathroomcabinet> (48) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <toothpaste> (62) <bathroomcabinet> (48)",
+      "parsed_action": "[PUTIN] <toothpaste> (62) <bathroomcabinet> (48) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toothpaste> (62)",
+      "parsed_action": "[FIND] <toothpaste> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothpaste> (62)",
+      "parsed_action": "[GRAB] <toothpaste> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <bedroom> (73)",
+      "parsed_action": "[WALK] <bedroom> (73) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bed> (109)",
+      "parsed_action": "[FIND] <bed> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toothpaste> (62) <bed> (109)",
+      "parsed_action": "[PUTBACK] <toothpaste> (62) <bed> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <bathroom> (11)",
+      "parsed_action": "[WALK] <bathroom> (11) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bathroomcabinet> (48)",
+      "parsed_action": "[FIND] <bathroomcabinet> (48) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <bathroomcabinet> (48)",
+      "parsed_action": "[CLOSE] <bathroomcabinet> (48) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [walk] <bathroom> (11)",
+    "<char0> [find] <toothpaste> (62)",
+    "<char0> [grab] <toothpaste> (62)",
+    "<char0> [find] <bathroomcounter> (49)",
+    "<char0> [putback] <toothpaste> (62) <bathroomcounter> (49)",
+    "<char0> [find] <bathroomcabinet> (48)",
+    "<char0> [open] <bathroomcabinet> (48)",
+    "<char0> [find] <toothpaste> (62)",
+    "<char0> [grab] <toothpaste> (62)",
+    "<char0> [find] <bathroomcabinet> (48)",
+    "<char0> [putin] <toothpaste> (62) <bathroomcabinet> (48)",
+    "<char0> [find] <toothpaste> (62)",
+    "<char0> [grab] <toothpaste> (62)",
+    "<char0> [walk] <bedroom> (73)",
+    "<char0> [find] <bed> (109)",
+    "<char0> [putback] <toothpaste> (62) <bed> (109)",
+    "<char0> [walk] <bathroom> (11)",
+    "<char0> [find] <bathroomcabinet> (48)",
+    "<char0> [close] <bathroomcabinet> (48)"
+  ],
+  "program_length": 19,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 9,
+  "semantic_satisfied_condition_count": 9,
+  "semantic_condition_details": [
+    {
+      "kind": "semantic_event",
+      "id": "E1",
+      "description": "stage source at waypoint",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toothpaste",
+          "second": "bathroomcounter"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "toothpaste",
+        "first_id": 62,
+        "second": "bathroomcounter",
+        "second_id": 49,
+        "ordinal": 5
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E2",
+      "description": "store source in intermediate container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "toothpaste",
+          "second": "bathroomcabinet"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "toothpaste",
+        "first_id": 62,
+        "second": "bathroomcabinet",
+        "second_id": 48,
+        "ordinal": 11
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E3",
+      "description": "retrieve source from intermediate container",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "toothpaste"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "toothpaste",
+        "first_id": 62,
+        "second": null,
+        "second_id": null,
+        "ordinal": 13
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "deliver source to final destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toothpaste",
+          "second": "bed"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "toothpaste",
+        "first_id": 62,
+        "second": "bed",
+        "second_id": 109,
+        "ordinal": 16
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E1",
+      "after": "E2",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 5,
+        "after_ordinal": 11
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E2",
+      "after": "E3",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 11,
+        "after_ordinal": 13
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E5",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 13,
+        "after_ordinal": 16
+      }
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(bathroomcabinet, CLOSED)",
+        "predicate": "STATE",
+        "object": "bathroomcabinet",
+        "value": "CLOSED",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[48]"
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "ON(toothpaste, bed)",
+        "predicate": "RELATION",
+        "subject": "toothpaste",
+        "relation": "ON",
+        "object": "bed",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['62-ON-109']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "partial_order_assignment": {
+    "E1": 5,
+    "E2": 11,
+    "E3": 13,
+    "E5": 16
+  },
+  "implementation_rejection": false,
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1553,
+  "generation_completion_tokens": 274,
+  "verification_prompt_tokens": 1623,
+  "verification_completion_tokens": 62,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 3176,
+  "completion_tokens": 336,
+  "total_prompt_tokens": 3176,
+  "total_completion_tokens": 336,
+  "total_tokens": 3512,
+  "planning_latency": 6.672217744000591,
+  "verification_latency": 2.2617392900001505,
+  "total_llm_latency": 8.933957034000741,
+  "wall_clock_total_s": 10.416251634000218,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Navigate from the kitchen to the bathroom, retrieve toothpaste, stage it on the bathroomcounter, temporarily store it inside the bathroomcabinet, then deliver it to the bed, and finally close the bathroomcabinet.\",\"program\":\"# Move from kitchen to bathroom and locate toothpaste\\nwalk('bathroom')\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Stage toothpaste on the bathroomcounter\\nfind('bathroomcounter')\\nputback('toothpaste','bathroomcounter')\\n# Temporarily store toothpaste in the bathroomcabinet\\nfind('bathroomcabinet')\\nopen('bathroomcabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nfind('bathroomcabinet')\\nputin('toothpaste','bathroomcabinet')\\n# Retrieve toothpaste and deliver it to the bed\\nfind('toothpaste')\\ngrab('toothpaste')\\nwalk('bedroom')\\nfind('bed')\\nputback('toothpaste','bed')\\n# Return to bathroom and leave the bathroomcabinet closed\\nwalk('bathroom')\\nfind('bathroomcabinet')\\nclose('bathroomcabinet')\\n\"}",
+      "output_text": "{\"plan_brief\":\"Navigate from the kitchen to the bathroom, retrieve toothpaste, stage it on the bathroomcounter, temporarily store it inside the bathroomcabinet, then deliver it to the bed, and finally close the bathroomcabinet.\",\"program\":\"# Move from kitchen to bathroom and locate toothpaste\\nwalk('bathroom')\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Stage toothpaste on the bathroomcounter\\nfind('bathroomcounter')\\nputback('toothpaste','bathroomcounter')\\n# Temporarily store toothpaste in the bathroomcabinet\\nfind('bathroomcabinet')\\nopen('bathroomcabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nfind('bathroomcabinet')\\nputin('toothpaste','bathroomcabinet')\\n# Retrieve toothpaste and deliver it to the bed\\nfind('toothpaste')\\ngrab('toothpaste')\\nwalk('bedroom')\\nfind('bed')\\nputback('toothpaste','bed')\\n# Return to bathroom and leave the bathroomcabinet closed\\nwalk('bathroom')\\nfind('bathroomcabinet')\\nclose('bathroomcabinet')\\n\"}",
+      "prompt_tokens": 1553,
+      "completion_tokens": 274,
+      "latency_s": 6.672217744000591,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776166767908bad97b19aecd1d2e685dea670f3cae827444",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=[]. Nearby visible graph: bathroomcabinet ON wall, bathroomcabinet is CLOSED, wall. One-hop INSIDE/ON relations connected to nearby objects: bathroomcabinet ON wall.\nRELEVANT OBJECT CLASSES: [\"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"cabinet\", \"toothpaste\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Move from kitchen to bathroom and locate toothpaste\\nwalk('bathroom')\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Stage toothpaste on the bathroomcounter\\nfind('bathroomcounter')\\nputback('toothpaste','bathroomcounter')\\n# Temporarily store toothpaste in the bathroomcabinet\\nfind('bathroomcabinet')\\nopen('bathroomcabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nfind('bathroomcabinet')\\nputin('toothpaste','bathroomcabinet')\\n# Retrieve toothpaste and deliver it to the bed\\nfind('toothpaste')\\ngrab('toothpaste')\\nwalk('bedroom')\\nfind('bed')\\nputback('toothpaste','bed')\\n# Return to bathroom and leave the bathroomcabinet closed\\nwalk('bathroom')\\nfind('bathroomcabinet')\\nclose('bathroomcabinet')\\n\", \"execution_trace\": [{\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"find('bathroomcounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcounter> (49)\"}, {\"line\": \"putback('toothpaste','bathroomcounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothpaste> (62) <bathroomcounter> (49)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"open('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <bathroomcabinet> (48)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"putin('toothpaste','bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (62) <bathroomcabinet> (48)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"walk('bedroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bedroom> (73)\"}, {\"line\": \"find('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bed> (109)\"}, {\"line\": \"putback('toothpaste','bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothpaste> (62) <bed> (109)\"}, {\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"close('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <bathroomcabinet> (48)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: toothpaste was staged on the bathroomcounter, temporarily put in the bathroomcabinet, then delivered to the bed, and the bathroomcabinet is observed closed with no execution errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All requested steps completed successfully: toothpaste was staged on the bathroomcounter, temporarily put in the bathroomcabinet, then delivered to the bed, and the bathroomcabinet is observed closed with no execution errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1623,
+      "completion_tokens": 62,
+      "latency_s": 2.2617392900001505,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776167485108bad97b19aecd1d2e685dea670f3cae6f12d2",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the toothpaste on the bathroomcounter, store the toothpaste temporarily in the bathroomcabinet, then deliver the toothpaste to the bed and leave the bathroomcabinet closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=[]. Nearby visible graph: bathroomcabinet ON wall, bathroomcabinet is CLOSED, wall. One-hop INSIDE/ON relations connected to nearby objects: bathroomcabinet ON wall.\nRELEVANT OBJECT CLASSES: [\"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"cabinet\", \"toothpaste\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Move from kitchen to bathroom and locate toothpaste\\nwalk('bathroom')\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Stage toothpaste on the bathroomcounter\\nfind('bathroomcounter')\\nputback('toothpaste','bathroomcounter')\\n# Temporarily store toothpaste in the bathroomcabinet\\nfind('bathroomcabinet')\\nopen('bathroomcabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nfind('bathroomcabinet')\\nputin('toothpaste','bathroomcabinet')\\n# Retrieve toothpaste and deliver it to the bed\\nfind('toothpaste')\\ngrab('toothpaste')\\nwalk('bedroom')\\nfind('bed')\\nputback('toothpaste','bed')\\n# Return to bathroom and leave the bathroomcabinet closed\\nwalk('bathroom')\\nfind('bathroomcabinet')\\nclose('bathroomcabinet')\\n\", \"execution_trace\": [{\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"find('bathroomcounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcounter> (49)\"}, {\"line\": \"putback('toothpaste','bathroomcounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothpaste> (62) <bathroomcounter> (49)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"open('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <bathroomcabinet> (48)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"putin('toothpaste','bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (62) <bathroomcabinet> (48)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (62)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (62)\"}, {\"line\": \"walk('bedroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bedroom> (73)\"}, {\"line\": \"find('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bed> (109)\"}, {\"line\": \"putback('toothpaste','bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toothpaste> (62) <bed> (109)\"}, {\"line\": \"walk('bathroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bathroom> (11)\"}, {\"line\": \"find('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bathroomcabinet> (48)\"}, {\"line\": \"close('bathroomcabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <bathroomcabinet> (48)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Navigate from the kitchen to the bathroom, retrieve toothpaste, stage it on the bathroomcounter, temporarily store it inside the bathroomcabinet, then deliver it to the bed, and finally close the bathroomcabinet.\",\"program\":\"# Move from kitchen to bathroom and locate toothpaste\\nwalk('bathroom')\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Stage toothpaste on the bathroomcounter\\nfind('bathroomcounter')\\nputback('toothpaste','bathroomcounter')\\n# Temporarily store toothpaste in the bathroomcabinet\\nfind('bathroomcabinet')\\nopen('bathroomcabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nfind('bathroomcabinet')\\nputin('toothpaste','bathroomcabinet')\\n# Retrieve toothpaste and deliver it to the bed\\nfind('toothpaste')\\ngrab('toothpaste')\\nwalk('bedroom')\\nfind('bed')\\nputback('toothpaste','bed')\\n# Return to bathroom and leave the bathroomcabinet closed\\nwalk('bathroom')\\nfind('bathroomcabinet')\\nclose('bathroomcabinet')\\n\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: toothpaste was staged on the bathroomcounter, temporarily put in the bathroomcabinet, then delivered to the bed, and the bathroomcabinet is observed closed with no execution errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug."
+}

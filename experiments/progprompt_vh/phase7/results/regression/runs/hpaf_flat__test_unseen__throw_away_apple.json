@@ -1,0 +1,352 @@
+{
+  "run_id": "regression_formal_2026-08-26T080343.807995_0000_hpaf_flat_test_unseen_throw_away_apple",
+  "phase": "regression_formal",
+  "timestamp": "2026-08-26T08:03:43.807995+00:00",
+  "task_id": "test_unseen::throw_away_apple",
+  "task": "throw away apple",
+  "split": "test_unseen",
+  "scene": 0,
+  "gt_action_length": 8,
+  "horizon": "Medium",
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "0ac9208080337cbeea2d02abc1334bde7787041b9eb872b754c71654a2138995",
+  "semantic_goals_sha256": "0ac9208080337cbeea2d02abc1334bde7787041b9eb872b754c71654a2138995",
+  "long_horizon_manifest_sha256": "0e7ec66f08f397d777632474e3a2847fe98148c77261d629ec65267f6f424987",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "1ff91d8ef302acf6a349659834ee1e5900f344fc6cca0b0e6b25d6a3c9578546",
+  "generated_programs": [
+    "# locate and grab the apple\nfind('apple')\ngrab('apple')\n# approach the garbage can and open it\nfind('garbagecan')\nopen('garbagecan')\n# discard the apple into the garbage can\nputin('apple', 'garbagecan')\n# close the garbage can\nclose('garbagecan')"
+  ],
+  "generated_program": "# locate and grab the apple\nfind('apple')\ngrab('apple')\n# approach the garbage can and open it\nfind('garbagecan')\nopen('garbagecan')\n# discard the apple into the garbage can\nputin('apple', 'garbagecan')\n# close the garbage can\nclose('garbagecan')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nthrow away apple\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple INSIDE garbagecan, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: apple INSIDE garbagecan.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"apple\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate and grab the apple\\nfind('apple')\\ngrab('apple')\\n# approach the garbage can and open it\\nfind('garbagecan')\\nopen('garbagecan')\\n# discard the apple into the garbage can\\nputin('apple', 'garbagecan')\\n# close the garbage can\\nclose('garbagecan')\", \"execution_trace\": [{\"line\": \"find('apple')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <apple> (438)\"}, {\"line\": \"grab('apple')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <apple> (438)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (229)\"}, {\"line\": \"open('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <garbagecan> (229)\"}, {\"line\": \"putin('apple', 'garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <apple> (438) <garbagecan> (229)\"}, {\"line\": \"close('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <garbagecan> (229)\"}], \"errors\": []}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":true,\"reason\":\"The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 745,
+      "completion_tokens": 39,
+      "latency_s": 10.307759752999118,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877314398379430d596286b260c96da43cf8b78006c37dbfc",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task": "throw away apple",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple INSIDE garbagecan, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: apple INSIDE garbagecan.",
+      "result": {
+        "done": true,
+        "reason": "The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.",
+        "failure_stage": "none",
+        "regeneration_hint": ""
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# locate and grab the apple",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and grab the apple",
+      "compiled_action": null
+    },
+    {
+      "line": "find('apple')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and grab the apple",
+      "compiled_action": "<char0> [find] <apple> (438)"
+    },
+    {
+      "line": "grab('apple')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate and grab the apple",
+      "compiled_action": "<char0> [grab] <apple> (438)"
+    },
+    {
+      "line": "# approach the garbage can and open it",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "approach the garbage can and open it",
+      "compiled_action": null
+    },
+    {
+      "line": "find('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "approach the garbage can and open it",
+      "compiled_action": "<char0> [find] <garbagecan> (229)"
+    },
+    {
+      "line": "open('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "approach the garbage can and open it",
+      "compiled_action": "<char0> [open] <garbagecan> (229)"
+    },
+    {
+      "line": "# discard the apple into the garbage can",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "discard the apple into the garbage can",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('apple', 'garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "discard the apple into the garbage can",
+      "compiled_action": "<char0> [putin] <apple> (438) <garbagecan> (229)"
+    },
+    {
+      "line": "# close the garbage can",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "close the garbage can",
+      "compiled_action": null
+    },
+    {
+      "line": "close('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "close the garbage can",
+      "compiled_action": "<char0> [close] <garbagecan> (229)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <apple> (438)",
+      "parsed_action": "[FIND] <apple> (438) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <apple> (438)",
+      "parsed_action": "[GRAB] <apple> (438) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <garbagecan> (229)",
+      "parsed_action": "[FIND] <garbagecan> (229) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <garbagecan> (229)",
+      "parsed_action": "[OPEN] <garbagecan> (229) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <apple> (438) <garbagecan> (229)",
+      "parsed_action": "[PUTIN] <apple> (438) <garbagecan> (229) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <garbagecan> (229)",
+      "parsed_action": "[CLOSE] <garbagecan> (229) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <apple> (438)",
+    "<char0> [grab] <apple> (438)",
+    "<char0> [find] <garbagecan> (229)",
+    "<char0> [open] <garbagecan> (229)",
+    "<char0> [putin] <apple> (438) <garbagecan> (229)",
+    "<char0> [close] <garbagecan> (229)"
+  ],
+  "program_length": 6,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "INSIDE(apple, garbagecan)",
+        "predicate": "RELATION",
+        "subject": "apple",
+        "relation": "INSIDE",
+        "object": "garbagecan",
+        "rationale": "Disposal is represented by containment in the garbage can."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['438-INSIDE-229']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 1.0,
+  "Exec": 1.0,
+  "official_goal_condition_count": 5,
+  "official_missing_goal_relations": [],
+  "official_missing_goal_states": [],
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1715,
+  "generation_completion_tokens": 115,
+  "verification_prompt_tokens": 745,
+  "verification_completion_tokens": 39,
+  "repair_tokens": 0,
+  "prompt_tokens": 2460,
+  "completion_tokens": 154,
+  "total_prompt_tokens": 2460,
+  "total_completion_tokens": 154,
+  "total_tokens": 2614,
+  "planning_latency": 3.9088167660011095,
+  "verification_latency": 10.307759752999118,
+  "total_llm_latency": 14.216576519000228,
+  "wall_clock_total_s": 15.18148402999941,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nthrow away apple\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Locate the apple, pick it up, open the closed garbage can, place the apple inside the garbage can, then close the garbage can.\",\"program\":\"# locate and grab the apple\\nfind('apple')\\ngrab('apple')\\n# approach the garbage can and open it\\nfind('garbagecan')\\nopen('garbagecan')\\n# discard the apple into the garbage can\\nputin('apple', 'garbagecan')\\n# close the garbage can\\nclose('garbagecan')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the apple, pick it up, open the closed garbage can, place the apple inside the garbage can, then close the garbage can.\",\"program\":\"# locate and grab the apple\\nfind('apple')\\ngrab('apple')\\n# approach the garbage can and open it\\nfind('garbagecan')\\nopen('garbagecan')\\n# discard the apple into the garbage can\\nputin('apple', 'garbagecan')\\n# close the garbage can\\nclose('garbagecan')\"}",
+      "prompt_tokens": 1715,
+      "completion_tokens": 115,
+      "latency_s": 3.9088167660011095,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877314357919430d596286b260c96da43cf8b78006c4a96bc",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nthrow away apple\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple INSIDE garbagecan, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: apple INSIDE garbagecan.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"apple\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate and grab the apple\\nfind('apple')\\ngrab('apple')\\n# approach the garbage can and open it\\nfind('garbagecan')\\nopen('garbagecan')\\n# discard the apple into the garbage can\\nputin('apple', 'garbagecan')\\n# close the garbage can\\nclose('garbagecan')\", \"execution_trace\": [{\"line\": \"find('apple')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <apple> (438)\"}, {\"line\": \"grab('apple')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <apple> (438)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (229)\"}, {\"line\": \"open('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <garbagecan> (229)\"}, {\"line\": \"putin('apple', 'garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <apple> (438) <garbagecan> (229)\"}, {\"line\": \"close('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <garbagecan> (229)\"}], \"errors\": []}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":true,\"reason\":\"The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 745,
+      "completion_tokens": 39,
+      "latency_s": 10.307759752999118,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877314398379430d596286b260c96da43cf8b78006c37dbfc",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nthrow away apple\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nthrow away apple\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple INSIDE garbagecan, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: apple INSIDE garbagecan.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"apple\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate and grab the apple\\nfind('apple')\\ngrab('apple')\\n# approach the garbage can and open it\\nfind('garbagecan')\\nopen('garbagecan')\\n# discard the apple into the garbage can\\nputin('apple', 'garbagecan')\\n# close the garbage can\\nclose('garbagecan')\", \"execution_trace\": [{\"line\": \"find('apple')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <apple> (438)\"}, {\"line\": \"grab('apple')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <apple> (438)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (229)\"}, {\"line\": \"open('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <garbagecan> (229)\"}, {\"line\": \"putin('apple', 'garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <apple> (438) <garbagecan> (229)\"}, {\"line\": \"close('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <garbagecan> (229)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate the apple, pick it up, open the closed garbage can, place the apple inside the garbage can, then close the garbage can.\",\"program\":\"# locate and grab the apple\\nfind('apple')\\ngrab('apple')\\n# approach the garbage can and open it\\nfind('garbagecan')\\nopen('garbagecan')\\n# discard the apple into the garbage can\\nputin('apple', 'garbagecan')\\n# close the garbage can\\nclose('garbagecan')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"The apple is observed inside the closed garbagecan, confirming it has been thrown away as requested.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+  "phase7_set": "regression",
+  "evaluator_type": "persistent_state",
+  "trace_goal": null
+}

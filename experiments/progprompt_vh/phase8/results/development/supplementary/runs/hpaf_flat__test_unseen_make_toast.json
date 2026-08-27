@@ -1,0 +1,364 @@
+{
+  "run_id": "development_supplementary_2026-08-26T103157.216192_0000_hpaf_flat_test_unseen_make_toast",
+  "phase": "development_supplementary",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T10:31:57.216192+00:00",
+  "task_id": "test_unseen::make_toast",
+  "task": "make toast",
+  "split": "test_unseen",
+  "scene": 0,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    "# Walk to the toaster on the kitchen counter\nwalk('toaster')\n# Activate the toaster to toast the breadslice inside\nswitchon('toaster')\n# Complete the toasting cycle by turning the toaster off\nswitchoff('toaster')\n# Open the toaster to access the toasted breadslice\nopen('toaster')\n# Take the toasted breadslice from the toaster\ngrab('breadslice')"
+  ],
+  "generated_program": "# Walk to the toaster on the kitchen counter\nwalk('toaster')\n# Activate the toaster to toast the breadslice inside\nswitchon('toaster')\n# Complete the toasting cycle by turning the toaster off\nswitchoff('toaster')\n# Open the toaster to access the toasted breadslice\nopen('toaster')\n# Take the toasted breadslice from the toaster\ngrab('breadslice')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"make toast\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, toaster ON kitchencounter, toaster ON kitchencounterdrawer, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeemaker ON kitchencounterdrawer; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; toaster ON kitchencounterdrawer; washingsponge ON kitchencounter.\nRELEVANT OBJECT CLASSES: []\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Walk to the toaster on the kitchen counter\\nwalk('toaster')\\n# Activate the toaster to toast the breadslice inside\\nswitchon('toaster')\\n# Complete the toasting cycle by turning the toaster off\\nswitchoff('toaster')\\n# Open the toaster to access the toasted breadslice\\nopen('toaster')\\n# Take the toasted breadslice from the toaster\\ngrab('breadslice')\", \"execution_trace\": [{\"line\": \"walk('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <toaster> (308)\"}, {\"line\": \"switchon('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <toaster> (308)\"}, {\"line\": \"switchoff('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <toaster> (308)\"}, {\"line\": \"open('toaster')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\"\", \"compiled_action\": \"<char0> [open] <toaster> (308)\"}, {\"line\": \"grab('breadslice')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\",<character> (1) is not close to <breadslice> (310) when executing \\\"[GRAB] <breadslice> (310) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <breadslice> (310)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\"\", \"line\": \"open('toaster')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\",<character> (1) is not close to <breadslice> (310) when executing \\\"[GRAB] <breadslice> (310) [0]\\\"\", \"line\": \"grab('breadslice')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The toaster was switched on then off, but the attempt to open the toaster failed (toaster cannot be opened), so the toasted breadslice was not retrieved; the character is not close to the breadslice and does not hold it, so toast is not made.\",\"failure_stage\":\"retrieval after toasting\",\"regeneration_hint\":\"Do not try to open the toaster since it is not openable. After switching the toaster on and completing the toasting cycle, retrieve the breadslice directly from the toaster (or use the appropriate post-cycle retrieval action) and hold it as finished toast.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The toaster was switched on then off, but the attempt to open the toaster failed (toaster cannot be opened), so the toasted breadslice was not retrieved; the character is not close to the breadslice and does not hold it, so toast is not made.\",\"failure_stage\":\"retrieval after toasting\",\"regeneration_hint\":\"Do not try to open the toaster since it is not openable. After switching the toaster on and completing the toasting cycle, retrieve the breadslice directly from the toaster (or use the appropriate post-cycle retrieval action) and hold it as finished toast.\"}",
+      "prompt_tokens": 1083,
+      "completion_tokens": 133,
+      "latency_s": 6.001573270001245,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774033766866701df21cea91c839fa89f5ad11c1c27afcd5",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "make toast",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, toaster ON kitchencounter, toaster ON kitchencounterdrawer, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeemaker ON kitchencounterdrawer; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; toaster ON kitchencounterdrawer; washingsponge ON kitchencounter.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The toaster was switched on then off, but the attempt to open the toaster failed (toaster cannot be opened), so the toasted breadslice was not retrieved; the character is not close to the breadslice and does not hold it, so toast is not made.\",\"failure_stage\":\"retrieval after toasting\",\"regeneration_hint\":\"Do not try to open the toaster since it is not openable. After switching the toaster on and completing the toasting cycle, retrieve the breadslice directly from the toaster (or use the appropriate post-cycle retrieval action) and hold it as finished toast.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Walk to the toaster on the kitchen counter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Walk to the toaster on the kitchen counter",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Walk to the toaster on the kitchen counter",
+      "compiled_action": "<char0> [walk] <toaster> (308)"
+    },
+    {
+      "line": "# Activate the toaster to toast the breadslice inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Activate the toaster to toast the breadslice inside",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Activate the toaster to toast the breadslice inside",
+      "compiled_action": "<char0> [switchon] <toaster> (308)"
+    },
+    {
+      "line": "# Complete the toasting cycle by turning the toaster off",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Complete the toasting cycle by turning the toaster off",
+      "compiled_action": null
+    },
+    {
+      "line": "switchoff('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Complete the toasting cycle by turning the toaster off",
+      "compiled_action": "<char0> [switchoff] <toaster> (308)"
+    },
+    {
+      "line": "# Open the toaster to access the toasted breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Open the toaster to access the toasted breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "open('toaster')",
+      "event": "action",
+      "success": false,
+      "detail": "<toaster> (308) can not be opened when executing \"[OPEN] <toaster> (308) [0]\"",
+      "subgoal": "Open the toaster to access the toasted breadslice",
+      "compiled_action": "<char0> [open] <toaster> (308)"
+    },
+    {
+      "line": "# Take the toasted breadslice from the toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Take the toasted breadslice from the toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('breadslice')",
+      "event": "action",
+      "success": false,
+      "detail": "<toaster> (308) can not be opened when executing \"[OPEN] <toaster> (308) [0]\",<character> (1) is not close to <breadslice> (310) when executing \"[GRAB] <breadslice> (310) [0]\"",
+      "subgoal": "Take the toasted breadslice from the toaster",
+      "compiled_action": "<char0> [grab] <breadslice> (310)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [walk] <toaster> (308)",
+      "parsed_action": "[WALK] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <toaster> (308)",
+      "parsed_action": "[SWITCHON] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <toaster> (308)",
+      "parsed_action": "[SWITCHOFF] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <toaster> (308)",
+      "parsed_action": "[OPEN] <toaster> (308) [0]",
+      "success": false,
+      "error": "<toaster> (308) can not be opened when executing \"[OPEN] <toaster> (308) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <breadslice> (310)",
+      "parsed_action": "[GRAB] <breadslice> (310) [0]",
+      "success": false,
+      "error": "<toaster> (308) can not be opened when executing \"[OPEN] <toaster> (308) [0]\",<character> (1) is not close to <breadslice> (310) when executing \"[GRAB] <breadslice> (310) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [walk] <toaster> (308)",
+    "<char0> [switchon] <toaster> (308)",
+    "<char0> [switchoff] <toaster> (308)",
+    "<char0> [open] <toaster> (308)",
+    "<char0> [grab] <breadslice> (310)"
+  ],
+  "program_length": 5,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "trace_goal": {
+        "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+        "item": "breadslice",
+        "appliance": "toaster",
+        "controller": "toaster",
+        "load_required": true,
+        "rationale": "A generic loaded-appliance ON->OFF cycle is the only stable simulator event surrogate."
+      },
+      "satisfied": false,
+      "evidence": "required source-to-appliance putin event absent"
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+      "item": "breadslice",
+      "appliance": "toaster",
+      "controller": "toaster",
+      "load_required": true,
+      "rationale": "A generic loaded-appliance ON->OFF cycle is the only stable simulator event surrogate."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.0,
+  "official_PSR": 0.0,
+  "official_Precision": 0.995249406175772,
+  "Exec": 0.6,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1519,
+  "generation_completion_tokens": 132,
+  "verification_prompt_tokens": 1083,
+  "verification_completion_tokens": 133,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2602,
+  "completion_tokens": 265,
+  "total_prompt_tokens": 2602,
+  "total_completion_tokens": 265,
+  "total_tokens": 2867,
+  "planning_latency": 3.9198383440016187,
+  "verification_latency": 6.001573270001245,
+  "total_llm_latency": 9.921411614002864,
+  "wall_clock_total_s": 10.892100753000705,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: make toast\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Toast the bread that is already inside the toaster by turning the toaster on, then turn it off and retrieve the finished toast.\",\"program\":\"# Walk to the toaster on the kitchen counter\\nwalk('toaster')\\n# Activate the toaster to toast the breadslice inside\\nswitchon('toaster')\\n# Complete the toasting cycle by turning the toaster off\\nswitchoff('toaster')\\n# Open the toaster to access the toasted breadslice\\nopen('toaster')\\n# Take the toasted breadslice from the toaster\\ngrab('breadslice')\"}",
+      "output_text": "{\"plan_brief\":\"Toast the bread that is already inside the toaster by turning the toaster on, then turn it off and retrieve the finished toast.\",\"program\":\"# Walk to the toaster on the kitchen counter\\nwalk('toaster')\\n# Activate the toaster to toast the breadslice inside\\nswitchon('toaster')\\n# Complete the toasting cycle by turning the toaster off\\nswitchoff('toaster')\\n# Open the toaster to access the toasted breadslice\\nopen('toaster')\\n# Take the toasted breadslice from the toaster\\ngrab('breadslice')\"}",
+      "prompt_tokens": 1519,
+      "completion_tokens": 132,
+      "latency_s": 3.9198383440016187,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774033368866701df21cea91c839fa89f5ad11c1c2609da0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"make toast\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, toaster ON kitchencounter, toaster ON kitchencounterdrawer, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeemaker ON kitchencounterdrawer; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; toaster ON kitchencounterdrawer; washingsponge ON kitchencounter.\nRELEVANT OBJECT CLASSES: []\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Walk to the toaster on the kitchen counter\\nwalk('toaster')\\n# Activate the toaster to toast the breadslice inside\\nswitchon('toaster')\\n# Complete the toasting cycle by turning the toaster off\\nswitchoff('toaster')\\n# Open the toaster to access the toasted breadslice\\nopen('toaster')\\n# Take the toasted breadslice from the toaster\\ngrab('breadslice')\", \"execution_trace\": [{\"line\": \"walk('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <toaster> (308)\"}, {\"line\": \"switchon('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <toaster> (308)\"}, {\"line\": \"switchoff('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <toaster> (308)\"}, {\"line\": \"open('toaster')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\"\", \"compiled_action\": \"<char0> [open] <toaster> (308)\"}, {\"line\": \"grab('breadslice')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\",<character> (1) is not close to <breadslice> (310) when executing \\\"[GRAB] <breadslice> (310) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <breadslice> (310)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\"\", \"line\": \"open('toaster')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\",<character> (1) is not close to <breadslice> (310) when executing \\\"[GRAB] <breadslice> (310) [0]\\\"\", \"line\": \"grab('breadslice')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The toaster was switched on then off, but the attempt to open the toaster failed (toaster cannot be opened), so the toasted breadslice was not retrieved; the character is not close to the breadslice and does not hold it, so toast is not made.\",\"failure_stage\":\"retrieval after toasting\",\"regeneration_hint\":\"Do not try to open the toaster since it is not openable. After switching the toaster on and completing the toasting cycle, retrieve the breadslice directly from the toaster (or use the appropriate post-cycle retrieval action) and hold it as finished toast.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The toaster was switched on then off, but the attempt to open the toaster failed (toaster cannot be opened), so the toasted breadslice was not retrieved; the character is not close to the breadslice and does not hold it, so toast is not made.\",\"failure_stage\":\"retrieval after toasting\",\"regeneration_hint\":\"Do not try to open the toaster since it is not openable. After switching the toaster on and completing the toasting cycle, retrieve the breadslice directly from the toaster (or use the appropriate post-cycle retrieval action) and hold it as finished toast.\"}",
+      "prompt_tokens": 1083,
+      "completion_tokens": 133,
+      "latency_s": 6.001573270001245,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774033766866701df21cea91c839fa89f5ad11c1c27afcd5",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: make toast\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"make toast\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, toaster ON kitchencounter, toaster ON kitchencounterdrawer, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeemaker ON kitchencounterdrawer; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; toaster ON kitchencounterdrawer; washingsponge ON kitchencounter.\nRELEVANT OBJECT CLASSES: []\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Walk to the toaster on the kitchen counter\\nwalk('toaster')\\n# Activate the toaster to toast the breadslice inside\\nswitchon('toaster')\\n# Complete the toasting cycle by turning the toaster off\\nswitchoff('toaster')\\n# Open the toaster to access the toasted breadslice\\nopen('toaster')\\n# Take the toasted breadslice from the toaster\\ngrab('breadslice')\", \"execution_trace\": [{\"line\": \"walk('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <toaster> (308)\"}, {\"line\": \"switchon('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <toaster> (308)\"}, {\"line\": \"switchoff('toaster')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <toaster> (308)\"}, {\"line\": \"open('toaster')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\"\", \"compiled_action\": \"<char0> [open] <toaster> (308)\"}, {\"line\": \"grab('breadslice')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\",<character> (1) is not close to <breadslice> (310) when executing \\\"[GRAB] <breadslice> (310) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <breadslice> (310)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\"\", \"line\": \"open('toaster')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<toaster> (308) can not be opened when executing \\\"[OPEN] <toaster> (308) [0]\\\",<character> (1) is not close to <breadslice> (310) when executing \\\"[GRAB] <breadslice> (310) [0]\\\"\", \"line\": \"grab('breadslice')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Toast the bread that is already inside the toaster by turning the toaster on, then turn it off and retrieve the finished toast.\",\"program\":\"# Walk to the toaster on the kitchen counter\\nwalk('toaster')\\n# Activate the toaster to toast the breadslice inside\\nswitchon('toaster')\\n# Complete the toasting cycle by turning the toaster off\\nswitchoff('toaster')\\n# Open the toaster to access the toasted breadslice\\nopen('toaster')\\n# Take the toasted breadslice from the toaster\\ngrab('breadslice')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The toaster was switched on then off, but the attempt to open the toaster failed (toaster cannot be opened), so the toasted breadslice was not retrieved; the character is not close to the breadslice and does not hold it, so toast is not made.\",\"failure_stage\":\"retrieval after toasting\",\"regeneration_hint\":\"Do not try to open the toaster since it is not openable. After switching the toaster on and completing the toasting cycle, retrieve the breadslice directly from the toaster (or use the appropriate post-cycle retrieval action) and hold it as finished toast.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<toaster> (308) can not be opened when executing \"[OPEN] <toaster> (308) [0]\"",
+      "line": "open('toaster')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<toaster> (308) can not be opened when executing \"[OPEN] <toaster> (308) [0]\",<character> (1) is not close to <breadslice> (310) when executing \"[GRAB] <breadslice> (310) [0]\"",
+      "line": "grab('breadslice')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug."
+}

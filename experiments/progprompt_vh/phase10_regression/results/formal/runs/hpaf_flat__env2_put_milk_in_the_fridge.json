@@ -1,0 +1,428 @@
+{
+  "run_id": "phase10r_formal_2026-08-27T023541.405514_0000_hpaf_flat_env2_put_milk_in_the_fridge",
+  "phase": "phase10r_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-27T02:35:41.405514+00:00",
+  "task_id": "env2::put_milk_in_the_fridge",
+  "task": "put milk in the fridge",
+  "split": "env2",
+  "scene": 2,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "022cc4f70d19df0624eb27d3c2b8bc94a1b8e42e5eb8f851a8a19a1e446e058e",
+  "task_manifest_sha256": "9e19aa990131c34b22b5e8db9dadd3d56dd324a80546ba8f6932ecbd52690d4b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# Navigate to the milk on the kitchen counter\nwalk(milk)\n# Pick up the milk\ngrab(milk)\n# Navigate to the fridge\nwalk(fridge)\n# Open the fridge before placing milk inside\nopen(fridge)\n# Put the milk into the fridge\nputin(milk, fridge)\n# Close the fridge to finish storage\nclose(fridge)"
+  ],
+  "generated_program": "# Navigate to the milk on the kitchen counter\nwalk(milk)\n# Pick up the milk\ngrab(milk)\n# Navigate to the fridge\nwalk(fridge)\n# Open the fridge before placing milk inside\nopen(fridge)\n# Put the milk into the fridge\nputin(milk, fridge)\n# Close the fridge to finish storage\nclose(fridge)",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"put milk in the fridge\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.\nRELEVANT OBJECT CLASSES: [\"fridge\", \"milk\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Navigate to the milk on the kitchen counter\\nwalk(milk)\\n# Pick up the milk\\ngrab(milk)\\n# Navigate to the fridge\\nwalk(fridge)\\n# Open the fridge before placing milk inside\\nopen(fridge)\\n# Put the milk into the fridge\\nputin(milk, fridge)\\n# Close the fridge to finish storage\\nclose(fridge)\", \"execution_trace\": [{\"line\": \"walk(milk)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"grab(milk)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for grab: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"walk(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"open(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for open: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"putin(milk, fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for putin: expected 2, got 0\", \"compiled_action\": null}, {\"line\": \"close(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for close: expected 1, got 0\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(milk)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for grab: expected 1, got 0\", \"line\": \"grab(milk)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for open: expected 1, got 0\", \"line\": \"open(fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for putin: expected 2, got 0\", \"line\": \"putin(milk, fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for close: expected 1, got 0\", \"line\": \"close(fridge)\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.\",\"failure_stage\":\"parse\",\"regeneration_hint\":\"Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.\",\"failure_stage\":\"parse\",\"regeneration_hint\":\"Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge.\"}",
+      "prompt_tokens": 1244,
+      "completion_tokens": 105,
+      "latency_s": 3.8209552849998545,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877981642600730b6660d857180baac0c56a1cd644871ecd4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "put milk in the fridge",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.\",\"failure_stage\":\"parse\",\"regeneration_hint\":\"Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Navigate to the milk on the kitchen counter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the milk on the kitchen counter",
+      "compiled_action": null
+    },
+    {
+      "line": "walk(milk)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for walk: expected 1, got 0",
+      "subgoal": "Navigate to the milk on the kitchen counter",
+      "compiled_action": null
+    },
+    {
+      "line": "# Pick up the milk",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Pick up the milk",
+      "compiled_action": null
+    },
+    {
+      "line": "grab(milk)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for grab: expected 1, got 0",
+      "subgoal": "Pick up the milk",
+      "compiled_action": null
+    },
+    {
+      "line": "# Navigate to the fridge",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the fridge",
+      "compiled_action": null
+    },
+    {
+      "line": "walk(fridge)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for walk: expected 1, got 0",
+      "subgoal": "Navigate to the fridge",
+      "compiled_action": null
+    },
+    {
+      "line": "# Open the fridge before placing milk inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Open the fridge before placing milk inside",
+      "compiled_action": null
+    },
+    {
+      "line": "open(fridge)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for open: expected 1, got 0",
+      "subgoal": "Open the fridge before placing milk inside",
+      "compiled_action": null
+    },
+    {
+      "line": "# Put the milk into the fridge",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put the milk into the fridge",
+      "compiled_action": null
+    },
+    {
+      "line": "putin(milk, fridge)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for putin: expected 2, got 0",
+      "subgoal": "Put the milk into the fridge",
+      "compiled_action": null
+    },
+    {
+      "line": "# Close the fridge to finish storage",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the fridge to finish storage",
+      "compiled_action": null
+    },
+    {
+      "line": "close(fridge)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for close: expected 1, got 0",
+      "subgoal": "Close the fridge to finish storage",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "walk(milk)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for walk: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "grab(milk)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for grab: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "walk(fridge)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for walk: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "open(fridge)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for open: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "putin(milk, fridge)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for putin: expected 2, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "close(fridge)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for close: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [],
+  "program_length": 6,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "INSIDE(milk, fridge)",
+        "predicate": "RELATION",
+        "subject": "milk",
+        "relation": "INSIDE",
+        "object": "fridge",
+        "rationale": "The milk must be inside the fridge."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "condition": "INSIDE(milk, fridge)",
+      "predicate": "RELATION",
+      "subject": "milk",
+      "relation": "INSIDE",
+      "object": "fridge",
+      "rationale": "The milk must be inside the fridge."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.0,
+  "official_PSR": 0.0,
+  "official_Precision": 1.0,
+  "Exec": 0.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1329,
+  "generation_completion_tokens": 131,
+  "verification_prompt_tokens": 1244,
+  "verification_completion_tokens": 105,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2573,
+  "completion_tokens": 236,
+  "total_prompt_tokens": 2573,
+  "total_completion_tokens": 236,
+  "total_tokens": 2809,
+  "planning_latency": 3.771630653000102,
+  "verification_latency": 3.8209552849998545,
+  "total_llm_latency": 7.5925859379999565,
+  "wall_clock_total_s": 8.425833095000144,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: put milk in the fridge\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Walk to the milk on the kitchen counter, pick it up, walk to the fridge, open the fridge, place the milk inside, then close the fridge to complete putting milk away.\",\"program\":\"# Navigate to the milk on the kitchen counter\\nwalk(milk)\\n# Pick up the milk\\ngrab(milk)\\n# Navigate to the fridge\\nwalk(fridge)\\n# Open the fridge before placing milk inside\\nopen(fridge)\\n# Put the milk into the fridge\\nputin(milk, fridge)\\n# Close the fridge to finish storage\\nclose(fridge)\"}",
+      "output_text": "{\"plan_brief\":\"Walk to the milk on the kitchen counter, pick it up, walk to the fridge, open the fridge, place the milk inside, then close the fridge to complete putting milk away.\",\"program\":\"# Navigate to the milk on the kitchen counter\\nwalk(milk)\\n# Pick up the milk\\ngrab(milk)\\n# Navigate to the fridge\\nwalk(fridge)\\n# Open the fridge before placing milk inside\\nopen(fridge)\\n# Put the milk into the fridge\\nputin(milk, fridge)\\n# Close the fridge to finish storage\\nclose(fridge)\"}",
+      "prompt_tokens": 1329,
+      "completion_tokens": 131,
+      "latency_s": 3.771630653000102,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877981604760730b6660d857180baac0c56a1cd64481f2c99",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": "",
+      "parsed_output": {
+        "plan_brief": "Walk to the milk on the kitchen counter, pick it up, walk to the fridge, open the fridge, place the milk inside, then close the fridge to complete putting milk away.",
+        "program": "# Navigate to the milk on the kitchen counter\nwalk(milk)\n# Pick up the milk\ngrab(milk)\n# Navigate to the fridge\nwalk(fridge)\n# Open the fridge before placing milk inside\nopen(fridge)\n# Put the milk into the fridge\nputin(milk, fridge)\n# Close the fridge to finish storage\nclose(fridge)"
+      }
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"put milk in the fridge\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.\nRELEVANT OBJECT CLASSES: [\"fridge\", \"milk\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Navigate to the milk on the kitchen counter\\nwalk(milk)\\n# Pick up the milk\\ngrab(milk)\\n# Navigate to the fridge\\nwalk(fridge)\\n# Open the fridge before placing milk inside\\nopen(fridge)\\n# Put the milk into the fridge\\nputin(milk, fridge)\\n# Close the fridge to finish storage\\nclose(fridge)\", \"execution_trace\": [{\"line\": \"walk(milk)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"grab(milk)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for grab: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"walk(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"open(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for open: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"putin(milk, fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for putin: expected 2, got 0\", \"compiled_action\": null}, {\"line\": \"close(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for close: expected 1, got 0\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(milk)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for grab: expected 1, got 0\", \"line\": \"grab(milk)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for open: expected 1, got 0\", \"line\": \"open(fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for putin: expected 2, got 0\", \"line\": \"putin(milk, fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for close: expected 1, got 0\", \"line\": \"close(fridge)\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.\",\"failure_stage\":\"parse\",\"regeneration_hint\":\"Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.\",\"failure_stage\":\"parse\",\"regeneration_hint\":\"Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge.\"}",
+      "prompt_tokens": 1244,
+      "completion_tokens": 105,
+      "latency_s": 3.8209552849998545,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877981642600730b6660d857180baac0c56a1cd644871ecd4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": "",
+      "parsed_output": {
+        "done": false,
+        "reason": "All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.",
+        "failure_stage": "parse",
+        "regeneration_hint": "Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge."
+      }
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: put milk in the fridge\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"put milk in the fridge\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.\nRELEVANT OBJECT CLASSES: [\"fridge\", \"milk\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Navigate to the milk on the kitchen counter\\nwalk(milk)\\n# Pick up the milk\\ngrab(milk)\\n# Navigate to the fridge\\nwalk(fridge)\\n# Open the fridge before placing milk inside\\nopen(fridge)\\n# Put the milk into the fridge\\nputin(milk, fridge)\\n# Close the fridge to finish storage\\nclose(fridge)\", \"execution_trace\": [{\"line\": \"walk(milk)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"grab(milk)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for grab: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"walk(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"open(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for open: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"putin(milk, fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for putin: expected 2, got 0\", \"compiled_action\": null}, {\"line\": \"close(fridge)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for close: expected 1, got 0\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(milk)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for grab: expected 1, got 0\", \"line\": \"grab(milk)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for open: expected 1, got 0\", \"line\": \"open(fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for putin: expected 2, got 0\", \"line\": \"putin(milk, fridge)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for close: expected 1, got 0\", \"line\": \"close(fridge)\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Walk to the milk on the kitchen counter, pick it up, walk to the fridge, open the fridge, place the milk inside, then close the fridge to complete putting milk away.\",\"program\":\"# Navigate to the milk on the kitchen counter\\nwalk(milk)\\n# Pick up the milk\\ngrab(milk)\\n# Navigate to the fridge\\nwalk(fridge)\\n# Open the fridge before placing milk inside\\nopen(fridge)\\n# Put the milk into the fridge\\nputin(milk, fridge)\\n# Close the fridge to finish storage\\nclose(fridge)\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"All actions failed due to parse/arity errors; no steps executed, and milk remains on the kitchencounter, not inside the fridge.\",\"failure_stage\":\"parse\",\"regeneration_hint\":\"Fix action argument formatting so each action receives its required arguments (e.g., use valid object references/arity for walk, grab, open, putin, close), then execute: walk to milk, grab milk, walk to fridge, open fridge, put milk in fridge, and close fridge.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for walk: expected 1, got 0",
+      "line": "walk(milk)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for grab: expected 1, got 0",
+      "line": "grab(milk)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for walk: expected 1, got 0",
+      "line": "walk(fridge)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for open: expected 1, got 0",
+      "line": "open(fridge)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for putin: expected 2, got 0",
+      "line": "putin(milk, fridge)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for close: expected 1, got 0",
+      "line": "close(fridge)"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cookingpot ON stove, cookingpot is CLOSED, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, fryingpan, fryingpan ON stove, juice, juice ON kitchentable, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, kitchentable ON rug, milk ON kitchencounter, milk is CLOSED, mincedmeat, mincedmeat ON kitchencounter, plate, plate ON kitchentable, rug, salmon, salmon ON kitchencounter, sink, stove is OFF and CLOSED, stovefan, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cookingpot ON stove; cutleryfork ON kitchentable; cutleryknife ON kitchentable; faucet ON kitchencounter; fryingpan ON stove; juice ON kitchentable; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; microwave ON kitchencounter; milk ON kitchencounter; mincedmeat ON kitchencounter; oventray INSIDE stove; plate ON kitchentable; salmon ON kitchencounter; waterglass ON kitchentable.",
+  "instruction": "put milk in the fridge",
+  "task_source": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+  "official_or_extension": "official_source",
+  "horizon": "Medium",
+  "is_long_horizon": false,
+  "evaluator_type": "persistent_state",
+  "benchmark_semantic_complexity": {
+    "task_id": "env2::put_milk_in_the_fridge",
+    "semantic_atomic_count": 1,
+    "dependency_depth": 1,
+    "source": "frozen_benchmark_semantics_phase10_analysis",
+    "method_output_used": false,
+    "rationale": "One dominant official-source semantic commitment; multiple co-target objects, when present, are one coupled commitment."
+  },
+  "current_ready_nodes": [],
+  "validator_result": null
+}

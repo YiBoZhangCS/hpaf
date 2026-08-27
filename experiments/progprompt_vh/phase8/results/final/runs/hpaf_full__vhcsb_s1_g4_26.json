@@ -1,0 +1,2040 @@
+{
+  "run_id": "formal_2026-08-26T111306.707668_0000_hpaf_full_vhcsb_s1_g4_26",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T11:13:06.707668+00:00",
+  "task_id": "vhcsb_s1_g4_26",
+  "task": "Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.",
+  "split": "synthetic_composition",
+  "scene": 1,
+  "goal_count": 4,
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "9eb12933135939eb6465e81090247155293cd641d5772face2adde30e1f3f36e",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Put the mug in the box",
+        "manipulated_object": "mug",
+        "target_object": "box",
+        "completion_mode": "process",
+        "process_intent": "Place the mug inside the box"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.",
+      "initial_program": "# Find and retrieve the mug first\nfind('mug')\ngrab('mug')\n# Locate the box and place the mug inside it\nfind('box')\nputin('mug','box')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Find and retrieve the mug first",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Find and retrieve the mug first",
+          "compiled_action": null
+        },
+        {
+          "line": "find('mug')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Find and retrieve the mug first",
+          "compiled_action": "<char0> [find] <mug> (102)"
+        },
+        {
+          "line": "grab('mug')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Find and retrieve the mug first",
+          "compiled_action": "<char0> [grab] <mug> (102)"
+        },
+        {
+          "line": "# Locate the box and place the mug inside it",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the box and place the mug inside it",
+          "compiled_action": null
+        },
+        {
+          "line": "find('box')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the box and place the mug inside it",
+          "compiled_action": "<char0> [find] <box> (106)"
+        },
+        {
+          "line": "putin('mug','box')",
+          "event": "action",
+          "success": false,
+          "detail": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+          "subgoal": "Locate the box and place the mug inside it",
+          "compiled_action": "<char0> [putin] <mug> (102) <box> (106)"
+        }
+      ],
+      "initial_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+          "line": "putin('mug','box')"
+        }
+      ],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nopen('box')\nputin('mug','box')\n",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "open('box')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [open] <box> (106)"
+        },
+        {
+          "line": "putin('mug','box')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [putin] <mug> (102) <box> (106)"
+        }
+      ],
+      "repair_typed_errors": [],
+      "repair_verifier": {
+        "done": true
+      },
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "instruction": "Place the dishwashingliquid on the radio",
+        "manipulated_object": "dishwashingliquid",
+        "target_object": "radio",
+        "completion_mode": "process",
+        "process_intent": "Set the dishwashingliquid on top of the radio"
+      },
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.",
+      "initial_program": "# Locate and acquire dishwashingliquid\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\n# Locate radio and place dishwashingliquid on it\nfind('radio')\nputback('dishwashingliquid','radio')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and acquire dishwashingliquid",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire dishwashingliquid",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwashingliquid')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire dishwashingliquid",
+          "compiled_action": "<char0> [find] <dishwashingliquid> (174)"
+        },
+        {
+          "line": "grab('dishwashingliquid')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire dishwashingliquid",
+          "compiled_action": "<char0> [grab] <dishwashingliquid> (174)"
+        },
+        {
+          "line": "# Locate radio and place dishwashingliquid on it",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate radio and place dishwashingliquid on it",
+          "compiled_action": null
+        },
+        {
+          "line": "find('radio')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate radio and place dishwashingliquid on it",
+          "compiled_action": "<char0> [find] <radio> (100)"
+        },
+        {
+          "line": "putback('dishwashingliquid','radio')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate radio and place dishwashingliquid on it",
+          "compiled_action": "<char0> [putback] <dishwashingliquid> (174) <radio> (100)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "instruction": "Put the barsoap in the cabinet",
+        "manipulated_object": "barsoap",
+        "target_object": "cabinet",
+        "completion_mode": "process",
+        "process_intent": "Place the barsoap inside the cabinet"
+      },
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.",
+      "initial_program": "# Locate and acquire the barsoap\nfind('barsoap')\ngrab('barsoap')\n# Locate and prepare the cabinet\nfind('cabinet')\nopen('cabinet')\n# Place the barsoap inside the cabinet\nputin('barsoap', 'cabinet')\n# Close the cabinet to finish the process\nclose('cabinet')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and acquire the barsoap",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the barsoap",
+          "compiled_action": null
+        },
+        {
+          "line": "find('barsoap')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the barsoap",
+          "compiled_action": "<char0> [find] <barsoap> (34)"
+        },
+        {
+          "line": "grab('barsoap')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the barsoap",
+          "compiled_action": "<char0> [grab] <barsoap> (34)"
+        },
+        {
+          "line": "# Locate and prepare the cabinet",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and prepare the cabinet",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and prepare the cabinet",
+          "compiled_action": "<char0> [find] <cabinet> (87)"
+        },
+        {
+          "line": "open('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and prepare the cabinet",
+          "compiled_action": "<char0> [open] <cabinet> (87)"
+        },
+        {
+          "line": "# Place the barsoap inside the cabinet",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the barsoap inside the cabinet",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('barsoap', 'cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the barsoap inside the cabinet",
+          "compiled_action": "<char0> [putin] <barsoap> (34) <cabinet> (87)"
+        },
+        {
+          "line": "# Close the cabinet to finish the process",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the cabinet to finish the process",
+          "compiled_action": null
+        },
+        {
+          "line": "close('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the cabinet to finish the process",
+          "compiled_action": "<char0> [close] <cabinet> (87)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 4,
+        "instruction": "Put the toothbrush in the dishwasher",
+        "manipulated_object": "toothbrush",
+        "target_object": "dishwasher",
+        "completion_mode": "process",
+        "process_intent": "Place the toothbrush inside the dishwasher"
+      },
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.",
+      "initial_program": "# Locate and acquire the toothbrush\nfind('toothbrush')\ngrab('toothbrush')\n# Navigate to the dishwasher and prepare it for placement\nfind('dishwasher')\nopen('dishwasher')\n# Place the toothbrush inside the dishwasher\nputin('toothbrush','dishwasher')\n# Close the dishwasher to finish the placement process\nclose('dishwasher')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and acquire the toothbrush",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the toothbrush",
+          "compiled_action": null
+        },
+        {
+          "line": "find('toothbrush')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the toothbrush",
+          "compiled_action": "<char0> [find] <toothbrush> (32)"
+        },
+        {
+          "line": "grab('toothbrush')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the toothbrush",
+          "compiled_action": "<char0> [grab] <toothbrush> (32)"
+        },
+        {
+          "line": "# Navigate to the dishwasher and prepare it for placement",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the dishwasher and prepare it for placement",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the dishwasher and prepare it for placement",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "open('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the dishwasher and prepare it for placement",
+          "compiled_action": "<char0> [open] <dishwasher> (228)"
+        },
+        {
+          "line": "# Place the toothbrush inside the dishwasher",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toothbrush inside the dishwasher",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('toothbrush','dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toothbrush inside the dishwasher",
+          "compiled_action": "<char0> [putin] <toothbrush> (32) <dishwasher> (228)"
+        },
+        {
+          "line": "# Close the dishwasher to finish the placement process",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the dishwasher to finish the placement process",
+          "compiled_action": null
+        },
+        {
+          "line": "close('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the dishwasher to finish the placement process",
+          "compiled_action": "<char0> [close] <dishwasher> (228)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    }
+  ],
+  "generated_program": "# atomic 1: Put the mug in the box\n# Find and retrieve the mug first\nfind('mug')\ngrab('mug')\n# Locate the box and place the mug inside it\nfind('box')\nputin('mug','box')\n# atomic 1 Retry-1\n# repair\nopen('box')\nputin('mug','box')\n\n# atomic 2: Place the dishwashingliquid on the radio\n# Locate and acquire dishwashingliquid\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\n# Locate radio and place dishwashingliquid on it\nfind('radio')\nputback('dishwashingliquid','radio')\n# atomic 3: Put the barsoap in the cabinet\n# Locate and acquire the barsoap\nfind('barsoap')\ngrab('barsoap')\n# Locate and prepare the cabinet\nfind('cabinet')\nopen('cabinet')\n# Place the barsoap inside the cabinet\nputin('barsoap', 'cabinet')\n# Close the cabinet to finish the process\nclose('cabinet')\n# atomic 4: Put the toothbrush in the dishwasher\n# Locate and acquire the toothbrush\nfind('toothbrush')\ngrab('toothbrush')\n# Navigate to the dishwasher and prepare it for placement\nfind('dishwasher')\nopen('dishwasher')\n# Place the toothbrush inside the dishwasher\nputin('toothbrush','dishwasher')\n# Close the dishwasher to finish the placement process\nclose('dishwasher')",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "Put the mug in the box",
+      "manipulated_object": "mug",
+      "target_object": "box",
+      "completion_mode": "process",
+      "process_intent": "Place the mug inside the box"
+    },
+    {
+      "id": 2,
+      "instruction": "Place the dishwashingliquid on the radio",
+      "manipulated_object": "dishwashingliquid",
+      "target_object": "radio",
+      "completion_mode": "process",
+      "process_intent": "Set the dishwashingliquid on top of the radio"
+    },
+    {
+      "id": 3,
+      "instruction": "Put the barsoap in the cabinet",
+      "manipulated_object": "barsoap",
+      "target_object": "cabinet",
+      "completion_mode": "process",
+      "process_intent": "Place the barsoap inside the cabinet"
+    },
+    {
+      "id": 4,
+      "instruction": "Put the toothbrush in the dishwasher",
+      "manipulated_object": "toothbrush",
+      "target_object": "dishwasher",
+      "completion_mode": "process",
+      "process_intent": "Place the toothbrush inside the dishwasher"
+    }
+  ],
+  "number_of_atomic_tasks": 4,
+  "atomic_tasks_attempted": 4,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Put the mug in the box",
+        "manipulated_object": "mug",
+        "target_object": "box",
+        "completion_mode": "process",
+        "process_intent": "Place the mug inside the box"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.",
+      "initial_program": "# Find and retrieve the mug first\nfind('mug')\ngrab('mug')\n# Locate the box and place the mug inside it\nfind('box')\nputin('mug','box')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Find and retrieve the mug first",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Find and retrieve the mug first",
+          "compiled_action": null
+        },
+        {
+          "line": "find('mug')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Find and retrieve the mug first",
+          "compiled_action": "<char0> [find] <mug> (102)"
+        },
+        {
+          "line": "grab('mug')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Find and retrieve the mug first",
+          "compiled_action": "<char0> [grab] <mug> (102)"
+        },
+        {
+          "line": "# Locate the box and place the mug inside it",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the box and place the mug inside it",
+          "compiled_action": null
+        },
+        {
+          "line": "find('box')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the box and place the mug inside it",
+          "compiled_action": "<char0> [find] <box> (106)"
+        },
+        {
+          "line": "putin('mug','box')",
+          "event": "action",
+          "success": false,
+          "detail": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+          "subgoal": "Locate the box and place the mug inside it",
+          "compiled_action": "<char0> [putin] <mug> (102) <box> (106)"
+        }
+      ],
+      "initial_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+          "line": "putin('mug','box')"
+        }
+      ],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nopen('box')\nputin('mug','box')\n",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "open('box')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [open] <box> (106)"
+        },
+        {
+          "line": "putin('mug','box')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [putin] <mug> (102) <box> (106)"
+        }
+      ],
+      "repair_typed_errors": [],
+      "repair_verifier": {
+        "done": true
+      },
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "instruction": "Place the dishwashingliquid on the radio",
+        "manipulated_object": "dishwashingliquid",
+        "target_object": "radio",
+        "completion_mode": "process",
+        "process_intent": "Set the dishwashingliquid on top of the radio"
+      },
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.",
+      "initial_program": "# Locate and acquire dishwashingliquid\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\n# Locate radio and place dishwashingliquid on it\nfind('radio')\nputback('dishwashingliquid','radio')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and acquire dishwashingliquid",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire dishwashingliquid",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwashingliquid')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire dishwashingliquid",
+          "compiled_action": "<char0> [find] <dishwashingliquid> (174)"
+        },
+        {
+          "line": "grab('dishwashingliquid')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire dishwashingliquid",
+          "compiled_action": "<char0> [grab] <dishwashingliquid> (174)"
+        },
+        {
+          "line": "# Locate radio and place dishwashingliquid on it",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate radio and place dishwashingliquid on it",
+          "compiled_action": null
+        },
+        {
+          "line": "find('radio')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate radio and place dishwashingliquid on it",
+          "compiled_action": "<char0> [find] <radio> (100)"
+        },
+        {
+          "line": "putback('dishwashingliquid','radio')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate radio and place dishwashingliquid on it",
+          "compiled_action": "<char0> [putback] <dishwashingliquid> (174) <radio> (100)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "instruction": "Put the barsoap in the cabinet",
+        "manipulated_object": "barsoap",
+        "target_object": "cabinet",
+        "completion_mode": "process",
+        "process_intent": "Place the barsoap inside the cabinet"
+      },
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.",
+      "initial_program": "# Locate and acquire the barsoap\nfind('barsoap')\ngrab('barsoap')\n# Locate and prepare the cabinet\nfind('cabinet')\nopen('cabinet')\n# Place the barsoap inside the cabinet\nputin('barsoap', 'cabinet')\n# Close the cabinet to finish the process\nclose('cabinet')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and acquire the barsoap",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the barsoap",
+          "compiled_action": null
+        },
+        {
+          "line": "find('barsoap')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the barsoap",
+          "compiled_action": "<char0> [find] <barsoap> (34)"
+        },
+        {
+          "line": "grab('barsoap')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the barsoap",
+          "compiled_action": "<char0> [grab] <barsoap> (34)"
+        },
+        {
+          "line": "# Locate and prepare the cabinet",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and prepare the cabinet",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and prepare the cabinet",
+          "compiled_action": "<char0> [find] <cabinet> (87)"
+        },
+        {
+          "line": "open('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and prepare the cabinet",
+          "compiled_action": "<char0> [open] <cabinet> (87)"
+        },
+        {
+          "line": "# Place the barsoap inside the cabinet",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the barsoap inside the cabinet",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('barsoap', 'cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the barsoap inside the cabinet",
+          "compiled_action": "<char0> [putin] <barsoap> (34) <cabinet> (87)"
+        },
+        {
+          "line": "# Close the cabinet to finish the process",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the cabinet to finish the process",
+          "compiled_action": null
+        },
+        {
+          "line": "close('cabinet')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the cabinet to finish the process",
+          "compiled_action": "<char0> [close] <cabinet> (87)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 4,
+        "instruction": "Put the toothbrush in the dishwasher",
+        "manipulated_object": "toothbrush",
+        "target_object": "dishwasher",
+        "completion_mode": "process",
+        "process_intent": "Place the toothbrush inside the dishwasher"
+      },
+      "initial_observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.",
+      "initial_program": "# Locate and acquire the toothbrush\nfind('toothbrush')\ngrab('toothbrush')\n# Navigate to the dishwasher and prepare it for placement\nfind('dishwasher')\nopen('dishwasher')\n# Place the toothbrush inside the dishwasher\nputin('toothbrush','dishwasher')\n# Close the dishwasher to finish the placement process\nclose('dishwasher')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and acquire the toothbrush",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the toothbrush",
+          "compiled_action": null
+        },
+        {
+          "line": "find('toothbrush')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the toothbrush",
+          "compiled_action": "<char0> [find] <toothbrush> (32)"
+        },
+        {
+          "line": "grab('toothbrush')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and acquire the toothbrush",
+          "compiled_action": "<char0> [grab] <toothbrush> (32)"
+        },
+        {
+          "line": "# Navigate to the dishwasher and prepare it for placement",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the dishwasher and prepare it for placement",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the dishwasher and prepare it for placement",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "open('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the dishwasher and prepare it for placement",
+          "compiled_action": "<char0> [open] <dishwasher> (228)"
+        },
+        {
+          "line": "# Place the toothbrush inside the dishwasher",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toothbrush inside the dishwasher",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('toothbrush','dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the toothbrush inside the dishwasher",
+          "compiled_action": "<char0> [putin] <toothbrush> (32) <dishwasher> (228)"
+        },
+        {
+          "line": "# Close the dishwasher to finish the placement process",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the dishwasher to finish the placement process",
+          "compiled_action": null
+        },
+        {
+          "line": "close('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the dishwasher to finish the placement process",
+          "compiled_action": "<char0> [close] <dishwasher> (228)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    }
+  ],
+  "retry_count": 1,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=['mug']. Nearby visible graph: bookshelf, mug. You have mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; photoframe INSIDE bookshelf.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Find and retrieve the mug first\\nfind('mug')\\ngrab('mug')\\n# Locate the box and place the mug inside it\\nfind('box')\\nputin('mug','box')\", \"execution_trace\": [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": false, \"detail\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"line\": \"putin('mug','box')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The putin action failed because the box was not open, so the mug was not placed inside the box. The character still holds the mug.\",\"failure_stage\":\"putin precondition (box not open)\",\"regeneration_hint\":\"Open the box first (e.g., walk to the bookshelf, open the box), then execute putin('mug','box') to place the mug inside.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The putin action failed because the box was not open, so the mug was not placed inside the box. The character still holds the mug.\",\"failure_stage\":\"putin precondition (box not open)\",\"regeneration_hint\":\"Open the box first (e.g., walk to the bookshelf, open the box), then execute putin('mug','box') to place the mug inside.\"}",
+      "prompt_tokens": 811,
+      "completion_tokens": 90,
+      "latency_s": 5.068506636998791,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774278431015a741db9058723ed34b56d0ce5c7d9c1044f0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# repair\\nopen('box')\\nputin('mug','box')\\n\", \"execution_trace\": [{\"line\": \"open('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}], \"errors\": [], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The putin('mug','box') action succeeded, and the current state confirms mug is INSIDE box, completing placement of the mug inside the box.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The putin('mug','box') action succeeded, and the current state confirms mug is INSIDE box, completing placement of the mug inside the box.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 603,
+      "completion_tokens": 52,
+      "latency_s": 1.9549964570032898,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774279224715a741db9058723ed34b56d0ce5c7d9cfb4825",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Place the dishwashingliquid on the radio\", \"manipulated_object\": \"dishwashingliquid\", \"target_object\": \"radio\", \"completion_mode\": \"process\", \"process_intent\": \"Set the dishwashingliquid on top of the radio\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire dishwashingliquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Locate radio and place dishwashingliquid on it\\nfind('radio')\\nputback('dishwashingliquid','radio')\", \"execution_trace\": [{\"line\": \"find('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwashingliquid> (174)\"}, {\"line\": \"grab('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <dishwashingliquid> (174)\"}, {\"line\": \"find('radio')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <radio> (100)\"}, {\"line\": \"putback('dishwashingliquid','radio')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <dishwashingliquid> (174) <radio> (100)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"Execution trace shows successful find, grab, find, and putback of dishwashingliquid onto radio; current state confirms dishwashingliquid is ON radio.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"Execution trace shows successful find, grab, find, and putback of dishwashingliquid onto radio; current state confirms dishwashingliquid is ON radio.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 758,
+      "completion_tokens": 50,
+      "latency_s": 2.3809808939986397,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774279756815a741db9058723ed34b56d0ce5c7d9c35618d",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 3, \"instruction\": \"Put the barsoap in the cabinet\", \"manipulated_object\": \"barsoap\", \"target_object\": \"cabinet\", \"completion_mode\": \"process\", \"process_intent\": \"Place the barsoap inside the cabinet\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the barsoap\\nfind('barsoap')\\ngrab('barsoap')\\n# Locate and prepare the cabinet\\nfind('cabinet')\\nopen('cabinet')\\n# Place the barsoap inside the cabinet\\nputin('barsoap', 'cabinet')\\n# Close the cabinet to finish the process\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <barsoap> (34)\"}, {\"line\": \"grab('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <barsoap> (34)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"putin('barsoap', 'cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <barsoap> (34) <cabinet> (87)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: barsoap was found, grabbed, cabinet was found and opened, barsoap was put inside cabinet, and cabinet was closed. Current state confirms barsoap is inside the closed cabinet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded: barsoap was found, grabbed, cabinet was found and opened, barsoap was put inside cabinet, and cabinet was closed. Current state confirms barsoap is inside the closed cabinet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 817,
+      "completion_tokens": 60,
+      "latency_s": 2.8073954609935754,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774280388915a741db9058723ed34b56d0ce5c7d9cfa3ec7",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 4, \"instruction\": \"Put the toothbrush in the dishwasher\", \"manipulated_object\": \"toothbrush\", \"target_object\": \"dishwasher\", \"completion_mode\": \"process\", \"process_intent\": \"Place the toothbrush inside the dishwasher\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter; toothbrush INSIDE dishwasher.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the toothbrush\\nfind('toothbrush')\\ngrab('toothbrush')\\n# Navigate to the dishwasher and prepare it for placement\\nfind('dishwasher')\\nopen('dishwasher')\\n# Place the toothbrush inside the dishwasher\\nputin('toothbrush','dishwasher')\\n# Close the dishwasher to finish the placement process\\nclose('dishwasher')\", \"execution_trace\": [{\"line\": \"find('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothbrush> (32)\"}, {\"line\": \"grab('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothbrush> (32)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('toothbrush','dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothbrush> (32) <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: toothbrush was found, grabbed, dishwasher was opened, toothbrush was put inside the dishwasher, and dishwasher was closed. Current state confirms toothbrush is INSIDE dishwasher and character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded: toothbrush was found, grabbed, dishwasher was opened, toothbrush was put inside the dishwasher, and dishwasher was closed. Current state confirms toothbrush is INSIDE dishwasher and character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 878,
+      "completion_tokens": 62,
+      "latency_s": 2.17848176699772,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774281107515a741db9058723ed34b56d0ce5c7d9c68116e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": 1,
+      "attempt": "initial",
+      "observation": "Character room=bedroom; states=[]; holds=['mug']. Nearby visible graph: bookshelf, mug. You have mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; photoframe INSIDE bookshelf.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The putin action failed because the box was not open, so the mug was not placed inside the box. The character still holds the mug.\",\"failure_stage\":\"putin precondition (box not open)\",\"regeneration_hint\":\"Open the box first (e.g., walk to the bookshelf, open the box), then execute putin('mug','box') to place the mug inside.\"}"
+    },
+    {
+      "atomic_id": 1,
+      "attempt": "repair",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The putin('mug','box') action succeeded, and the current state confirms mug is INSIDE box, completing placement of the mug inside the box.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": 2,
+      "attempt": "initial",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"Execution trace shows successful find, grab, find, and putback of dishwashingliquid onto radio; current state confirms dishwashingliquid is ON radio.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": 3,
+      "attempt": "initial",
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: barsoap was found, grabbed, cabinet was found and opened, barsoap was put inside cabinet, and cabinet was closed. Current state confirms barsoap is inside the closed cabinet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": 4,
+      "attempt": "initial",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter; toothbrush INSIDE dishwasher.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: toothbrush was found, grabbed, dishwasher was opened, toothbrush was put inside the dishwasher, and dishwasher was closed. Current state confirms toothbrush is INSIDE dishwasher and character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 5,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Find and retrieve the mug first",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find and retrieve the mug first",
+      "compiled_action": null
+    },
+    {
+      "line": "find('mug')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find and retrieve the mug first",
+      "compiled_action": "<char0> [find] <mug> (102)"
+    },
+    {
+      "line": "grab('mug')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Find and retrieve the mug first",
+      "compiled_action": "<char0> [grab] <mug> (102)"
+    },
+    {
+      "line": "# Locate the box and place the mug inside it",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the box and place the mug inside it",
+      "compiled_action": null
+    },
+    {
+      "line": "find('box')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the box and place the mug inside it",
+      "compiled_action": "<char0> [find] <box> (106)"
+    },
+    {
+      "line": "putin('mug','box')",
+      "event": "action",
+      "success": false,
+      "detail": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+      "subgoal": "Locate the box and place the mug inside it",
+      "compiled_action": "<char0> [putin] <mug> (102) <box> (106)"
+    },
+    {
+      "line": "# repair",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": null
+    },
+    {
+      "line": "open('box')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [open] <box> (106)"
+    },
+    {
+      "line": "putin('mug','box')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [putin] <mug> (102) <box> (106)"
+    },
+    {
+      "line": "# Locate and acquire dishwashingliquid",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire dishwashingliquid",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwashingliquid')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire dishwashingliquid",
+      "compiled_action": "<char0> [find] <dishwashingliquid> (174)"
+    },
+    {
+      "line": "grab('dishwashingliquid')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire dishwashingliquid",
+      "compiled_action": "<char0> [grab] <dishwashingliquid> (174)"
+    },
+    {
+      "line": "# Locate radio and place dishwashingliquid on it",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate radio and place dishwashingliquid on it",
+      "compiled_action": null
+    },
+    {
+      "line": "find('radio')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate radio and place dishwashingliquid on it",
+      "compiled_action": "<char0> [find] <radio> (100)"
+    },
+    {
+      "line": "putback('dishwashingliquid','radio')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate radio and place dishwashingliquid on it",
+      "compiled_action": "<char0> [putback] <dishwashingliquid> (174) <radio> (100)"
+    },
+    {
+      "line": "# Locate and acquire the barsoap",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the barsoap",
+      "compiled_action": null
+    },
+    {
+      "line": "find('barsoap')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the barsoap",
+      "compiled_action": "<char0> [find] <barsoap> (34)"
+    },
+    {
+      "line": "grab('barsoap')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the barsoap",
+      "compiled_action": "<char0> [grab] <barsoap> (34)"
+    },
+    {
+      "line": "# Locate and prepare the cabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and prepare the cabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and prepare the cabinet",
+      "compiled_action": "<char0> [find] <cabinet> (87)"
+    },
+    {
+      "line": "open('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and prepare the cabinet",
+      "compiled_action": "<char0> [open] <cabinet> (87)"
+    },
+    {
+      "line": "# Place the barsoap inside the cabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the barsoap inside the cabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('barsoap', 'cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the barsoap inside the cabinet",
+      "compiled_action": "<char0> [putin] <barsoap> (34) <cabinet> (87)"
+    },
+    {
+      "line": "# Close the cabinet to finish the process",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the cabinet to finish the process",
+      "compiled_action": null
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the cabinet to finish the process",
+      "compiled_action": "<char0> [close] <cabinet> (87)"
+    },
+    {
+      "line": "# Locate and acquire the toothbrush",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the toothbrush",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toothbrush')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the toothbrush",
+      "compiled_action": "<char0> [find] <toothbrush> (32)"
+    },
+    {
+      "line": "grab('toothbrush')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the toothbrush",
+      "compiled_action": "<char0> [grab] <toothbrush> (32)"
+    },
+    {
+      "line": "# Navigate to the dishwasher and prepare it for placement",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the dishwasher and prepare it for placement",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the dishwasher and prepare it for placement",
+      "compiled_action": "<char0> [find] <dishwasher> (228)"
+    },
+    {
+      "line": "open('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the dishwasher and prepare it for placement",
+      "compiled_action": "<char0> [open] <dishwasher> (228)"
+    },
+    {
+      "line": "# Place the toothbrush inside the dishwasher",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the toothbrush inside the dishwasher",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('toothbrush','dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the toothbrush inside the dishwasher",
+      "compiled_action": "<char0> [putin] <toothbrush> (32) <dishwasher> (228)"
+    },
+    {
+      "line": "# Close the dishwasher to finish the placement process",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the dishwasher to finish the placement process",
+      "compiled_action": null
+    },
+    {
+      "line": "close('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the dishwasher to finish the placement process",
+      "compiled_action": "<char0> [close] <dishwasher> (228)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <mug> (102)",
+      "parsed_action": "[FIND] <mug> (102) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <mug> (102)",
+      "parsed_action": "[GRAB] <mug> (102) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <box> (106)",
+      "parsed_action": "[FIND] <box> (106) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <mug> (102) <box> (106)",
+      "parsed_action": "[PUTIN] <mug> (102) <box> (106) [0]",
+      "success": false,
+      "error": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <box> (106)",
+      "parsed_action": "[OPEN] <box> (106) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <mug> (102) <box> (106)",
+      "parsed_action": "[PUTIN] <mug> (102) <box> (106) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwashingliquid> (174)",
+      "parsed_action": "[FIND] <dishwashingliquid> (174) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <dishwashingliquid> (174)",
+      "parsed_action": "[GRAB] <dishwashingliquid> (174) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <radio> (100)",
+      "parsed_action": "[FIND] <radio> (100) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <dishwashingliquid> (174) <radio> (100)",
+      "parsed_action": "[PUTBACK] <dishwashingliquid> (174) <radio> (100) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <barsoap> (34)",
+      "parsed_action": "[FIND] <barsoap> (34) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <barsoap> (34)",
+      "parsed_action": "[GRAB] <barsoap> (34) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (87)",
+      "parsed_action": "[FIND] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <cabinet> (87)",
+      "parsed_action": "[OPEN] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <barsoap> (34) <cabinet> (87)",
+      "parsed_action": "[PUTIN] <barsoap> (34) <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (87)",
+      "parsed_action": "[CLOSE] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toothbrush> (32)",
+      "parsed_action": "[FIND] <toothbrush> (32) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothbrush> (32)",
+      "parsed_action": "[GRAB] <toothbrush> (32) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (228)",
+      "parsed_action": "[FIND] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <dishwasher> (228)",
+      "parsed_action": "[OPEN] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <toothbrush> (32) <dishwasher> (228)",
+      "parsed_action": "[PUTIN] <toothbrush> (32) <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <dishwasher> (228)",
+      "parsed_action": "[CLOSE] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <mug> (102)",
+    "<char0> [grab] <mug> (102)",
+    "<char0> [find] <box> (106)",
+    "<char0> [putin] <mug> (102) <box> (106)",
+    "<char0> [open] <box> (106)",
+    "<char0> [putin] <mug> (102) <box> (106)",
+    "<char0> [find] <dishwashingliquid> (174)",
+    "<char0> [grab] <dishwashingliquid> (174)",
+    "<char0> [find] <radio> (100)",
+    "<char0> [putback] <dishwashingliquid> (174) <radio> (100)",
+    "<char0> [find] <barsoap> (34)",
+    "<char0> [grab] <barsoap> (34)",
+    "<char0> [find] <cabinet> (87)",
+    "<char0> [open] <cabinet> (87)",
+    "<char0> [putin] <barsoap> (34) <cabinet> (87)",
+    "<char0> [close] <cabinet> (87)",
+    "<char0> [find] <toothbrush> (32)",
+    "<char0> [grab] <toothbrush> (32)",
+    "<char0> [find] <dishwasher> (228)",
+    "<char0> [open] <dishwasher> (228)",
+    "<char0> [putin] <toothbrush> (32) <dishwasher> (228)",
+    "<char0> [close] <dishwasher> (228)"
+  ],
+  "program_length": 22,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 4,
+  "semantic_satisfied_condition_count": 4,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "INSIDE(mug, box)",
+        "predicate": "RELATION",
+        "subject": "mug",
+        "relation": "INSIDE",
+        "object": "box",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['102-INSIDE-106']"
+    },
+    {
+      "condition": {
+        "condition": "ON(dishwashingliquid, radio)",
+        "predicate": "RELATION",
+        "subject": "dishwashingliquid",
+        "relation": "ON",
+        "object": "radio",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['174-ON-100']"
+    },
+    {
+      "condition": {
+        "condition": "INSIDE(barsoap, cabinet)",
+        "predicate": "RELATION",
+        "subject": "barsoap",
+        "relation": "INSIDE",
+        "object": "cabinet",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['34-INSIDE-87']"
+    },
+    {
+      "condition": {
+        "condition": "INSIDE(toothbrush, dishwasher)",
+        "predicate": "RELATION",
+        "subject": "toothbrush",
+        "relation": "INSIDE",
+        "object": "dishwasher",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['32-INSIDE-228']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 0.9545454545454546,
+  "generation_calls": 5,
+  "verification_calls": 5,
+  "repair_calls": 1,
+  "total_calls": 11,
+  "generation_prompt_tokens": 5735,
+  "generation_completion_tokens": 625,
+  "verification_prompt_tokens": 3867,
+  "verification_completion_tokens": 314,
+  "repair_prompt_tokens": 1594,
+  "repair_completion_tokens": 50,
+  "repair_tokens": 1644,
+  "prompt_tokens": 11196,
+  "completion_tokens": 989,
+  "total_prompt_tokens": 11196,
+  "total_completion_tokens": 989,
+  "total_tokens": 12185,
+  "planning_latency": 20.830213470988383,
+  "verification_latency": 14.390361215992016,
+  "total_llm_latency": 35.2205746869804,
+  "wall_clock_total_s": 36.33531662700261,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the mug in the box\",\"manipulated_object\":\"mug\",\"target_object\":\"box\",\"completion_mode\":\"process\",\"process_intent\":\"Place the mug inside the box\"},{\"id\":2,\"instruction\":\"Place the dishwashingliquid on the radio\",\"manipulated_object\":\"dishwashingliquid\",\"target_object\":\"radio\",\"completion_mode\":\"process\",\"process_intent\":\"Set the dishwashingliquid on top of the radio\"},{\"id\":3,\"instruction\":\"Put the barsoap in the cabinet\",\"manipulated_object\":\"barsoap\",\"target_object\":\"cabinet\",\"completion_mode\":\"process\",\"process_intent\":\"Place the barsoap inside the cabinet\"},{\"id\":4,\"instruction\":\"Put the toothbrush in the dishwasher\",\"manipulated_object\":\"toothbrush\",\"target_object\":\"dishwasher\",\"completion_mode\":\"process\",\"process_intent\":\"Place the toothbrush inside the dishwasher\"}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the mug in the box\",\"manipulated_object\":\"mug\",\"target_object\":\"box\",\"completion_mode\":\"process\",\"process_intent\":\"Place the mug inside the box\"},{\"id\":2,\"instruction\":\"Place the dishwashingliquid on the radio\",\"manipulated_object\":\"dishwashingliquid\",\"target_object\":\"radio\",\"completion_mode\":\"process\",\"process_intent\":\"Set the dishwashingliquid on top of the radio\"},{\"id\":3,\"instruction\":\"Put the barsoap in the cabinet\",\"manipulated_object\":\"barsoap\",\"target_object\":\"cabinet\",\"completion_mode\":\"process\",\"process_intent\":\"Place the barsoap inside the cabinet\"},{\"id\":4,\"instruction\":\"Put the toothbrush in the dishwasher\",\"manipulated_object\":\"toothbrush\",\"target_object\":\"dishwasher\",\"completion_mode\":\"process\",\"process_intent\":\"Place the toothbrush inside the dishwasher\"}]}",
+      "prompt_tokens": 914,
+      "completion_tokens": 201,
+      "latency_s": 3.077849007997429,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774277769115a741db9058723ed34b56d0ce5c7d9cd2e1be",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the mug, pick it up, locate the box, then place the mug inside the box.\",\"program\":\"# Find and retrieve the mug first\\nfind('mug')\\ngrab('mug')\\n# Locate the box and place the mug inside it\\nfind('box')\\nputin('mug','box')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the mug, pick it up, locate the box, then place the mug inside the box.\",\"program\":\"# Find and retrieve the mug first\\nfind('mug')\\ngrab('mug')\\n# Locate the box and place the mug inside it\\nfind('box')\\nputin('mug','box')\"}",
+      "prompt_tokens": 1278,
+      "completion_tokens": 78,
+      "latency_s": 3.4962583989981795,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774278077515a741db9058723ed34b56d0ce5c7d9cbcbe3e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=['mug']. Nearby visible graph: bookshelf, mug. You have mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; photoframe INSIDE bookshelf.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Find and retrieve the mug first\\nfind('mug')\\ngrab('mug')\\n# Locate the box and place the mug inside it\\nfind('box')\\nputin('mug','box')\", \"execution_trace\": [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": false, \"detail\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"line\": \"putin('mug','box')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The putin action failed because the box was not open, so the mug was not placed inside the box. The character still holds the mug.\",\"failure_stage\":\"putin precondition (box not open)\",\"regeneration_hint\":\"Open the box first (e.g., walk to the bookshelf, open the box), then execute putin('mug','box') to place the mug inside.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The putin action failed because the box was not open, so the mug was not placed inside the box. The character still holds the mug.\",\"failure_stage\":\"putin precondition (box not open)\",\"regeneration_hint\":\"Open the box first (e.g., walk to the bookshelf, open the box), then execute putin('mug','box') to place the mug inside.\"}",
+      "prompt_tokens": 811,
+      "completion_tokens": 90,
+      "latency_s": 5.068506636998791,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774278431015a741db9058723ed34b56d0ce5c7d9c1044f0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "repair_program_agent",
+      "broad_role": "repair",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one current atomic. Repair from current state. Do not replay\nsuccessful work blindly or plan future atomics. Return strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=['mug']. Nearby visible graph: bookshelf, mug. You have mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; photoframe INSIDE bookshelf.\nPREVIOUS ATTEMPTED PROGRAM: # Find and retrieve the mug first\nfind('mug')\ngrab('mug')\n# Locate the box and place the mug inside it\nfind('box')\nputin('mug','box')\nCURRENT-ATOMIC EXECUTION TRACE: [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": false, \"detail\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}]\nTYPED ERRORS: [{\"error_type\": \"precondition_failure\", \"message\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"line\": \"putin('mug','box')\"}]\nPREVIOUS VERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "raw_output": "{\"repair_brief\":\"The putin failed because the box was not open. Open the box first, then place the mug inside.\",\"program\":\"# repair\\nopen('box')\\nputin('mug','box')\\n\"}",
+      "output_text": "{\"repair_brief\":\"The putin failed because the box was not open. Open the box first, then place the mug inside.\",\"program\":\"# repair\\nopen('box')\\nputin('mug','box')\\n\"}",
+      "prompt_tokens": 1594,
+      "completion_tokens": 50,
+      "latency_s": 2.8415358919955906,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774278938415a741db9058723ed34b56d0ce5c7d9ca3d6e8",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# repair\\nopen('box')\\nputin('mug','box')\\n\", \"execution_trace\": [{\"line\": \"open('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}], \"errors\": [], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The putin('mug','box') action succeeded, and the current state confirms mug is INSIDE box, completing placement of the mug inside the box.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The putin('mug','box') action succeeded, and the current state confirms mug is INSIDE box, completing placement of the mug inside the box.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 603,
+      "completion_tokens": 52,
+      "latency_s": 1.9549964570032898,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774279224715a741db9058723ed34b56d0ce5c7d9cfb4825",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 2, \"instruction\": \"Place the dishwashingliquid on the radio\", \"manipulated_object\": \"dishwashingliquid\", \"target_object\": \"radio\", \"completion_mode\": \"process\", \"process_intent\": \"Set the dishwashingliquid on top of the radio\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Navigate to locate the dishwashingliquid, pick it up, then navigate to the radio and place the dishwashingliquid on top of it.\",\"program\":\"# Locate and acquire dishwashingliquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Locate radio and place dishwashingliquid on it\\nfind('radio')\\nputback('dishwashingliquid','radio')\"}",
+      "output_text": "{\"plan_brief\":\"Navigate to locate the dishwashingliquid, pick it up, then navigate to the radio and place the dishwashingliquid on top of it.\",\"program\":\"# Locate and acquire dishwashingliquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Locate radio and place dishwashingliquid on it\\nfind('radio')\\nputback('dishwashingliquid','radio')\"}",
+      "prompt_tokens": 1174,
+      "completion_tokens": 92,
+      "latency_s": 3.273273833998246,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774279420715a741db9058723ed34b56d0ce5c7d9c8a775a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Place the dishwashingliquid on the radio\", \"manipulated_object\": \"dishwashingliquid\", \"target_object\": \"radio\", \"completion_mode\": \"process\", \"process_intent\": \"Set the dishwashingliquid on top of the radio\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire dishwashingliquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Locate radio and place dishwashingliquid on it\\nfind('radio')\\nputback('dishwashingliquid','radio')\", \"execution_trace\": [{\"line\": \"find('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwashingliquid> (174)\"}, {\"line\": \"grab('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <dishwashingliquid> (174)\"}, {\"line\": \"find('radio')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <radio> (100)\"}, {\"line\": \"putback('dishwashingliquid','radio')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <dishwashingliquid> (174) <radio> (100)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"Execution trace shows successful find, grab, find, and putback of dishwashingliquid onto radio; current state confirms dishwashingliquid is ON radio.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"Execution trace shows successful find, grab, find, and putback of dishwashingliquid onto radio; current state confirms dishwashingliquid is ON radio.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 758,
+      "completion_tokens": 50,
+      "latency_s": 2.3809808939986397,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774279756815a741db9058723ed34b56d0ce5c7d9c35618d",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 3, \"instruction\": \"Put the barsoap in the cabinet\", \"manipulated_object\": \"barsoap\", \"target_object\": \"cabinet\", \"completion_mode\": \"process\", \"process_intent\": \"Place the barsoap inside the cabinet\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the barsoap, pick it up, find and open the cabinet, place the barsoap inside, then close the cabinet to complete the placement.\",\"program\":\"# Locate and acquire the barsoap\\nfind('barsoap')\\ngrab('barsoap')\\n# Locate and prepare the cabinet\\nfind('cabinet')\\nopen('cabinet')\\n# Place the barsoap inside the cabinet\\nputin('barsoap', 'cabinet')\\n# Close the cabinet to finish the process\\nclose('cabinet')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the barsoap, pick it up, find and open the cabinet, place the barsoap inside, then close the cabinet to complete the placement.\",\"program\":\"# Locate and acquire the barsoap\\nfind('barsoap')\\ngrab('barsoap')\\n# Locate and prepare the cabinet\\nfind('cabinet')\\nopen('cabinet')\\n# Place the barsoap inside the cabinet\\nputin('barsoap', 'cabinet')\\n# Close the cabinet to finish the process\\nclose('cabinet')\"}",
+      "prompt_tokens": 1204,
+      "completion_tokens": 120,
+      "latency_s": 3.8752407009960734,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774279995315a741db9058723ed34b56d0ce5c7d9c52d837",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 3, \"instruction\": \"Put the barsoap in the cabinet\", \"manipulated_object\": \"barsoap\", \"target_object\": \"cabinet\", \"completion_mode\": \"process\", \"process_intent\": \"Place the barsoap inside the cabinet\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the barsoap\\nfind('barsoap')\\ngrab('barsoap')\\n# Locate and prepare the cabinet\\nfind('cabinet')\\nopen('cabinet')\\n# Place the barsoap inside the cabinet\\nputin('barsoap', 'cabinet')\\n# Close the cabinet to finish the process\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <barsoap> (34)\"}, {\"line\": \"grab('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <barsoap> (34)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"putin('barsoap', 'cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <barsoap> (34) <cabinet> (87)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: barsoap was found, grabbed, cabinet was found and opened, barsoap was put inside cabinet, and cabinet was closed. Current state confirms barsoap is inside the closed cabinet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded: barsoap was found, grabbed, cabinet was found and opened, barsoap was put inside cabinet, and cabinet was closed. Current state confirms barsoap is inside the closed cabinet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 817,
+      "completion_tokens": 60,
+      "latency_s": 2.8073954609935754,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774280388915a741db9058723ed34b56d0ce5c7d9cfa3ec7",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 4, \"instruction\": \"Put the toothbrush in the dishwasher\", \"manipulated_object\": \"toothbrush\", \"target_object\": \"dishwasher\", \"completion_mode\": \"process\", \"process_intent\": \"Place the toothbrush inside the dishwasher\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Navigate to the toothbrush, pick it up, navigate to the dishwasher, open it, place the toothbrush inside, then close the dishwasher to complete the placement process.\",\"program\":\"# Locate and acquire the toothbrush\\nfind('toothbrush')\\ngrab('toothbrush')\\n# Navigate to the dishwasher and prepare it for placement\\nfind('dishwasher')\\nopen('dishwasher')\\n# Place the toothbrush inside the dishwasher\\nputin('toothbrush','dishwasher')\\n# Close the dishwasher to finish the placement process\\nclose('dishwasher')\"}",
+      "output_text": "{\"plan_brief\":\"Navigate to the toothbrush, pick it up, navigate to the dishwasher, open it, place the toothbrush inside, then close the dishwasher to complete the placement process.\",\"program\":\"# Locate and acquire the toothbrush\\nfind('toothbrush')\\ngrab('toothbrush')\\n# Navigate to the dishwasher and prepare it for placement\\nfind('dishwasher')\\nopen('dishwasher')\\n# Place the toothbrush inside the dishwasher\\nputin('toothbrush','dishwasher')\\n# Close the dishwasher to finish the placement process\\nclose('dishwasher')\"}",
+      "prompt_tokens": 1165,
+      "completion_tokens": 134,
+      "latency_s": 4.266055637002864,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774280670415a741db9058723ed34b56d0ce5c7d9c3c124c",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 4, \"instruction\": \"Put the toothbrush in the dishwasher\", \"manipulated_object\": \"toothbrush\", \"target_object\": \"dishwasher\", \"completion_mode\": \"process\", \"process_intent\": \"Place the toothbrush inside the dishwasher\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter; toothbrush INSIDE dishwasher.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the toothbrush\\nfind('toothbrush')\\ngrab('toothbrush')\\n# Navigate to the dishwasher and prepare it for placement\\nfind('dishwasher')\\nopen('dishwasher')\\n# Place the toothbrush inside the dishwasher\\nputin('toothbrush','dishwasher')\\n# Close the dishwasher to finish the placement process\\nclose('dishwasher')\", \"execution_trace\": [{\"line\": \"find('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothbrush> (32)\"}, {\"line\": \"grab('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothbrush> (32)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('toothbrush','dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothbrush> (32) <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded: toothbrush was found, grabbed, dishwasher was opened, toothbrush was put inside the dishwasher, and dishwasher was closed. Current state confirms toothbrush is INSIDE dishwasher and character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded: toothbrush was found, grabbed, dishwasher was opened, toothbrush was put inside the dishwasher, and dishwasher was closed. Current state confirms toothbrush is INSIDE dishwasher and character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 878,
+      "completion_tokens": 62,
+      "latency_s": 2.17848176699772,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774281107515a741db9058723ed34b56d0ce5c7d9c68116e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "input": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=['mug']. Nearby visible graph: bookshelf, mug. You have mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; photoframe INSIDE bookshelf.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Find and retrieve the mug first\\nfind('mug')\\ngrab('mug')\\n# Locate the box and place the mug inside it\\nfind('box')\\nputin('mug','box')\", \"execution_trace\": [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": false, \"detail\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"line\": \"putin('mug','box')\"}]}\n"
+    },
+    {
+      "role": "repair_program_agent",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "input": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one current atomic. Repair from current state. Do not replay\nsuccessful work blindly or plan future atomics. Return strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=['mug']. Nearby visible graph: bookshelf, mug. You have mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; photoframe INSIDE bookshelf.\nPREVIOUS ATTEMPTED PROGRAM: # Find and retrieve the mug first\nfind('mug')\ngrab('mug')\n# Locate the box and place the mug inside it\nfind('box')\nputin('mug','box')\nCURRENT-ATOMIC EXECUTION TRACE: [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": false, \"detail\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}]\nTYPED ERRORS: [{\"error_type\": \"precondition_failure\", \"message\": \"<box> (106) is not open or is not openable when executing \\\"[PUTIN] <mug> (102) <box> (106) [0]\\\"\", \"line\": \"putin('mug','box')\"}]\nPREVIOUS VERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "post_repair_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Put the mug in the box\", \"manipulated_object\": \"mug\", \"target_object\": \"box\", \"completion_mode\": \"process\", \"process_intent\": \"Place the mug inside the box\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# repair\\nopen('box')\\nputin('mug','box')\\n\", \"execution_trace\": [{\"line\": \"open('box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <box> (106)\"}, {\"line\": \"putin('mug','box')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <box> (106)\"}], \"errors\": [], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"verifier failure fields violate schema\"}}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 2, \"instruction\": \"Place the dishwashingliquid on the radio\", \"manipulated_object\": \"dishwashingliquid\", \"target_object\": \"radio\", \"completion_mode\": \"process\", \"process_intent\": \"Set the dishwashingliquid on top of the radio\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: bookshelf, mug. One-hop INSIDE/ON relations connected to nearby objects: book INSIDE bookshelf; box INSIDE bookshelf; folder INSIDE bookshelf; mug INSIDE box; photoframe INSIDE bookshelf.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Place the dishwashingliquid on the radio\", \"manipulated_object\": \"dishwashingliquid\", \"target_object\": \"radio\", \"completion_mode\": \"process\", \"process_intent\": \"Set the dishwashingliquid on top of the radio\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire dishwashingliquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Locate radio and place dishwashingliquid on it\\nfind('radio')\\nputback('dishwashingliquid','radio')\", \"execution_trace\": [{\"line\": \"find('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwashingliquid> (174)\"}, {\"line\": \"grab('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <dishwashingliquid> (174)\"}, {\"line\": \"find('radio')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <radio> (100)\"}, {\"line\": \"putback('dishwashingliquid','radio')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <dishwashingliquid> (174) <radio> (100)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 3, \"instruction\": \"Put the barsoap in the cabinet\", \"manipulated_object\": \"barsoap\", \"target_object\": \"cabinet\", \"completion_mode\": \"process\", \"process_intent\": \"Place the barsoap inside the cabinet\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, radio ON coffeetable, radio is OFF. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; dishwashingliquid ON radio; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 3, \"instruction\": \"Put the barsoap in the cabinet\", \"manipulated_object\": \"barsoap\", \"target_object\": \"cabinet\", \"completion_mode\": \"process\", \"process_intent\": \"Place the barsoap inside the cabinet\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the barsoap\\nfind('barsoap')\\ngrab('barsoap')\\n# Locate and prepare the cabinet\\nfind('cabinet')\\nopen('cabinet')\\n# Place the barsoap inside the cabinet\\nputin('barsoap', 'cabinet')\\n# Close the cabinet to finish the process\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <barsoap> (34)\"}, {\"line\": \"grab('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <barsoap> (34)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"putin('barsoap', 'cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <barsoap> (34) <cabinet> (87)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Put the mug in the box, place the dishwashingliquid on the radio, put the barsoap in the cabinet, and put the toothbrush in the dishwasher.\nCURRENT ATOMIC: {\"id\": 4, \"instruction\": \"Put the toothbrush in the dishwasher\", \"manipulated_object\": \"toothbrush\", \"target_object\": \"dishwasher\", \"completion_mode\": \"process\", \"process_intent\": \"Place the toothbrush inside the dishwasher\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: barsoap INSIDE cabinet; bookshelf ON floor; cabinet ON floor; cellphone ON cabinet.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 4, \"instruction\": \"Put the toothbrush in the dishwasher\", \"manipulated_object\": \"toothbrush\", \"target_object\": \"dishwasher\", \"completion_mode\": \"process\", \"process_intent\": \"Place the toothbrush inside the dishwasher\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter; toothbrush INSIDE dishwasher.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"box\", \"cabinet\", \"dishwasher\", \"dishwashingliquid\", \"mug\", \"radio\", \"toothbrush\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the toothbrush\\nfind('toothbrush')\\ngrab('toothbrush')\\n# Navigate to the dishwasher and prepare it for placement\\nfind('dishwasher')\\nopen('dishwasher')\\n# Place the toothbrush inside the dishwasher\\nputin('toothbrush','dishwasher')\\n# Close the dishwasher to finish the placement process\\nclose('dishwasher')\", \"execution_trace\": [{\"line\": \"find('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothbrush> (32)\"}, {\"line\": \"grab('toothbrush')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothbrush> (32)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('toothbrush','dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothbrush> (32) <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the mug in the box\",\"manipulated_object\":\"mug\",\"target_object\":\"box\",\"completion_mode\":\"process\",\"process_intent\":\"Place the mug inside the box\"},{\"id\":2,\"instruction\":\"Place the dishwashingliquid on the radio\",\"manipulated_object\":\"dishwashingliquid\",\"target_object\":\"radio\",\"completion_mode\":\"process\",\"process_intent\":\"Set the dishwashingliquid on top of the radio\"},{\"id\":3,\"instruction\":\"Put the barsoap in the cabinet\",\"manipulated_object\":\"barsoap\",\"target_object\":\"cabinet\",\"completion_mode\":\"process\",\"process_intent\":\"Place the barsoap inside the cabinet\"},{\"id\":4,\"instruction\":\"Put the toothbrush in the dishwasher\",\"manipulated_object\":\"toothbrush\",\"target_object\":\"dishwasher\",\"completion_mode\":\"process\",\"process_intent\":\"Place the toothbrush inside the dishwasher\"}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the mug, pick it up, locate the box, then place the mug inside the box.\",\"program\":\"# Find and retrieve the mug first\\nfind('mug')\\ngrab('mug')\\n# Locate the box and place the mug inside it\\nfind('box')\\nputin('mug','box')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":false,\"reason\":\"The putin action failed because the box was not open, so the mug was not placed inside the box. The character still holds the mug.\",\"failure_stage\":\"putin precondition (box not open)\",\"regeneration_hint\":\"Open the box first (e.g., walk to the bookshelf, open the box), then execute putin('mug','box') to place the mug inside.\"}"
+    },
+    {
+      "role": "repair_program_agent",
+      "output": "{\"repair_brief\":\"The putin failed because the box was not open. Open the box first, then place the mug inside.\",\"program\":\"# repair\\nopen('box')\\nputin('mug','box')\\n\"}"
+    },
+    {
+      "role": "post_repair_verifier",
+      "output": "{\"done\":true,\"reason\":\"The putin('mug','box') action succeeded, and the current state confirms mug is INSIDE box, completing placement of the mug inside the box.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Navigate to locate the dishwashingliquid, pick it up, then navigate to the radio and place the dishwashingliquid on top of it.\",\"program\":\"# Locate and acquire dishwashingliquid\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\n# Locate radio and place dishwashingliquid on it\\nfind('radio')\\nputback('dishwashingliquid','radio')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"Execution trace shows successful find, grab, find, and putback of dishwashingliquid onto radio; current state confirms dishwashingliquid is ON radio.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the barsoap, pick it up, find and open the cabinet, place the barsoap inside, then close the cabinet to complete the placement.\",\"program\":\"# Locate and acquire the barsoap\\nfind('barsoap')\\ngrab('barsoap')\\n# Locate and prepare the cabinet\\nfind('cabinet')\\nopen('cabinet')\\n# Place the barsoap inside the cabinet\\nputin('barsoap', 'cabinet')\\n# Close the cabinet to finish the process\\nclose('cabinet')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"All actions succeeded: barsoap was found, grabbed, cabinet was found and opened, barsoap was put inside cabinet, and cabinet was closed. Current state confirms barsoap is inside the closed cabinet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Navigate to the toothbrush, pick it up, navigate to the dishwasher, open it, place the toothbrush inside, then close the dishwasher to complete the placement process.\",\"program\":\"# Locate and acquire the toothbrush\\nfind('toothbrush')\\ngrab('toothbrush')\\n# Navigate to the dishwasher and prepare it for placement\\nfind('dishwasher')\\nopen('dishwasher')\\n# Place the toothbrush inside the dishwasher\\nputin('toothbrush','dishwasher')\\n# Close the dishwasher to finish the placement process\\nclose('dishwasher')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"All actions succeeded: toothbrush was found, grabbed, dishwasher was opened, toothbrush was put inside the dishwasher, and dishwasher was closed. Current state confirms toothbrush is INSIDE dishwasher and character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "Atomic 1: verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "Atomic 1: verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<box> (106) is not open or is not openable when executing \"[PUTIN] <mug> (102) <box> (106) [0]\"",
+      "line": "putin('mug','box')"
+    }
+  ],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Put the mug in the box\",\"manipulated_object\":\"mug\",\"target_object\":\"box\",\"completion_mode\":\"process\",\"process_intent\":\"Place the mug inside the box\"},{\"id\":2,\"instruction\":\"Place the dishwashingliquid on the radio\",\"manipulated_object\":\"dishwashingliquid\",\"target_object\":\"radio\",\"completion_mode\":\"process\",\"process_intent\":\"Set the dishwashingliquid on top of the radio\"},{\"id\":3,\"instruction\":\"Put the barsoap in the cabinet\",\"manipulated_object\":\"barsoap\",\"target_object\":\"cabinet\",\"completion_mode\":\"process\",\"process_intent\":\"Place the barsoap inside the cabinet\"},{\"id\":4,\"instruction\":\"Put the toothbrush in the dishwasher\",\"manipulated_object\":\"toothbrush\",\"target_object\":\"dishwasher\",\"completion_mode\":\"process\",\"process_intent\":\"Place the toothbrush inside the dishwasher\"}]}"
+}

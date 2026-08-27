@@ -1,0 +1,196 @@
+SOURCE RUN: formal_2026-08-26T032825.952763_0000_progprompt_test_unseen_turn_off_light
+TASK: test_unseen::turn_off_light
+ROLE: whole_program_generation
+
+REQUEST METADATA:
+{
+  "call_role": "whole_program_generation",
+  "broad_role": "generation",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "stop": [
+    "def"
+  ],
+  "frequency_penalty": 0.15,
+  "extra_body": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "prompt_tokens": 1939,
+  "completion_tokens": 97,
+  "response_id": "resp_02178771492334014713b2deea0810671b986a10f293e3946ff0d",
+  "error_type": "",
+  "error_message": ""
+}
+
+INSTRUCTIONS FIELD (sent separately):
+Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.
+
+USER INPUT/PROMPT (complete):
+from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>
+
+objects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']
+
+def put_the_wine_glass_in_the_kitchen_cabinet():
+	# 0: walk to kitchen
+	walk('kitchen')
+	# 1: find wine glass
+	find('wineglass')
+	# 2: grab wine glass
+	assert('close' to 'wineglass')
+		else: find('wineglass')
+	grab('wineglass')
+	# 3: find kitchen cabinet
+	find('kitchencabinet')
+	# 4: open kitchen cabinet
+	assert('close' to 'kitchencabinet' )  
+		else: find('kitchencabinet')
+	assert('kitchencabinet' is 'closed' )
+		else: close('kitchencabinet')
+	open('kitchencabinet')
+	# 5: put wine glass in kitchen cabinet
+	assert('wineglass' in 'hands' )
+		else: find('wineglass')
+		else: grab('wineglass')
+	assert('close' to 'kitchencabinet' )  
+		else: find('kitchencabinet')
+	assert('kitchencabinet' is 'opened' )
+		else: open('kitchencabinet')
+	putin('wineglass', 'kitchencabinet')
+	# 6: close kitchen cabinet
+	assert('close' to 'kitchencabinet' )
+		else: find('kitchencabinet')
+	assert('kitchencabinet' is 'opened' )
+		else: open('kitchencabinet')
+	close('kitchencabinet')
+	# 7: Done
+
+def throw_away_the_lime():
+	# 0: walk to kitchen
+	walk('kitchen')
+	# 1: find garbage can
+	find('garbagecan')
+	# 2: grab lime
+	find('lime')
+	assert('close' to 'lime')
+		else: find('lime')
+	grab('lime')
+	# 3: put lime in garbage can
+	find('garbagecan')
+	assert('close' to 'garbagecan' )  
+		else: find('garbagecan')
+	assert('garbagecan' is 'closed' )
+		else: close('garbagecan')
+	open('garbagecan')
+	assert('lime' in 'hands' )
+		else: find('lime')
+		else: grab('lime')
+	assert('close' to 'garbagecan' )  
+		else: find('garbagecan')
+	assert('garbagecan' is 'opened' )
+		else: open('garbagecan')
+	putin('lime', 'garbagecan')
+	assert('close' to 'garbagecan' )
+		else: find('garbagecan')
+	assert('garbagecan' is 'opened' )
+		else: open('garbagecan')
+	close('garbagecan')
+	# 4: Done
+
+def wash_mug():
+	# 0: walk to kitchen
+	walk('kitchen')
+	# 1: find sink
+	find('sink')
+	# 2: turn on faucet
+	find('faucet')
+	find('faucet')
+	find('faucet')
+	assert('close' to 'faucet' )  
+		else: find('faucet')
+	assert('faucet' is 'switchoff' )
+		else: switchoff('faucet')
+	switchon('faucet')
+	# 3: put mug under water
+	find('mug')
+	find('mug')
+	find('mug')
+	assert('close' to 'mug')
+		else: find('mug')
+	grab('mug')
+	find('sink')
+	assert('mug' in 'hands' )
+		else: find('mug')
+		else: grab('mug')
+	assert('close' to 'sink' )  
+		else: find('sink')
+	putin('mug', 'sink')
+	# 4: grab dishwashing liquid
+	find('dishwashingliquid')
+	assert('close' to 'dishwashingliquid')
+		else: find('dishwashingliquid')
+	grab('dishwashingliquid')
+	# 5: put dishwashing liquid on mug
+	find('sink')
+	assert('dishwashingliquid' in 'hands' )
+		else: find('dishwashingliquid')
+		else: grab('dishwashingliquid')
+	assert('close' to 'sink' )  
+		else: find('sink')
+	putin('dishwashingliquid', 'sink')
+	# 6: grab washingsponge
+	find('washingsponge')
+	assert('close' to 'washingsponge')
+		else: find('washingsponge')
+	grab('washingsponge')
+	# 7: start scrubbing mug
+	find('sink')
+	assert('washingsponge' in 'hands' )
+		else: find('washingsponge')
+		else: grab('washingsponge')
+	assert('close' to 'sink' )  
+		else: find('sink')
+	putin('washingsponge', 'sink')
+	# 8: rinse mug off with water 1
+	# 9: dry mug with towel 1
+	# 10: Done
+	find('faucet')
+	assert('close' to 'faucet' )
+		else: find('faucet')
+	assert('faucet' is 'switchon' )
+		else: switchon('faucet')
+	switchoff('faucet')
+
+def turn_off_light():
+	
+
+RAW MODEL OUTPUT (complete):
+# 0: walk to lightswitch
+	walk('lightswitch')
+	# 1: find lightswitch
+	find('lightswitch')
+	# 2: turn off lightswitch
+	assert('close' to 'lightswitch' )  
+		else: find('lightswitch')
+	assert('lightswitch' is 'switchon' )
+		else: switchon('lightswitch')
+	switchoff('lightswitch')
+	# 3: Done
+
+PARSED OUTPUT_TEXT USED BY RUNTIME:
+# 0: walk to lightswitch
+	walk('lightswitch')
+	# 1: find lightswitch
+	find('lightswitch')
+	# 2: turn off lightswitch
+	assert('close' to 'lightswitch' )  
+		else: find('lightswitch')
+	assert('lightswitch' is 'switchon' )
+		else: switchon('lightswitch')
+	switchoff('lightswitch')
+	# 3: Done

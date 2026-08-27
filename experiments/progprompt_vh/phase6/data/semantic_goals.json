@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-26T03:02:20.078609+00:00",
+  "visibility": "final deterministic evaluator only; never supplied to TaskAgent, ProgramAgent, or online LLM verifier",
+  "aggregation": "conditions within a task are conjunctive; COUNT_RELATION is one deterministic condition",
+  "tasks": [
+    {
+      "task_id": "test_unseen::turn_off_light",
+      "task_text": "turn off light",
+      "official_split": "test_unseen",
+      "conditions": [
+        {
+          "condition": "STATE(lightswitch, OFF)",
+          "predicate": "STATE",
+          "object": "lightswitch",
+          "value": "OFF",
+          "rationale": "The instruction explicitly requests the controlled light switch to be off."
+        }
+      ],
+      "ambiguity": "The scene represents the controlled light through the lightswitch object."
+    },
+    {
+      "task_id": "test_unseen::throw_away_apple",
+      "task_text": "throw away apple",
+      "official_split": "test_unseen",
+      "conditions": [
+        {
+          "condition": "INSIDE(apple, garbagecan)",
+          "predicate": "RELATION",
+          "subject": "apple",
+          "relation": "INSIDE",
+          "object": "garbagecan",
+          "rationale": "Disposal is represented by containment in the garbage can."
+        }
+      ],
+      "ambiguity": "Container closure and character location are procedural endpoints, not goals."
+    },
+    {
+      "task_id": "test_unseen::put_salmon_in_the_fridge",
+      "task_text": "put salmon in the fridge",
+      "official_split": "test_unseen",
+      "conditions": [
+        {
+          "condition": "INSIDE(salmon, fridge)",
+          "predicate": "RELATION",
+          "subject": "salmon",
+          "relation": "INSIDE",
+          "object": "fridge",
+          "rationale": "The requested destination relation is salmon inside the fridge."
+        }
+      ],
+      "ambiguity": "Fridge-door and character states are excluded."
+    },
+    {
+      "task_id": "test_unseen::wash_the_plate",
+      "task_text": "wash the plate",
+      "official_split": "test_unseen",
+      "conditions": [
+        {
+          "condition": "STATE(plate, WASHED)",
+          "predicate": "STATE",
+          "object": "plate",
+          "value": "WASHED",
+          "rationale": "The released benchmark augmentation persistently marks an object washed when it is in a sink while a faucet is on."
+        }
+      ],
+      "ambiguity": "WASHED is a released evaluator augmentation rather than a native graph state."
+    },
+    {
+      "task_id": "test_unseen::bring_coffeepot_and_cupcake_to_the_coffee_table",
+      "task_text": "bring coffeepot and cupcake to the coffee table",
+      "official_split": "test_unseen",
+      "conditions": [
+        {
+          "condition": "ON(coffeepot, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The coffeepot must reach the requested table."
+        },
+        {
+          "condition": "ON(cupcake, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "cupcake",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The cupcake must reach the requested table."
+        }
+      ],
+      "ambiguity": "Both object destinations are conjunctive."
+    },
+    {
+      "task_id": "test_unseen::microwave_salmon",
+      "task_text": "microwave salmon",
+      "official_split": "test_unseen",
+      "conditions": [
+        {
+          "condition": "STATE(salmon, HEATED)",
+          "predicate": "STATE",
+          "object": "salmon",
+          "value": "HEATED",
+          "rationale": "The released microwave augmentation persistently marks food HEATED."
+        }
+      ],
+      "ambiguity": "Microwave state, containment, and holding are procedural or endpoint states."
+    },
+    {
+      "task_id": "test_unseen_ambiguous_goals::collect_4_fruits_such_as_apple,_banana,_etc_in_the_dishbowl",
+      "task_text": "collect 4 fruits such as apple, banana, etc in the dishbowl",
+      "official_split": "test_unseen_ambiguous_goals",
+      "conditions": [
+        {
+          "condition": "COUNT_DISTINCT_INSTANCES(apple|bananas|lime|peach|plum INSIDE dishbowl) >= 4",
+          "predicate": "COUNT_RELATION",
+          "subjects": [
+            "apple",
+            "bananas",
+            "lime",
+            "peach",
+            "plum"
+          ],
+          "relation": "INSIDE",
+          "object": "dishbowl",
+          "minimum": 4,
+          "distinct_instances": true,
+          "rationale": "The instruction requests any four fruits; counting distinct available fruit instances avoids selecting the annotator's particular four fruits."
+        }
+      ],
+      "ambiguity": "Fruit identities are intentionally open; the frozen goal counts any four distinct available fruit instances rather than the annotation's choices."
+    },
+    {
+      "task_id": "env1::turn_off_tablelamp",
+      "task_text": "turn off tablelamp",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "STATE(tablelamp, OFF)",
+          "predicate": "STATE",
+          "object": "tablelamp",
+          "value": "OFF",
+          "rationale": "The instruction explicitly requests the lamp to be off."
+        }
+      ],
+      "ambiguity": "No final character location is required."
+    },
+    {
+      "task_id": "env1::put_the_soap_in_the_bathroomcabinet",
+      "task_text": "put the soap in the bathroomcabinet",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "INSIDE(barsoap, bathroomcabinet)",
+          "predicate": "RELATION",
+          "subject": "barsoap",
+          "relation": "INSIDE",
+          "object": "bathroomcabinet",
+          "rationale": "The soap must be contained by the requested cabinet."
+        }
+      ],
+      "ambiguity": "The annotation grounds 'soap' to the available barsoap class."
+    },
+    {
+      "task_id": "env1::throw_away_plum",
+      "task_text": "throw away plum",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "INSIDE(plum, garbagecan)",
+          "predicate": "RELATION",
+          "subject": "plum",
+          "relation": "INSIDE",
+          "object": "garbagecan",
+          "rationale": "Disposal is represented by containment in the garbage can."
+        }
+      ],
+      "ambiguity": "Container closure is not part of semantic completion."
+    },
+    {
+      "task_id": "env1::bring_my_book_to_the_sofa",
+      "task_text": "bring my book to the sofa",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "ON(book, sofa)",
+          "predicate": "RELATION",
+          "subject": "book",
+          "relation": "ON",
+          "object": "sofa",
+          "rationale": "The book must be placed on the requested sofa."
+        }
+      ],
+      "ambiguity": "Character proximity is excluded."
+    },
+    {
+      "task_id": "env1::put_chicken_in_the_fridge",
+      "task_text": "put chicken in the fridge",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "INSIDE(chicken, fridge)",
+          "predicate": "RELATION",
+          "subject": "chicken",
+          "relation": "INSIDE",
+          "object": "fridge",
+          "rationale": "The chicken must be inside the fridge."
+        }
+      ],
+      "ambiguity": "Fridge-door state is procedural."
+    },
+    {
+      "task_id": "env1::bring_coffeepot_and_peach_to_the_coffee_table",
+      "task_text": "bring coffeepot and peach to the coffee table",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "ON(coffeepot, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The coffeepot must reach the coffee table."
+        },
+        {
+          "condition": "ON(peach, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "peach",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The peach must reach the coffee table."
+        }
+      ],
+      "ambiguity": "Both requested objects are conjunctive."
+    },
+    {
+      "task_id": "env1::microwave_chicken",
+      "task_text": "microwave chicken",
+      "official_split": "env1",
+      "conditions": [
+        {
+          "condition": "STATE(chicken, HEATED)",
+          "predicate": "STATE",
+          "object": "chicken",
+          "value": "HEATED",
+          "rationale": "The released microwave augmentation persistently marks food HEATED."
+        }
+      ],
+      "ambiguity": "Microwave endpoint state and holding are not required."
+    },
+    {
+      "task_id": "env2::open_the_curtains",
+      "task_text": "open the curtains",
+      "official_split": "env2",
+      "conditions": [
+        {
+          "condition": "STATE(curtains, OPEN)",
+          "predicate": "STATE",
+          "object": "curtains",
+          "value": "OPEN",
+          "rationale": "The instruction explicitly requests open curtains."
+        }
+      ],
+      "ambiguity": "Character location is excluded."
+    },
+    {
+      "task_id": "env2::turn_on_tv",
+      "task_text": "turn on tv",
+      "official_split": "env2",
+      "conditions": [
+        {
+          "condition": "STATE(tv, ON)",
+          "predicate": "STATE",
+          "object": "tv",
+          "value": "ON",
+          "rationale": "The instruction explicitly requests the television to be on."
+        }
+      ],
+      "ambiguity": "Unlike 'watch tv', this task has an exact persistent requested state."
+    },
+    {
+      "task_id": "env2::put_the_soap_in_the_bathroomcabinet",
+      "task_text": "put the soap in the bathroomcabinet",
+      "official_split": "env2",
+      "conditions": [
+        {
+          "condition": "INSIDE(barsoap, bathroomcabinet)",
+          "predicate": "RELATION",
+          "subject": "barsoap",
+          "relation": "INSIDE",
+          "object": "bathroomcabinet",
+          "rationale": "The soap must be contained by the requested cabinet."
+        }
+      ],
+      "ambiguity": "The annotation grounds 'soap' to the available barsoap class."
+    },
+    {
+      "task_id": "env2::throw_away_bananas",
+      "task_text": "throw away bananas",
+      "official_split": "env2",
+      "conditions": [
+        {
+          "condition": "INSIDE(bananas, garbagecan)",
+          "predicate": "RELATION",
+          "subject": "bananas",
+          "relation": "INSIDE",
+          "object": "garbagecan",
+          "rationale": "Disposal is represented by containment in the garbage can."
+        }
+      ],
+      "ambiguity": "Container closure is procedural."
+    },
+    {
+      "task_id": "env2::bring_my_book_to_the_sofa",
+      "task_text": "bring my book to the sofa",
+      "official_split": "env2",
+      "conditions": [
+        {
+          "condition": "ON(book, sofa)",
+          "predicate": "RELATION",
+          "subject": "book",
+          "relation": "ON",
+          "object": "sofa",
+          "rationale": "The book must be placed on the requested sofa."
+        }
+      ],
+      "ambiguity": "Character proximity is excluded."
+    },
+    {
+      "task_id": "env2::put_milk_in_the_fridge",
+      "task_text": "put milk in the fridge",
+      "official_split": "env2",
+      "conditions": [
+        {
+          "condition": "INSIDE(milk, fridge)",
+          "predicate": "RELATION",
+          "subject": "milk",
+          "relation": "INSIDE",
+          "object": "fridge",
+          "rationale": "The milk must be inside the fridge."
+        }
+      ],
+      "ambiguity": "Fridge-door state is procedural."
+    }
+  ]
+}

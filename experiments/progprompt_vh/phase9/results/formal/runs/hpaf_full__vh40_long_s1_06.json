@@ -1,0 +1,1470 @@
+{
+  "run_id": "vh40_formal_2026-08-26T135605.332144_0000_hpaf_full_vh40_long_s1_06",
+  "phase": "vh40_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T13:56:05.332144+00:00",
+  "task_id": "vh40_long_s1_06",
+  "task": "Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.",
+  "split": "phase9_long_extension",
+  "scene": 1,
+  "goal_count": null,
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Place the cookingpot into the dishwasher.",
+        "manipulated_object": "cookingpot",
+        "target_object": "dishwasher",
+        "completion_mode": "state",
+        "process_intent": null
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.",
+      "initial_program": "# Locate and retrieve the cookingpot\nfind('cookingpot')\ngrab('cookingpot')\n# Locate the dishwasher and open it before placing the pot inside\nfind('dishwasher')\nopen('dishwasher')\nputin('cookingpot', 'dishwasher')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and retrieve the cookingpot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the cookingpot",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the cookingpot",
+          "compiled_action": "<char0> [find] <cookingpot> (162)"
+        },
+        {
+          "line": "grab('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the cookingpot",
+          "compiled_action": "<char0> [grab] <cookingpot> (162)"
+        },
+        {
+          "line": "# Locate the dishwasher and open it before placing the pot inside",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "open('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": "<char0> [open] <dishwasher> (228)"
+        },
+        {
+          "line": "putin('cookingpot', 'dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": "<char0> [putin] <cookingpot> (162) <dishwasher> (228)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "instruction": "Run the dishwasher through its full cleaning cycle with the cookingpot inside.",
+        "manipulated_object": "dishwasher",
+        "target_object": null,
+        "completion_mode": "process",
+        "process_intent": "Complete the dishwasher cleaning cycle to clean the cookingpot."
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.",
+      "initial_program": "# Close the open dishwasher before starting the cleaning cycle\nfind('dishwasher')\nclose('dishwasher')\n# Start the dishwasher cleaning cycle\nswitchon('dishwasher')\nrun('dishwasher')\n# Complete the cycle by turning the dishwasher off\nswitchoff('dishwasher')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Close the open dishwasher before starting the cleaning cycle",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "close('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+          "compiled_action": "<char0> [close] <dishwasher> (228)"
+        },
+        {
+          "line": "# Start the dishwasher cleaning cycle",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Start the dishwasher cleaning cycle",
+          "compiled_action": null
+        },
+        {
+          "line": "switchon('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Start the dishwasher cleaning cycle",
+          "compiled_action": "<char0> [switchon] <dishwasher> (228)"
+        },
+        {
+          "line": "run('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Start the dishwasher cleaning cycle",
+          "compiled_action": "<char0> [run] <dishwasher> (228)"
+        },
+        {
+          "line": "# Complete the cycle by turning the dishwasher off",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Complete the cycle by turning the dishwasher off",
+          "compiled_action": null
+        },
+        {
+          "line": "switchoff('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Complete the cycle by turning the dishwasher off",
+          "compiled_action": "<char0> [switchoff] <dishwasher> (228)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "instruction": "Place the cleaned cookingpot onto the kitchentable.",
+        "manipulated_object": "cookingpot",
+        "target_object": "kitchentable",
+        "completion_mode": "state",
+        "process_intent": null
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.",
+      "initial_program": "# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\nfind('dishwasher')\nopen('dishwasher')\nfind('cookingpot')\ngrab('cookingpot')\nclose('dishwasher')\nfind('kitchentable')\nputback('cookingpot', 'kitchentable')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "open('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [open] <dishwasher> (228)"
+        },
+        {
+          "line": "find('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [find] <cookingpot> (162)"
+        },
+        {
+          "line": "grab('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [grab] <cookingpot> (162)"
+        },
+        {
+          "line": "close('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [close] <dishwasher> (228)"
+        },
+        {
+          "line": "find('kitchentable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [find] <kitchentable> (199)"
+        },
+        {
+          "line": "putback('cookingpot', 'kitchentable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [putback] <cookingpot> (162) <kitchentable> (199)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    }
+  ],
+  "generated_program": "# atomic 1: Place the cookingpot into the dishwasher.\n# Locate and retrieve the cookingpot\nfind('cookingpot')\ngrab('cookingpot')\n# Locate the dishwasher and open it before placing the pot inside\nfind('dishwasher')\nopen('dishwasher')\nputin('cookingpot', 'dishwasher')\n# atomic 2: Run the dishwasher through its full cleaning cycle with the cookingpot inside.\n# Close the open dishwasher before starting the cleaning cycle\nfind('dishwasher')\nclose('dishwasher')\n# Start the dishwasher cleaning cycle\nswitchon('dishwasher')\nrun('dishwasher')\n# Complete the cycle by turning the dishwasher off\nswitchoff('dishwasher')\n# atomic 3: Place the cleaned cookingpot onto the kitchentable.\n# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\nfind('dishwasher')\nopen('dishwasher')\nfind('cookingpot')\ngrab('cookingpot')\nclose('dishwasher')\nfind('kitchentable')\nputback('cookingpot', 'kitchentable')",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "Place the cookingpot into the dishwasher.",
+      "manipulated_object": "cookingpot",
+      "target_object": "dishwasher",
+      "completion_mode": "state",
+      "process_intent": null
+    },
+    {
+      "id": 2,
+      "instruction": "Run the dishwasher through its full cleaning cycle with the cookingpot inside.",
+      "manipulated_object": "dishwasher",
+      "target_object": null,
+      "completion_mode": "process",
+      "process_intent": "Complete the dishwasher cleaning cycle to clean the cookingpot."
+    },
+    {
+      "id": 3,
+      "instruction": "Place the cleaned cookingpot onto the kitchentable.",
+      "manipulated_object": "cookingpot",
+      "target_object": "kitchentable",
+      "completion_mode": "state",
+      "process_intent": null
+    }
+  ],
+  "number_of_atomic_tasks": 3,
+  "atomic_tasks_attempted": 3,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Place the cookingpot into the dishwasher.",
+        "manipulated_object": "cookingpot",
+        "target_object": "dishwasher",
+        "completion_mode": "state",
+        "process_intent": null
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.",
+      "initial_program": "# Locate and retrieve the cookingpot\nfind('cookingpot')\ngrab('cookingpot')\n# Locate the dishwasher and open it before placing the pot inside\nfind('dishwasher')\nopen('dishwasher')\nputin('cookingpot', 'dishwasher')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and retrieve the cookingpot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the cookingpot",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the cookingpot",
+          "compiled_action": "<char0> [find] <cookingpot> (162)"
+        },
+        {
+          "line": "grab('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the cookingpot",
+          "compiled_action": "<char0> [grab] <cookingpot> (162)"
+        },
+        {
+          "line": "# Locate the dishwasher and open it before placing the pot inside",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "open('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": "<char0> [open] <dishwasher> (228)"
+        },
+        {
+          "line": "putin('cookingpot', 'dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+          "compiled_action": "<char0> [putin] <cookingpot> (162) <dishwasher> (228)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "instruction": "Run the dishwasher through its full cleaning cycle with the cookingpot inside.",
+        "manipulated_object": "dishwasher",
+        "target_object": null,
+        "completion_mode": "process",
+        "process_intent": "Complete the dishwasher cleaning cycle to clean the cookingpot."
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.",
+      "initial_program": "# Close the open dishwasher before starting the cleaning cycle\nfind('dishwasher')\nclose('dishwasher')\n# Start the dishwasher cleaning cycle\nswitchon('dishwasher')\nrun('dishwasher')\n# Complete the cycle by turning the dishwasher off\nswitchoff('dishwasher')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Close the open dishwasher before starting the cleaning cycle",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "close('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+          "compiled_action": "<char0> [close] <dishwasher> (228)"
+        },
+        {
+          "line": "# Start the dishwasher cleaning cycle",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Start the dishwasher cleaning cycle",
+          "compiled_action": null
+        },
+        {
+          "line": "switchon('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Start the dishwasher cleaning cycle",
+          "compiled_action": "<char0> [switchon] <dishwasher> (228)"
+        },
+        {
+          "line": "run('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Start the dishwasher cleaning cycle",
+          "compiled_action": "<char0> [run] <dishwasher> (228)"
+        },
+        {
+          "line": "# Complete the cycle by turning the dishwasher off",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Complete the cycle by turning the dishwasher off",
+          "compiled_action": null
+        },
+        {
+          "line": "switchoff('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Complete the cycle by turning the dishwasher off",
+          "compiled_action": "<char0> [switchoff] <dishwasher> (228)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "instruction": "Place the cleaned cookingpot onto the kitchentable.",
+        "manipulated_object": "cookingpot",
+        "target_object": "kitchentable",
+        "completion_mode": "state",
+        "process_intent": null
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.",
+      "initial_program": "# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\nfind('dishwasher')\nopen('dishwasher')\nfind('cookingpot')\ngrab('cookingpot')\nclose('dishwasher')\nfind('kitchentable')\nputback('cookingpot', 'kitchentable')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": null
+        },
+        {
+          "line": "find('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [find] <dishwasher> (228)"
+        },
+        {
+          "line": "open('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [open] <dishwasher> (228)"
+        },
+        {
+          "line": "find('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [find] <cookingpot> (162)"
+        },
+        {
+          "line": "grab('cookingpot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [grab] <cookingpot> (162)"
+        },
+        {
+          "line": "close('dishwasher')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [close] <dishwasher> (228)"
+        },
+        {
+          "line": "find('kitchentable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [find] <kitchentable> (199)"
+        },
+        {
+          "line": "putback('cookingpot', 'kitchentable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+          "compiled_action": "<char0> [putback] <cookingpot> (162) <kitchentable> (199)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": true
+      },
+      "first_done": true,
+      "retry_used": false,
+      "repair_program": "",
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_verifier": null,
+      "final_done": true
+    }
+  ],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Place the cookingpot into the dishwasher.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"dishwasher\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the cookingpot\\nfind('cookingpot')\\ngrab('cookingpot')\\n# Locate the dishwasher and open it before placing the pot inside\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('cookingpot', 'dishwasher')\", \"execution_trace\": [{\"line\": \"find('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cookingpot> (162)\"}, {\"line\": \"grab('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cookingpot> (162)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('cookingpot', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cookingpot> (162) <dishwasher> (228)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The cookingpot is observed INSIDE the open dishwasher, and the putin('cookingpot', 'dishwasher') action succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The cookingpot is observed INSIDE the open dishwasher, and the putin('cookingpot', 'dishwasher') action succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 798,
+      "completion_tokens": 51,
+      "latency_s": 3.527663474000292,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525767072de38e8299405d0a4d8e2bf74997350e4bd17a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\", \"manipulated_object\": \"dishwasher\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"Complete the dishwasher cleaning cycle to clean the cookingpot.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Close the open dishwasher before starting the cleaning cycle\\nfind('dishwasher')\\nclose('dishwasher')\\n# Start the dishwasher cleaning cycle\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# Complete the cycle by turning the dishwasher off\\nswitchoff('dishwasher')\", \"execution_trace\": [{\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (228)\"}, {\"line\": \"run('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [run] <dishwasher> (228)\"}, {\"line\": \"switchoff('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <dishwasher> (228)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"Dishwasher was closed, switched on, run, then switched off after the cycle, with the cookingpot inside the dishwasher; all actions succeeded and the full cleaning cycle lifecycle completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"Dishwasher was closed, switched on, run, then switched off after the cycle, with the cookingpot inside the dishwasher; all actions succeeded and the full cleaning cycle lifecycle completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 799,
+      "completion_tokens": 57,
+      "latency_s": 2.45636927200394,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525840242de38e8299405d0a4d8e2bf74997350ea082f6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 3, \"instruction\": \"Place the cleaned cookingpot onto the kitchentable.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"kitchentable\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot ON kitchentable, cookingpot is CLOSED, floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; cookingpot ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\\nfind('dishwasher')\\nopen('dishwasher')\\nfind('cookingpot')\\ngrab('cookingpot')\\nclose('dishwasher')\\nfind('kitchentable')\\nputback('cookingpot', 'kitchentable')\", \"execution_trace\": [{\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"find('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cookingpot> (162)\"}, {\"line\": \"grab('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cookingpot> (162)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('cookingpot', 'kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <cookingpot> (162) <kitchentable> (199)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The cookingpot is observed ON the kitchentable in the current state, and the putback action placing it there succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The cookingpot is observed ON the kitchentable in the current state, and the putback action placing it there succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 925,
+      "completion_tokens": 47,
+      "latency_s": 2.542909595002129,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525894682de38e8299405d0a4d8e2bf74997350e3e1cd4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": 1,
+      "attempt": "initial",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The cookingpot is observed INSIDE the open dishwasher, and the putin('cookingpot', 'dishwasher') action succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": 2,
+      "attempt": "initial",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"Dishwasher was closed, switched on, run, then switched off after the cycle, with the cookingpot inside the dishwasher; all actions succeeded and the full cleaning cycle lifecycle completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "atomic_id": 3,
+      "attempt": "initial",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot ON kitchentable, cookingpot is CLOSED, floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; cookingpot ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"The cookingpot is observed ON the kitchentable in the current state, and the putback action placing it there succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 3,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Locate and retrieve the cookingpot",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the cookingpot",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cookingpot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the cookingpot",
+      "compiled_action": "<char0> [find] <cookingpot> (162)"
+    },
+    {
+      "line": "grab('cookingpot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the cookingpot",
+      "compiled_action": "<char0> [grab] <cookingpot> (162)"
+    },
+    {
+      "line": "# Locate the dishwasher and open it before placing the pot inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+      "compiled_action": "<char0> [find] <dishwasher> (228)"
+    },
+    {
+      "line": "open('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+      "compiled_action": "<char0> [open] <dishwasher> (228)"
+    },
+    {
+      "line": "putin('cookingpot', 'dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it before placing the pot inside",
+      "compiled_action": "<char0> [putin] <cookingpot> (162) <dishwasher> (228)"
+    },
+    {
+      "line": "# Close the open dishwasher before starting the cleaning cycle",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+      "compiled_action": "<char0> [find] <dishwasher> (228)"
+    },
+    {
+      "line": "close('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the open dishwasher before starting the cleaning cycle",
+      "compiled_action": "<char0> [close] <dishwasher> (228)"
+    },
+    {
+      "line": "# Start the dishwasher cleaning cycle",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Start the dishwasher cleaning cycle",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Start the dishwasher cleaning cycle",
+      "compiled_action": "<char0> [switchon] <dishwasher> (228)"
+    },
+    {
+      "line": "run('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Start the dishwasher cleaning cycle",
+      "compiled_action": "<char0> [run] <dishwasher> (228)"
+    },
+    {
+      "line": "# Complete the cycle by turning the dishwasher off",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Complete the cycle by turning the dishwasher off",
+      "compiled_action": null
+    },
+    {
+      "line": "switchoff('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Complete the cycle by turning the dishwasher off",
+      "compiled_action": "<char0> [switchoff] <dishwasher> (228)"
+    },
+    {
+      "line": "# Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [find] <dishwasher> (228)"
+    },
+    {
+      "line": "open('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [open] <dishwasher> (228)"
+    },
+    {
+      "line": "find('cookingpot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [find] <cookingpot> (162)"
+    },
+    {
+      "line": "grab('cookingpot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [grab] <cookingpot> (162)"
+    },
+    {
+      "line": "close('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [close] <dishwasher> (228)"
+    },
+    {
+      "line": "find('kitchentable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [find] <kitchentable> (199)"
+    },
+    {
+      "line": "putback('cookingpot', 'kitchentable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve cleaned cookingpot from dishwasher and place on kitchentable",
+      "compiled_action": "<char0> [putback] <cookingpot> (162) <kitchentable> (199)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <cookingpot> (162)",
+      "parsed_action": "[FIND] <cookingpot> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <cookingpot> (162)",
+      "parsed_action": "[GRAB] <cookingpot> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (228)",
+      "parsed_action": "[FIND] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <dishwasher> (228)",
+      "parsed_action": "[OPEN] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <cookingpot> (162) <dishwasher> (228)",
+      "parsed_action": "[PUTIN] <cookingpot> (162) <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (228)",
+      "parsed_action": "[FIND] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <dishwasher> (228)",
+      "parsed_action": "[CLOSE] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <dishwasher> (228)",
+      "parsed_action": "[SWITCHON] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [run] <dishwasher> (228)",
+      "parsed_action": "[RUN] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <dishwasher> (228)",
+      "parsed_action": "[SWITCHOFF] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (228)",
+      "parsed_action": "[FIND] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <dishwasher> (228)",
+      "parsed_action": "[OPEN] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cookingpot> (162)",
+      "parsed_action": "[FIND] <cookingpot> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <cookingpot> (162)",
+      "parsed_action": "[GRAB] <cookingpot> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <dishwasher> (228)",
+      "parsed_action": "[CLOSE] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <kitchentable> (199)",
+      "parsed_action": "[FIND] <kitchentable> (199) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <cookingpot> (162) <kitchentable> (199)",
+      "parsed_action": "[PUTBACK] <cookingpot> (162) <kitchentable> (199) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <cookingpot> (162)",
+    "<char0> [grab] <cookingpot> (162)",
+    "<char0> [find] <dishwasher> (228)",
+    "<char0> [open] <dishwasher> (228)",
+    "<char0> [putin] <cookingpot> (162) <dishwasher> (228)",
+    "<char0> [find] <dishwasher> (228)",
+    "<char0> [close] <dishwasher> (228)",
+    "<char0> [switchon] <dishwasher> (228)",
+    "<char0> [run] <dishwasher> (228)",
+    "<char0> [switchoff] <dishwasher> (228)",
+    "<char0> [find] <dishwasher> (228)",
+    "<char0> [open] <dishwasher> (228)",
+    "<char0> [find] <cookingpot> (162)",
+    "<char0> [grab] <cookingpot> (162)",
+    "<char0> [close] <dishwasher> (228)",
+    "<char0> [find] <kitchentable> (199)",
+    "<char0> [putback] <cookingpot> (162) <kitchentable> (199)"
+  ],
+  "program_length": 17,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 7,
+  "semantic_satisfied_condition_count": 7,
+  "semantic_condition_details": [
+    {
+      "kind": "ordered_event_stage",
+      "stage": 1,
+      "description": "load source into appliance",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "cookingpot",
+          "second": "dishwasher"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "cookingpot",
+        "first_id": 162,
+        "second": "dishwasher",
+        "second_id": 228,
+        "ordinal": 5
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 2,
+      "description": "start appliance",
+      "expected": [
+        {
+          "verb": "switchon",
+          "first": "dishwasher"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "switchon",
+        "first": "dishwasher",
+        "first_id": 228,
+        "second": null,
+        "second_id": null,
+        "ordinal": 8
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 3,
+      "description": "complete appliance cycle",
+      "expected": [
+        {
+          "verb": "switchoff",
+          "first": "dishwasher"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "switchoff",
+        "first": "dishwasher",
+        "first_id": 228,
+        "second": null,
+        "second_id": null,
+        "ordinal": 10
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 4,
+      "description": "retrieve processed source",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "cookingpot"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "cookingpot",
+        "first_id": 162,
+        "second": null,
+        "second_id": null,
+        "ordinal": 14
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 5,
+      "description": "place processed source at destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "cookingpot",
+          "second": "kitchentable"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "cookingpot",
+        "first_id": 162,
+        "second": "kitchentable",
+        "second_id": 199,
+        "ordinal": 17
+      }
+    },
+    {
+      "kind": "final_state_condition",
+      "condition": {
+        "condition": "ON(cookingpot, kitchentable)",
+        "predicate": "RELATION",
+        "subject": "cookingpot",
+        "relation": "ON",
+        "object": "kitchentable",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['162-ON-199']"
+    },
+    {
+      "kind": "final_state_condition",
+      "condition": {
+        "condition": "STATE(dishwasher, OFF)",
+        "predicate": "STATE",
+        "object": "dishwasher",
+        "value": "OFF",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[228]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 1.0,
+  "generation_calls": 4,
+  "verification_calls": 3,
+  "repair_calls": 0,
+  "total_calls": 7,
+  "generation_prompt_tokens": 4563,
+  "generation_completion_tokens": 461,
+  "verification_prompt_tokens": 2522,
+  "verification_completion_tokens": 155,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 7085,
+  "completion_tokens": 616,
+  "total_prompt_tokens": 7085,
+  "total_completion_tokens": 616,
+  "total_tokens": 7701,
+  "planning_latency": 14.931440291002218,
+  "verification_latency": 8.526942341006361,
+  "total_llm_latency": 23.45838263200858,
+  "wall_clock_total_s": 24.57785087799857,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Place the cookingpot into the dishwasher.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"dishwasher\",\"completion_mode\":\"state\",\"process_intent\":null},{\"id\":2,\"instruction\":\"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\",\"manipulated_object\":\"dishwasher\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"Complete the dishwasher cleaning cycle to clean the cookingpot.\"},{\"id\":3,\"instruction\":\"Place the cleaned cookingpot onto the kitchentable.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"kitchentable\",\"completion_mode\":\"state\",\"process_intent\":null}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Place the cookingpot into the dishwasher.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"dishwasher\",\"completion_mode\":\"state\",\"process_intent\":null},{\"id\":2,\"instruction\":\"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\",\"manipulated_object\":\"dishwasher\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"Complete the dishwasher cleaning cycle to clean the cookingpot.\"},{\"id\":3,\"instruction\":\"Place the cleaned cookingpot onto the kitchentable.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"kitchentable\",\"completion_mode\":\"state\",\"process_intent\":null}]}",
+      "prompt_tokens": 903,
+      "completion_tokens": 155,
+      "latency_s": 4.298271116000251,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525682592de38e8299405d0a4d8e2bf74997350e342c7f",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Place the cookingpot into the dishwasher.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"dishwasher\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the cookingpot, pick it up, locate the dishwasher, open it, place the cookingpot inside.\",\"program\":\"# Locate and retrieve the cookingpot\\nfind('cookingpot')\\ngrab('cookingpot')\\n# Locate the dishwasher and open it before placing the pot inside\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('cookingpot', 'dishwasher')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the cookingpot, pick it up, locate the dishwasher, open it, place the cookingpot inside.\",\"program\":\"# Locate and retrieve the cookingpot\\nfind('cookingpot')\\ngrab('cookingpot')\\n# Locate the dishwasher and open it before placing the pot inside\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('cookingpot', 'dishwasher')\"}",
+      "prompt_tokens": 1265,
+      "completion_tokens": 99,
+      "latency_s": 4.087570850002521,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525725642de38e8299405d0a4d8e2bf74997350e91a6f0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Place the cookingpot into the dishwasher.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"dishwasher\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the cookingpot\\nfind('cookingpot')\\ngrab('cookingpot')\\n# Locate the dishwasher and open it before placing the pot inside\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('cookingpot', 'dishwasher')\", \"execution_trace\": [{\"line\": \"find('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cookingpot> (162)\"}, {\"line\": \"grab('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cookingpot> (162)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('cookingpot', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cookingpot> (162) <dishwasher> (228)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The cookingpot is observed INSIDE the open dishwasher, and the putin('cookingpot', 'dishwasher') action succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The cookingpot is observed INSIDE the open dishwasher, and the putin('cookingpot', 'dishwasher') action succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 798,
+      "completion_tokens": 51,
+      "latency_s": 3.527663474000292,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525767072de38e8299405d0a4d8e2bf74997350e4bd17a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nCURRENT ATOMIC: {\"id\": 2, \"instruction\": \"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\", \"manipulated_object\": \"dishwasher\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"Complete the dishwasher cleaning cycle to clean the cookingpot.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Close the open dishwasher then run its full cleaning cycle with the cookingpot inside, completing the process by turning the dishwasher off after the cycle finishes.\",\"program\":\"# Close the open dishwasher before starting the cleaning cycle\\nfind('dishwasher')\\nclose('dishwasher')\\n# Start the dishwasher cleaning cycle\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# Complete the cycle by turning the dishwasher off\\nswitchoff('dishwasher')\"}",
+      "output_text": "{\"plan_brief\":\"Close the open dishwasher then run its full cleaning cycle with the cookingpot inside, completing the process by turning the dishwasher off after the cycle finishes.\",\"program\":\"# Close the open dishwasher before starting the cleaning cycle\\nfind('dishwasher')\\nclose('dishwasher')\\n# Start the dishwasher cleaning cycle\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# Complete the cycle by turning the dishwasher off\\nswitchoff('dishwasher')\"}",
+      "prompt_tokens": 1203,
+      "completion_tokens": 106,
+      "latency_s": 3.682635760997073,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525802392de38e8299405d0a4d8e2bf74997350e14cce1",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\", \"manipulated_object\": \"dishwasher\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"Complete the dishwasher cleaning cycle to clean the cookingpot.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Close the open dishwasher before starting the cleaning cycle\\nfind('dishwasher')\\nclose('dishwasher')\\n# Start the dishwasher cleaning cycle\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# Complete the cycle by turning the dishwasher off\\nswitchoff('dishwasher')\", \"execution_trace\": [{\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (228)\"}, {\"line\": \"run('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [run] <dishwasher> (228)\"}, {\"line\": \"switchoff('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <dishwasher> (228)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"Dishwasher was closed, switched on, run, then switched off after the cycle, with the cookingpot inside the dishwasher; all actions succeeded and the full cleaning cycle lifecycle completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"Dishwasher was closed, switched on, run, then switched off after the cycle, with the cookingpot inside the dishwasher; all actions succeeded and the full cleaning cycle lifecycle completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 799,
+      "completion_tokens": 57,
+      "latency_s": 2.45636927200394,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525840242de38e8299405d0a4d8e2bf74997350ea082f6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nCURRENT ATOMIC: {\"id\": 3, \"instruction\": \"Place the cleaned cookingpot onto the kitchentable.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"kitchentable\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Retrieve the cleaned cookingpot from the closed dishwasher, then place it onto the kitchentable.\",\"program\":\"# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\\nfind('dishwasher')\\nopen('dishwasher')\\nfind('cookingpot')\\ngrab('cookingpot')\\nclose('dishwasher')\\nfind('kitchentable')\\nputback('cookingpot', 'kitchentable')\"}",
+      "output_text": "{\"plan_brief\":\"Retrieve the cleaned cookingpot from the closed dishwasher, then place it onto the kitchentable.\",\"program\":\"# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\\nfind('dishwasher')\\nopen('dishwasher')\\nfind('cookingpot')\\ngrab('cookingpot')\\nclose('dishwasher')\\nfind('kitchentable')\\nputback('cookingpot', 'kitchentable')\"}",
+      "prompt_tokens": 1192,
+      "completion_tokens": 101,
+      "latency_s": 2.8629625640023733,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525864852de38e8299405d0a4d8e2bf74997350e6745ef",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 3, \"instruction\": \"Place the cleaned cookingpot onto the kitchentable.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"kitchentable\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot ON kitchentable, cookingpot is CLOSED, floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; cookingpot ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\\nfind('dishwasher')\\nopen('dishwasher')\\nfind('cookingpot')\\ngrab('cookingpot')\\nclose('dishwasher')\\nfind('kitchentable')\\nputback('cookingpot', 'kitchentable')\", \"execution_trace\": [{\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"find('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cookingpot> (162)\"}, {\"line\": \"grab('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cookingpot> (162)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('cookingpot', 'kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <cookingpot> (162) <kitchentable> (199)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"The cookingpot is observed ON the kitchentable in the current state, and the putback action placing it there succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"The cookingpot is observed ON the kitchentable in the current state, and the putback action placing it there succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 925,
+      "completion_tokens": 47,
+      "latency_s": 2.542909595002129,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877525894682de38e8299405d0a4d8e2bf74997350e3e1cd4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "input": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Place the cookingpot into the dishwasher.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"dishwasher\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Place the cookingpot into the dishwasher.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"dishwasher\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the cookingpot\\nfind('cookingpot')\\ngrab('cookingpot')\\n# Locate the dishwasher and open it before placing the pot inside\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('cookingpot', 'dishwasher')\", \"execution_trace\": [{\"line\": \"find('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cookingpot> (162)\"}, {\"line\": \"grab('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cookingpot> (162)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('cookingpot', 'dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <cookingpot> (162) <dishwasher> (228)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nCURRENT ATOMIC: {\"id\": 2, \"instruction\": \"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\", \"manipulated_object\": \"dishwasher\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"Complete the dishwasher cleaning cycle to clean the cookingpot.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and OPEN, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\", \"manipulated_object\": \"dishwasher\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"Complete the dishwasher cleaning cycle to clean the cookingpot.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Close the open dishwasher before starting the cleaning cycle\\nfind('dishwasher')\\nclose('dishwasher')\\n# Start the dishwasher cleaning cycle\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# Complete the cycle by turning the dishwasher off\\nswitchoff('dishwasher')\", \"execution_trace\": [{\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (228)\"}, {\"line\": \"run('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [run] <dishwasher> (228)\"}, {\"line\": \"switchoff('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <dishwasher> (228)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.\nCURRENT ATOMIC: {\"id\": 3, \"instruction\": \"Place the cleaned cookingpot onto the kitchentable.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"kitchentable\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot INSIDE dishwasher, cookingpot is CLOSED, dishwasher is OFF and CLOSED, kitchencounter INSIDE dishwasher, kitchencounter is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cookingpot INSIDE dishwasher; kitchencounter INSIDE dishwasher; microwave ON dishwasher; microwave ON kitchencounter; toaster ON kitchencounter.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 3, \"instruction\": \"Place the cleaned cookingpot onto the kitchentable.\", \"manipulated_object\": \"cookingpot\", \"target_object\": \"kitchentable\", \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: cookingpot ON kitchentable, cookingpot is CLOSED, floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; cookingpot ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.\nRELEVANT OBJECT CLASSES: [\"cookingpot\", \"dishwasher\", \"kitchen\", \"kitchentable\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\\nfind('dishwasher')\\nopen('dishwasher')\\nfind('cookingpot')\\ngrab('cookingpot')\\nclose('dishwasher')\\nfind('kitchentable')\\nputback('cookingpot', 'kitchentable')\", \"execution_trace\": [{\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"find('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cookingpot> (162)\"}, {\"line\": \"grab('cookingpot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <cookingpot> (162)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('cookingpot', 'kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <cookingpot> (162) <kitchentable> (199)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Place the cookingpot into the dishwasher.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"dishwasher\",\"completion_mode\":\"state\",\"process_intent\":null},{\"id\":2,\"instruction\":\"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\",\"manipulated_object\":\"dishwasher\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"Complete the dishwasher cleaning cycle to clean the cookingpot.\"},{\"id\":3,\"instruction\":\"Place the cleaned cookingpot onto the kitchentable.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"kitchentable\",\"completion_mode\":\"state\",\"process_intent\":null}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the cookingpot, pick it up, locate the dishwasher, open it, place the cookingpot inside.\",\"program\":\"# Locate and retrieve the cookingpot\\nfind('cookingpot')\\ngrab('cookingpot')\\n# Locate the dishwasher and open it before placing the pot inside\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('cookingpot', 'dishwasher')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"The cookingpot is observed INSIDE the open dishwasher, and the putin('cookingpot', 'dishwasher') action succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Close the open dishwasher then run its full cleaning cycle with the cookingpot inside, completing the process by turning the dishwasher off after the cycle finishes.\",\"program\":\"# Close the open dishwasher before starting the cleaning cycle\\nfind('dishwasher')\\nclose('dishwasher')\\n# Start the dishwasher cleaning cycle\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# Complete the cycle by turning the dishwasher off\\nswitchoff('dishwasher')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"Dishwasher was closed, switched on, run, then switched off after the cycle, with the cookingpot inside the dishwasher; all actions succeeded and the full cleaning cycle lifecycle completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Retrieve the cleaned cookingpot from the closed dishwasher, then place it onto the kitchentable.\",\"program\":\"# Retrieve cleaned cookingpot from dishwasher and place on kitchentable\\nfind('dishwasher')\\nopen('dishwasher')\\nfind('cookingpot')\\ngrab('cookingpot')\\nclose('dishwasher')\\nfind('kitchentable')\\nputback('cookingpot', 'kitchentable')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":true,\"reason\":\"The cookingpot is observed ON the kitchentable in the current state, and the putback action placing it there succeeded with no errors.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Place the cookingpot into the dishwasher.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"dishwasher\",\"completion_mode\":\"state\",\"process_intent\":null},{\"id\":2,\"instruction\":\"Run the dishwasher through its full cleaning cycle with the cookingpot inside.\",\"manipulated_object\":\"dishwasher\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"Complete the dishwasher cleaning cycle to clean the cookingpot.\"},{\"id\":3,\"instruction\":\"Place the cleaned cookingpot onto the kitchentable.\",\"manipulated_object\":\"cookingpot\",\"target_object\":\"kitchentable\",\"completion_mode\":\"state\",\"process_intent\":null}]}"
+}

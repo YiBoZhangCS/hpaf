@@ -1,0 +1,64 @@
+SOURCE RUN: formal_2026-08-26T032825.952763_0000_progprompt_test_unseen_turn_off_light
+TASK: test_unseen::turn_off_light
+ROLE: assertion_verification
+
+REQUEST METADATA:
+{
+  "call_role": "assertion_verification",
+  "broad_role": "verification",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "stop": [
+    "\n"
+  ],
+  "frequency_penalty": 0.0,
+  "extra_body": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "prompt_tokens": 293,
+  "completion_tokens": 77,
+  "response_id": "resp_02178771492713414713b2deea0810671b986a10f293e39fd7def",
+  "error_type": "",
+  "error_message": ""
+}
+
+INSTRUCTIONS FIELD (sent separately):
+<null>
+
+USER INPUT/PROMPT (complete):
+You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf
+
+assert('close' to 'mug' )
+False
+assert('close' to 'microwave' )
+True
+assert('book' is 'closed' )
+True
+assert('lightswitch' is 'OFF')
+False
+assert('book' in 'bookshelf')
+True
+assert('book' in 'hands')
+True
+assert('cereal' on 'bookshelf')
+False
+
+You see: lightswitch is ON.
+
+assert('close' to 'lightswitch' )
+
+
+RAW MODEL OUTPUT (complete):
+False
+
+### Reasoning:
+The only observed state of the lightswitch is that it is **ON**, with no indication of being close to the observer (no proximity context for the lightswitch being near, unlike the microwave which was confirmed as close in the prior scene). There is no evidence to support the "close" assertion for the lightswitch, so the result is False.
+
+PARSED OUTPUT_TEXT USED BY RUNTIME:
+False

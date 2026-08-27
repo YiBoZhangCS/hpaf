@@ -1,0 +1,245 @@
+{
+  "run_id": "smoke_2026-08-25T160636.651793_0000_hpaf_flat_wash_the_plate",
+  "phase": "smoke",
+  "timestamp": "2026-08-25T16:06:36.651793+00:00",
+  "task": "wash the plate",
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "semantic_goal_sha256": "67adf22f4df9f1432a824c5e04b0d88a4515d5a38866bafc7e5a8e1fe7734cdd",
+  "decomposition_sha256": "d29a0d3dcea6b7f01edd444138058399316c8e26ddfae49dcff3d6b2a9adcc4e",
+  "ground_truth_action_length": 18,
+  "difficulty_bucket": "Long",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_programs": [],
+  "atomic_verifications": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "verified_but_stopped_count": 0,
+  "raw_prompts": [
+    {
+      "instructions": "Return only the strict JSON object requested by the ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, frozen atomic decomposition, or\nmanually supplied intermediate subgoal. Plan naturally, but return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nwash the plate\n\nFINAL SEMANTIC VERIFICATION TARGETS (conjunctive; do not add intermediate goals):\n[{\"predicate\": \"STATE\", \"object\": \"plate\", \"value\": \"WASHED\"}]\n\nCURRENT INITIAL SYMBOLIC STATE:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "{\"plan_brief\":\"Locate the plate on the kitchen table, pick it up, move to the sink, and wash it to achieve the washed state.\",\"program\":\"# locate the plate on the kitchen table\\nfind('plate')\\n# pick up the plate\\ngrab('plate')\\n# move to the sink to wash\\nfind('sink')\\n# wash the plate at the sink\\nwash('plate')\"}"
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, frozen atomic decomposition, or\nmanually supplied intermediate subgoal. Plan naturally, but return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nwash the plate\n\nFINAL SEMANTIC VERIFICATION TARGETS (conjunctive; do not add intermediate goals):\n[{\"predicate\": \"STATE\", \"object\": \"plate\", \"value\": \"WASHED\"}]\n\nCURRENT INITIAL SYMBOLIC STATE:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "instructions": "Return only the strict JSON object requested by the ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Locate the plate on the kitchen table, pick it up, move to the sink, and wash it to achieve the washed state.\",\"program\":\"# locate the plate on the kitchen table\\nfind('plate')\\n# pick up the plate\\ngrab('plate')\\n# move to the sink to wash\\nfind('sink')\\n# wash the plate at the sink\\nwash('plate')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the plate on the kitchen table, pick it up, move to the sink, and wash it to achieve the washed state.\",\"program\":\"# locate the plate on the kitchen table\\nfind('plate')\\n# pick up the plate\\ngrab('plate')\\n# move to the sink to wash\\nfind('sink')\\n# wash the plate at the sink\\nwash('plate')\"}",
+      "prompt_tokens": 1306,
+      "completion_tokens": 91,
+      "latency_s": 2.9866889269978856,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787674019477c1f73ca4f9be5414660a0db4d2039cedfc26e2",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# locate the plate on the kitchen table\nfind('plate')\n# pick up the plate\ngrab('plate')\n# move to the sink to wash\nfind('sink')\n# wash the plate at the sink\nwash('plate')",
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <plate> (285)",
+    "<char0> [grab] <plate> (285)",
+    "<char0> [find] <sink> (247)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# locate the plate on the kitchen table",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the plate on the kitchen table",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the plate on the kitchen table",
+      "compiled_action": "<char0> [find] <plate> (285)"
+    },
+    {
+      "line": "# pick up the plate",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the plate",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the plate",
+      "compiled_action": "<char0> [grab] <plate> (285)"
+    },
+    {
+      "line": "# move to the sink to wash",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "move to the sink to wash",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sink')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "move to the sink to wash",
+      "compiled_action": "<char0> [find] <sink> (247)"
+    },
+    {
+      "line": "# wash the plate at the sink",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "wash the plate at the sink",
+      "compiled_action": null
+    },
+    {
+      "line": "wash('plate')",
+      "event": "action",
+      "success": false,
+      "detail": "unsupported action: wash",
+      "subgoal": "wash the plate at the sink",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <plate> (285)",
+      "parsed_action": "[FIND] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <plate> (285)",
+      "parsed_action": "[GRAB] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sink> (247)",
+      "parsed_action": "[FIND] <sink> (247) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "wash('plate')",
+      "parsed_action": null,
+      "success": false,
+      "error": "unsupported action: wash",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 0,
+  "GCR": 0.0,
+  "PSR": 0.0,
+  "Precision": 1.0,
+  "Exec": 0.75,
+  "goal_condition_count": 11,
+  "missing_goal_relations": [
+    "bathroomcounter CLOSE character",
+    "character CLOSE bathroomcounter",
+    "character CLOSE faucet",
+    "character INSIDE bathroom",
+    "dishwashingliquid CLOSE sink",
+    "dishwashingliquid INSIDE sink",
+    "faucet CLOSE character",
+    "plate CLOSE sink",
+    "plate INSIDE sink",
+    "sink CLOSE dishwashingliquid",
+    "sink CLOSE plate"
+  ],
+  "missing_goal_states": [],
+  "Semantic_SR": 0,
+  "Semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(plate, WASHED)",
+        "predicate": "STATE",
+        "object": "plate",
+        "value": "WASHED",
+        "rationale": "The pinned benchmark augmentation adds WASHED when a plate is in a sink while its faucet is on."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "condition": "STATE(plate, WASHED)",
+      "predicate": "STATE",
+      "object": "plate",
+      "value": "WASHED",
+      "rationale": "The pinned benchmark augmentation adds WASHED when a plate is in a sink while its faucet is on."
+    }
+  ],
+  "semantic_goal_ambiguity": "WASHED is evaluator augmentation rather than a native Evolving Graph State enum; plate-in-sink and faucet state are causal prerequisites, not additional goals.",
+  "program_length": 4,
+  "llm_calls": 1,
+  "prompt_tokens": 1306,
+  "completion_tokens": 91,
+  "total_tokens": 1397,
+  "planning_latency": 2.9866889269978856,
+  "wall_clock_total_s": 3.945626351000101,
+  "error_type": "unsupported_action",
+  "error_message": "unsupported action: wash",
+  "errors": [
+    {
+      "error_type": "unsupported_action",
+      "message": "unsupported action: wash",
+      "line": "wash('plate')"
+    }
+  ],
+  "flat_state_used": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.",
+  "flat_final_semantic_targets": [
+    {
+      "condition": "STATE(plate, WASHED)",
+      "predicate": "STATE",
+      "object": "plate",
+      "value": "WASHED",
+      "rationale": "The pinned benchmark augmentation adds WASHED when a plate is in a sink while its faucet is on."
+    }
+  ]
+}

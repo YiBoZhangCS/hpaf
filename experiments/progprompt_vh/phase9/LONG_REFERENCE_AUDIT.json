@@ -1,0 +1,948 @@
+{
+  "task_count": 11,
+  "reference_executable": 11,
+  "evaluator_success": 11,
+  "horizon": {
+    "min": 13,
+    "mean": 15.363636363636363,
+    "median": 15,
+    "max": 17
+  },
+  "entries": [
+    {
+      "task_id": "vh40_long_s0_01",
+      "scene": 0,
+      "instruction": "Temporarily store the creamybuns in the fridge, then transfer the creamybuns to the cabinet and leave both containers closed.",
+      "category": "container_state_transfer",
+      "reference_program": "# causal stage 1\nfind('creamybuns')\ngrab('creamybuns')\nfind('fridge')\nopen('fridge')\nputin('creamybuns','fridge')\nclose('fridge')\n# causal stage 2\nopen('fridge')\nfind('creamybuns')\ngrab('creamybuns')\nfind('fridge')\nclose('fridge')\n# causal stage 3\nfind('cabinet')\nopen('cabinet')\nputin('creamybuns','cabinet')\nclose('cabinet')",
+      "reference_length": 15,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "store source in intermediate container",
+          "event": {
+            "verb": "putin",
+            "first": "creamybuns",
+            "second": "fridge"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "close intermediate container",
+          "event": {
+            "verb": "close",
+            "first": "fridge"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve source from intermediate container",
+          "event": {
+            "verb": "grab",
+            "first": "creamybuns"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore intermediate container state",
+          "event": {
+            "verb": "close",
+            "first": "fridge"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "store source in final container",
+          "event": {
+            "verb": "putin",
+            "first": "creamybuns",
+            "second": "cabinet"
+          }
+        },
+        {
+          "stage": 6,
+          "description": "restore final container state",
+          "event": {
+            "verb": "close",
+            "first": "cabinet"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "creamybuns"
+      ],
+      "rooms_involved": [
+        "kitchen",
+        "livingroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "INSIDE(creamybuns, cabinet)",
+          "predicate": "RELATION",
+          "subject": "creamybuns",
+          "relation": "INSIDE",
+          "object": "cabinet",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(fridge, CLOSED)",
+          "predicate": "STATE",
+          "object": "fridge",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(cabinet, CLOSED)",
+          "predicate": "STATE",
+          "object": "cabinet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_graph_hash": "1113a1574adf4b0d34138b93d900632a7329947ef6fb1ab89a07373a0def53b7"
+    },
+    {
+      "task_id": "vh40_long_s0_02",
+      "scene": 0,
+      "instruction": "Wash the slippers in the washingmachine, complete the cycle, then place the slippers on the bathroomcounter.",
+      "category": "appliance_lifecycle",
+      "reference_program": "# causal stage 1\nfind('slippers')\ngrab('slippers')\nfind('washingmachine')\nopen('washingmachine')\nputin('slippers','washingmachine')\nclose('washingmachine')\n# causal stage 2\nswitchon('washingmachine')\nswitchoff('washingmachine')\n# causal stage 3\nopen('washingmachine')\nfind('slippers')\ngrab('slippers')\n# causal stage 4\nfind('bathroomcounter')\nputback('slippers','bathroomcounter')",
+      "reference_length": 13,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "load source into appliance",
+          "event": {
+            "verb": "putin",
+            "first": "slippers",
+            "second": "washingmachine"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "start appliance",
+          "event": {
+            "verb": "switchon",
+            "first": "washingmachine"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "complete appliance cycle",
+          "event": {
+            "verb": "switchoff",
+            "first": "washingmachine"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "retrieve processed source",
+          "event": {
+            "verb": "grab",
+            "first": "slippers"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "place processed source at destination",
+          "event": {
+            "verb": "putback",
+            "first": "slippers",
+            "second": "bathroomcounter"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "slippers"
+      ],
+      "rooms_involved": [
+        "bathroom",
+        "bedroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "ON(slippers, bathroomcounter)",
+          "predicate": "RELATION",
+          "subject": "slippers",
+          "relation": "ON",
+          "object": "bathroomcounter",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(washingmachine, OFF)",
+          "predicate": "STATE",
+          "object": "washingmachine",
+          "value": "OFF",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_graph_hash": "b9e382c0eac8fcfa535134ac7c3c00f314d1467741327623d9d44c842c460c6f"
+    },
+    {
+      "task_id": "vh40_long_s0_03",
+      "scene": 0,
+      "instruction": "Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.",
+      "category": "causal_multi_object",
+      "reference_program": "# causal stage 1\nfind('salmon')\ngrab('salmon')\nfind('fridge')\nopen('fridge')\nputin('salmon','fridge')\n# causal stage 2\nfind('whippedcream')\ngrab('whippedcream')\nfind('fridge')\nputin('whippedcream','fridge')\nclose('fridge')\n# causal stage 3\nopen('fridge')\nfind('whippedcream')\ngrab('whippedcream')\nfind('fridge')\nclose('fridge')\n# causal stage 4\nfind('kitchencounter')\nputback('whippedcream','kitchencounter')",
+      "reference_length": 17,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "stage first source in shared container",
+          "event": {
+            "verb": "putin",
+            "first": "salmon",
+            "second": "fridge"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "stage second source in shared container",
+          "event": {
+            "verb": "putin",
+            "first": "whippedcream",
+            "second": "fridge"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve second source after shared staging",
+          "event": {
+            "verb": "grab",
+            "first": "whippedcream"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore shared container state",
+          "event": {
+            "verb": "close",
+            "first": "fridge"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "deliver second source to destination",
+          "event": {
+            "verb": "putback",
+            "first": "whippedcream",
+            "second": "kitchencounter"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "salmon",
+        "whippedcream"
+      ],
+      "rooms_involved": [
+        "kitchen"
+      ],
+      "final_conditions": [
+        {
+          "condition": "INSIDE(salmon, fridge)",
+          "predicate": "RELATION",
+          "subject": "salmon",
+          "relation": "INSIDE",
+          "object": "fridge",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "ON(whippedcream, kitchencounter)",
+          "predicate": "RELATION",
+          "subject": "whippedcream",
+          "relation": "ON",
+          "object": "kitchencounter",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(fridge, CLOSED)",
+          "predicate": "STATE",
+          "object": "fridge",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_graph_hash": "a9efde0992f6c626863641cd539c70dc6c1a1ac8c9b66a5bbeb25010d9c8ef64"
+    },
+    {
+      "task_id": "vh40_long_s0_04",
+      "scene": 0,
+      "instruction": "Stage the toothbrush on the bathroomcounter, store the toothbrush temporarily in the bathroomcabinet, then deliver the toothbrush to the bed and leave the bathroomcabinet closed.",
+      "category": "cross_location_mixed",
+      "reference_program": "# causal stage 1\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcounter')\nputback('toothbrush','bathroomcounter')\n# causal stage 2\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcabinet')\nopen('bathroomcabinet')\nputin('toothbrush','bathroomcabinet')\nclose('bathroomcabinet')\n# causal stage 3\nopen('bathroomcabinet')\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcabinet')\nclose('bathroomcabinet')\n# causal stage 4\nfind('bed')\nputback('toothbrush','bed')",
+      "reference_length": 17,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "stage source at waypoint",
+          "event": {
+            "verb": "putback",
+            "first": "toothbrush",
+            "second": "bathroomcounter"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "store source in intermediate container",
+          "event": {
+            "verb": "putin",
+            "first": "toothbrush",
+            "second": "bathroomcabinet"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve source from intermediate container",
+          "event": {
+            "verb": "grab",
+            "first": "toothbrush"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore intermediate container state",
+          "event": {
+            "verb": "close",
+            "first": "bathroomcabinet"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "deliver source to final destination",
+          "event": {
+            "verb": "putback",
+            "first": "toothbrush",
+            "second": "bed"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "toothbrush"
+      ],
+      "rooms_involved": [
+        "bathroom",
+        "bedroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "ON(toothbrush, bed)",
+          "predicate": "RELATION",
+          "subject": "toothbrush",
+          "relation": "ON",
+          "object": "bed",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(bathroomcabinet, CLOSED)",
+          "predicate": "STATE",
+          "object": "bathroomcabinet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+      "final_graph_hash": "f616424792a22362a268902d7f4555f862000966a978d26c640d78520c68b9f5"
+    },
+    {
+      "task_id": "vh40_long_s1_05",
+      "scene": 1,
+      "instruction": "Temporarily store the toothbrush in the cabinet, then transfer the toothbrush to the closet and leave both containers closed.",
+      "category": "container_state_transfer",
+      "reference_program": "# causal stage 1\nfind('toothbrush')\ngrab('toothbrush')\nfind('cabinet')\nopen('cabinet')\nputin('toothbrush','cabinet')\nclose('cabinet')\n# causal stage 2\nopen('cabinet')\nfind('toothbrush')\ngrab('toothbrush')\nfind('cabinet')\nclose('cabinet')\n# causal stage 3\nfind('closet')\nopen('closet')\nputin('toothbrush','closet')\nclose('closet')",
+      "reference_length": 15,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "store source in intermediate container",
+          "event": {
+            "verb": "putin",
+            "first": "toothbrush",
+            "second": "cabinet"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "close intermediate container",
+          "event": {
+            "verb": "close",
+            "first": "cabinet"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve source from intermediate container",
+          "event": {
+            "verb": "grab",
+            "first": "toothbrush"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore intermediate container state",
+          "event": {
+            "verb": "close",
+            "first": "cabinet"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "store source in final container",
+          "event": {
+            "verb": "putin",
+            "first": "toothbrush",
+            "second": "closet"
+          }
+        },
+        {
+          "stage": 6,
+          "description": "restore final container state",
+          "event": {
+            "verb": "close",
+            "first": "closet"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "toothbrush"
+      ],
+      "rooms_involved": [
+        "bathroom",
+        "bedroom",
+        "livingroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "INSIDE(toothbrush, closet)",
+          "predicate": "RELATION",
+          "subject": "toothbrush",
+          "relation": "INSIDE",
+          "object": "closet",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(cabinet, CLOSED)",
+          "predicate": "STATE",
+          "object": "cabinet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(closet, CLOSED)",
+          "predicate": "STATE",
+          "object": "closet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+      "final_graph_hash": "889819fffa710b5f37a3b8b07b448d1271267d695f1fd50132b094b3984f13c9"
+    },
+    {
+      "task_id": "vh40_long_s1_06",
+      "scene": 1,
+      "instruction": "Clean the cookingpot in the dishwasher, complete the cycle, then place the cookingpot on the kitchentable.",
+      "category": "appliance_lifecycle",
+      "reference_program": "# causal stage 1\nfind('cookingpot')\ngrab('cookingpot')\nfind('dishwasher')\nopen('dishwasher')\nputin('cookingpot','dishwasher')\nclose('dishwasher')\n# causal stage 2\nswitchon('dishwasher')\nswitchoff('dishwasher')\n# causal stage 3\nopen('dishwasher')\nfind('cookingpot')\ngrab('cookingpot')\n# causal stage 4\nfind('kitchentable')\nputback('cookingpot','kitchentable')",
+      "reference_length": 13,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "load source into appliance",
+          "event": {
+            "verb": "putin",
+            "first": "cookingpot",
+            "second": "dishwasher"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "start appliance",
+          "event": {
+            "verb": "switchon",
+            "first": "dishwasher"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "complete appliance cycle",
+          "event": {
+            "verb": "switchoff",
+            "first": "dishwasher"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "retrieve processed source",
+          "event": {
+            "verb": "grab",
+            "first": "cookingpot"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "place processed source at destination",
+          "event": {
+            "verb": "putback",
+            "first": "cookingpot",
+            "second": "kitchentable"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "cookingpot"
+      ],
+      "rooms_involved": [
+        "kitchen"
+      ],
+      "final_conditions": [
+        {
+          "condition": "ON(cookingpot, kitchentable)",
+          "predicate": "RELATION",
+          "subject": "cookingpot",
+          "relation": "ON",
+          "object": "kitchentable",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(dishwasher, OFF)",
+          "predicate": "STATE",
+          "object": "dishwasher",
+          "value": "OFF",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+      "final_graph_hash": "3ead0c296aa597e5debdae52b6311c93219055d94a00a7db1748433c3286d01e"
+    },
+    {
+      "task_id": "vh40_long_s1_07",
+      "scene": 1,
+      "instruction": "Stage the barsoap and toothbrush together in the bathroomcabinet, then leave the barsoap stored there and deliver the toothbrush to the bed, with the bathroomcabinet closed.",
+      "category": "causal_multi_object",
+      "reference_program": "# causal stage 1\nfind('barsoap')\ngrab('barsoap')\nfind('bathroomcabinet')\nopen('bathroomcabinet')\nputin('barsoap','bathroomcabinet')\n# causal stage 2\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcabinet')\nputin('toothbrush','bathroomcabinet')\nclose('bathroomcabinet')\n# causal stage 3\nopen('bathroomcabinet')\nfind('toothbrush')\ngrab('toothbrush')\nfind('bathroomcabinet')\nclose('bathroomcabinet')\n# causal stage 4\nfind('bed')\nputback('toothbrush','bed')",
+      "reference_length": 17,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "stage first source in shared container",
+          "event": {
+            "verb": "putin",
+            "first": "barsoap",
+            "second": "bathroomcabinet"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "stage second source in shared container",
+          "event": {
+            "verb": "putin",
+            "first": "toothbrush",
+            "second": "bathroomcabinet"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve second source after shared staging",
+          "event": {
+            "verb": "grab",
+            "first": "toothbrush"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore shared container state",
+          "event": {
+            "verb": "close",
+            "first": "bathroomcabinet"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "deliver second source to destination",
+          "event": {
+            "verb": "putback",
+            "first": "toothbrush",
+            "second": "bed"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "barsoap",
+        "toothbrush"
+      ],
+      "rooms_involved": [
+        "bathroom",
+        "bedroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "INSIDE(barsoap, bathroomcabinet)",
+          "predicate": "RELATION",
+          "subject": "barsoap",
+          "relation": "INSIDE",
+          "object": "bathroomcabinet",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "ON(toothbrush, bed)",
+          "predicate": "RELATION",
+          "subject": "toothbrush",
+          "relation": "ON",
+          "object": "bed",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(bathroomcabinet, CLOSED)",
+          "predicate": "STATE",
+          "object": "bathroomcabinet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+      "final_graph_hash": "7aaf1114c70eccc540d0ef8440f1293f14562a7e0a45d14db50ea6392742266a"
+    },
+    {
+      "task_id": "vh40_long_s1_08",
+      "scene": 1,
+      "instruction": "Stage the toothpaste on the bed, store the toothpaste temporarily in the closet, then deliver the toothpaste to the bathroomcounter and leave the closet closed.",
+      "category": "cross_location_mixed",
+      "reference_program": "# causal stage 1\nfind('toothpaste')\ngrab('toothpaste')\nfind('bed')\nputback('toothpaste','bed')\n# causal stage 2\nfind('toothpaste')\ngrab('toothpaste')\nfind('closet')\nopen('closet')\nputin('toothpaste','closet')\nclose('closet')\n# causal stage 3\nopen('closet')\nfind('toothpaste')\ngrab('toothpaste')\nfind('closet')\nclose('closet')\n# causal stage 4\nfind('bathroomcounter')\nputback('toothpaste','bathroomcounter')",
+      "reference_length": 17,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "stage source at waypoint",
+          "event": {
+            "verb": "putback",
+            "first": "toothpaste",
+            "second": "bed"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "store source in intermediate container",
+          "event": {
+            "verb": "putin",
+            "first": "toothpaste",
+            "second": "closet"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve source from intermediate container",
+          "event": {
+            "verb": "grab",
+            "first": "toothpaste"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore intermediate container state",
+          "event": {
+            "verb": "close",
+            "first": "closet"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "deliver source to final destination",
+          "event": {
+            "verb": "putback",
+            "first": "toothpaste",
+            "second": "bathroomcounter"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "toothpaste"
+      ],
+      "rooms_involved": [
+        "bathroom",
+        "bedroom",
+        "livingroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "ON(toothpaste, bathroomcounter)",
+          "predicate": "RELATION",
+          "subject": "toothpaste",
+          "relation": "ON",
+          "object": "bathroomcounter",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(closet, CLOSED)",
+          "predicate": "STATE",
+          "object": "closet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+      "final_graph_hash": "b217a67c41e316c9de9a2993364b42481b20999dd053894339b476d75edb22ba"
+    },
+    {
+      "task_id": "vh40_long_s2_09",
+      "scene": 2,
+      "instruction": "Temporarily store the salmon in the fridge, then transfer the salmon to the cabinet and leave both containers closed.",
+      "category": "container_state_transfer",
+      "reference_program": "# causal stage 1\nfind('salmon')\ngrab('salmon')\nfind('fridge')\nopen('fridge')\nputin('salmon','fridge')\nclose('fridge')\n# causal stage 2\nopen('fridge')\nfind('salmon')\ngrab('salmon')\nfind('fridge')\nclose('fridge')\n# causal stage 3\nfind('cabinet')\nopen('cabinet')\nputin('salmon','cabinet')\nclose('cabinet')",
+      "reference_length": 15,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "store source in intermediate container",
+          "event": {
+            "verb": "putin",
+            "first": "salmon",
+            "second": "fridge"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "close intermediate container",
+          "event": {
+            "verb": "close",
+            "first": "fridge"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve source from intermediate container",
+          "event": {
+            "verb": "grab",
+            "first": "salmon"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore intermediate container state",
+          "event": {
+            "verb": "close",
+            "first": "fridge"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "store source in final container",
+          "event": {
+            "verb": "putin",
+            "first": "salmon",
+            "second": "cabinet"
+          }
+        },
+        {
+          "stage": 6,
+          "description": "restore final container state",
+          "event": {
+            "verb": "close",
+            "first": "cabinet"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "salmon"
+      ],
+      "rooms_involved": [
+        "bedroom",
+        "kitchen"
+      ],
+      "final_conditions": [
+        {
+          "condition": "INSIDE(salmon, cabinet)",
+          "predicate": "RELATION",
+          "subject": "salmon",
+          "relation": "INSIDE",
+          "object": "cabinet",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(fridge, CLOSED)",
+          "predicate": "STATE",
+          "object": "fridge",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(cabinet, CLOSED)",
+          "predicate": "STATE",
+          "object": "cabinet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+      "final_graph_hash": "a35defc395b81113ffafb60be2f807d844908cd61f17a9feb2b6691d4f4f91e0"
+    },
+    {
+      "task_id": "vh40_long_s2_10",
+      "scene": 2,
+      "instruction": "Heat the salmon in the microwave, complete the cycle, then place the salmon on the coffeetable.",
+      "category": "appliance_lifecycle",
+      "reference_program": "# causal stage 1\nfind('salmon')\ngrab('salmon')\nfind('microwave')\nopen('microwave')\nputin('salmon','microwave')\nclose('microwave')\n# causal stage 2\nswitchon('microwave')\nswitchoff('microwave')\n# causal stage 3\nopen('microwave')\nfind('salmon')\ngrab('salmon')\n# causal stage 4\nfind('coffeetable')\nputback('salmon','coffeetable')",
+      "reference_length": 13,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "load source into appliance",
+          "event": {
+            "verb": "putin",
+            "first": "salmon",
+            "second": "microwave"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "start appliance",
+          "event": {
+            "verb": "switchon",
+            "first": "microwave"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "complete appliance cycle",
+          "event": {
+            "verb": "switchoff",
+            "first": "microwave"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "retrieve processed source",
+          "event": {
+            "verb": "grab",
+            "first": "salmon"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "place processed source at destination",
+          "event": {
+            "verb": "putback",
+            "first": "salmon",
+            "second": "coffeetable"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "salmon"
+      ],
+      "rooms_involved": [
+        "kitchen",
+        "livingroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "ON(salmon, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "salmon",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(microwave, OFF)",
+          "predicate": "STATE",
+          "object": "microwave",
+          "value": "OFF",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+      "final_graph_hash": "0f2d87bbcccc6da4c5b41003ad702278f9ad1f3c8e97600e7782d40787c6c4cc"
+    },
+    {
+      "task_id": "vh40_long_s2_11",
+      "scene": 2,
+      "instruction": "Stage the barsoap and slippers together in the cabinet, then leave the barsoap stored there and deliver the slippers to the bathroomcounter, with the cabinet closed.",
+      "category": "causal_multi_object",
+      "reference_program": "# causal stage 1\nfind('barsoap')\ngrab('barsoap')\nfind('cabinet')\nopen('cabinet')\nputin('barsoap','cabinet')\n# causal stage 2\nfind('slippers')\ngrab('slippers')\nfind('cabinet')\nputin('slippers','cabinet')\nclose('cabinet')\n# causal stage 3\nopen('cabinet')\nfind('slippers')\ngrab('slippers')\nfind('cabinet')\nclose('cabinet')\n# causal stage 4\nfind('bathroomcounter')\nputback('slippers','bathroomcounter')",
+      "reference_length": 17,
+      "causal_stages": [
+        {
+          "stage": 1,
+          "description": "stage first source in shared container",
+          "event": {
+            "verb": "putin",
+            "first": "barsoap",
+            "second": "cabinet"
+          }
+        },
+        {
+          "stage": 2,
+          "description": "stage second source in shared container",
+          "event": {
+            "verb": "putin",
+            "first": "slippers",
+            "second": "cabinet"
+          }
+        },
+        {
+          "stage": 3,
+          "description": "retrieve second source after shared staging",
+          "event": {
+            "verb": "grab",
+            "first": "slippers"
+          }
+        },
+        {
+          "stage": 4,
+          "description": "restore shared container state",
+          "event": {
+            "verb": "close",
+            "first": "cabinet"
+          }
+        },
+        {
+          "stage": 5,
+          "description": "deliver second source to destination",
+          "event": {
+            "verb": "putback",
+            "first": "slippers",
+            "second": "bathroomcounter"
+          }
+        }
+      ],
+      "manipulated_objects": [
+        "barsoap",
+        "slippers"
+      ],
+      "rooms_involved": [
+        "bathroom",
+        "livingroom"
+      ],
+      "final_conditions": [
+        {
+          "condition": "INSIDE(barsoap, cabinet)",
+          "predicate": "RELATION",
+          "subject": "barsoap",
+          "relation": "INSIDE",
+          "object": "cabinet",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "ON(slippers, bathroomcounter)",
+          "predicate": "RELATION",
+          "subject": "slippers",
+          "relation": "ON",
+          "object": "bathroomcounter",
+          "rationale": "Frozen final relation required by the deterministic task template."
+        },
+        {
+          "condition": "STATE(cabinet, CLOSED)",
+          "predicate": "STATE",
+          "object": "cabinet",
+          "value": "CLOSED",
+          "rationale": "Frozen terminal state required by the deterministic task template."
+        }
+      ],
+      "initial_graph_hash": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+      "final_graph_hash": "fe712db804f39fb7411041b65d1cbab407a55f742a827ea70429137f6bb1bc74"
+    }
+  ]
+}

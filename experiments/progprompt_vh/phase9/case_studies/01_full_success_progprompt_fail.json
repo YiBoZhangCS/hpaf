@@ -1,0 +1,2231 @@
+{
+  "case": "01_full_success_progprompt_fail",
+  "task": {
+    "task_id": "env1::bring_coffeepot_and_peach_to_the_coffee_table",
+    "task_text": "bring coffeepot and peach to the coffee table",
+    "official_split": "env1",
+    "scene": 1,
+    "source_annotation": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+    "gt_action_length": 7,
+    "horizon": "Medium",
+    "is_long_horizon": false,
+    "gt_actions": [
+      "<char0> [find] <coffeepot> (230)",
+      "<char0> [grab] <coffeepot> (230)",
+      "<char0> [find] <peach> (117)",
+      "<char0> [grab] <peach> (117)",
+      "<char0> [find] <coffeetable> (86)",
+      "<char0> [putback] <coffeepot> (230) <coffeetable> (86)",
+      "<char0> [putback] <peach> (117) <coffeetable> (86)"
+    ],
+    "has_gt_program": true,
+    "initial_state_source": "third_party/progprompt-vh/data/final_states/initial_states_env1.json",
+    "initial_state_index": 8,
+    "initial_state_sha256": "34163f49762732f26f0a0dc2164d8a7d5146a35945b1c0e93028eb7ef0a5d0db",
+    "final_state_source": "third_party/progprompt-vh/data/final_states/final_states_env1.json",
+    "final_state_index": 8,
+    "has_final_state": true,
+    "direct_default_prompt_overlap": false,
+    "semantic_goal": {
+      "conditions": [
+        {
+          "condition": "ON(coffeepot, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The coffeepot must reach the coffee table."
+        },
+        {
+          "condition": "ON(peach, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "peach",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The peach must reach the coffee table."
+        }
+      ],
+      "ambiguity": "Both requested objects are conjunctive."
+    },
+    "filter_status": "included",
+    "filter_reason": "Valid official held-out task with GT program/final state and a reliable frozen semantic goal under the shared API.",
+    "set": "regression",
+    "evaluator_type": "persistent_state",
+    "include_reason": "Original Phase-6 selected task; regression/development set because its outputs informed Phase-7 prompt design.",
+    "source": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+    "official_or_extension": "official_source",
+    "reference_horizon": 7,
+    "task_structure": "released_program_horizon",
+    "synthetic": false
+  },
+  "records": [
+    {
+      "run_id": "vh40_formal_2026-08-26T133644.145235_0000_progprompt_compat_env1_bring_coffeepot_and_peach_to_the_coffee_table",
+      "phase": "vh40_formal",
+      "representation": "uncompressed",
+      "timestamp": "2026-08-26T13:36:44.145235+00:00",
+      "task_id": "env1::bring_coffeepot_and_peach_to_the_coffee_table",
+      "task": "bring coffeepot and peach to the coffee table",
+      "split": "env1",
+      "scene": 1,
+      "goal_count": null,
+      "method": "ProgPrompt-Compat",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "temperature": 0.0,
+      "thinking": "disabled",
+      "max_tokens": 600,
+      "initial_state_sha256": "34163f49762732f26f0a0dc2164d8a7d5146a35945b1c0e93028eb7ef0a5d0db",
+      "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+      "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+      "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+      "generated_programs": [
+        "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find coffeepot\n\tfind('coffeepot')\n\t# 2: grab coffeepot\n\tassert('close' to 'coffeepot')\n\t\telse: find('coffeepot')\n\tgrab('coffeepot')\n\t# 3: find peach\n\tfind('peach')\n\t# 4: grab peach\n\tassert('close' to 'peach')\n\t\telse: find('peach')\n\tgrab('peach')\n\t# 5: walk to living room\n\twalk('livingroom')\n\t# 6: find coffee table\n\tfind('coffeetable')\n\t# 7: put coffeepot on coffee table\n\tassert('coffeepot' in 'hands')\n\t\telse: find('coffeepot')\n\t\telse: grab('coffeepot')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('coffeepot', 'coffeetable')\n\t# 8: put peach on coffee table\n\tassert('peach' in 'hands')\n\t\telse: find('peach')\n\t\telse: grab('peach')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('peach', 'coffeetable')\n\t# 9: Done"
+      ],
+      "generated_program": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find coffeepot\n\tfind('coffeepot')\n\t# 2: grab coffeepot\n\tassert('close' to 'coffeepot')\n\t\telse: find('coffeepot')\n\tgrab('coffeepot')\n\t# 3: find peach\n\tfind('peach')\n\t# 4: grab peach\n\tassert('close' to 'peach')\n\t\telse: find('peach')\n\tgrab('peach')\n\t# 5: walk to living room\n\twalk('livingroom')\n\t# 6: find coffee table\n\tfind('coffeetable')\n\t# 7: put coffeepot on coffee table\n\tassert('coffeepot' in 'hands')\n\t\telse: find('coffeepot')\n\t\telse: grab('coffeepot')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('coffeepot', 'coffeetable')\n\t# 8: put peach on coffee table\n\tassert('peach' in 'hands')\n\t\telse: find('peach')\n\t\telse: grab('peach')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('peach', 'coffeetable')\n\t# 9: Done",
+      "atomic_tasks": [],
+      "number_of_atomic_tasks": 0,
+      "atomic_tasks_attempted": 0,
+      "atomic_records": [],
+      "retry_count": 0,
+      "early_stop_count": 0,
+      "online_verification_calls": [
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot INSIDE coffeemaker, coffeepot ON kitchencounter, coffeepot is CLOSED\n\nassert('close' to 'coffeepot')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 447,
+          "completion_tokens": 3,
+          "latency_s": 0.8856228969962103,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514219122de38e8299405d0a4d8e2bf74997350ede2eac",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: peach, peach ON coffeetable. You have coffeepot.\n\nassert('close' to 'peach')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 435,
+          "completion_tokens": 3,
+          "latency_s": 1.3099978149984963,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514228202de38e8299405d0a4d8e2bf74997350e18c9c4",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot is CLOSED, peach. You have coffeepot\n\nassert('coffeepot' in 'hands')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 438,
+          "completion_tokens": 3,
+          "latency_s": 1.6583488679971197,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514242122de38e8299405d0a4d8e2bf74997350eeac430",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeetable\n\nassert('close' to 'coffeetable')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 424,
+          "completion_tokens": 3,
+          "latency_s": 2.533971021002799,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514258702de38e8299405d0a4d8e2bf74997350e675f4b",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: peach. You have peach.\n\nassert('peach' in 'hands')\n",
+          "instructions": null,
+          "raw_output": "True",
+          "output_text": "True",
+          "prompt_tokens": 426,
+          "completion_tokens": 1,
+          "latency_s": 0.9383849560035742,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514284142de38e8299405d0a4d8e2bf74997350ed7b7ba",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot INSIDE coffeetable, coffeetable\n\nassert('close' to 'coffeetable')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 434,
+          "completion_tokens": 3,
+          "latency_s": 1.433775435994903,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514293522de38e8299405d0a4d8e2bf74997350ea30ddf",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        }
+      ],
+      "online_verification_outputs": [
+        {
+          "line": "assert('close' to 'coffeepot')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "2: grab coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'peach')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "4: grab peach",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('coffeepot' in 'hands')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'coffeetable')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('peach' in 'hands')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'coffeetable')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        }
+      ],
+      "online_verification_count": 6,
+      "final_online_done": null,
+      "execution_trace": [
+        {
+          "line": "# 0: walk to kitchen",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "0: walk to kitchen",
+          "compiled_action": null
+        },
+        {
+          "line": "walk('kitchen')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "0: walk to kitchen",
+          "compiled_action": "<char0> [walk] <kitchen> (126)"
+        },
+        {
+          "line": "# 1: find coffeepot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "1: find coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "1: find coffeepot",
+          "compiled_action": "<char0> [find] <coffeepot> (230)"
+        },
+        {
+          "line": "# 2: grab coffeepot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "2: grab coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'coffeepot')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "2: grab coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "else: find('coffeepot')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "2: grab coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "2: grab coffeepot",
+          "compiled_action": "<char0> [grab] <coffeepot> (230)"
+        },
+        {
+          "line": "# 3: find peach",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "3: find peach",
+          "compiled_action": null
+        },
+        {
+          "line": "find('peach')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "3: find peach",
+          "compiled_action": "<char0> [find] <peach> (118)"
+        },
+        {
+          "line": "# 4: grab peach",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "4: grab peach",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'peach')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "4: grab peach",
+          "compiled_action": null
+        },
+        {
+          "line": "else: find('peach')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "4: grab peach",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('peach')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "4: grab peach",
+          "compiled_action": "<char0> [grab] <peach> (118)"
+        },
+        {
+          "line": "# 5: walk to living room",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "5: walk to living room",
+          "compiled_action": null
+        },
+        {
+          "line": "walk('livingroom')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "5: walk to living room",
+          "compiled_action": "<char0> [walk] <livingroom> (261)"
+        },
+        {
+          "line": "# 6: find coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "6: find coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "6: find coffee table",
+          "compiled_action": "<char0> [find] <coffeetable> (289)"
+        },
+        {
+          "line": "# 7: put coffeepot on coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('coffeepot' in 'hands')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "else: find('coffeepot')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "else: grab('coffeepot')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'coffeetable')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "else: find('coffeetable')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('coffeepot', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "7: put coffeepot on coffee table",
+          "compiled_action": "<char0> [putin] <coffeepot> (230) <coffeetable> (289)"
+        },
+        {
+          "line": "# 8: put peach on coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('peach' in 'hands')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "else: find('peach')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "else: grab('peach')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "assert('close' to 'coffeetable')",
+          "event": "assert",
+          "success": true,
+          "detail": "True",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "else: find('coffeetable')",
+          "event": "recovery_skip",
+          "success": true,
+          "detail": "assertion true",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "putin('peach', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "8: put peach on coffee table",
+          "compiled_action": "<char0> [putin] <peach> (118) <coffeetable> (289)"
+        },
+        {
+          "line": "# 9: Done",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "9: Done",
+          "compiled_action": null
+        }
+      ],
+      "graph_execution_trace": [
+        {
+          "source_action": "<char0> [walk] <kitchen> (126)",
+          "parsed_action": "[WALK] <kitchen> (126) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <coffeepot> (230)",
+          "parsed_action": "[FIND] <coffeepot> (230) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [grab] <coffeepot> (230)",
+          "parsed_action": "[GRAB] <coffeepot> (230) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <peach> (118)",
+          "parsed_action": "[FIND] <peach> (118) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [grab] <peach> (118)",
+          "parsed_action": "[GRAB] <peach> (118) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [walk] <livingroom> (261)",
+          "parsed_action": "[WALK] <livingroom> (261) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <coffeetable> (289)",
+          "parsed_action": "[FIND] <coffeetable> (289) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [putin] <coffeepot> (230) <coffeetable> (289)",
+          "parsed_action": "[PUTIN] <coffeepot> (230) <coffeetable> (289) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [putin] <peach> (118) <coffeetable> (289)",
+          "parsed_action": "[PUTIN] <peach> (118) <coffeetable> (289) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        }
+      ],
+      "compiled_virtualhome_actions": [
+        "<char0> [walk] <kitchen> (126)",
+        "<char0> [find] <coffeepot> (230)",
+        "<char0> [grab] <coffeepot> (230)",
+        "<char0> [find] <peach> (118)",
+        "<char0> [grab] <peach> (118)",
+        "<char0> [walk] <livingroom> (261)",
+        "<char0> [find] <coffeetable> (289)",
+        "<char0> [putin] <coffeepot> (230) <coffeetable> (289)",
+        "<char0> [putin] <peach> (118) <coffeetable> (289)"
+      ],
+      "program_length": 9,
+      "final_semantic_SR": 0,
+      "semantic_GCR": 0.5,
+      "semantic_goal_condition_count": 2,
+      "semantic_satisfied_condition_count": 1,
+      "semantic_condition_details": [
+        {
+          "condition": {
+            "condition": "ON(coffeepot, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "coffeepot",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The coffeepot must reach the coffee table."
+          },
+          "satisfied": false,
+          "evidence": ""
+        },
+        {
+          "condition": {
+            "condition": "ON(peach, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "peach",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The peach must reach the coffee table."
+          },
+          "satisfied": true,
+          "evidence": "matching edges=['117-ON-86']"
+        }
+      ],
+      "semantic_missing_conditions": [
+        {
+          "condition": "ON(coffeepot, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The coffeepot must reach the coffee table."
+        }
+      ],
+      "official_SR": 0,
+      "official_GCR": 0.8333333333333334,
+      "official_PSR": 0.8333333333333334,
+      "official_Precision": 0.9968454258675079,
+      "Exec": 1.0,
+      "generation_calls": 1,
+      "verification_calls": 6,
+      "repair_calls": 0,
+      "total_calls": 7,
+      "generation_prompt_tokens": 1891,
+      "generation_completion_tokens": 324,
+      "verification_prompt_tokens": 2604,
+      "verification_completion_tokens": 16,
+      "repair_prompt_tokens": 0,
+      "repair_completion_tokens": 0,
+      "repair_tokens": 0,
+      "prompt_tokens": 4495,
+      "completion_tokens": 340,
+      "total_prompt_tokens": 4495,
+      "total_completion_tokens": 340,
+      "total_tokens": 4835,
+      "planning_latency": 4.5164717480001855,
+      "verification_latency": 8.760100992993102,
+      "total_llm_latency": 13.276572740993288,
+      "wall_clock_total_s": 14.198241775993665,
+      "llm_call_records": [
+        {
+          "call_role": "whole_program_generation",
+          "broad_role": "generation",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bed', 'bedroom', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'ceiling', 'ceilinglamp', 'cellphone', 'chair', 'character', 'chicken', 'chips', 'chocolatesyrup', 'closet', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentshaker', 'cookingpot', 'cpuscreen', 'creamybuns', 'curtains', 'cutleryknife', 'cutlets', 'deodorant', 'desk', 'dishbowl', 'dishwasher', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'knifeblock', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'paper', 'papertray', 'peach', 'photoframe', 'pillow', 'plate', 'plum', 'poundcake', 'powersocket', 'radio', 'remotecontrol', 'rug', 'sink', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toiletpaper', 'toothbrush', 'toothpaste', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'washingmachine', 'waterglass', 'window']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef bring_coffeepot_and_peach_to_the_coffee_table():\n\t",
+          "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+          "raw_output": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find coffeepot\n\tfind('coffeepot')\n\t# 2: grab coffeepot\n\tassert('close' to 'coffeepot')\n\t\telse: find('coffeepot')\n\tgrab('coffeepot')\n\t# 3: find peach\n\tfind('peach')\n\t# 4: grab peach\n\tassert('close' to 'peach')\n\t\telse: find('peach')\n\tgrab('peach')\n\t# 5: walk to living room\n\twalk('livingroom')\n\t# 6: find coffee table\n\tfind('coffeetable')\n\t# 7: put coffeepot on coffee table\n\tassert('coffeepot' in 'hands')\n\t\telse: find('coffeepot')\n\t\telse: grab('coffeepot')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('coffeepot', 'coffeetable')\n\t# 8: put peach on coffee table\n\tassert('peach' in 'hands')\n\t\telse: find('peach')\n\t\telse: grab('peach')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('peach', 'coffeetable')\n\t# 9: Done",
+          "output_text": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find coffeepot\n\tfind('coffeepot')\n\t# 2: grab coffeepot\n\tassert('close' to 'coffeepot')\n\t\telse: find('coffeepot')\n\tgrab('coffeepot')\n\t# 3: find peach\n\tfind('peach')\n\t# 4: grab peach\n\tassert('close' to 'peach')\n\t\telse: find('peach')\n\tgrab('peach')\n\t# 5: walk to living room\n\twalk('livingroom')\n\t# 6: find coffee table\n\tfind('coffeetable')\n\t# 7: put coffeepot on coffee table\n\tassert('coffeepot' in 'hands')\n\t\telse: find('coffeepot')\n\t\telse: grab('coffeepot')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('coffeepot', 'coffeetable')\n\t# 8: put peach on coffee table\n\tassert('peach' in 'hands')\n\t\telse: find('peach')\n\t\telse: grab('peach')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('peach', 'coffeetable')\n\t# 9: Done",
+          "prompt_tokens": 1891,
+          "completion_tokens": 324,
+          "latency_s": 4.5164717480001855,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": [
+            "def"
+          ],
+          "frequency_penalty": 0.15,
+          "response_id": "resp_0217877514173642de38e8299405d0a4d8e2bf74997350e16425d",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot INSIDE coffeemaker, coffeepot ON kitchencounter, coffeepot is CLOSED\n\nassert('close' to 'coffeepot')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 447,
+          "completion_tokens": 3,
+          "latency_s": 0.8856228969962103,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514219122de38e8299405d0a4d8e2bf74997350ede2eac",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: peach, peach ON coffeetable. You have coffeepot.\n\nassert('close' to 'peach')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 435,
+          "completion_tokens": 3,
+          "latency_s": 1.3099978149984963,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514228202de38e8299405d0a4d8e2bf74997350e18c9c4",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot is CLOSED, peach. You have coffeepot\n\nassert('coffeepot' in 'hands')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 438,
+          "completion_tokens": 3,
+          "latency_s": 1.6583488679971197,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514242122de38e8299405d0a4d8e2bf74997350eeac430",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeetable\n\nassert('close' to 'coffeetable')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 424,
+          "completion_tokens": 3,
+          "latency_s": 2.533971021002799,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514258702de38e8299405d0a4d8e2bf74997350e675f4b",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: peach. You have peach.\n\nassert('peach' in 'hands')\n",
+          "instructions": null,
+          "raw_output": "True",
+          "output_text": "True",
+          "prompt_tokens": 426,
+          "completion_tokens": 1,
+          "latency_s": 0.9383849560035742,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514284142de38e8299405d0a4d8e2bf74997350ed7b7ba",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "assertion_verification",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot INSIDE coffeetable, coffeetable\n\nassert('close' to 'coffeetable')\n",
+          "instructions": null,
+          "raw_output": "\"True\"",
+          "output_text": "True",
+          "prompt_tokens": 434,
+          "completion_tokens": 3,
+          "latency_s": 1.433775435994903,
+          "temperature": 0.0,
+          "max_tokens": 3,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": 0.0,
+          "response_id": "resp_0217877514293522de38e8299405d0a4d8e2bf74997350ea30ddf",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        }
+      ],
+      "raw_prompts": [
+        {
+          "role": "whole_program_generation",
+          "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+          "input": "from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bed', 'bedroom', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'ceiling', 'ceilinglamp', 'cellphone', 'chair', 'character', 'chicken', 'chips', 'chocolatesyrup', 'closet', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentshaker', 'cookingpot', 'cpuscreen', 'creamybuns', 'curtains', 'cutleryknife', 'cutlets', 'deodorant', 'desk', 'dishbowl', 'dishwasher', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'knifeblock', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'paper', 'papertray', 'peach', 'photoframe', 'pillow', 'plate', 'plum', 'poundcake', 'powersocket', 'radio', 'remotecontrol', 'rug', 'sink', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toiletpaper', 'toothbrush', 'toothpaste', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'washingmachine', 'waterglass', 'window']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef bring_coffeepot_and_peach_to_the_coffee_table():\n\t"
+        },
+        {
+          "role": "assertion_verification",
+          "instructions": null,
+          "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot INSIDE coffeemaker, coffeepot ON kitchencounter, coffeepot is CLOSED\n\nassert('close' to 'coffeepot')\n"
+        },
+        {
+          "role": "assertion_verification",
+          "instructions": null,
+          "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: peach, peach ON coffeetable. You have coffeepot.\n\nassert('close' to 'peach')\n"
+        },
+        {
+          "role": "assertion_verification",
+          "instructions": null,
+          "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot is CLOSED, peach. You have coffeepot\n\nassert('coffeepot' in 'hands')\n"
+        },
+        {
+          "role": "assertion_verification",
+          "instructions": null,
+          "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeetable\n\nassert('close' to 'coffeetable')\n"
+        },
+        {
+          "role": "assertion_verification",
+          "instructions": null,
+          "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: peach. You have peach.\n\nassert('peach' in 'hands')\n"
+        },
+        {
+          "role": "assertion_verification",
+          "instructions": null,
+          "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: coffeepot INSIDE coffeetable, coffeetable\n\nassert('close' to 'coffeetable')\n"
+        }
+      ],
+      "raw_model_outputs": [
+        {
+          "role": "whole_program_generation",
+          "output": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find coffeepot\n\tfind('coffeepot')\n\t# 2: grab coffeepot\n\tassert('close' to 'coffeepot')\n\t\telse: find('coffeepot')\n\tgrab('coffeepot')\n\t# 3: find peach\n\tfind('peach')\n\t# 4: grab peach\n\tassert('close' to 'peach')\n\t\telse: find('peach')\n\tgrab('peach')\n\t# 5: walk to living room\n\twalk('livingroom')\n\t# 6: find coffee table\n\tfind('coffeetable')\n\t# 7: put coffeepot on coffee table\n\tassert('coffeepot' in 'hands')\n\t\telse: find('coffeepot')\n\t\telse: grab('coffeepot')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('coffeepot', 'coffeetable')\n\t# 8: put peach on coffee table\n\tassert('peach' in 'hands')\n\t\telse: find('peach')\n\t\telse: grab('peach')\n\tassert('close' to 'coffeetable')\n\t\telse: find('coffeetable')\n\tputin('peach', 'coffeetable')\n\t# 9: Done"
+        },
+        {
+          "role": "assertion_verification",
+          "output": "\"True\""
+        },
+        {
+          "role": "assertion_verification",
+          "output": "\"True\""
+        },
+        {
+          "role": "assertion_verification",
+          "output": "\"True\""
+        },
+        {
+          "role": "assertion_verification",
+          "output": "\"True\""
+        },
+        {
+          "role": "assertion_verification",
+          "output": "True"
+        },
+        {
+          "role": "assertion_verification",
+          "output": "\"True\""
+        }
+      ],
+      "error_type": "",
+      "error_message": "",
+      "errors": []
+    },
+    {
+      "run_id": "vh40_formal_2026-08-26T133653.756670_0000_hpaf_flat_env1_bring_coffeepot_and_peach_to_the_coffee_table",
+      "phase": "vh40_formal",
+      "representation": "uncompressed",
+      "timestamp": "2026-08-26T13:36:53.756670+00:00",
+      "task_id": "env1::bring_coffeepot_and_peach_to_the_coffee_table",
+      "task": "bring coffeepot and peach to the coffee table",
+      "split": "env1",
+      "scene": 1,
+      "goal_count": null,
+      "method": "HPAF-Flat",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "temperature": 0.0,
+      "thinking": "disabled",
+      "max_tokens": 600,
+      "initial_state_sha256": "34163f49762732f26f0a0dc2164d8a7d5146a35945b1c0e93028eb7ef0a5d0db",
+      "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+      "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+      "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+      "generated_programs": [
+        "# Search for the coffeepot in the kitchen\nfind('coffeepot')\ngrab('coffeepot')\n# Search for the peach in the kitchen\nfind('peach')\ngrab('peach')\n# Navigate to the living room coffee table\nfind('coffeetable')\n# Place both items on the coffee table\nputback('coffeepot','coffeetable')\nputback('peach','coffeetable')"
+      ],
+      "generated_program": "# Search for the coffeepot in the kitchen\nfind('coffeepot')\ngrab('coffeepot')\n# Search for the peach in the kitchen\nfind('peach')\ngrab('peach')\n# Navigate to the living room coffee table\nfind('coffeetable')\n# Place both items on the coffee table\nputback('coffeepot','coffeetable')\nputback('peach','coffeetable')",
+      "atomic_tasks": [],
+      "number_of_atomic_tasks": 0,
+      "atomic_tasks_attempted": 0,
+      "atomic_records": [],
+      "retry_count": 0,
+      "early_stop_count": 0,
+      "online_verification_calls": [
+        {
+          "call_role": "flat_verifier",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"bring coffeepot and peach to the coffee table\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; coffeepot ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Search for the coffeepot in the kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Search for the peach in the kitchen\\nfind('peach')\\ngrab('peach')\\n# Navigate to the living room coffee table\\nfind('coffeetable')\\n# Place both items on the coffee table\\nputback('coffeepot','coffeetable')\\nputback('peach','coffeetable')\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <peach> (118)\"}, {\"line\": \"grab('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <peach> (118)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (86)\"}, {\"line\": \"putback('coffeepot','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <coffeetable> (86)\"}, {\"line\": \"putback('peach','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <peach> (118) <coffeetable> (86)\"}], \"errors\": []}\n",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "raw_output": "{\"done\":true,\"reason\":\"Execution trace shows successful grab of coffeepot and peach, then successful putback of both onto coffeetable; current state confirms coffeepot ON coffeetable and peach ON coffeetable, with character holding nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "output_text": "{\"done\":true,\"reason\":\"Execution trace shows successful grab of coffeepot and peach, then successful putback of both onto coffeetable; current state confirms coffeepot ON coffeetable and peach ON coffeetable, with character holding nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "prompt_tokens": 939,
+          "completion_tokens": 67,
+          "latency_s": 3.0542752149995067,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514373592de38e8299405d0a4d8e2bf74997350e7ba52c",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        }
+      ],
+      "online_verification_outputs": [
+        {
+          "task_contract": {
+            "instruction": "bring coffeepot and peach to the coffee table",
+            "completion_mode": "infer",
+            "process_intent": "Infer whether the requested operation needs completed process evidence."
+          },
+          "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; coffeepot ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.",
+          "result": {
+            "done": true
+          },
+          "raw_output": "{\"done\":true,\"reason\":\"Execution trace shows successful grab of coffeepot and peach, then successful putback of both onto coffeetable; current state confirms coffeepot ON coffeetable and peach ON coffeetable, with character holding nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+        }
+      ],
+      "online_verification_count": 1,
+      "final_online_done": true,
+      "execution_trace": [
+        {
+          "line": "# Search for the coffeepot in the kitchen",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Search for the coffeepot in the kitchen",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Search for the coffeepot in the kitchen",
+          "compiled_action": "<char0> [find] <coffeepot> (230)"
+        },
+        {
+          "line": "grab('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Search for the coffeepot in the kitchen",
+          "compiled_action": "<char0> [grab] <coffeepot> (230)"
+        },
+        {
+          "line": "# Search for the peach in the kitchen",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Search for the peach in the kitchen",
+          "compiled_action": null
+        },
+        {
+          "line": "find('peach')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Search for the peach in the kitchen",
+          "compiled_action": "<char0> [find] <peach> (118)"
+        },
+        {
+          "line": "grab('peach')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Search for the peach in the kitchen",
+          "compiled_action": "<char0> [grab] <peach> (118)"
+        },
+        {
+          "line": "# Navigate to the living room coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the living room coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the living room coffee table",
+          "compiled_action": "<char0> [find] <coffeetable> (86)"
+        },
+        {
+          "line": "# Place both items on the coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place both items on the coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('coffeepot','coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place both items on the coffee table",
+          "compiled_action": "<char0> [putback] <coffeepot> (230) <coffeetable> (86)"
+        },
+        {
+          "line": "putback('peach','coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place both items on the coffee table",
+          "compiled_action": "<char0> [putback] <peach> (118) <coffeetable> (86)"
+        }
+      ],
+      "graph_execution_trace": [
+        {
+          "source_action": "<char0> [find] <coffeepot> (230)",
+          "parsed_action": "[FIND] <coffeepot> (230) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [grab] <coffeepot> (230)",
+          "parsed_action": "[GRAB] <coffeepot> (230) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <peach> (118)",
+          "parsed_action": "[FIND] <peach> (118) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [grab] <peach> (118)",
+          "parsed_action": "[GRAB] <peach> (118) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <coffeetable> (86)",
+          "parsed_action": "[FIND] <coffeetable> (86) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [putback] <coffeepot> (230) <coffeetable> (86)",
+          "parsed_action": "[PUTBACK] <coffeepot> (230) <coffeetable> (86) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [putback] <peach> (118) <coffeetable> (86)",
+          "parsed_action": "[PUTBACK] <peach> (118) <coffeetable> (86) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        }
+      ],
+      "compiled_virtualhome_actions": [
+        "<char0> [find] <coffeepot> (230)",
+        "<char0> [grab] <coffeepot> (230)",
+        "<char0> [find] <peach> (118)",
+        "<char0> [grab] <peach> (118)",
+        "<char0> [find] <coffeetable> (86)",
+        "<char0> [putback] <coffeepot> (230) <coffeetable> (86)",
+        "<char0> [putback] <peach> (118) <coffeetable> (86)"
+      ],
+      "program_length": 7,
+      "final_semantic_SR": 1,
+      "semantic_GCR": 1.0,
+      "semantic_goal_condition_count": 2,
+      "semantic_satisfied_condition_count": 2,
+      "semantic_condition_details": [
+        {
+          "condition": {
+            "condition": "ON(coffeepot, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "coffeepot",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The coffeepot must reach the coffee table."
+          },
+          "satisfied": true,
+          "evidence": "matching edges=['230-ON-86']"
+        },
+        {
+          "condition": {
+            "condition": "ON(peach, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "peach",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The peach must reach the coffee table."
+          },
+          "satisfied": true,
+          "evidence": "matching edges=['117-ON-86', '118-ON-86']"
+        }
+      ],
+      "semantic_missing_conditions": [],
+      "official_SR": 1,
+      "official_GCR": 1.0,
+      "official_PSR": 1.0,
+      "official_Precision": 1.0,
+      "Exec": 1.0,
+      "generation_calls": 1,
+      "verification_calls": 1,
+      "repair_calls": 0,
+      "total_calls": 2,
+      "generation_prompt_tokens": 1299,
+      "generation_completion_tokens": 149,
+      "verification_prompt_tokens": 939,
+      "verification_completion_tokens": 67,
+      "repair_prompt_tokens": 0,
+      "repair_completion_tokens": 0,
+      "repair_tokens": 0,
+      "prompt_tokens": 2238,
+      "completion_tokens": 216,
+      "total_prompt_tokens": 2238,
+      "total_completion_tokens": 216,
+      "total_tokens": 2454,
+      "planning_latency": 5.588779826000973,
+      "verification_latency": 3.0542752149995067,
+      "total_llm_latency": 8.64305504100048,
+      "wall_clock_total_s": 9.609770187998947,
+      "llm_call_records": [
+        {
+          "call_role": "flat_program_agent",
+          "broad_role": "generation",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: bring coffeepot and peach to the coffee table\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+          "instructions": "Return only the requested strict ProgramAgent JSON object.",
+          "raw_output": "{\"plan_brief\":\"Locate and retrieve the coffeepot and peach from their likely storage locations in the kitchen, then carry them to the living room coffee table and place both items on it.\",\"program\":\"# Search for the coffeepot in the kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Search for the peach in the kitchen\\nfind('peach')\\ngrab('peach')\\n# Navigate to the living room coffee table\\nfind('coffeetable')\\n# Place both items on the coffee table\\nputback('coffeepot','coffeetable')\\nputback('peach','coffeetable')\"}",
+          "output_text": "{\"plan_brief\":\"Locate and retrieve the coffeepot and peach from their likely storage locations in the kitchen, then carry them to the living room coffee table and place both items on it.\",\"program\":\"# Search for the coffeepot in the kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Search for the peach in the kitchen\\nfind('peach')\\ngrab('peach')\\n# Navigate to the living room coffee table\\nfind('coffeetable')\\n# Place both items on the coffee table\\nputback('coffeepot','coffeetable')\\nputback('peach','coffeetable')\"}",
+          "prompt_tokens": 1299,
+          "completion_tokens": 149,
+          "latency_s": 5.588779826000973,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514316512de38e8299405d0a4d8e2bf74997350e7986f0",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "flat_verifier",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"bring coffeepot and peach to the coffee table\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; coffeepot ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Search for the coffeepot in the kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Search for the peach in the kitchen\\nfind('peach')\\ngrab('peach')\\n# Navigate to the living room coffee table\\nfind('coffeetable')\\n# Place both items on the coffee table\\nputback('coffeepot','coffeetable')\\nputback('peach','coffeetable')\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <peach> (118)\"}, {\"line\": \"grab('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <peach> (118)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (86)\"}, {\"line\": \"putback('coffeepot','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <coffeetable> (86)\"}, {\"line\": \"putback('peach','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <peach> (118) <coffeetable> (86)\"}], \"errors\": []}\n",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "raw_output": "{\"done\":true,\"reason\":\"Execution trace shows successful grab of coffeepot and peach, then successful putback of both onto coffeetable; current state confirms coffeepot ON coffeetable and peach ON coffeetable, with character holding nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "output_text": "{\"done\":true,\"reason\":\"Execution trace shows successful grab of coffeepot and peach, then successful putback of both onto coffeetable; current state confirms coffeepot ON coffeetable and peach ON coffeetable, with character holding nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "prompt_tokens": 939,
+          "completion_tokens": 67,
+          "latency_s": 3.0542752149995067,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514373592de38e8299405d0a4d8e2bf74997350e7ba52c",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        }
+      ],
+      "raw_prompts": [
+        {
+          "role": "flat_program_agent",
+          "instructions": "Return only the requested strict ProgramAgent JSON object.",
+          "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: bring coffeepot and peach to the coffee table\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+        },
+        {
+          "role": "flat_verifier",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"bring coffeepot and peach to the coffee table\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; coffeepot ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Search for the coffeepot in the kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Search for the peach in the kitchen\\nfind('peach')\\ngrab('peach')\\n# Navigate to the living room coffee table\\nfind('coffeetable')\\n# Place both items on the coffee table\\nputback('coffeepot','coffeetable')\\nputback('peach','coffeetable')\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <peach> (118)\"}, {\"line\": \"grab('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <peach> (118)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (86)\"}, {\"line\": \"putback('coffeepot','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <coffeetable> (86)\"}, {\"line\": \"putback('peach','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <peach> (118) <coffeetable> (86)\"}], \"errors\": []}\n"
+        }
+      ],
+      "raw_model_outputs": [
+        {
+          "role": "flat_program_agent",
+          "output": "{\"plan_brief\":\"Locate and retrieve the coffeepot and peach from their likely storage locations in the kitchen, then carry them to the living room coffee table and place both items on it.\",\"program\":\"# Search for the coffeepot in the kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Search for the peach in the kitchen\\nfind('peach')\\ngrab('peach')\\n# Navigate to the living room coffee table\\nfind('coffeetable')\\n# Place both items on the coffee table\\nputback('coffeepot','coffeetable')\\nputback('peach','coffeetable')\"}"
+        },
+        {
+          "role": "flat_verifier",
+          "output": "{\"done\":true,\"reason\":\"Execution trace shows successful grab of coffeepot and peach, then successful putback of both onto coffeetable; current state confirms coffeepot ON coffeetable and peach ON coffeetable, with character holding nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+        }
+      ],
+      "error_type": "",
+      "error_message": "",
+      "errors": [],
+      "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate."
+    },
+    {
+      "run_id": "vh40_formal_2026-08-26T133709.881187_0000_hpaf_full_env1_bring_coffeepot_and_peach_to_the_coffee_table",
+      "phase": "vh40_formal",
+      "representation": "uncompressed",
+      "timestamp": "2026-08-26T13:37:09.881187+00:00",
+      "task_id": "env1::bring_coffeepot_and_peach_to_the_coffee_table",
+      "task": "bring coffeepot and peach to the coffee table",
+      "split": "env1",
+      "scene": 1,
+      "goal_count": null,
+      "method": "HPAF-Full",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "temperature": 0.0,
+      "thinking": "disabled",
+      "max_tokens": 600,
+      "initial_state_sha256": "34163f49762732f26f0a0dc2164d8a7d5146a35945b1c0e93028eb7ef0a5d0db",
+      "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+      "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+      "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+      "generated_programs": [
+        {
+          "atomic_task": {
+            "id": 1,
+            "instruction": "Bring the coffeepot to the coffee table.",
+            "manipulated_object": "coffeepot",
+            "target_object": "coffeetable",
+            "completion_mode": "process",
+            "process_intent": "Place the coffeepot on the coffee table."
+          },
+          "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate.",
+          "initial_program": "# Locate and retrieve the coffeepot\nfind('coffeepot')\ngrab('coffeepot')\n# Navigate to the coffee table and place the coffeepot\nfind('coffeetable')\nputback('coffeepot', 'coffeetable')",
+          "initial_generation_error": null,
+          "initial_execution_trace": [
+            {
+              "line": "# Locate and retrieve the coffeepot",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the coffeepot",
+              "compiled_action": null
+            },
+            {
+              "line": "find('coffeepot')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the coffeepot",
+              "compiled_action": "<char0> [find] <coffeepot> (230)"
+            },
+            {
+              "line": "grab('coffeepot')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the coffeepot",
+              "compiled_action": "<char0> [grab] <coffeepot> (230)"
+            },
+            {
+              "line": "# Navigate to the coffee table and place the coffeepot",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Navigate to the coffee table and place the coffeepot",
+              "compiled_action": null
+            },
+            {
+              "line": "find('coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Navigate to the coffee table and place the coffeepot",
+              "compiled_action": "<char0> [find] <coffeetable> (289)"
+            },
+            {
+              "line": "putback('coffeepot', 'coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Navigate to the coffee table and place the coffeepot",
+              "compiled_action": "<char0> [putback] <coffeepot> (230) <coffeetable> (289)"
+            }
+          ],
+          "initial_typed_errors": [],
+          "first_verifier": {
+            "done": true
+          },
+          "first_done": true,
+          "retry_used": false,
+          "repair_program": "",
+          "repair_execution_trace": [],
+          "repair_typed_errors": [],
+          "repair_verifier": null,
+          "final_done": true
+        },
+        {
+          "atomic_task": {
+            "id": 2,
+            "instruction": "Bring the peach to the coffee table.",
+            "manipulated_object": "peach",
+            "target_object": "coffeetable",
+            "completion_mode": "process",
+            "process_intent": "Place the peach on the coffee table."
+          },
+          "initial_observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.",
+          "initial_program": "# Locate and retrieve the peach\nfind('peach')\ngrab('peach')\n# Approach the coffee table and place the peach on it\nwalk('coffeetable')\nputback('peach', 'coffeetable')",
+          "initial_generation_error": null,
+          "initial_execution_trace": [
+            {
+              "line": "# Locate and retrieve the peach",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the peach",
+              "compiled_action": null
+            },
+            {
+              "line": "find('peach')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the peach",
+              "compiled_action": "<char0> [find] <peach> (117)"
+            },
+            {
+              "line": "grab('peach')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the peach",
+              "compiled_action": "<char0> [grab] <peach> (117)"
+            },
+            {
+              "line": "# Approach the coffee table and place the peach on it",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Approach the coffee table and place the peach on it",
+              "compiled_action": null
+            },
+            {
+              "line": "walk('coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Approach the coffee table and place the peach on it",
+              "compiled_action": "<char0> [walk] <coffeetable> (86)"
+            },
+            {
+              "line": "putback('peach', 'coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Approach the coffee table and place the peach on it",
+              "compiled_action": "<char0> [putback] <peach> (117) <coffeetable> (86)"
+            }
+          ],
+          "initial_typed_errors": [],
+          "first_verifier": {
+            "done": true
+          },
+          "first_done": true,
+          "retry_used": false,
+          "repair_program": "",
+          "repair_execution_trace": [],
+          "repair_typed_errors": [],
+          "repair_verifier": null,
+          "final_done": true
+        }
+      ],
+      "generated_program": "# atomic 1: Bring the coffeepot to the coffee table.\n# Locate and retrieve the coffeepot\nfind('coffeepot')\ngrab('coffeepot')\n# Navigate to the coffee table and place the coffeepot\nfind('coffeetable')\nputback('coffeepot', 'coffeetable')\n# atomic 2: Bring the peach to the coffee table.\n# Locate and retrieve the peach\nfind('peach')\ngrab('peach')\n# Approach the coffee table and place the peach on it\nwalk('coffeetable')\nputback('peach', 'coffeetable')",
+      "atomic_tasks": [
+        {
+          "id": 1,
+          "instruction": "Bring the coffeepot to the coffee table.",
+          "manipulated_object": "coffeepot",
+          "target_object": "coffeetable",
+          "completion_mode": "process",
+          "process_intent": "Place the coffeepot on the coffee table."
+        },
+        {
+          "id": 2,
+          "instruction": "Bring the peach to the coffee table.",
+          "manipulated_object": "peach",
+          "target_object": "coffeetable",
+          "completion_mode": "process",
+          "process_intent": "Place the peach on the coffee table."
+        }
+      ],
+      "number_of_atomic_tasks": 2,
+      "atomic_tasks_attempted": 2,
+      "atomic_records": [
+        {
+          "atomic_task": {
+            "id": 1,
+            "instruction": "Bring the coffeepot to the coffee table.",
+            "manipulated_object": "coffeepot",
+            "target_object": "coffeetable",
+            "completion_mode": "process",
+            "process_intent": "Place the coffeepot on the coffee table."
+          },
+          "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate.",
+          "initial_program": "# Locate and retrieve the coffeepot\nfind('coffeepot')\ngrab('coffeepot')\n# Navigate to the coffee table and place the coffeepot\nfind('coffeetable')\nputback('coffeepot', 'coffeetable')",
+          "initial_generation_error": null,
+          "initial_execution_trace": [
+            {
+              "line": "# Locate and retrieve the coffeepot",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the coffeepot",
+              "compiled_action": null
+            },
+            {
+              "line": "find('coffeepot')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the coffeepot",
+              "compiled_action": "<char0> [find] <coffeepot> (230)"
+            },
+            {
+              "line": "grab('coffeepot')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the coffeepot",
+              "compiled_action": "<char0> [grab] <coffeepot> (230)"
+            },
+            {
+              "line": "# Navigate to the coffee table and place the coffeepot",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Navigate to the coffee table and place the coffeepot",
+              "compiled_action": null
+            },
+            {
+              "line": "find('coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Navigate to the coffee table and place the coffeepot",
+              "compiled_action": "<char0> [find] <coffeetable> (289)"
+            },
+            {
+              "line": "putback('coffeepot', 'coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Navigate to the coffee table and place the coffeepot",
+              "compiled_action": "<char0> [putback] <coffeepot> (230) <coffeetable> (289)"
+            }
+          ],
+          "initial_typed_errors": [],
+          "first_verifier": {
+            "done": true
+          },
+          "first_done": true,
+          "retry_used": false,
+          "repair_program": "",
+          "repair_execution_trace": [],
+          "repair_typed_errors": [],
+          "repair_verifier": null,
+          "final_done": true
+        },
+        {
+          "atomic_task": {
+            "id": 2,
+            "instruction": "Bring the peach to the coffee table.",
+            "manipulated_object": "peach",
+            "target_object": "coffeetable",
+            "completion_mode": "process",
+            "process_intent": "Place the peach on the coffee table."
+          },
+          "initial_observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.",
+          "initial_program": "# Locate and retrieve the peach\nfind('peach')\ngrab('peach')\n# Approach the coffee table and place the peach on it\nwalk('coffeetable')\nputback('peach', 'coffeetable')",
+          "initial_generation_error": null,
+          "initial_execution_trace": [
+            {
+              "line": "# Locate and retrieve the peach",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the peach",
+              "compiled_action": null
+            },
+            {
+              "line": "find('peach')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the peach",
+              "compiled_action": "<char0> [find] <peach> (117)"
+            },
+            {
+              "line": "grab('peach')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Locate and retrieve the peach",
+              "compiled_action": "<char0> [grab] <peach> (117)"
+            },
+            {
+              "line": "# Approach the coffee table and place the peach on it",
+              "event": "comment",
+              "success": true,
+              "detail": "",
+              "subgoal": "Approach the coffee table and place the peach on it",
+              "compiled_action": null
+            },
+            {
+              "line": "walk('coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Approach the coffee table and place the peach on it",
+              "compiled_action": "<char0> [walk] <coffeetable> (86)"
+            },
+            {
+              "line": "putback('peach', 'coffeetable')",
+              "event": "action",
+              "success": true,
+              "detail": "",
+              "subgoal": "Approach the coffee table and place the peach on it",
+              "compiled_action": "<char0> [putback] <peach> (117) <coffeetable> (86)"
+            }
+          ],
+          "initial_typed_errors": [],
+          "first_verifier": {
+            "done": true
+          },
+          "first_done": true,
+          "retry_used": false,
+          "repair_program": "",
+          "repair_execution_trace": [],
+          "repair_typed_errors": [],
+          "repair_verifier": null,
+          "final_done": true
+        }
+      ],
+      "retry_count": 0,
+      "early_stop_count": 0,
+      "online_verification_calls": [
+        {
+          "call_role": "atomic_verifier",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Bring the coffeepot to the coffee table.\", \"manipulated_object\": \"coffeepot\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the coffeepot on the coffee table.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Navigate to the coffee table and place the coffeepot\\nfind('coffeetable')\\nputback('coffeepot', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (289)\"}, {\"line\": \"putback('coffeepot', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <coffeetable> (289)\"}], \"errors\": []}\n",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the coffeepot is observed ON the coffeetable, and the character no longer holds it, confirming placement completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "output_text": "{\"done\":true,\"reason\":\"All actions succeeded; the coffeepot is observed ON the coffeetable, and the character no longer holds it, confirming placement completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "prompt_tokens": 712,
+          "completion_tokens": 49,
+          "latency_s": 2.2317068749980535,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514484852de38e8299405d0a4d8e2bf74997350ecdcb8c",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "atomic_verifier",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Bring the peach to the coffee table.\", \"manipulated_object\": \"peach\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the peach on the coffee table.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the peach\\nfind('peach')\\ngrab('peach')\\n# Approach the coffee table and place the peach on it\\nwalk('coffeetable')\\nputback('peach', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <peach> (117)\"}, {\"line\": \"grab('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <peach> (117)\"}, {\"line\": \"walk('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <coffeetable> (86)\"}, {\"line\": \"putback('peach', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <peach> (117) <coffeetable> (86)\"}], \"errors\": []}\n",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the peach is observed ON the coffee table, satisfying the place/bring process.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "output_text": "{\"done\":true,\"reason\":\"All actions succeeded; the peach is observed ON the coffee table, satisfying the place/bring process.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "prompt_tokens": 727,
+          "completion_tokens": 40,
+          "latency_s": 2.824988232998294,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514536652de38e8299405d0a4d8e2bf74997350e54efe5",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        }
+      ],
+      "online_verification_outputs": [
+        {
+          "atomic_id": 1,
+          "attempt": "initial",
+          "observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.",
+          "result": {
+            "done": true
+          },
+          "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the coffeepot is observed ON the coffeetable, and the character no longer holds it, confirming placement completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+        },
+        {
+          "atomic_id": 2,
+          "attempt": "initial",
+          "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.",
+          "result": {
+            "done": true
+          },
+          "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the peach is observed ON the coffee table, satisfying the place/bring process.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+        }
+      ],
+      "online_verification_count": 2,
+      "final_online_done": true,
+      "execution_trace": [
+        {
+          "line": "# Locate and retrieve the coffeepot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the coffeepot",
+          "compiled_action": "<char0> [find] <coffeepot> (230)"
+        },
+        {
+          "line": "grab('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the coffeepot",
+          "compiled_action": "<char0> [grab] <coffeepot> (230)"
+        },
+        {
+          "line": "# Navigate to the coffee table and place the coffeepot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the coffee table and place the coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the coffee table and place the coffeepot",
+          "compiled_action": "<char0> [find] <coffeetable> (289)"
+        },
+        {
+          "line": "putback('coffeepot', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the coffee table and place the coffeepot",
+          "compiled_action": "<char0> [putback] <coffeepot> (230) <coffeetable> (289)"
+        },
+        {
+          "line": "# Locate and retrieve the peach",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the peach",
+          "compiled_action": null
+        },
+        {
+          "line": "find('peach')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the peach",
+          "compiled_action": "<char0> [find] <peach> (117)"
+        },
+        {
+          "line": "grab('peach')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and retrieve the peach",
+          "compiled_action": "<char0> [grab] <peach> (117)"
+        },
+        {
+          "line": "# Approach the coffee table and place the peach on it",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Approach the coffee table and place the peach on it",
+          "compiled_action": null
+        },
+        {
+          "line": "walk('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Approach the coffee table and place the peach on it",
+          "compiled_action": "<char0> [walk] <coffeetable> (86)"
+        },
+        {
+          "line": "putback('peach', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Approach the coffee table and place the peach on it",
+          "compiled_action": "<char0> [putback] <peach> (117) <coffeetable> (86)"
+        }
+      ],
+      "graph_execution_trace": [
+        {
+          "source_action": "<char0> [find] <coffeepot> (230)",
+          "parsed_action": "[FIND] <coffeepot> (230) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [grab] <coffeepot> (230)",
+          "parsed_action": "[GRAB] <coffeepot> (230) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <coffeetable> (289)",
+          "parsed_action": "[FIND] <coffeetable> (289) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [putback] <coffeepot> (230) <coffeetable> (289)",
+          "parsed_action": "[PUTBACK] <coffeepot> (230) <coffeetable> (289) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [find] <peach> (117)",
+          "parsed_action": "[FIND] <peach> (117) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [grab] <peach> (117)",
+          "parsed_action": "[GRAB] <peach> (117) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [walk] <coffeetable> (86)",
+          "parsed_action": "[WALK] <coffeetable> (86) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        },
+        {
+          "source_action": "<char0> [putback] <peach> (117) <coffeetable> (86)",
+          "parsed_action": "[PUTBACK] <peach> (117) <coffeetable> (86) [0]",
+          "success": true,
+          "error": "",
+          "unity_success": null,
+          "unity_message": ""
+        }
+      ],
+      "compiled_virtualhome_actions": [
+        "<char0> [find] <coffeepot> (230)",
+        "<char0> [grab] <coffeepot> (230)",
+        "<char0> [find] <coffeetable> (289)",
+        "<char0> [putback] <coffeepot> (230) <coffeetable> (289)",
+        "<char0> [find] <peach> (117)",
+        "<char0> [grab] <peach> (117)",
+        "<char0> [walk] <coffeetable> (86)",
+        "<char0> [putback] <peach> (117) <coffeetable> (86)"
+      ],
+      "program_length": 8,
+      "final_semantic_SR": 1,
+      "semantic_GCR": 1.0,
+      "semantic_goal_condition_count": 2,
+      "semantic_satisfied_condition_count": 2,
+      "semantic_condition_details": [
+        {
+          "condition": {
+            "condition": "ON(coffeepot, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "coffeepot",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The coffeepot must reach the coffee table."
+          },
+          "satisfied": true,
+          "evidence": "matching edges=['230-ON-289']"
+        },
+        {
+          "condition": {
+            "condition": "ON(peach, coffeetable)",
+            "predicate": "RELATION",
+            "subject": "peach",
+            "relation": "ON",
+            "object": "coffeetable",
+            "rationale": "The peach must reach the coffee table."
+          },
+          "satisfied": true,
+          "evidence": "matching edges=['117-ON-86', '118-ON-86']"
+        }
+      ],
+      "semantic_missing_conditions": [],
+      "official_SR": 0,
+      "official_GCR": 0.8333333333333334,
+      "official_PSR": 0.8333333333333334,
+      "official_Precision": 1.0,
+      "Exec": 1.0,
+      "generation_calls": 3,
+      "verification_calls": 2,
+      "repair_calls": 0,
+      "total_calls": 5,
+      "generation_prompt_tokens": 3405,
+      "generation_completion_tokens": 305,
+      "verification_prompt_tokens": 1439,
+      "verification_completion_tokens": 89,
+      "repair_prompt_tokens": 0,
+      "repair_completion_tokens": 0,
+      "repair_tokens": 0,
+      "prompt_tokens": 4844,
+      "completion_tokens": 394,
+      "total_prompt_tokens": 4844,
+      "total_completion_tokens": 394,
+      "total_tokens": 5238,
+      "planning_latency": 10.115561962993525,
+      "verification_latency": 5.056695107996347,
+      "total_llm_latency": 15.172257070989872,
+      "wall_clock_total_s": 16.123866260997602,
+      "llm_call_records": [
+        {
+          "call_role": "task_agent",
+          "broad_role": "generation",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: bring coffeepot and peach to the coffee table\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n",
+          "instructions": "Return only the requested strict TaskAgent JSON object.",
+          "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Bring the coffeepot to the coffee table.\",\"manipulated_object\":\"coffeepot\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the coffeepot on the coffee table.\"},{\"id\":2,\"instruction\":\"Bring the peach to the coffee table.\",\"manipulated_object\":\"peach\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the peach on the coffee table.\"}]}",
+          "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Bring the coffeepot to the coffee table.\",\"manipulated_object\":\"coffeepot\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the coffeepot on the coffee table.\"},{\"id\":2,\"instruction\":\"Bring the peach to the coffee table.\",\"manipulated_object\":\"peach\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the peach on the coffee table.\"}]}",
+          "prompt_tokens": 892,
+          "completion_tokens": 115,
+          "latency_s": 4.1546743429935304,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514411762de38e8299405d0a4d8e2bf74997350e9adee1",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "atomic_program_agent",
+          "broad_role": "generation",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: bring coffeepot and peach to the coffee table\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Bring the coffeepot to the coffee table.\", \"manipulated_object\": \"coffeepot\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the coffeepot on the coffee table.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+          "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+          "raw_output": "{\"plan_brief\":\"Locate the coffeepot in the kitchen, pick it up, navigate to the coffee table, and place the coffeepot on it.\",\"program\":\"# Locate and retrieve the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Navigate to the coffee table and place the coffeepot\\nfind('coffeetable')\\nputback('coffeepot', 'coffeetable')\"}",
+          "output_text": "{\"plan_brief\":\"Locate the coffeepot in the kitchen, pick it up, navigate to the coffee table, and place the coffeepot on it.\",\"program\":\"# Locate and retrieve the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Navigate to the coffee table and place the coffeepot\\nfind('coffeetable')\\nputback('coffeepot', 'coffeetable')\"}",
+          "prompt_tokens": 1380,
+          "completion_tokens": 105,
+          "latency_s": 3.0639877909998177,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514453352de38e8299405d0a4d8e2bf74997350e5caae6",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "atomic_verifier",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Bring the coffeepot to the coffee table.\", \"manipulated_object\": \"coffeepot\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the coffeepot on the coffee table.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Navigate to the coffee table and place the coffeepot\\nfind('coffeetable')\\nputback('coffeepot', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (289)\"}, {\"line\": \"putback('coffeepot', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <coffeetable> (289)\"}], \"errors\": []}\n",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the coffeepot is observed ON the coffeetable, and the character no longer holds it, confirming placement completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "output_text": "{\"done\":true,\"reason\":\"All actions succeeded; the coffeepot is observed ON the coffeetable, and the character no longer holds it, confirming placement completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "prompt_tokens": 712,
+          "completion_tokens": 49,
+          "latency_s": 2.2317068749980535,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514484852de38e8299405d0a4d8e2bf74997350ecdcb8c",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "atomic_program_agent",
+          "broad_role": "generation",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: bring coffeepot and peach to the coffee table\nCURRENT ATOMIC: {\"id\": 2, \"instruction\": \"Bring the peach to the coffee table.\", \"manipulated_object\": \"peach\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the peach on the coffee table.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+          "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+          "raw_output": "{\"plan_brief\":\"Locate the peach, pick it up, bring it to the coffee table, and place it on the table.\",\"program\":\"# Locate and retrieve the peach\\nfind('peach')\\ngrab('peach')\\n# Approach the coffee table and place the peach on it\\nwalk('coffeetable')\\nputback('peach', 'coffeetable')\"}",
+          "output_text": "{\"plan_brief\":\"Locate the peach, pick it up, bring it to the coffee table, and place it on the table.\",\"program\":\"# Locate and retrieve the peach\\nfind('peach')\\ngrab('peach')\\n# Approach the coffee table and place the peach on it\\nwalk('coffeetable')\\nputback('peach', 'coffeetable')\"}",
+          "prompt_tokens": 1133,
+          "completion_tokens": 85,
+          "latency_s": 2.8968998290001764,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514507242de38e8299405d0a4d8e2bf74997350ecb3cb2",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        },
+        {
+          "call_role": "atomic_verifier",
+          "broad_role": "verification",
+          "provider": "ark",
+          "model": "doubao-seed-2-1-pro-260628",
+          "api_interface": "responses.create",
+          "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Bring the peach to the coffee table.\", \"manipulated_object\": \"peach\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the peach on the coffee table.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the peach\\nfind('peach')\\ngrab('peach')\\n# Approach the coffee table and place the peach on it\\nwalk('coffeetable')\\nputback('peach', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <peach> (117)\"}, {\"line\": \"grab('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <peach> (117)\"}, {\"line\": \"walk('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <coffeetable> (86)\"}, {\"line\": \"putback('peach', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <peach> (117) <coffeetable> (86)\"}], \"errors\": []}\n",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the peach is observed ON the coffee table, satisfying the place/bring process.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "output_text": "{\"done\":true,\"reason\":\"All actions succeeded; the peach is observed ON the coffee table, satisfying the place/bring process.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+          "prompt_tokens": 727,
+          "completion_tokens": 40,
+          "latency_s": 2.824988232998294,
+          "temperature": 0.0,
+          "max_tokens": 600,
+          "seed": null,
+          "stop": null,
+          "frequency_penalty": null,
+          "response_id": "resp_0217877514536652de38e8299405d0a4d8e2bf74997350e54efe5",
+          "wall_clock_timeout_s": 240.0,
+          "extra_body": {
+            "thinking": {
+              "type": "disabled"
+            }
+          },
+          "error_type": "",
+          "error_message": ""
+        }
+      ],
+      "raw_prompts": [
+        {
+          "role": "task_agent",
+          "instructions": "Return only the requested strict TaskAgent JSON object.",
+          "input": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: bring coffeepot and peach to the coffee table\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n"
+        },
+        {
+          "role": "atomic_program_agent",
+          "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+          "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: bring coffeepot and peach to the coffee table\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Bring the coffeepot to the coffee table.\", \"manipulated_object\": \"coffeepot\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the coffeepot on the coffee table.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, chicken, chicken ON kitchencounter, chicken ON kitchencounterdrawer, cookingpot ON stove, cookingpot is CLOSED, cutleryknife, cutlets, cutlets ON kitchencounter, dishbowl, dishbowl ON dishbowl, dishbowl ON kitchencounter, dishwashingliquid, dishwashingliquid ON kitchencounter, faucet ON kitchencounter, faucet is OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, knifeblock, pillow, pillow ON bench, plate, plate ON kitchencounter, plate ON plate, rug, sink, stove is OFF and CLOSED. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; chicken ON kitchencounter; chicken ON kitchencounterdrawer; cookingpot ON stove; cutlets ON kitchencounter; dishbowl ON dishbowl; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; fryingpan ON stove; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; kitchentable ON rug; oventray INSIDE stove; pillow ON bench; plate ON kitchencounter; plate ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+        },
+        {
+          "role": "atomic_verifier",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Bring the coffeepot to the coffee table.\", \"manipulated_object\": \"coffeepot\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the coffeepot on the coffee table.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Navigate to the coffee table and place the coffeepot\\nfind('coffeetable')\\nputback('coffeepot', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (289)\"}, {\"line\": \"putback('coffeepot', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <coffeetable> (289)\"}], \"errors\": []}\n"
+        },
+        {
+          "role": "atomic_program_agent",
+          "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+          "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: bring coffeepot and peach to the coffee table\nCURRENT ATOMIC: {\"id\": 2, \"instruction\": \"Bring the peach to the coffee table.\", \"manipulated_object\": \"peach\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the peach on the coffee table.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable. One-hop INSIDE/ON relations connected to nearby objects: coffeepot ON coffeetable; orchid ON coffeetable.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+        },
+        {
+          "role": "atomic_verifier",
+          "instructions": "Return only the requested strict online-verifier JSON object.",
+          "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"id\": 2, \"instruction\": \"Bring the peach to the coffee table.\", \"manipulated_object\": \"peach\", \"target_object\": \"coffeetable\", \"completion_mode\": \"process\", \"process_intent\": \"Place the peach on the coffee table.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: coffeetable, peach, peach ON coffeetable. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; book ON coffeetable; dishbowl ON coffeetable; lime ON coffeetable; mug ON coffeetable; peach ON coffeetable; plum ON coffeetable; radio ON coffeetable; waterglass ON coffeetable.\nRELEVANT OBJECT CLASSES: [\"coffeepot\", \"coffeetable\", \"peach\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and retrieve the peach\\nfind('peach')\\ngrab('peach')\\n# Approach the coffee table and place the peach on it\\nwalk('coffeetable')\\nputback('peach', 'coffeetable')\", \"execution_trace\": [{\"line\": \"find('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <peach> (117)\"}, {\"line\": \"grab('peach')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <peach> (117)\"}, {\"line\": \"walk('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <coffeetable> (86)\"}, {\"line\": \"putback('peach', 'coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <peach> (117) <coffeetable> (86)\"}], \"errors\": []}\n"
+        }
+      ],
+      "raw_model_outputs": [
+        {
+          "role": "task_agent",
+          "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Bring the coffeepot to the coffee table.\",\"manipulated_object\":\"coffeepot\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the coffeepot on the coffee table.\"},{\"id\":2,\"instruction\":\"Bring the peach to the coffee table.\",\"manipulated_object\":\"peach\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the peach on the coffee table.\"}]}"
+        },
+        {
+          "role": "atomic_program_agent",
+          "output": "{\"plan_brief\":\"Locate the coffeepot in the kitchen, pick it up, navigate to the coffee table, and place the coffeepot on it.\",\"program\":\"# Locate and retrieve the coffeepot\\nfind('coffeepot')\\ngrab('coffeepot')\\n# Navigate to the coffee table and place the coffeepot\\nfind('coffeetable')\\nputback('coffeepot', 'coffeetable')\"}"
+        },
+        {
+          "role": "atomic_verifier",
+          "output": "{\"done\":true,\"reason\":\"All actions succeeded; the coffeepot is observed ON the coffeetable, and the character no longer holds it, confirming placement completed.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+        },
+        {
+          "role": "atomic_program_agent",
+          "output": "{\"plan_brief\":\"Locate the peach, pick it up, bring it to the coffee table, and place it on the table.\",\"program\":\"# Locate and retrieve the peach\\nfind('peach')\\ngrab('peach')\\n# Approach the coffee table and place the peach on it\\nwalk('coffeetable')\\nputback('peach', 'coffeetable')\"}"
+        },
+        {
+          "role": "atomic_verifier",
+          "output": "{\"done\":true,\"reason\":\"All actions succeeded; the peach is observed ON the coffee table, satisfying the place/bring process.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+        }
+      ],
+      "error_type": "",
+      "error_message": "",
+      "errors": [],
+      "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Bring the coffeepot to the coffee table.\",\"manipulated_object\":\"coffeepot\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the coffeepot on the coffee table.\"},{\"id\":2,\"instruction\":\"Bring the peach to the coffee table.\",\"manipulated_object\":\"peach\",\"target_object\":\"coffeetable\",\"completion_mode\":\"process\",\"process_intent\":\"Place the peach on the coffee table.\"}]}"
+    }
+  ]
+}

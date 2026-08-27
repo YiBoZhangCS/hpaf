@@ -1,0 +1,588 @@
+{
+  "run_id": "formal_2026-08-26T162839.803382_0000_hpaf_flat_p10_s1_container_2",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T16:28:39.803382+00:00",
+  "task_id": "p10_s1_container_2",
+  "task": "Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.",
+  "split": "phase10_final_holdout",
+  "scene": 1,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "42472000c74754de8055ef41fe7bea90875bc325b7bd4ebeecd6ed75d7a6f80b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# Locate toothpaste\nfind('toothpaste')\ngrab('toothpaste')\n# Temporarily store toothpaste in cabinet\nfind('cabinet')\nopen('cabinet')\nputin('toothpaste','cabinet')\nclose('cabinet')\n# Transfer toothpaste to closet\nopen('cabinet')\nfind('toothpaste')\ngrab('toothpaste')\nclose('cabinet')\nfind('closet')\nopen('closet')\nputin('toothpaste','closet')\nclose('closet')"
+  ],
+  "generated_program": "# Locate toothpaste\nfind('toothpaste')\ngrab('toothpaste')\n# Temporarily store toothpaste in cabinet\nfind('cabinet')\nopen('cabinet')\nputin('toothpaste','cabinet')\nclose('cabinet')\n# Transfer toothpaste to closet\nopen('cabinet')\nfind('toothpaste')\ngrab('toothpaste')\nclose('cabinet')\nfind('closet')\nopen('closet')\nputin('toothpaste','closet')\nclose('closet')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: closet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: clothespants INSIDE closet; clothesshirt INSIDE closet; hanger INSIDE closet; hanger ON clothespants; hanger ON clothesshirt; toothpaste INSIDE closet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"closet\", \"toothpaste\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate toothpaste\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Temporarily store toothpaste in cabinet\\nfind('cabinet')\\nopen('cabinet')\\nputin('toothpaste','cabinet')\\nclose('cabinet')\\n# Transfer toothpaste to closet\\nopen('cabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nclose('cabinet')\\nfind('closet')\\nopen('closet')\\nputin('toothpaste','closet')\\nclose('closet')\", \"execution_trace\": [{\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (39)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (39)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"putin('toothpaste','cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (39) <cabinet> (87)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (39)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (39)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}, {\"line\": \"find('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <closet> (293)\"}, {\"line\": \"open('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <closet> (293)\"}, {\"line\": \"putin('toothpaste','closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (39) <closet> (293)\"}, {\"line\": \"close('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <closet> (293)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"Toothpaste was temporarily placed in cabinet, cabinet was closed, then toothpaste was retrieved and placed in closet, and both cabinet and closet are closed (toothpaste is inside closed closet per current state).\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"Toothpaste was temporarily placed in cabinet, cabinet was closed, then toothpaste was retrieved and placed in closet, and both cabinet and closet are closed (toothpaste is inside closed closet per current state).\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1264,
+      "completion_tokens": 62,
+      "latency_s": 2.371421054000166,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776174355208bad97b19aecd1d2e685dea670f3caec5c445",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: closet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: clothespants INSIDE closet; clothesshirt INSIDE closet; hanger INSIDE closet; hanger ON clothespants; hanger ON clothesshirt; toothpaste INSIDE closet.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"Toothpaste was temporarily placed in cabinet, cabinet was closed, then toothpaste was retrieved and placed in closet, and both cabinet and closet are closed (toothpaste is inside closed closet per current state).\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Locate toothpaste",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate toothpaste",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate toothpaste",
+      "compiled_action": "<char0> [find] <toothpaste> (39)"
+    },
+    {
+      "line": "grab('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate toothpaste",
+      "compiled_action": "<char0> [grab] <toothpaste> (39)"
+    },
+    {
+      "line": "# Temporarily store toothpaste in cabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in cabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in cabinet",
+      "compiled_action": "<char0> [find] <cabinet> (87)"
+    },
+    {
+      "line": "open('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in cabinet",
+      "compiled_action": "<char0> [open] <cabinet> (87)"
+    },
+    {
+      "line": "putin('toothpaste','cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in cabinet",
+      "compiled_action": "<char0> [putin] <toothpaste> (39) <cabinet> (87)"
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store toothpaste in cabinet",
+      "compiled_action": "<char0> [close] <cabinet> (87)"
+    },
+    {
+      "line": "# Transfer toothpaste to closet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": null
+    },
+    {
+      "line": "open('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [open] <cabinet> (87)"
+    },
+    {
+      "line": "find('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [find] <toothpaste> (39)"
+    },
+    {
+      "line": "grab('toothpaste')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [grab] <toothpaste> (39)"
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [close] <cabinet> (87)"
+    },
+    {
+      "line": "find('closet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [find] <closet> (293)"
+    },
+    {
+      "line": "open('closet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [open] <closet> (293)"
+    },
+    {
+      "line": "putin('toothpaste','closet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [putin] <toothpaste> (39) <closet> (293)"
+    },
+    {
+      "line": "close('closet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Transfer toothpaste to closet",
+      "compiled_action": "<char0> [close] <closet> (293)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <toothpaste> (39)",
+      "parsed_action": "[FIND] <toothpaste> (39) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothpaste> (39)",
+      "parsed_action": "[GRAB] <toothpaste> (39) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (87)",
+      "parsed_action": "[FIND] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <cabinet> (87)",
+      "parsed_action": "[OPEN] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <toothpaste> (39) <cabinet> (87)",
+      "parsed_action": "[PUTIN] <toothpaste> (39) <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (87)",
+      "parsed_action": "[CLOSE] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <cabinet> (87)",
+      "parsed_action": "[OPEN] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toothpaste> (39)",
+      "parsed_action": "[FIND] <toothpaste> (39) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toothpaste> (39)",
+      "parsed_action": "[GRAB] <toothpaste> (39) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (87)",
+      "parsed_action": "[CLOSE] <cabinet> (87) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <closet> (293)",
+      "parsed_action": "[FIND] <closet> (293) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <closet> (293)",
+      "parsed_action": "[OPEN] <closet> (293) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <toothpaste> (39) <closet> (293)",
+      "parsed_action": "[PUTIN] <toothpaste> (39) <closet> (293) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <closet> (293)",
+      "parsed_action": "[CLOSE] <closet> (293) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <toothpaste> (39)",
+    "<char0> [grab] <toothpaste> (39)",
+    "<char0> [find] <cabinet> (87)",
+    "<char0> [open] <cabinet> (87)",
+    "<char0> [putin] <toothpaste> (39) <cabinet> (87)",
+    "<char0> [close] <cabinet> (87)",
+    "<char0> [open] <cabinet> (87)",
+    "<char0> [find] <toothpaste> (39)",
+    "<char0> [grab] <toothpaste> (39)",
+    "<char0> [close] <cabinet> (87)",
+    "<char0> [find] <closet> (293)",
+    "<char0> [open] <closet> (293)",
+    "<char0> [putin] <toothpaste> (39) <closet> (293)",
+    "<char0> [close] <closet> (293)"
+  ],
+  "program_length": 14,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 8,
+  "semantic_satisfied_condition_count": 8,
+  "semantic_condition_details": [
+    {
+      "kind": "semantic_event",
+      "id": "E1",
+      "description": "store source in intermediate container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "toothpaste",
+          "second": "cabinet"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "toothpaste",
+        "first_id": 39,
+        "second": "cabinet",
+        "second_id": 87,
+        "ordinal": 5
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E3",
+      "description": "retrieve source from intermediate container",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "toothpaste"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "toothpaste",
+        "first_id": 39,
+        "second": null,
+        "second_id": null,
+        "ordinal": 9
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "store source in final container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "toothpaste",
+          "second": "closet"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "toothpaste",
+        "first_id": 39,
+        "second": "closet",
+        "second_id": 293,
+        "ordinal": 13
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E1",
+      "after": "E3",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 5,
+        "after_ordinal": 9
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E5",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 9,
+        "after_ordinal": 13
+      }
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(cabinet, CLOSED)",
+        "predicate": "STATE",
+        "object": "cabinet",
+        "value": "CLOSED",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[87]"
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(closet, CLOSED)",
+        "predicate": "STATE",
+        "object": "closet",
+        "value": "CLOSED",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[293]"
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "INSIDE(toothpaste, closet)",
+        "predicate": "RELATION",
+        "subject": "toothpaste",
+        "relation": "INSIDE",
+        "object": "closet",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['39-INSIDE-293']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "partial_order_assignment": {
+    "E1": 5,
+    "E3": 9,
+    "E5": 13
+  },
+  "implementation_rejection": false,
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1202,
+  "generation_completion_tokens": 184,
+  "verification_prompt_tokens": 1264,
+  "verification_completion_tokens": 62,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2466,
+  "completion_tokens": 246,
+  "total_prompt_tokens": 2466,
+  "total_completion_tokens": 246,
+  "total_tokens": 2712,
+  "planning_latency": 4.184155095000278,
+  "verification_latency": 2.371421054000166,
+  "total_llm_latency": 6.555576149000444,
+  "wall_clock_total_s": 7.7189225900001475,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate toothpaste, place it temporarily in an open cabinet, close the cabinet, then retrieve the toothpaste, place it in an open closet, and close both the cabinet and closet to leave them closed.\",\"program\":\"# Locate toothpaste\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Temporarily store toothpaste in cabinet\\nfind('cabinet')\\nopen('cabinet')\\nputin('toothpaste','cabinet')\\nclose('cabinet')\\n# Transfer toothpaste to closet\\nopen('cabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nclose('cabinet')\\nfind('closet')\\nopen('closet')\\nputin('toothpaste','closet')\\nclose('closet')\"}",
+      "output_text": "{\"plan_brief\":\"Locate toothpaste, place it temporarily in an open cabinet, close the cabinet, then retrieve the toothpaste, place it in an open closet, and close both the cabinet and closet to leave them closed.\",\"program\":\"# Locate toothpaste\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Temporarily store toothpaste in cabinet\\nfind('cabinet')\\nopen('cabinet')\\nputin('toothpaste','cabinet')\\nclose('cabinet')\\n# Transfer toothpaste to closet\\nopen('cabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nclose('cabinet')\\nfind('closet')\\nopen('closet')\\nputin('toothpaste','closet')\\nclose('closet')\"}",
+      "prompt_tokens": 1202,
+      "completion_tokens": 184,
+      "latency_s": 4.184155095000278,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776173907908bad97b19aecd1d2e685dea670f3caedabbb9",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: closet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: clothespants INSIDE closet; clothesshirt INSIDE closet; hanger INSIDE closet; hanger ON clothespants; hanger ON clothesshirt; toothpaste INSIDE closet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"closet\", \"toothpaste\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate toothpaste\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Temporarily store toothpaste in cabinet\\nfind('cabinet')\\nopen('cabinet')\\nputin('toothpaste','cabinet')\\nclose('cabinet')\\n# Transfer toothpaste to closet\\nopen('cabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nclose('cabinet')\\nfind('closet')\\nopen('closet')\\nputin('toothpaste','closet')\\nclose('closet')\", \"execution_trace\": [{\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (39)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (39)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"putin('toothpaste','cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (39) <cabinet> (87)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (39)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (39)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}, {\"line\": \"find('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <closet> (293)\"}, {\"line\": \"open('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <closet> (293)\"}, {\"line\": \"putin('toothpaste','closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (39) <closet> (293)\"}, {\"line\": \"close('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <closet> (293)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"Toothpaste was temporarily placed in cabinet, cabinet was closed, then toothpaste was retrieved and placed in closet, and both cabinet and closet are closed (toothpaste is inside closed closet per current state).\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"Toothpaste was temporarily placed in cabinet, cabinet was closed, then toothpaste was retrieved and placed in closet, and both cabinet and closet are closed (toothpaste is inside closed closet per current state).\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1264,
+      "completion_tokens": 62,
+      "latency_s": 2.371421054000166,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776174355208bad97b19aecd1d2e685dea670f3caec5c445",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Temporarily store the toothpaste in the cabinet, then transfer the toothpaste to the closet and leave both containers closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: closet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: clothespants INSIDE closet; clothesshirt INSIDE closet; hanger INSIDE closet; hanger ON clothespants; hanger ON clothesshirt; toothpaste INSIDE closet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"closet\", \"toothpaste\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate toothpaste\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Temporarily store toothpaste in cabinet\\nfind('cabinet')\\nopen('cabinet')\\nputin('toothpaste','cabinet')\\nclose('cabinet')\\n# Transfer toothpaste to closet\\nopen('cabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nclose('cabinet')\\nfind('closet')\\nopen('closet')\\nputin('toothpaste','closet')\\nclose('closet')\", \"execution_trace\": [{\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (39)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (39)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"putin('toothpaste','cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (39) <cabinet> (87)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (87)\"}, {\"line\": \"find('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toothpaste> (39)\"}, {\"line\": \"grab('toothpaste')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toothpaste> (39)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (87)\"}, {\"line\": \"find('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <closet> (293)\"}, {\"line\": \"open('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <closet> (293)\"}, {\"line\": \"putin('toothpaste','closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <toothpaste> (39) <closet> (293)\"}, {\"line\": \"close('closet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <closet> (293)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate toothpaste, place it temporarily in an open cabinet, close the cabinet, then retrieve the toothpaste, place it in an open closet, and close both the cabinet and closet to leave them closed.\",\"program\":\"# Locate toothpaste\\nfind('toothpaste')\\ngrab('toothpaste')\\n# Temporarily store toothpaste in cabinet\\nfind('cabinet')\\nopen('cabinet')\\nputin('toothpaste','cabinet')\\nclose('cabinet')\\n# Transfer toothpaste to closet\\nopen('cabinet')\\nfind('toothpaste')\\ngrab('toothpaste')\\nclose('cabinet')\\nfind('closet')\\nopen('closet')\\nputin('toothpaste','closet')\\nclose('closet')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"Toothpaste was temporarily placed in cabinet, cabinet was closed, then toothpaste was retrieved and placed in closet, and both cabinet and closet are closed (toothpaste is inside closed closet per current state).\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate."
+}

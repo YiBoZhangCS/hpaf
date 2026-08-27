@@ -1,0 +1,339 @@
+{
+  "run_id": "phase10r_formal_2026-08-27T023504.903867_0000_hpaf_flat_env2_bring_my_book_to_the_sofa",
+  "phase": "phase10r_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-27T02:35:04.903867+00:00",
+  "task_id": "env2::bring_my_book_to_the_sofa",
+  "task": "bring my book to the sofa",
+  "split": "env2",
+  "scene": 2,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "19e699fbf256f7a84ff3c13dcc33d26ac3427512e4fff45b745779d063ea837e",
+  "task_manifest_sha256": "9e19aa990131c34b22b5e8db9dadd3d56dd324a80546ba8f6932ecbd52690d4b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# search for the book\nfind('book')\n# pick up the book\ngrab('book')\n# go to the sofa\nfind('sofa')\n# place the book on the sofa\nputback('book','sofa')"
+  ],
+  "generated_program": "# search for the book\nfind('book')\n# pick up the book\ngrab('book')\n# go to the sofa\nfind('sofa')\n# place the book on the sofa\nputback('book','sofa')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"bring my book to the sofa\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: sofa. One-hop INSIDE/ON relations connected to nearby objects: book ON sofa; pillow ON sofa.\nRELEVANT OBJECT CLASSES: [\"book\", \"sofa\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# search for the book\\nfind('book')\\n# pick up the book\\ngrab('book')\\n# go to the sofa\\nfind('sofa')\\n# place the book on the sofa\\nputback('book','sofa')\", \"execution_trace\": [{\"line\": \"find('book')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <book> (109)\"}, {\"line\": \"grab('book')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <book> (109)\"}, {\"line\": \"find('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sofa> (214)\"}, {\"line\": \"putback('book','sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <book> (109) <sofa> (214)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 630,
+      "completion_tokens": 47,
+      "latency_s": 1.6637435880002158,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877981299150730b6660d857180baac0c56a1cd644841da3c",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "bring my book to the sofa",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: sofa. One-hop INSIDE/ON relations connected to nearby objects: book ON sofa; pillow ON sofa.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# search for the book",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "search for the book",
+      "compiled_action": null
+    },
+    {
+      "line": "find('book')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "search for the book",
+      "compiled_action": "<char0> [find] <book> (109)"
+    },
+    {
+      "line": "# pick up the book",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the book",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('book')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the book",
+      "compiled_action": "<char0> [grab] <book> (109)"
+    },
+    {
+      "line": "# go to the sofa",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "go to the sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "go to the sofa",
+      "compiled_action": "<char0> [find] <sofa> (214)"
+    },
+    {
+      "line": "# place the book on the sofa",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "place the book on the sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "putback('book','sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "place the book on the sofa",
+      "compiled_action": "<char0> [putback] <book> (109) <sofa> (214)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <book> (109)",
+      "parsed_action": "[FIND] <book> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <book> (109)",
+      "parsed_action": "[GRAB] <book> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sofa> (214)",
+      "parsed_action": "[FIND] <sofa> (214) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <book> (109) <sofa> (214)",
+      "parsed_action": "[PUTBACK] <book> (109) <sofa> (214) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <book> (109)",
+    "<char0> [grab] <book> (109)",
+    "<char0> [find] <sofa> (214)",
+    "<char0> [putback] <book> (109) <sofa> (214)"
+  ],
+  "program_length": 4,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "ON(book, sofa)",
+        "predicate": "RELATION",
+        "subject": "book",
+        "relation": "ON",
+        "object": "sofa",
+        "rationale": "The book must be placed on the requested sofa."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['109-ON-214']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 1.0,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1102,
+  "generation_completion_tokens": 83,
+  "verification_prompt_tokens": 630,
+  "verification_completion_tokens": 47,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 1732,
+  "completion_tokens": 130,
+  "total_prompt_tokens": 1732,
+  "total_completion_tokens": 130,
+  "total_tokens": 1862,
+  "planning_latency": 2.6746628149999196,
+  "verification_latency": 1.6637435880002158,
+  "total_llm_latency": 4.3384064030001355,
+  "wall_clock_total_s": 5.272485252000024,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: bring my book to the sofa\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand, wallpictureframe. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the book, pick it up, navigate to the sofa, and place the book there.\",\"program\":\"# search for the book\\nfind('book')\\n# pick up the book\\ngrab('book')\\n# go to the sofa\\nfind('sofa')\\n# place the book on the sofa\\nputback('book','sofa')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the book, pick it up, navigate to the sofa, and place the book there.\",\"program\":\"# search for the book\\nfind('book')\\n# pick up the book\\ngrab('book')\\n# go to the sofa\\nfind('sofa')\\n# place the book on the sofa\\nputback('book','sofa')\"}",
+      "prompt_tokens": 1102,
+      "completion_tokens": 83,
+      "latency_s": 2.6746628149999196,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877981271420730b6660d857180baac0c56a1cd6448211d84",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": "",
+      "parsed_output": {
+        "plan_brief": "Locate the book, pick it up, navigate to the sofa, and place the book there.",
+        "program": "# search for the book\nfind('book')\n# pick up the book\ngrab('book')\n# go to the sofa\nfind('sofa')\n# place the book on the sofa\nputback('book','sofa')"
+      }
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"bring my book to the sofa\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: sofa. One-hop INSIDE/ON relations connected to nearby objects: book ON sofa; pillow ON sofa.\nRELEVANT OBJECT CLASSES: [\"book\", \"sofa\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# search for the book\\nfind('book')\\n# pick up the book\\ngrab('book')\\n# go to the sofa\\nfind('sofa')\\n# place the book on the sofa\\nputback('book','sofa')\", \"execution_trace\": [{\"line\": \"find('book')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <book> (109)\"}, {\"line\": \"grab('book')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <book> (109)\"}, {\"line\": \"find('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sofa> (214)\"}, {\"line\": \"putback('book','sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <book> (109) <sofa> (214)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 630,
+      "completion_tokens": 47,
+      "latency_s": 1.6637435880002158,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877981299150730b6660d857180baac0c56a1cd644841da3c",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": "",
+      "parsed_output": {
+        "done": true,
+        "reason": "All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.",
+        "failure_stage": "none",
+        "regeneration_hint": ""
+      }
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: bring my book to the sofa\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand, wallpictureframe. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"bring my book to the sofa\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=livingroom; states=[]; holds=[]. Nearby visible graph: sofa. One-hop INSIDE/ON relations connected to nearby objects: book ON sofa; pillow ON sofa.\nRELEVANT OBJECT CLASSES: [\"book\", \"sofa\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# search for the book\\nfind('book')\\n# pick up the book\\ngrab('book')\\n# go to the sofa\\nfind('sofa')\\n# place the book on the sofa\\nputback('book','sofa')\", \"execution_trace\": [{\"line\": \"find('book')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <book> (109)\"}, {\"line\": \"grab('book')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <book> (109)\"}, {\"line\": \"find('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sofa> (214)\"}, {\"line\": \"putback('book','sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <book> (109) <sofa> (214)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate the book, pick it up, navigate to the sofa, and place the book there.\",\"program\":\"# search for the book\\nfind('book')\\n# pick up the book\\ngrab('book')\\n# go to the sofa\\nfind('sofa')\\n# place the book on the sofa\\nputback('book','sofa')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"All actions succeeded; the book is now ON the sofa in the living room, satisfying the request to bring the book to the sofa.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand, wallpictureframe. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.",
+  "instruction": "bring my book to the sofa",
+  "task_source": "third_party/progprompt-vh/data/new_env/env2_annotated.json",
+  "official_or_extension": "official_source",
+  "horizon": "Short",
+  "is_long_horizon": false,
+  "evaluator_type": "persistent_state",
+  "benchmark_semantic_complexity": {
+    "task_id": "env2::bring_my_book_to_the_sofa",
+    "semantic_atomic_count": 1,
+    "dependency_depth": 1,
+    "source": "frozen_benchmark_semantics_phase10_analysis",
+    "method_output_used": false,
+    "rationale": "One dominant official-source semantic commitment; multiple co-target objects, when present, are one coupled commitment."
+  },
+  "current_ready_nodes": [],
+  "validator_result": null
+}

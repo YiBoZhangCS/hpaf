@@ -1,0 +1,455 @@
+{
+  "run_id": "confirmatory_formal_2026-08-26T082626.741476_0000_hpaf_flat_env2_heat_salmon_on_the_stove",
+  "phase": "confirmatory_formal",
+  "timestamp": "2026-08-26T08:26:26.741476+00:00",
+  "task_id": "env2::heat_salmon_on_the_stove",
+  "task": "heat salmon on the stove",
+  "split": "env2",
+  "scene": 2,
+  "gt_action_length": 7,
+  "horizon": "Medium",
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "0fa397287af2118c33709b09812a7d46d900c8fe9b5bf5f46c5945814bbce19a",
+  "task_manifest_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "semantic_goals_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "long_horizon_manifest_sha256": "0e7ec66f08f397d777632474e3a2847fe98148c77261d629ec65267f6f424987",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "1ff91d8ef302acf6a349659834ee1e5900f344fc6cca0b0e6b25d6a3c9578546",
+  "generated_programs": [
+    "# Locate and open the fridge to get salmon\nfind('fridge')\nopen('fridge')\ngrab('salmon')\nclose('fridge')\n# Place salmon into the nearby frying pan\nfind('fryingpan')\nputin('salmon', 'fryingpan')\n# Bring the frying pan to the stove\ngrab('fryingpan')\nfind('stove')\nputin('fryingpan', 'stove')\n# Turn on the stove to heat the salmon\nswitchon('stove')"
+  ],
+  "generated_program": "# Locate and open the fridge to get salmon\nfind('fridge')\nopen('fridge')\ngrab('salmon')\nclose('fridge')\n# Place salmon into the nearby frying pan\nfind('fryingpan')\nputin('salmon', 'fryingpan')\n# Bring the frying pan to the stove\ngrab('fryingpan')\nfind('stove')\nputin('fryingpan', 'stove')\n# Turn on the stove to heat the salmon\nswitchon('stove')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nheat salmon on the stove\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['fryingpan']. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, coffeepot INSIDE coffeemaker, coffeepot is CLOSED, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, stove is CLOSED and ON, toaster is OFF. You have fryingpan. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; cookingpot ON stove; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; oventray INSIDE stove; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"clothespile\", \"salmon\", \"stove\", \"stovefan\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# Locate and open the fridge to get salmon\\nfind('fridge')\\nopen('fridge')\\ngrab('salmon')\\nclose('fridge')\\n# Place salmon into the nearby frying pan\\nfind('fryingpan')\\nputin('salmon', 'fryingpan')\\n# Bring the frying pan to the stove\\ngrab('fryingpan')\\nfind('stove')\\nputin('fryingpan', 'stove')\\n# Turn on the stove to heat the salmon\\nswitchon('stove')\", \"execution_trace\": [{\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (162)\"}, {\"line\": \"open('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <fridge> (162)\"}, {\"line\": \"grab('salmon')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <salmon> (181) when executing \\\"[GRAB] <salmon> (181) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <salmon> (181)\"}, {\"line\": \"close('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <fridge> (162)\"}, {\"line\": \"find('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fryingpan> (62)\"}, {\"line\": \"putin('salmon', 'fryingpan')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: salmon\", \"compiled_action\": null}, {\"line\": \"grab('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <fryingpan> (62)\"}, {\"line\": \"find('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <stove> (163)\"}, {\"line\": \"putin('fryingpan', 'stove')\", \"event\": \"action\", \"success\": false, \"detail\": \"<stove> (163) is not open or is not openable when executing \\\"[PUTIN] <fryingpan> (62) <stove> (163) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <fryingpan> (62) <stove> (163)\"}, {\"line\": \"switchon('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <stove> (163)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <salmon> (181) when executing \\\"[GRAB] <salmon> (181) [0]\\\"\", \"line\": \"grab('salmon')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: salmon\", \"line\": \"putin('salmon', 'fryingpan')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<stove> (163) is not open or is not openable when executing \\\"[PUTIN] <fryingpan> (62) <stove> (163) [0]\\\"\", \"line\": \"putin('fryingpan', 'stove')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon.\"}",
+      "prompt_tokens": 1409,
+      "completion_tokens": 111,
+      "latency_s": 4.6755552159993385,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877328084238f5df55c078e9f0cf923961e89d651d17c77a0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task": "heat salmon on the stove",
+      "observation": "Character room=kitchen; states=[]; holds=['fryingpan']. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, coffeepot INSIDE coffeemaker, coffeepot is CLOSED, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, stove is CLOSED and ON, toaster is OFF. You have fryingpan. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; cookingpot ON stove; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; oventray INSIDE stove; toaster ON kitchencounter.",
+      "result": {
+        "done": false,
+        "reason": "Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon."
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Locate and open the fridge to get salmon",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the fridge to get salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "find('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the fridge to get salmon",
+      "compiled_action": "<char0> [find] <fridge> (162)"
+    },
+    {
+      "line": "open('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the fridge to get salmon",
+      "compiled_action": "<char0> [open] <fridge> (162)"
+    },
+    {
+      "line": "grab('salmon')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <salmon> (181) when executing \"[GRAB] <salmon> (181) [0]\"",
+      "subgoal": "Locate and open the fridge to get salmon",
+      "compiled_action": "<char0> [grab] <salmon> (181)"
+    },
+    {
+      "line": "close('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the fridge to get salmon",
+      "compiled_action": "<char0> [close] <fridge> (162)"
+    },
+    {
+      "line": "# Place salmon into the nearby frying pan",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place salmon into the nearby frying pan",
+      "compiled_action": null
+    },
+    {
+      "line": "find('fryingpan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place salmon into the nearby frying pan",
+      "compiled_action": "<char0> [find] <fryingpan> (62)"
+    },
+    {
+      "line": "putin('salmon', 'fryingpan')",
+      "event": "action",
+      "success": false,
+      "detail": "object not in hand: salmon",
+      "subgoal": "Place salmon into the nearby frying pan",
+      "compiled_action": null
+    },
+    {
+      "line": "# Bring the frying pan to the stove",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Bring the frying pan to the stove",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('fryingpan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Bring the frying pan to the stove",
+      "compiled_action": "<char0> [grab] <fryingpan> (62)"
+    },
+    {
+      "line": "find('stove')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Bring the frying pan to the stove",
+      "compiled_action": "<char0> [find] <stove> (163)"
+    },
+    {
+      "line": "putin('fryingpan', 'stove')",
+      "event": "action",
+      "success": false,
+      "detail": "<stove> (163) is not open or is not openable when executing \"[PUTIN] <fryingpan> (62) <stove> (163) [0]\"",
+      "subgoal": "Bring the frying pan to the stove",
+      "compiled_action": "<char0> [putin] <fryingpan> (62) <stove> (163)"
+    },
+    {
+      "line": "# Turn on the stove to heat the salmon",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn on the stove to heat the salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon('stove')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn on the stove to heat the salmon",
+      "compiled_action": "<char0> [switchon] <stove> (163)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <fridge> (162)",
+      "parsed_action": "[FIND] <fridge> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <fridge> (162)",
+      "parsed_action": "[OPEN] <fridge> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <salmon> (181)",
+      "parsed_action": "[GRAB] <salmon> (181) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <salmon> (181) when executing \"[GRAB] <salmon> (181) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <fridge> (162)",
+      "parsed_action": "[CLOSE] <fridge> (162) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <fryingpan> (62)",
+      "parsed_action": "[FIND] <fryingpan> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "putin('salmon', 'fryingpan')",
+      "parsed_action": null,
+      "success": false,
+      "error": "object not in hand: salmon",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <fryingpan> (62)",
+      "parsed_action": "[GRAB] <fryingpan> (62) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <stove> (163)",
+      "parsed_action": "[FIND] <stove> (163) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <fryingpan> (62) <stove> (163)",
+      "parsed_action": "[PUTIN] <fryingpan> (62) <stove> (163) [0]",
+      "success": false,
+      "error": "<stove> (163) is not open or is not openable when executing \"[PUTIN] <fryingpan> (62) <stove> (163) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <stove> (163)",
+      "parsed_action": "[SWITCHON] <stove> (163) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <fridge> (162)",
+    "<char0> [open] <fridge> (162)",
+    "<char0> [grab] <salmon> (181)",
+    "<char0> [close] <fridge> (162)",
+    "<char0> [find] <fryingpan> (62)",
+    "<char0> [grab] <fryingpan> (62)",
+    "<char0> [find] <stove> (163)",
+    "<char0> [putin] <fryingpan> (62) <stove> (163)",
+    "<char0> [switchon] <stove> (163)"
+  ],
+  "program_length": 10,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "trace_goal": {
+        "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+        "item": "salmon",
+        "appliance": "fryingpan",
+        "controller": "stove",
+        "load_required": true,
+        "rationale": "The released path exposes source loading into a pan followed by a stove ON->OFF cycle."
+      },
+      "satisfied": false,
+      "evidence": "required source-to-appliance putin event absent"
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+      "item": "salmon",
+      "appliance": "fryingpan",
+      "controller": "stove",
+      "load_required": true,
+      "rationale": "The released path exposes source loading into a pan followed by a stove ON->OFF cycle."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.4,
+  "official_PSR": 0.4,
+  "official_Precision": 0.9938837920489296,
+  "Exec": 0.7,
+  "official_goal_condition_count": 5,
+  "official_missing_goal_relations": [
+    "character CLOSE salmon",
+    "character HOLDS_RH salmon",
+    "salmon CLOSE character"
+  ],
+  "official_missing_goal_states": [],
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1349,
+  "generation_completion_tokens": 163,
+  "verification_prompt_tokens": 1409,
+  "verification_completion_tokens": 111,
+  "repair_tokens": 0,
+  "prompt_tokens": 2758,
+  "completion_tokens": 274,
+  "total_prompt_tokens": 2758,
+  "total_completion_tokens": 274,
+  "total_tokens": 3032,
+  "planning_latency": 5.528918839998369,
+  "verification_latency": 4.6755552159993385,
+  "total_llm_latency": 10.204474055997707,
+  "wall_clock_total_s": 11.16491818600116,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nheat salmon on the stove\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; toaster ON kitchencounter.\n\nAVAILABLE OBJECTS:\n[\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Retrieve salmon from the fridge, place it in the frying pan, put the pan on the stove, then turn on the stove to heat the salmon.\",\"program\":\"# Locate and open the fridge to get salmon\\nfind('fridge')\\nopen('fridge')\\ngrab('salmon')\\nclose('fridge')\\n# Place salmon into the nearby frying pan\\nfind('fryingpan')\\nputin('salmon', 'fryingpan')\\n# Bring the frying pan to the stove\\ngrab('fryingpan')\\nfind('stove')\\nputin('fryingpan', 'stove')\\n# Turn on the stove to heat the salmon\\nswitchon('stove')\"}",
+      "output_text": "{\"plan_brief\":\"Retrieve salmon from the fridge, place it in the frying pan, put the pan on the stove, then turn on the stove to heat the salmon.\",\"program\":\"# Locate and open the fridge to get salmon\\nfind('fridge')\\nopen('fridge')\\ngrab('salmon')\\nclose('fridge')\\n# Place salmon into the nearby frying pan\\nfind('fryingpan')\\nputin('salmon', 'fryingpan')\\n# Bring the frying pan to the stove\\ngrab('fryingpan')\\nfind('stove')\\nputin('fryingpan', 'stove')\\n# Turn on the stove to heat the salmon\\nswitchon('stove')\"}",
+      "prompt_tokens": 1349,
+      "completion_tokens": 163,
+      "latency_s": 5.528918839998369,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877328027588f5df55c078e9f0cf923961e89d651d18334c2",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nheat salmon on the stove\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['fryingpan']. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, coffeepot INSIDE coffeemaker, coffeepot is CLOSED, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, stove is CLOSED and ON, toaster is OFF. You have fryingpan. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; cookingpot ON stove; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; oventray INSIDE stove; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"clothespile\", \"salmon\", \"stove\", \"stovefan\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# Locate and open the fridge to get salmon\\nfind('fridge')\\nopen('fridge')\\ngrab('salmon')\\nclose('fridge')\\n# Place salmon into the nearby frying pan\\nfind('fryingpan')\\nputin('salmon', 'fryingpan')\\n# Bring the frying pan to the stove\\ngrab('fryingpan')\\nfind('stove')\\nputin('fryingpan', 'stove')\\n# Turn on the stove to heat the salmon\\nswitchon('stove')\", \"execution_trace\": [{\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (162)\"}, {\"line\": \"open('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <fridge> (162)\"}, {\"line\": \"grab('salmon')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <salmon> (181) when executing \\\"[GRAB] <salmon> (181) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <salmon> (181)\"}, {\"line\": \"close('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <fridge> (162)\"}, {\"line\": \"find('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fryingpan> (62)\"}, {\"line\": \"putin('salmon', 'fryingpan')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: salmon\", \"compiled_action\": null}, {\"line\": \"grab('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <fryingpan> (62)\"}, {\"line\": \"find('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <stove> (163)\"}, {\"line\": \"putin('fryingpan', 'stove')\", \"event\": \"action\", \"success\": false, \"detail\": \"<stove> (163) is not open or is not openable when executing \\\"[PUTIN] <fryingpan> (62) <stove> (163) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <fryingpan> (62) <stove> (163)\"}, {\"line\": \"switchon('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <stove> (163)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <salmon> (181) when executing \\\"[GRAB] <salmon> (181) [0]\\\"\", \"line\": \"grab('salmon')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: salmon\", \"line\": \"putin('salmon', 'fryingpan')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<stove> (163) is not open or is not openable when executing \\\"[PUTIN] <fryingpan> (62) <stove> (163) [0]\\\"\", \"line\": \"putin('fryingpan', 'stove')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon.\"}",
+      "prompt_tokens": 1409,
+      "completion_tokens": 111,
+      "latency_s": 4.6755552159993385,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877328084238f5df55c078e9f0cf923961e89d651d17c77a0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nheat salmon on the stove\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; toaster ON kitchencounter.\n\nAVAILABLE OBJECTS:\n[\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nheat salmon on the stove\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['fryingpan']. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, coffeepot INSIDE coffeemaker, coffeepot is CLOSED, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, stove is CLOSED and ON, toaster is OFF. You have fryingpan. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; cookingpot ON stove; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; oventray INSIDE stove; toaster ON kitchencounter.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"clothespile\", \"salmon\", \"stove\", \"stovefan\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# Locate and open the fridge to get salmon\\nfind('fridge')\\nopen('fridge')\\ngrab('salmon')\\nclose('fridge')\\n# Place salmon into the nearby frying pan\\nfind('fryingpan')\\nputin('salmon', 'fryingpan')\\n# Bring the frying pan to the stove\\ngrab('fryingpan')\\nfind('stove')\\nputin('fryingpan', 'stove')\\n# Turn on the stove to heat the salmon\\nswitchon('stove')\", \"execution_trace\": [{\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (162)\"}, {\"line\": \"open('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <fridge> (162)\"}, {\"line\": \"grab('salmon')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <salmon> (181) when executing \\\"[GRAB] <salmon> (181) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <salmon> (181)\"}, {\"line\": \"close('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <fridge> (162)\"}, {\"line\": \"find('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fryingpan> (62)\"}, {\"line\": \"putin('salmon', 'fryingpan')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: salmon\", \"compiled_action\": null}, {\"line\": \"grab('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <fryingpan> (62)\"}, {\"line\": \"find('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <stove> (163)\"}, {\"line\": \"putin('fryingpan', 'stove')\", \"event\": \"action\", \"success\": false, \"detail\": \"<stove> (163) is not open or is not openable when executing \\\"[PUTIN] <fryingpan> (62) <stove> (163) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <fryingpan> (62) <stove> (163)\"}, {\"line\": \"switchon('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <stove> (163)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <salmon> (181) when executing \\\"[GRAB] <salmon> (181) [0]\\\"\", \"line\": \"grab('salmon')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: salmon\", \"line\": \"putin('salmon', 'fryingpan')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<stove> (163) is not open or is not openable when executing \\\"[PUTIN] <fryingpan> (62) <stove> (163) [0]\\\"\", \"line\": \"putin('fryingpan', 'stove')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Retrieve salmon from the fridge, place it in the frying pan, put the pan on the stove, then turn on the stove to heat the salmon.\",\"program\":\"# Locate and open the fridge to get salmon\\nfind('fridge')\\nopen('fridge')\\ngrab('salmon')\\nclose('fridge')\\n# Place salmon into the nearby frying pan\\nfind('fryingpan')\\nputin('salmon', 'fryingpan')\\n# Bring the frying pan to the stove\\ngrab('fryingpan')\\nfind('stove')\\nputin('fryingpan', 'stove')\\n# Turn on the stove to heat the salmon\\nswitchon('stove')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"Salmon was never successfully grabbed or placed in/on the frying pan, and the frying pan was not placed on the stove; the character still holds the empty frying pan while the stove is on, so the salmon is not being heated.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First navigate close to the salmon, grab it, place it in the frying pan, then open the stove (or place the frying pan on the stove surface if supported) before turning the stove on to heat the salmon.\"}"
+    }
+  ],
+  "error_type": "precondition_failure",
+  "error_message": "<character> (1) is not close to <salmon> (181) when executing \"[GRAB] <salmon> (181) [0]\"",
+  "errors": [
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <salmon> (181) when executing \"[GRAB] <salmon> (181) [0]\"",
+      "line": "grab('salmon')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "object not in hand: salmon",
+      "line": "putin('salmon', 'fryingpan')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<stove> (163) is not open or is not openable when executing \"[PUTIN] <fryingpan> (62) <stove> (163) [0]\"",
+      "line": "putin('fryingpan', 'stove')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bananas ON dishbowl, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, dishbowl, dishwasher is CLOSED and OFF, fridge is CLOSED, fryingpan, kitchencabinet is CLOSED, rug, toaster is OFF. One-hop INSIDE/ON relations connected to nearby objects: bananas ON dishbowl; bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; dishbowl ON kitchencounter; kitchencounter INSIDE dishwasher; kitchentable ON rug; toaster ON kitchencounter.",
+  "phase7_set": "confirmatory",
+  "evaluator_type": "generic_trace",
+  "trace_goal": {
+    "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+    "item": "salmon",
+    "appliance": "fryingpan",
+    "controller": "stove",
+    "load_required": true,
+    "rationale": "The released path exposes source loading into a pan followed by a stove ON->OFF cycle."
+  }
+}

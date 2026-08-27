@@ -1,0 +1,82 @@
+SOURCE RUN: formal_2026-08-26T033749.484760_0000_hpaf_full_test_unseen_ambiguous_goals_collect_4_fruits_such_as_apple_banana_etc_in_the_dishbowl
+TASK: test_unseen_ambiguous_goals::collect_4_fruits_such_as_apple,_banana,_etc_in_the_dishbowl
+ROLE: atomic_program_agent
+
+REQUEST METADATA:
+{
+  "call_role": "atomic_program_agent",
+  "broad_role": "generation",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "stop": null,
+  "frequency_penalty": null,
+  "extra_body": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "prompt_tokens": 1599,
+  "completion_tokens": 82,
+  "response_id": "resp_02178771546600214713b2deea0810671b986a10f293e398aea09",
+  "error_type": "",
+  "error_message": ""
+}
+
+INSTRUCTIONS FIELD (sent separately):
+Return only the strict JSON object requested by the HPAF atomic ProgramAgent protocol.
+
+USER INPUT/PROMPT (complete):
+You are the HPAF ProgramAgent for VirtualHome.
+
+Compile only the CURRENT OBJECT-CENTRIC ATOMIC TASK into a short executable
+program. Do not redo earlier atomics, plan future atomics, or emit assertions.
+
+Return strict JSON only:
+{"plan_brief":"...","program":"# concise comments\nfind('object')\n..."}
+
+ORIGINAL TASK:
+collect 4 fruits such as apple, banana, etc in the dishbowl
+
+CURRENT ATOMIC TASK:
+{"id": 1, "instruction": "Put the apple into the dishbowl.", "manipulated_object": "apple", "target_object": "dishbowl"}
+
+CURRENT SYMBOLIC OBSERVATION:
+Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.
+
+AVAILABLE OBJECTS:
+["apple", "bananas", "barsoap", "bathroom", "bathroomcabinet", "bathroomcounter", "bathtub", "bed", "bedroom", "bellpepper", "bench", "book", "bookshelf", "box", "breadslice", "cabinet", "candle", "candybar", "ceiling", "ceilinglamp", "cellphone", "cereal", "chair", "character", "chips", "chocolatesyrup", "clock", "closet", "closetdrawer", "clothespants", "clothespile", "clothesshirt", "coffeemaker", "coffeepot", "coffeetable", "computer", "condimentbottle", "condimentshaker", "cpuscreen", "crackers", "creamybuns", "cupcake", "curtains", "cutleryfork", "cutleryknife", "deodorant", "desk", "dishbowl", "dishwashingliquid", "door", "doorjamb", "facecream", "faucet", "floor", "folder", "fridge", "fryingpan", "garbagecan", "hairproduct", "hanger", "keyboard", "kitchen", "kitchencabinet", "kitchencounter", "kitchencounterdrawer", "kitchentable", "lightswitch", "lime", "livingroom", "microwave", "mouse", "mousemat", "mug", "nightstand", "orchid", "oventray", "painkillers", "paper", "peach", "perfume", "photoframe", "pie", "pillow", "plate", "plum", "powersocket", "radio", "remotecontrol", "rug", "salmon", "sink", "slippers", "sofa", "stall", "stove", "stovefan", "tablelamp", "toaster", "toilet", "toothbrush", "toothpaste", "towel", "towelrack", "tv", "tvstand", "wall", "walllamp", "wallphone", "wallpictureframe", "wallshelf", "washingmachine", "washingsponge", "waterglass", "whippedcream", "window", "wineglass"]
+
+SHARED PRIMITIVE ACTIONS:
+["close(object)", "drink(object)", "find(object)", "grab(object)", "lookat(object)", "open(object)", "pointat(object)", "putback(object, object)", "putin(object, object)", "run(object)", "sit(object)", "standup()", "switchoff(object)", "switchon(object)", "turnto(object)", "walk(object)", "watch(object)"]
+
+Generic VirtualHome execution rules:
+- Use only the listed lowercase primitive calls and available object class names.
+- Ground and approach a target with find('target') or walk('target') before interaction.
+- If the character is SITTING/LYING, call standup() before navigating elsewhere.
+- grab requires the object to be close, accessible (not inside a closed container),
+  and a free hand. Open a containing object only when needed and not already OPEN.
+- open requires proximity, CLOSED state, and a free hand. close requires proximity
+  and OPEN state. Do not repeat open/close or switch actions whose effect is true.
+- putin/putback require the source object already held and the destination close;
+  an openable putin destination must be OPEN. Put down held objects before a third grab.
+- switchon/switchoff and sit require proximity.
+- The simulator observation persistently marks food HEATED after it is inside an ON
+  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.
+  Establish those causal conditions with the shared primitives when the instruction
+  requests heating or washing.
+- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.
+- Use current-state evidence to omit redundant actions. Never invent an action.
+- Comments may organize the program. Do not emit assertions, functions, loops,
+  instance IDs, frozen goal predicates, or an LLM-authored success claim.
+
+
+
+RAW MODEL OUTPUT (complete):
+{"plan_brief":"Locate the apple, pick it up, then place it into the dishbowl on the kitchen counter.","program":"# find and grab the apple\nfind('apple')\ngrab('apple')\n# approach the dishbowl and place the apple inside\nfind('dishbowl')\nputin('apple', 'dishbowl')"}
+
+PARSED OUTPUT_TEXT USED BY RUNTIME:
+{"plan_brief":"Locate the apple, pick it up, then place it into the dishbowl on the kitchen counter.","program":"# find and grab the apple\nfind('apple')\ngrab('apple')\n# approach the dishbowl and place the apple inside\nfind('dishbowl')\nputin('apple', 'dishbowl')"}

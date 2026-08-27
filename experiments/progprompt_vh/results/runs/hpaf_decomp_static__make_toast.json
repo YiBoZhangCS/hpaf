@@ -1,0 +1,733 @@
+{
+  "run_id": "2026-08-25T143942.240143_0000_hpaf_decomp_static_make_toast",
+  "timestamp": "2026-08-25T14:39:42.240143+00:00",
+  "task": "make toast",
+  "method": "HPAF-Decomp-Static",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "ground_truth_action_length": 8,
+  "difficulty_bucket": "Medium",
+  "goal_condition_count": 1,
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "task": "Retrieve a breadslice from its storage location"
+    },
+    {
+      "id": 2,
+      "task": "Place the breadslice into the toaster"
+    },
+    {
+      "id": 3,
+      "task": "Activate the toaster to toast the breadslice"
+    },
+    {
+      "id": 4,
+      "task": "Wait for the toasting process to complete and the toaster to turn off"
+    },
+    {
+      "id": 5,
+      "task": "Remove the finished toast from the toaster"
+    }
+  ],
+  "number_of_atomic_tasks": 5,
+  "atomic_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "task": "Retrieve a breadslice from its storage location"
+      },
+      "program_data": {
+        "atomic_task": "Retrieve a breadslice from its storage location",
+        "plan_brief": "Locate the breadslice, navigate to it, and pick it up to have it ready for toasting.",
+        "program": "# Locate and retrieve the breadslice\nfind('breadslice')\nwalk('breadslice')\ngrab('breadslice')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "character",
+            "relation": "HOLDS",
+            "object": "breadslice"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "task": "Place the breadslice into the toaster"
+      },
+      "program_data": {
+        "atomic_task": "Place the breadslice into the toaster",
+        "plan_brief": "First locate the breadslice, pick it up, then place it inside the toaster on the kitchen counter.",
+        "program": "# Locate and retrieve breadslice, then place it in the toaster\nfind('breadslice')\ngrab('breadslice')\nfind('toaster')\nputin('breadslice', 'toaster')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "breadslice",
+            "relation": "INSIDE",
+            "object": "toaster"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 3,
+        "task": "Activate the toaster to toast the breadslice"
+      },
+      "program_data": {
+        "atomic_task": "Activate the toaster to toast the breadslice",
+        "plan_brief": "First locate the toaster, then switch it on to start toasting the bread inside.",
+        "program": "# Locate and activate the toaster to toast the breadslice\nfind('toaster')\nswitchon('toaster')",
+        "completion_conditions": [
+          {
+            "predicate": "STATE",
+            "object": "toaster",
+            "value": "ON"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 4,
+        "task": "Wait for the toasting process to complete and the toaster to turn off"
+      },
+      "program_data": {
+        "atomic_task": "Wait for the toasting process to complete and the toaster to turn off",
+        "plan_brief": "Observe the toaster until it finishes toasting and powers off, which is already confirmed by the current scene state showing the toaster is off.",
+        "program": "# Verify toaster has completed toasting and turned off\nfind('toaster')\nlookat('toaster')",
+        "completion_conditions": [
+          {
+            "predicate": "STATE",
+            "object": "toaster",
+            "value": "OFF"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    },
+    {
+      "atomic_task": {
+        "id": 5,
+        "task": "Remove the finished toast from the toaster"
+      },
+      "program_data": {
+        "atomic_task": "Remove the finished toast from the toaster",
+        "plan_brief": "Navigate to the toaster, retrieve the cooked breadslice (toast) from it, and place the toast on the kitchen counter.",
+        "program": "# Locate and approach the toaster holding finished toast\nfind('toaster')\nwalktowards('toaster')\n# Take the toast out of the toaster\ngrab('breadslice')\n# Place removed toast on the nearby kitchen counter\nputback('breadslice', 'kitchencounter')",
+        "completion_conditions": [
+          {
+            "predicate": "RELATION",
+            "subject": "breadslice",
+            "relation": "ON",
+            "object": "kitchencounter"
+          }
+        ]
+      },
+      "error": null,
+      "state_refresh": false,
+      "state_used": "bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug."
+    }
+  ],
+  "atomic_verifications": [],
+  "raw_prompts": [
+    {
+      "instructions": null,
+      "input": "You are the HPAF TaskAgent for a VirtualHome symbolic benchmark.\n\nDecompose the complex household instruction into an ordered list of explicit\nsemantic atomic tasks. TaskAgent decides WHAT must be achieved; ProgramAgent\nwill later decide HOW to call primitive actions.\n\nRules:\n1. Each atomic task has one clear semantic operation or subgoal.\n2. Do not merge independent target objects into one atomic task.\n3. Do not emit primitive API calls or instance IDs.\n4. Do not invent objects absent from AVAILABLE OBJECTS.\n5. Preserve necessary ordering and do not add optional cleanup unrelated to the instruction.\n6. Return strict JSON only, exactly shaped as:\n{\"atomic_tasks\":[{\"id\":1,\"task\":\"...\"}]}\n\nORIGINAL TASK:\nmake toast\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nINITIAL SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nRetrieve a breadslice from its storage location\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nPlace the breadslice into the toaster\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nActivate the toaster to toast the breadslice\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nWait for the toasting process to complete and the toaster to turn off\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    },
+    {
+      "instructions": null,
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nRemove the finished toast from the toaster\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "{\"atomic_tasks\": [{\"id\": 1, \"task\": \"Retrieve a breadslice from its storage location\"}, {\"id\": 2, \"task\": \"Place the breadslice into the toaster\"}, {\"id\": 3, \"task\": \"Activate the toaster to toast the breadslice\"}, {\"id\": 4, \"task\": \"Wait for the toasting process to complete and the toaster to turn off\"}, {\"id\": 5, \"task\": \"Remove the finished toast from the toaster\"}]}",
+    "{\n  \"atomic_task\": \"Retrieve a breadslice from its storage location\",\n  \"plan_brief\": \"Locate the breadslice, navigate to it, and pick it up to have it ready for toasting.\",\n  \"program\": \"# Locate and retrieve the breadslice\\nfind('breadslice')\\nwalk('breadslice')\\ngrab('breadslice')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"HOLDS\", \"object\": \"breadslice\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Place the breadslice into the toaster\",\n  \"plan_brief\": \"First locate the breadslice, pick it up, then place it inside the toaster on the kitchen counter.\",\n  \"program\": \"# Locate and retrieve breadslice, then place it in the toaster\\nfind('breadslice')\\ngrab('breadslice')\\nfind('toaster')\\nputin('breadslice', 'toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"breadslice\", \"relation\": \"INSIDE\", \"object\": \"toaster\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Activate the toaster to toast the breadslice\",\n  \"plan_brief\": \"First locate the toaster, then switch it on to start toasting the bread inside.\",\n  \"program\": \"# Locate and activate the toaster to toast the breadslice\\nfind('toaster')\\nswitchon('toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"toaster\",\"value\":\"ON\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Wait for the toasting process to complete and the toaster to turn off\",\n  \"plan_brief\": \"Observe the toaster until it finishes toasting and powers off, which is already confirmed by the current scene state showing the toaster is off.\",\n  \"program\": \"# Verify toaster has completed toasting and turned off\\nfind('toaster')\\nlookat('toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"toaster\",\"value\":\"OFF\"}\n  ]\n}",
+    "{\n  \"atomic_task\": \"Remove the finished toast from the toaster\",\n  \"plan_brief\": \"Navigate to the toaster, retrieve the cooked breadslice (toast) from it, and place the toast on the kitchen counter.\",\n  \"program\": \"# Locate and approach the toaster holding finished toast\\nfind('toaster')\\nwalktowards('toaster')\\n# Take the toast out of the toaster\\ngrab('breadslice')\\n# Place removed toast on the nearby kitchen counter\\nputback('breadslice', 'kitchencounter')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"breadslice\", \"relation\": \"ON\", \"object\": \"kitchencounter\"}\n  ]\n}"
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome symbolic benchmark.\n\nDecompose the complex household instruction into an ordered list of explicit\nsemantic atomic tasks. TaskAgent decides WHAT must be achieved; ProgramAgent\nwill later decide HOW to call primitive actions.\n\nRules:\n1. Each atomic task has one clear semantic operation or subgoal.\n2. Do not merge independent target objects into one atomic task.\n3. Do not emit primitive API calls or instance IDs.\n4. Do not invent objects absent from AVAILABLE OBJECTS.\n5. Preserve necessary ordering and do not add optional cleanup unrelated to the instruction.\n6. Return strict JSON only, exactly shaped as:\n{\"atomic_tasks\":[{\"id\":1,\"task\":\"...\"}]}\n\nORIGINAL TASK:\nmake toast\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nINITIAL SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n",
+      "instructions": null,
+      "raw_output": "{\"atomic_tasks\": [{\"id\": 1, \"task\": \"Retrieve a breadslice from its storage location\"}, {\"id\": 2, \"task\": \"Place the breadslice into the toaster\"}, {\"id\": 3, \"task\": \"Activate the toaster to toast the breadslice\"}, {\"id\": 4, \"task\": \"Wait for the toasting process to complete and the toaster to turn off\"}, {\"id\": 5, \"task\": \"Remove the finished toast from the toaster\"}]}",
+      "output_text": "{\"atomic_tasks\": [{\"id\": 1, \"task\": \"Retrieve a breadslice from its storage location\"}, {\"id\": 2, \"task\": \"Place the breadslice into the toaster\"}, {\"id\": 3, \"task\": \"Activate the toaster to toast the breadslice\"}, {\"id\": 4, \"task\": \"Wait for the toasting process to complete and the toaster to turn off\"}, {\"id\": 5, \"task\": \"Remove the finished toast from the toaster\"}]}",
+      "prompt_tokens": 974,
+      "completion_tokens": 110,
+      "latency_s": 6.173286697998265,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787668774599fc70b79e699e1a6fcafbbefdc4fb0412917fd6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nRetrieve a breadslice from its storage location\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Retrieve a breadslice from its storage location\",\n  \"plan_brief\": \"Locate the breadslice, navigate to it, and pick it up to have it ready for toasting.\",\n  \"program\": \"# Locate and retrieve the breadslice\\nfind('breadslice')\\nwalk('breadslice')\\ngrab('breadslice')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"HOLDS\", \"object\": \"breadslice\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Retrieve a breadslice from its storage location\",\n  \"plan_brief\": \"Locate the breadslice, navigate to it, and pick it up to have it ready for toasting.\",\n  \"program\": \"# Locate and retrieve the breadslice\\nfind('breadslice')\\nwalk('breadslice')\\ngrab('breadslice')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"character\", \"relation\": \"HOLDS\", \"object\": \"breadslice\"}\n  ]\n}",
+      "prompt_tokens": 1240,
+      "completion_tokens": 127,
+      "latency_s": 5.552684611000586,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787668780771fc70b79e699e1a6fcafbbefdc4fb04123059fc",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nPlace the breadslice into the toaster\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Place the breadslice into the toaster\",\n  \"plan_brief\": \"First locate the breadslice, pick it up, then place it inside the toaster on the kitchen counter.\",\n  \"program\": \"# Locate and retrieve breadslice, then place it in the toaster\\nfind('breadslice')\\ngrab('breadslice')\\nfind('toaster')\\nputin('breadslice', 'toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"breadslice\", \"relation\": \"INSIDE\", \"object\": \"toaster\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Place the breadslice into the toaster\",\n  \"plan_brief\": \"First locate the breadslice, pick it up, then place it inside the toaster on the kitchen counter.\",\n  \"program\": \"# Locate and retrieve breadslice, then place it in the toaster\\nfind('breadslice')\\ngrab('breadslice')\\nfind('toaster')\\nputin('breadslice', 'toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"breadslice\", \"relation\": \"INSIDE\", \"object\": \"toaster\"}\n  ]\n}",
+      "prompt_tokens": 1239,
+      "completion_tokens": 145,
+      "latency_s": 4.064082763001352,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787668786323fc70b79e699e1a6fcafbbefdc4fb0412648f27",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nActivate the toaster to toast the breadslice\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Activate the toaster to toast the breadslice\",\n  \"plan_brief\": \"First locate the toaster, then switch it on to start toasting the bread inside.\",\n  \"program\": \"# Locate and activate the toaster to toast the breadslice\\nfind('toaster')\\nswitchon('toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"toaster\",\"value\":\"ON\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Activate the toaster to toast the breadslice\",\n  \"plan_brief\": \"First locate the toaster, then switch it on to start toasting the bread inside.\",\n  \"program\": \"# Locate and activate the toaster to toast the breadslice\\nfind('toaster')\\nswitchon('toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"toaster\",\"value\":\"ON\"}\n  ]\n}",
+      "prompt_tokens": 1240,
+      "completion_tokens": 108,
+      "latency_s": 5.237962150000385,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787668790387fc70b79e699e1a6fcafbbefdc4fb04123cc902",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nWait for the toasting process to complete and the toaster to turn off\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Wait for the toasting process to complete and the toaster to turn off\",\n  \"plan_brief\": \"Observe the toaster until it finishes toasting and powers off, which is already confirmed by the current scene state showing the toaster is off.\",\n  \"program\": \"# Verify toaster has completed toasting and turned off\\nfind('toaster')\\nlookat('toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"toaster\",\"value\":\"OFF\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Wait for the toasting process to complete and the toaster to turn off\",\n  \"plan_brief\": \"Observe the toaster until it finishes toasting and powers off, which is already confirmed by the current scene state showing the toaster is off.\",\n  \"program\": \"# Verify toaster has completed toasting and turned off\\nfind('toaster')\\nlookat('toaster')\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"toaster\",\"value\":\"OFF\"}\n  ]\n}",
+      "prompt_tokens": 1246,
+      "completion_tokens": 124,
+      "latency_s": 4.505508187001396,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787668795626fc70b79e699e1a6fcafbbefdc4fb0412104490",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT ATOMIC TASK into a short executable program over the\nbounded primitive API. Do not redo already completed atomic tasks and do not\nplan future atomic tasks. Use the current symbolic scene to omit actions whose\neffects are already true. Output no imports, functions, loops, assertions,\ninstance IDs, or unsupported calls.\n\nReturn strict JSON only:\n{\n  \"atomic_task\": \"...\",\n  \"plan_brief\": \"...\",\n  \"program\": \"# one concise subgoal comment\\nfind('object')\\n...\",\n  \"completion_conditions\": [\n    {\"predicate\":\"STATE\",\"object\":\"tv\",\"value\":\"ON\"},\n    {\"predicate\":\"RELATION\",\"subject\":\"salmon\",\"relation\":\"INSIDE\",\"object\":\"fridge\"}\n  ]\n}\n\n``completion_conditions`` must contain only effects of this atomic task that\ncan be checked from a symbolic graph. Use predicate STATE or RELATION. If the\nsemantic completion is not representable, return an empty list; never use a\nground-truth answer or invent a condition.\n\nORIGINAL TASK:\nmake toast\n\nCURRENT ATOMIC TASK:\nRemove the finished toast from the toaster\n\nAVAILABLE OBJECTS:\n['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\nCURRENT SYMBOLIC SCENE OBSERVATION:\nbellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug.\n\nAvailable VirtualHome primitive calls (use exactly these lowercase names):\n- turnright(), turnleft(), walkforward(), standup()\n- walktowards('object'), walk('object'), run('object'), find('object'), turnto('object')\n- grab('object'), open('object'), close('object')\n- switchon('object'), switchoff('object')\n- lookat('object'), sit('object'), drink('object'), pointat('object'), watch('object')\n- putin('held_object', 'container'), putback('held_object', 'surface')\n\nUse only object class names present in AVAILABLE OBJECTS. ``find``/``walk`` are\nresponsible for navigation and grounding. The interpreter binds class names to\nscene instance IDs.\n",
+      "instructions": null,
+      "raw_output": "{\n  \"atomic_task\": \"Remove the finished toast from the toaster\",\n  \"plan_brief\": \"Navigate to the toaster, retrieve the cooked breadslice (toast) from it, and place the toast on the kitchen counter.\",\n  \"program\": \"# Locate and approach the toaster holding finished toast\\nfind('toaster')\\nwalktowards('toaster')\\n# Take the toast out of the toaster\\ngrab('breadslice')\\n# Place removed toast on the nearby kitchen counter\\nputback('breadslice', 'kitchencounter')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"breadslice\", \"relation\": \"ON\", \"object\": \"kitchencounter\"}\n  ]\n}",
+      "output_text": "{\n  \"atomic_task\": \"Remove the finished toast from the toaster\",\n  \"plan_brief\": \"Navigate to the toaster, retrieve the cooked breadslice (toast) from it, and place the toast on the kitchen counter.\",\n  \"program\": \"# Locate and approach the toaster holding finished toast\\nfind('toaster')\\nwalktowards('toaster')\\n# Take the toast out of the toaster\\ngrab('breadslice')\\n# Place removed toast on the nearby kitchen counter\\nputback('breadslice', 'kitchencounter')\",\n  \"completion_conditions\": [\n    {\"predicate\": \"RELATION\", \"subject\": \"breadslice\", \"relation\": \"ON\", \"object\": \"kitchencounter\"}\n  ]\n}",
+      "prompt_tokens": 1239,
+      "completion_tokens": 170,
+      "latency_s": 7.7375620269995125,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787668800131fc70b79e699e1a6fcafbbefdc4fb041216f443",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# HPAF atomic 1: Retrieve a breadslice from its storage location\n# Locate and retrieve the breadslice\nfind('breadslice')\nwalk('breadslice')\ngrab('breadslice')\n# HPAF atomic 2: Place the breadslice into the toaster\n# Locate and retrieve breadslice, then place it in the toaster\nfind('breadslice')\ngrab('breadslice')\nfind('toaster')\nputin('breadslice', 'toaster')\n# HPAF atomic 3: Activate the toaster to toast the breadslice\n# Locate and activate the toaster to toast the breadslice\nfind('toaster')\nswitchon('toaster')\n# HPAF atomic 4: Wait for the toasting process to complete and the toaster to turn off\n# Verify toaster has completed toasting and turned off\nfind('toaster')\nlookat('toaster')\n# HPAF atomic 5: Remove the finished toast from the toaster\n# Locate and approach the toaster holding finished toast\nfind('toaster')\nwalktowards('toaster')\n# Take the toast out of the toaster\ngrab('breadslice')\n# Place removed toast on the nearby kitchen counter\nputback('breadslice', 'kitchencounter')",
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <breadslice> (310)",
+    "<char0> [walk] <breadslice> (310)",
+    "<char0> [grab] <breadslice> (310)",
+    "<char0> [find] <breadslice> (309)",
+    "<char0> [grab] <breadslice> (309)",
+    "<char0> [find] <toaster> (308)",
+    "<char0> [putin] <breadslice> (310) <toaster> (308)",
+    "<char0> [find] <toaster> (308)",
+    "<char0> [switchon] <toaster> (308)",
+    "<char0> [find] <toaster> (308)",
+    "<char0> [lookat] <toaster> (308)",
+    "<char0> [find] <toaster> (308)",
+    "<char0> [walktowards] <toaster> (308)",
+    "<char0> [grab] <breadslice> (310)",
+    "<char0> [putback] <breadslice> (309) <kitchencounter> (238)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# HPAF atomic 1: Retrieve a breadslice from its storage location",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 1: Retrieve a breadslice from its storage location",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and retrieve the breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "find('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the breadslice",
+      "compiled_action": "<char0> [find] <breadslice> (310)"
+    },
+    {
+      "line": "walk('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the breadslice",
+      "compiled_action": "<char0> [walk] <breadslice> (310)"
+    },
+    {
+      "line": "grab('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve the breadslice",
+      "compiled_action": "<char0> [grab] <breadslice> (310)"
+    },
+    {
+      "line": "# HPAF atomic 2: Place the breadslice into the toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 2: Place the breadslice into the toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and retrieve breadslice, then place it in the toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve breadslice, then place it in the toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "find('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve breadslice, then place it in the toaster",
+      "compiled_action": "<char0> [find] <breadslice> (309)"
+    },
+    {
+      "line": "grab('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve breadslice, then place it in the toaster",
+      "compiled_action": "<char0> [grab] <breadslice> (309)"
+    },
+    {
+      "line": "find('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve breadslice, then place it in the toaster",
+      "compiled_action": "<char0> [find] <toaster> (308)"
+    },
+    {
+      "line": "putin('breadslice', 'toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and retrieve breadslice, then place it in the toaster",
+      "compiled_action": "<char0> [putin] <breadslice> (310) <toaster> (308)"
+    },
+    {
+      "line": "# HPAF atomic 3: Activate the toaster to toast the breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 3: Activate the toaster to toast the breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and activate the toaster to toast the breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and activate the toaster to toast the breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and activate the toaster to toast the breadslice",
+      "compiled_action": "<char0> [find] <toaster> (308)"
+    },
+    {
+      "line": "switchon('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and activate the toaster to toast the breadslice",
+      "compiled_action": "<char0> [switchon] <toaster> (308)"
+    },
+    {
+      "line": "# HPAF atomic 4: Wait for the toasting process to complete and the toaster to turn off",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 4: Wait for the toasting process to complete and the toaster to turn off",
+      "compiled_action": null
+    },
+    {
+      "line": "# Verify toaster has completed toasting and turned off",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Verify toaster has completed toasting and turned off",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Verify toaster has completed toasting and turned off",
+      "compiled_action": "<char0> [find] <toaster> (308)"
+    },
+    {
+      "line": "lookat('toaster')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) does not face <toaster> (308) when executing \"[LOOKAT] <toaster> (308) [0]\"",
+      "subgoal": "Verify toaster has completed toasting and turned off",
+      "compiled_action": "<char0> [lookat] <toaster> (308)"
+    },
+    {
+      "line": "# HPAF atomic 5: Remove the finished toast from the toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "HPAF atomic 5: Remove the finished toast from the toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "# Locate and approach the toaster holding finished toast",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and approach the toaster holding finished toast",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and approach the toaster holding finished toast",
+      "compiled_action": "<char0> [find] <toaster> (308)"
+    },
+    {
+      "line": "walktowards('toaster')",
+      "event": "action",
+      "success": false,
+      "detail": "Unknown action \"WALKTOWARDS\"",
+      "subgoal": "Locate and approach the toaster holding finished toast",
+      "compiled_action": "<char0> [walktowards] <toaster> (308)"
+    },
+    {
+      "line": "# Take the toast out of the toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Take the toast out of the toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Take the toast out of the toaster",
+      "compiled_action": "<char0> [grab] <breadslice> (310)"
+    },
+    {
+      "line": "# Place removed toast on the nearby kitchen counter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place removed toast on the nearby kitchen counter",
+      "compiled_action": null
+    },
+    {
+      "line": "putback('breadslice', 'kitchencounter')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <kitchencounter> (238) when executing \"[PUTBACK] <breadslice> (309) <kitchencounter> (238) [0]\"",
+      "subgoal": "Place removed toast on the nearby kitchen counter",
+      "compiled_action": "<char0> [putback] <breadslice> (309) <kitchencounter> (238)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <breadslice> (310)",
+      "parsed_action": "[FIND] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <breadslice> (310)",
+      "parsed_action": "[WALK] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <breadslice> (310)",
+      "parsed_action": "[GRAB] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <breadslice> (309)",
+      "parsed_action": "[FIND] <breadslice> (309) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <breadslice> (309)",
+      "parsed_action": "[GRAB] <breadslice> (309) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toaster> (308)",
+      "parsed_action": "[FIND] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <breadslice> (310) <toaster> (308)",
+      "parsed_action": "[PUTIN] <breadslice> (310) <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toaster> (308)",
+      "parsed_action": "[FIND] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <toaster> (308)",
+      "parsed_action": "[SWITCHON] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toaster> (308)",
+      "parsed_action": "[FIND] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [lookat] <toaster> (308)",
+      "parsed_action": "[LOOKAT] <toaster> (308) [0]",
+      "success": false,
+      "error": "<character> (1) does not face <toaster> (308) when executing \"[LOOKAT] <toaster> (308) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toaster> (308)",
+      "parsed_action": "[FIND] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walktowards] <toaster> (308)",
+      "parsed_action": null,
+      "success": false,
+      "error": "Unknown action \"WALKTOWARDS\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <breadslice> (310)",
+      "parsed_action": "[GRAB] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <breadslice> (309) <kitchencounter> (238)",
+      "parsed_action": "[PUTBACK] <breadslice> (309) <kitchencounter> (238) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <kitchencounter> (238) when executing \"[PUTBACK] <breadslice> (309) <kitchencounter> (238) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 1,
+  "GCR": 1.0,
+  "PSR": 1.0,
+  "Precision": 0.995249406175772,
+  "Exec": 0.8,
+  "program_length": 15,
+  "llm_calls": 6,
+  "prompt_tokens": 7178,
+  "completion_tokens": 784,
+  "planning_latency": 33.2710864360015,
+  "wall_clock_total_s": 34.271913974997005,
+  "error_type": "precondition_failure",
+  "error_message": "<character> (1) does not face <toaster> (308) when executing \"[LOOKAT] <toaster> (308) [0]\"",
+  "errors": [
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) does not face <toaster> (308) when executing \"[LOOKAT] <toaster> (308) [0]\"",
+      "line": "lookat('toaster')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "Unknown action \"WALKTOWARDS\"",
+      "line": "walktowards('toaster')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <kitchencounter> (238) when executing \"[PUTBACK] <breadslice> (309) <kitchencounter> (238) [0]\"",
+      "line": "putback('breadslice', 'kitchencounter')"
+    }
+  ],
+  "missing_goal_relations": [],
+  "missing_goal_states": []
+}

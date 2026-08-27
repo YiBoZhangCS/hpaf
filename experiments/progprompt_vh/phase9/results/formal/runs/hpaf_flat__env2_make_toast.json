@@ -1,0 +1,299 @@
+{
+  "run_id": "vh40_formal_2026-08-26T134527.496348_0000_hpaf_flat_env2_make_toast",
+  "phase": "vh40_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T13:45:27.496348+00:00",
+  "task_id": "env2::make_toast",
+  "task": "make toast",
+  "split": "env2",
+  "scene": 2,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "2e5fe54c630ecba1f8d53e8ba2565ac1cccb41b4b032162455dd68374f885659",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+  "generated_programs": [
+    "# make toast using the toaster that already contains a breadslice\nwalk(toaster)\nswitchon(toaster)\nswitchoff(toaster)"
+  ],
+  "generated_program": "# make toast using the toaster that already contains a breadslice\nwalk(toaster)\nswitchon(toaster)\nswitchoff(toaster)",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"make toast\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable.\nRELEVANT OBJECT CLASSES: []\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# make toast using the toaster that already contains a breadslice\\nwalk(toaster)\\nswitchon(toaster)\\nswitchoff(toaster)\", \"execution_trace\": [{\"line\": \"walk(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"switchon(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for switchon: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"switchoff(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for switchoff: expected 1, got 0\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(toaster)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for switchon: expected 1, got 0\", \"line\": \"switchon(toaster)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for switchoff: expected 1, got 0\", \"line\": \"switchoff(toaster)\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"All attempted actions failed due to parse/arity errors; no successful interaction with the toaster occurred, and the toaster remains OFF with breadslice inside but no completed toasting process.\",\"failure_stage\":\"action_execution\",\"regeneration_hint\":\"Fix action syntax/arity so walk, switchon, and switchoff calls are valid (e.g., include the character argument as required by the executor), then successfully walk to the toaster, turn it on to toast the breadslice, wait/complete the toasting cycle, and turn it off/finish the toast-making process.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"All attempted actions failed due to parse/arity errors; no successful interaction with the toaster occurred, and the toaster remains OFF with breadslice inside but no completed toasting process.\",\"failure_stage\":\"action_execution\",\"regeneration_hint\":\"Fix action syntax/arity so walk, switchon, and switchoff calls are valid (e.g., include the character argument as required by the executor), then successfully walk to the toaster, turn it on to toast the breadslice, wait/complete the toasting cycle, and turn it off/finish the toast-making process.\"}",
+      "prompt_tokens": 865,
+      "completion_tokens": 125,
+      "latency_s": 6.0615485809976235,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877519480942de38e8299405d0a4d8e2bf74997350e5fa5f5",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "make toast",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"All attempted actions failed due to parse/arity errors; no successful interaction with the toaster occurred, and the toaster remains OFF with breadslice inside but no completed toasting process.\",\"failure_stage\":\"action_execution\",\"regeneration_hint\":\"Fix action syntax/arity so walk, switchon, and switchoff calls are valid (e.g., include the character argument as required by the executor), then successfully walk to the toaster, turn it on to toast the breadslice, wait/complete the toasting cycle, and turn it off/finish the toast-making process.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# make toast using the toaster that already contains a breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "make toast using the toaster that already contains a breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "walk(toaster)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for walk: expected 1, got 0",
+      "subgoal": "make toast using the toaster that already contains a breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon(toaster)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for switchon: expected 1, got 0",
+      "subgoal": "make toast using the toaster that already contains a breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "switchoff(toaster)",
+      "event": "action",
+      "success": false,
+      "detail": "bad arity for switchoff: expected 1, got 0",
+      "subgoal": "make toast using the toaster that already contains a breadslice",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "walk(toaster)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for walk: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "switchon(toaster)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for switchon: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "switchoff(toaster)",
+      "parsed_action": null,
+      "success": false,
+      "error": "bad arity for switchoff: expected 1, got 0",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [],
+  "program_length": 3,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "trace_goal": {
+        "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+        "item": "breadslice",
+        "appliance": "toaster",
+        "controller": "toaster",
+        "load_required": true,
+        "rationale": "A generic loaded-appliance ON->OFF cycle is the only stable simulator event surrogate."
+      },
+      "satisfied": false,
+      "evidence": "required source-to-appliance putin event absent"
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+      "item": "breadslice",
+      "appliance": "toaster",
+      "controller": "toaster",
+      "load_required": true,
+      "rationale": "A generic loaded-appliance ON->OFF cycle is the only stable simulator event surrogate."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.0,
+  "official_PSR": 0.0,
+  "official_Precision": 1.0,
+  "Exec": 0.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1259,
+  "generation_completion_tokens": 71,
+  "verification_prompt_tokens": 865,
+  "verification_completion_tokens": 125,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2124,
+  "completion_tokens": 196,
+  "total_prompt_tokens": 2124,
+  "total_completion_tokens": 196,
+  "total_tokens": 2320,
+  "planning_latency": 3.089180237002438,
+  "verification_latency": 6.0615485809976235,
+  "total_llm_latency": 9.150728818000061,
+  "wall_clock_total_s": 10.014199868004653,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: make toast\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Walk to the toaster on the kitchen counter, turn it on to toast the bread slice already inside, then turn it off to complete the toasting process.\",\"program\":\"# make toast using the toaster that already contains a breadslice\\nwalk(toaster)\\nswitchon(toaster)\\nswitchoff(toaster)\"}",
+      "output_text": "{\"plan_brief\":\"Walk to the toaster on the kitchen counter, turn it on to toast the bread slice already inside, then turn it off to complete the toasting process.\",\"program\":\"# make toast using the toaster that already contains a breadslice\\nwalk(toaster)\\nswitchon(toaster)\\nswitchoff(toaster)\"}",
+      "prompt_tokens": 1259,
+      "completion_tokens": 71,
+      "latency_s": 3.089180237002438,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877519449902de38e8299405d0a4d8e2bf74997350eaf082e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"make toast\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable.\nRELEVANT OBJECT CLASSES: []\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# make toast using the toaster that already contains a breadslice\\nwalk(toaster)\\nswitchon(toaster)\\nswitchoff(toaster)\", \"execution_trace\": [{\"line\": \"walk(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"switchon(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for switchon: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"switchoff(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for switchoff: expected 1, got 0\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(toaster)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for switchon: expected 1, got 0\", \"line\": \"switchon(toaster)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for switchoff: expected 1, got 0\", \"line\": \"switchoff(toaster)\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"All attempted actions failed due to parse/arity errors; no successful interaction with the toaster occurred, and the toaster remains OFF with breadslice inside but no completed toasting process.\",\"failure_stage\":\"action_execution\",\"regeneration_hint\":\"Fix action syntax/arity so walk, switchon, and switchoff calls are valid (e.g., include the character argument as required by the executor), then successfully walk to the toaster, turn it on to toast the breadslice, wait/complete the toasting cycle, and turn it off/finish the toast-making process.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"All attempted actions failed due to parse/arity errors; no successful interaction with the toaster occurred, and the toaster remains OFF with breadslice inside but no completed toasting process.\",\"failure_stage\":\"action_execution\",\"regeneration_hint\":\"Fix action syntax/arity so walk, switchon, and switchoff calls are valid (e.g., include the character argument as required by the executor), then successfully walk to the toaster, turn it on to toast the breadslice, wait/complete the toasting cycle, and turn it off/finish the toast-making process.\"}",
+      "prompt_tokens": 865,
+      "completion_tokens": 125,
+      "latency_s": 6.0615485809976235,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877519480942de38e8299405d0a4d8e2bf74997350e5fa5f5",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: make toast\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"make toast\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable.\nRELEVANT OBJECT CLASSES: []\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# make toast using the toaster that already contains a breadslice\\nwalk(toaster)\\nswitchon(toaster)\\nswitchoff(toaster)\", \"execution_trace\": [{\"line\": \"walk(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for walk: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"switchon(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for switchon: expected 1, got 0\", \"compiled_action\": null}, {\"line\": \"switchoff(toaster)\", \"event\": \"action\", \"success\": false, \"detail\": \"bad arity for switchoff: expected 1, got 0\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"parse_failure\", \"message\": \"bad arity for walk: expected 1, got 0\", \"line\": \"walk(toaster)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for switchon: expected 1, got 0\", \"line\": \"switchon(toaster)\"}, {\"error_type\": \"parse_failure\", \"message\": \"bad arity for switchoff: expected 1, got 0\", \"line\": \"switchoff(toaster)\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Walk to the toaster on the kitchen counter, turn it on to toast the bread slice already inside, then turn it off to complete the toasting process.\",\"program\":\"# make toast using the toaster that already contains a breadslice\\nwalk(toaster)\\nswitchon(toaster)\\nswitchoff(toaster)\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"All attempted actions failed due to parse/arity errors; no successful interaction with the toaster occurred, and the toaster remains OFF with breadslice inside but no completed toasting process.\",\"failure_stage\":\"action_execution\",\"regeneration_hint\":\"Fix action syntax/arity so walk, switchon, and switchoff calls are valid (e.g., include the character argument as required by the executor), then successfully walk to the toaster, turn it on to toast the breadslice, wait/complete the toasting cycle, and turn it off/finish the toast-making process.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for walk: expected 1, got 0",
+      "line": "walk(toaster)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for switchon: expected 1, got 0",
+      "line": "switchon(toaster)"
+    },
+    {
+      "error_type": "parse_failure",
+      "message": "bad arity for switchoff: expected 1, got 0",
+      "line": "switchoff(toaster)"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bananas, bench, bench ON rug, coffeemaker ON dishwasher, coffeemaker is OFF, condimentbottle, condimentbottle ON kitchentable, condimentshaker, condimentshaker ON kitchentable, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishwasher is CLOSED and OFF, fridge is CLOSED, kitchencabinet is CLOSED, kitchentable, kitchentable ON rug, plate, plate ON kitchentable, rug, toaster is OFF, waterglass, waterglass ON kitchentable. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; breadslice INSIDE toaster; coffeemaker ON dishwasher; coffeemaker ON kitchencounter; coffeepot INSIDE coffeemaker; condimentbottle ON kitchentable; condimentshaker ON kitchentable; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; juice ON kitchentable; kitchencounter INSIDE dishwasher; kitchentable ON rug; plate ON kitchentable; toaster ON kitchencounter; waterglass ON kitchentable."
+}

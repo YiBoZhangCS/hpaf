@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "test_set": "test_unseen",
+  "frozen_at": "2026-08-25T15:35:03.836213+00:00",
+  "source_policy": [
+    "natural-language task description",
+    "pinned VirtualHome/Evolving Graph and ProgPrompt augmentation ontology",
+    "ground-truth task annotation/action description for semantic interpretation only"
+  ],
+  "excluded_sources": [
+    "all Phase-5 method outputs",
+    "method ranking or success/failure",
+    "ground-truth final graph supplied to a planner or verifier"
+  ],
+  "aggregation": "all listed conditions are conjunctive; no method-specific alternatives",
+  "tasks": [
+    {
+      "task": "watch tv",
+      "conditions": [
+        {
+          "condition": "STATE(tv, ON)",
+          "predicate": "STATE",
+          "object": "tv",
+          "value": "ON",
+          "rationale": "Watching requires a powered television; ON is the persistent graph effect used by the task annotation."
+        }
+      ],
+      "ambiguity": "WATCH is an executable event but leaves no persistent WATCHED state. TV ON is a disclosed operational surrogate and does not prove viewing duration."
+    },
+    {
+      "task": "turn off light",
+      "conditions": [
+        {
+          "condition": "STATE(lightswitch, OFF)",
+          "predicate": "STATE",
+          "object": "lightswitch",
+          "value": "OFF",
+          "rationale": "The instruction explicitly requests the light switch's OFF state."
+        }
+      ],
+      "ambiguity": "The graph represents the controlled light through the lightswitch object; no character room/location endpoint is required."
+    },
+    {
+      "task": "brush teeth",
+      "conditions": [
+        {
+          "condition": "INSIDE(toothpaste, toothbrush)",
+          "predicate": "RELATION",
+          "subject": "toothpaste",
+          "relation": "INSIDE",
+          "object": "toothbrush",
+          "rationale": "The released task annotation operationalizes preparing/using the toothbrush by applying toothpaste to the toothbrush; this is its only persistent task-object relation."
+        }
+      ],
+      "ambiguity": "The ontology has no BRUSHED_TEETH state and no mouth/teeth target. This relation is an annotation-informed operational surrogate, not proof of the real-world brushing event."
+    },
+    {
+      "task": "throw away apple",
+      "conditions": [
+        {
+          "condition": "INSIDE(apple, garbagecan)",
+          "predicate": "RELATION",
+          "subject": "apple",
+          "relation": "INSIDE",
+          "object": "garbagecan",
+          "rationale": "Throwing the apple away is represented by containment in the garbage can."
+        }
+      ],
+      "ambiguity": "Garbage-can OPEN/CLOSED and character proximity are prerequisites/endpoints, not requested semantic goals."
+    },
+    {
+      "task": "make toast",
+      "conditions": [
+        {
+          "condition": "INSIDE(breadslice, toaster)",
+          "predicate": "RELATION",
+          "subject": "breadslice",
+          "relation": "INSIDE",
+          "object": "toaster",
+          "rationale": "A bread slice placed in the toaster is the persistent object relation for initiating toast preparation."
+        },
+        {
+          "condition": "STATE(toaster, ON)",
+          "predicate": "STATE",
+          "object": "toaster",
+          "value": "ON",
+          "rationale": "The toaster being ON distinguishes initiated toasting from merely storing bread in it."
+        }
+      ],
+      "ambiguity": "The pinned augmentation explicitly leaves toaster/TOASTED as TODO, and time cannot advance automatically. INSIDE+ON is a frozen 'toasting initiated' proxy; it cannot certify finished toast and differs from the demonstration endpoint that switches off/removes the bread."
+    },
+    {
+      "task": "eat chips on the sofa",
+      "conditions": [
+        {
+          "condition": "ON(character, sofa)",
+          "predicate": "RELATION",
+          "subject": "character",
+          "relation": "ON",
+          "object": "sofa",
+          "rationale": "The task language explicitly requires performing the activity on the sofa; sitting is persistently represented as character ON sofa."
+        }
+      ],
+      "ambiguity": "Chips lack EATABLE in this scene and consumption has no persistent state. The sofa condition captures only the explicitly stated spatial part; arbitrary final HOLDS is excluded."
+    },
+    {
+      "task": "put salmon in the fridge",
+      "conditions": [
+        {
+          "condition": "INSIDE(salmon, fridge)",
+          "predicate": "RELATION",
+          "subject": "salmon",
+          "relation": "INSIDE",
+          "object": "fridge",
+          "rationale": "The requested destination relation is exactly salmon inside the fridge."
+        }
+      ],
+      "ambiguity": "Fridge door state, character proximity, room, and holding are not required by the instruction."
+    },
+    {
+      "task": "wash the plate",
+      "conditions": [
+        {
+          "condition": "STATE(plate, WASHED)",
+          "predicate": "STATE",
+          "object": "plate",
+          "value": "WASHED",
+          "rationale": "The pinned benchmark augmentation adds WASHED when a plate is in a sink while its faucet is on."
+        }
+      ],
+      "ambiguity": "WASHED is evaluator augmentation rather than a native Evolving Graph State enum; plate-in-sink and faucet state are causal prerequisites, not additional goals."
+    },
+    {
+      "task": "bring coffeepot and cupcake to the coffee table",
+      "conditions": [
+        {
+          "condition": "ON(coffeepot, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The coffeepot's requested destination is the coffee table surface."
+        },
+        {
+          "condition": "ON(cupcake, coffeetable)",
+          "predicate": "RELATION",
+          "subject": "cupcake",
+          "relation": "ON",
+          "object": "coffeetable",
+          "rationale": "The cupcake's requested destination is the coffee table surface."
+        }
+      ],
+      "ambiguity": "Both objects are conjunctive goals. Character location and object room containment are excluded demonstration endpoints."
+    },
+    {
+      "task": "microwave salmon",
+      "conditions": [
+        {
+          "condition": "STATE(salmon, HEATED)",
+          "predicate": "STATE",
+          "object": "salmon",
+          "value": "HEATED",
+          "rationale": "The pinned benchmark augmentation adds HEATED when food is inside an ON microwave."
+        }
+      ],
+      "ambiguity": "Microwave door/power and salmon containment/holding are procedural or endpoint states; HEATED is the persistent core effect."
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "run_id": "confirmatory_formal_2026-08-26T082020.622749_0000_hpaf_flat_env1_watch_tv",
+  "phase": "confirmatory_formal",
+  "timestamp": "2026-08-26T08:20:20.622749+00:00",
+  "task_id": "env1::watch_tv",
+  "task": "watch tv",
+  "split": "env1",
+  "scene": 1,
+  "gt_action_length": 2,
+  "horizon": "Short",
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "semantic_goals_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "long_horizon_manifest_sha256": "0e7ec66f08f397d777632474e3a2847fe98148c77261d629ec65267f6f424987",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "1ff91d8ef302acf6a349659834ee1e5900f344fc6cca0b0e6b25d6a3c9578546",
+  "generated_programs": [
+    "# move to the living room where the tv is located\nwalk('livingroom')\n# locate the remote control needed to operate the tv\nfind('remotecontrol')\ngrab('remotecontrol')\n# approach the tv and turn it on\nfind('tv')\nswitchon('tv')\n# sit on the sofa to watch comfortably\nfind('sofa')\nsit('sofa')\n# watch the tv\nwatch('tv')"
+  ],
+  "generated_program": "# move to the living room where the tv is located\nwalk('livingroom')\n# locate the remote control needed to operate the tv\nfind('remotecontrol')\ngrab('remotecontrol')\n# approach the tv and turn it on\nfind('tv')\nswitchon('tv')\n# sit on the sofa to watch comfortably\nfind('sofa')\nsit('sofa')\n# watch the tv\nwatch('tv')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nwatch tv\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=livingroom; states=['SITTING']; holds=['remotecontrol']. Nearby visible graph: remotecontrol is OFF, sofa. You have remotecontrol. One-hop INSIDE/ON relations connected to nearby objects: pillow ON sofa.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"tv\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# move to the living room where the tv is located\\nwalk('livingroom')\\n# locate the remote control needed to operate the tv\\nfind('remotecontrol')\\ngrab('remotecontrol')\\n# approach the tv and turn it on\\nfind('tv')\\nswitchon('tv')\\n# sit on the sofa to watch comfortably\\nfind('sofa')\\nsit('sofa')\\n# watch the tv\\nwatch('tv')\", \"execution_trace\": [{\"line\": \"walk('livingroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <livingroom> (261)\"}, {\"line\": \"find('remotecontrol')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <remotecontrol> (321)\"}, {\"line\": \"grab('remotecontrol')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <remotecontrol> (321)\"}, {\"line\": \"find('tv')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tv> (300)\"}, {\"line\": \"switchon('tv')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <tv> (300)\"}, {\"line\": \"find('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sofa> (288)\"}, {\"line\": \"sit('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [sit] <sofa> (288)\"}, {\"line\": \"watch('tv')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) does not face <tv> (300) when executing \\\"[WATCH] <tv> (300) [0]\\\"\", \"compiled_action\": \"<char0> [watch] <tv> (300)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) does not face <tv> (300) when executing \\\"[WATCH] <tv> (300) [0]\\\"\", \"line\": \"watch('tv')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Add an action to face the TV before executing watch('tv'), then perform the watch action.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Add an action to face the TV before executing watch('tv'), then perform the watch action.\"}",
+      "prompt_tokens": 932,
+      "completion_tokens": 64,
+      "latency_s": 3.5658963009991567,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877324434508f5df55c078e9f0cf923961e89d651d159d987",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task": "watch tv",
+      "observation": "Character room=livingroom; states=['SITTING']; holds=['remotecontrol']. Nearby visible graph: remotecontrol is OFF, sofa. You have remotecontrol. One-hop INSIDE/ON relations connected to nearby objects: pillow ON sofa.",
+      "result": {
+        "done": false,
+        "reason": "The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "Add an action to face the TV before executing watch('tv'), then perform the watch action."
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Add an action to face the TV before executing watch('tv'), then perform the watch action.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# move to the living room where the tv is located",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "move to the living room where the tv is located",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('livingroom')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "move to the living room where the tv is located",
+      "compiled_action": "<char0> [walk] <livingroom> (261)"
+    },
+    {
+      "line": "# locate the remote control needed to operate the tv",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the remote control needed to operate the tv",
+      "compiled_action": null
+    },
+    {
+      "line": "find('remotecontrol')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the remote control needed to operate the tv",
+      "compiled_action": "<char0> [find] <remotecontrol> (321)"
+    },
+    {
+      "line": "grab('remotecontrol')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the remote control needed to operate the tv",
+      "compiled_action": "<char0> [grab] <remotecontrol> (321)"
+    },
+    {
+      "line": "# approach the tv and turn it on",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "approach the tv and turn it on",
+      "compiled_action": null
+    },
+    {
+      "line": "find('tv')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "approach the tv and turn it on",
+      "compiled_action": "<char0> [find] <tv> (300)"
+    },
+    {
+      "line": "switchon('tv')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "approach the tv and turn it on",
+      "compiled_action": "<char0> [switchon] <tv> (300)"
+    },
+    {
+      "line": "# sit on the sofa to watch comfortably",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "sit on the sofa to watch comfortably",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "sit on the sofa to watch comfortably",
+      "compiled_action": "<char0> [find] <sofa> (288)"
+    },
+    {
+      "line": "sit('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "sit on the sofa to watch comfortably",
+      "compiled_action": "<char0> [sit] <sofa> (288)"
+    },
+    {
+      "line": "# watch the tv",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "watch the tv",
+      "compiled_action": null
+    },
+    {
+      "line": "watch('tv')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) does not face <tv> (300) when executing \"[WATCH] <tv> (300) [0]\"",
+      "subgoal": "watch the tv",
+      "compiled_action": "<char0> [watch] <tv> (300)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [walk] <livingroom> (261)",
+      "parsed_action": "[WALK] <livingroom> (261) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <remotecontrol> (321)",
+      "parsed_action": "[FIND] <remotecontrol> (321) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <remotecontrol> (321)",
+      "parsed_action": "[GRAB] <remotecontrol> (321) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <tv> (300)",
+      "parsed_action": "[FIND] <tv> (300) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <tv> (300)",
+      "parsed_action": "[SWITCHON] <tv> (300) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sofa> (288)",
+      "parsed_action": "[FIND] <sofa> (288) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [sit] <sofa> (288)",
+      "parsed_action": "[SIT] <sofa> (288) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [watch] <tv> (300)",
+      "parsed_action": "[WATCH] <tv> (300) [0]",
+      "success": false,
+      "error": "<character> (1) does not face <tv> (300) when executing \"[WATCH] <tv> (300) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [walk] <livingroom> (261)",
+    "<char0> [find] <remotecontrol> (321)",
+    "<char0> [grab] <remotecontrol> (321)",
+    "<char0> [find] <tv> (300)",
+    "<char0> [switchon] <tv> (300)",
+    "<char0> [find] <sofa> (288)",
+    "<char0> [sit] <sofa> (288)",
+    "<char0> [watch] <tv> (300)"
+  ],
+  "program_length": 8,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "trace_goal": {
+        "kind": "SUCCESSFUL_EVENT",
+        "object": "tv",
+        "actions": [
+          "watch"
+        ],
+        "rationale": "Natural-language completion requires a successful WATCH event; switching the TV on alone is insufficient and the graph has no WATCHED state."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "SUCCESSFUL_EVENT",
+      "object": "tv",
+      "actions": [
+        "watch"
+      ],
+      "rationale": "Natural-language completion requires a successful WATCH event; switching the TV on alone is insufficient and the graph has no WATCHED state."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.33333333333333337,
+  "official_PSR": 0.33333333333333337,
+  "official_Precision": 0.9968553459119497,
+  "Exec": 0.875,
+  "official_goal_condition_count": 6,
+  "official_missing_goal_relations": [
+    "character CLOSE tv",
+    "character CLOSE tvstand",
+    "tv CLOSE character",
+    "tvstand CLOSE character"
+  ],
+  "official_missing_goal_states": [],
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1374,
+  "generation_completion_tokens": 132,
+  "verification_prompt_tokens": 932,
+  "verification_completion_tokens": 64,
+  "repair_tokens": 0,
+  "prompt_tokens": 2306,
+  "completion_tokens": 196,
+  "total_prompt_tokens": 2306,
+  "total_completion_tokens": 196,
+  "total_tokens": 2502,
+  "planning_latency": 7.81112624600064,
+  "verification_latency": 3.5658963009991567,
+  "total_llm_latency": 11.377022546999797,
+  "wall_clock_total_s": 12.25516167400201,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nwatch tv\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Go to the living room, find the remote control, turn on the TV, sit on the sofa, and watch TV.\",\"program\":\"# move to the living room where the tv is located\\nwalk('livingroom')\\n# locate the remote control needed to operate the tv\\nfind('remotecontrol')\\ngrab('remotecontrol')\\n# approach the tv and turn it on\\nfind('tv')\\nswitchon('tv')\\n# sit on the sofa to watch comfortably\\nfind('sofa')\\nsit('sofa')\\n# watch the tv\\nwatch('tv')\"}",
+      "output_text": "{\"plan_brief\":\"Go to the living room, find the remote control, turn on the TV, sit on the sofa, and watch TV.\",\"program\":\"# move to the living room where the tv is located\\nwalk('livingroom')\\n# locate the remote control needed to operate the tv\\nfind('remotecontrol')\\ngrab('remotecontrol')\\n# approach the tv and turn it on\\nfind('tv')\\nswitchon('tv')\\n# sit on the sofa to watch comfortably\\nfind('sofa')\\nsit('sofa')\\n# watch the tv\\nwatch('tv')\"}",
+      "prompt_tokens": 1374,
+      "completion_tokens": 132,
+      "latency_s": 7.81112624600064,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877324355208f5df55c078e9f0cf923961e89d651d1a94e85",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nwatch tv\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=livingroom; states=['SITTING']; holds=['remotecontrol']. Nearby visible graph: remotecontrol is OFF, sofa. You have remotecontrol. One-hop INSIDE/ON relations connected to nearby objects: pillow ON sofa.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"tv\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# move to the living room where the tv is located\\nwalk('livingroom')\\n# locate the remote control needed to operate the tv\\nfind('remotecontrol')\\ngrab('remotecontrol')\\n# approach the tv and turn it on\\nfind('tv')\\nswitchon('tv')\\n# sit on the sofa to watch comfortably\\nfind('sofa')\\nsit('sofa')\\n# watch the tv\\nwatch('tv')\", \"execution_trace\": [{\"line\": \"walk('livingroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <livingroom> (261)\"}, {\"line\": \"find('remotecontrol')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <remotecontrol> (321)\"}, {\"line\": \"grab('remotecontrol')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <remotecontrol> (321)\"}, {\"line\": \"find('tv')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tv> (300)\"}, {\"line\": \"switchon('tv')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <tv> (300)\"}, {\"line\": \"find('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sofa> (288)\"}, {\"line\": \"sit('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [sit] <sofa> (288)\"}, {\"line\": \"watch('tv')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) does not face <tv> (300) when executing \\\"[WATCH] <tv> (300) [0]\\\"\", \"compiled_action\": \"<char0> [watch] <tv> (300)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) does not face <tv> (300) when executing \\\"[WATCH] <tv> (300) [0]\\\"\", \"line\": \"watch('tv')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Add an action to face the TV before executing watch('tv'), then perform the watch action.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Add an action to face the TV before executing watch('tv'), then perform the watch action.\"}",
+      "prompt_tokens": 932,
+      "completion_tokens": 64,
+      "latency_s": 3.5658963009991567,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877324434508f5df55c078e9f0cf923961e89d651d159d987",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nwatch tv\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- Interaction locality: before interacting with object X, establish and preserve\n  the required alignment/proximity to X until that interaction completes. Do not\n  align to an unrelated object between alignment(X) and interaction(X).\n- For a source-target transfer, use this conceptual order: locate/align the source,\n  acquire the source, locate/align the target, satisfy target prerequisites, then\n  place/interact the source with the target. Never switch to the target before the\n  source is successfully acquired.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- After movement or alignment to another object, do not assume an earlier CLOSE\n  relation still holds. Regenerate the next interaction from the current state.\n- switchon/switchoff and sit require proximity.\n- A repair must restore failed preconditions explicitly: reacquire a missing source,\n  realign to a distant target, and satisfy target state before repeating placement.\n- Some simulator augmentations persist an outcome only after the relevant object is\n  placed in the required appliance/container and its controller completes the\n  requested state transition. Establish causal conditions with shared primitives\n  when the instruction requests an appliance or washing outcome.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nwatch tv\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=livingroom; states=['SITTING']; holds=['remotecontrol']. Nearby visible graph: remotecontrol is OFF, sofa. You have remotecontrol. One-hop INSIDE/ON relations connected to nearby objects: pillow ON sofa.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"tv\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# move to the living room where the tv is located\\nwalk('livingroom')\\n# locate the remote control needed to operate the tv\\nfind('remotecontrol')\\ngrab('remotecontrol')\\n# approach the tv and turn it on\\nfind('tv')\\nswitchon('tv')\\n# sit on the sofa to watch comfortably\\nfind('sofa')\\nsit('sofa')\\n# watch the tv\\nwatch('tv')\", \"execution_trace\": [{\"line\": \"walk('livingroom')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <livingroom> (261)\"}, {\"line\": \"find('remotecontrol')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <remotecontrol> (321)\"}, {\"line\": \"grab('remotecontrol')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <remotecontrol> (321)\"}, {\"line\": \"find('tv')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <tv> (300)\"}, {\"line\": \"switchon('tv')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <tv> (300)\"}, {\"line\": \"find('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sofa> (288)\"}, {\"line\": \"sit('sofa')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [sit] <sofa> (288)\"}, {\"line\": \"watch('tv')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) does not face <tv> (300) when executing \\\"[WATCH] <tv> (300) [0]\\\"\", \"compiled_action\": \"<char0> [watch] <tv> (300)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) does not face <tv> (300) when executing \\\"[WATCH] <tv> (300) [0]\\\"\", \"line\": \"watch('tv')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Go to the living room, find the remote control, turn on the TV, sit on the sofa, and watch TV.\",\"program\":\"# move to the living room where the tv is located\\nwalk('livingroom')\\n# locate the remote control needed to operate the tv\\nfind('remotecontrol')\\ngrab('remotecontrol')\\n# approach the tv and turn it on\\nfind('tv')\\nswitchon('tv')\\n# sit on the sofa to watch comfortably\\nfind('sofa')\\nsit('sofa')\\n# watch the tv\\nwatch('tv')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The watch('tv') action failed because the character was not facing the TV, so the task of watching TV was not completed.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Add an action to face the TV before executing watch('tv'), then perform the watch action.\"}"
+    }
+  ],
+  "error_type": "precondition_failure",
+  "error_message": "<character> (1) does not face <tv> (300) when executing \"[WATCH] <tv> (300) [0]\"",
+  "errors": [
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) does not face <tv> (300) when executing \"[WATCH] <tv> (300) [0]\"",
+      "line": "watch('tv')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.",
+  "phase7_set": "confirmatory",
+  "evaluator_type": "generic_trace",
+  "trace_goal": {
+    "kind": "SUCCESSFUL_EVENT",
+    "object": "tv",
+    "actions": [
+      "watch"
+    ],
+    "rationale": "Natural-language completion requires a successful WATCH event; switching the TV on alone is insufficient and the graph has no WATCHED state."
+  }
+}

@@ -1,0 +1,1305 @@
+{
+  "run_id": "2026-08-25T144953.601246_0000_progprompt_full_microwave_salmon",
+  "timestamp": "2026-08-25T14:49:53.601246+00:00",
+  "task": "microwave salmon",
+  "method": "ProgPrompt-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "ground_truth_action_length": 11,
+  "difficulty_bucket": "Long",
+  "goal_condition_count": 3,
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_programs": [],
+  "atomic_verifications": [],
+  "raw_prompts": [
+    {
+      "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+      "input": "from actions import turnright, turnleft, walkforward, walktowards <obj>, walk <obj>, run <obj>, grab <obj>, switchon <obj>, switchoff <obj>, open <obj>, close <obj>, lookat <obj>, sit <obj>, standup, find <obj>, turnto <obj>, drink <obj>, pointat <obj>, watch <obj>, putin <obj> <obj>, putback <obj> <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef microwave_salmon():\n\t"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: salmon, salmon ON microwave.\n\nassert('close' to 'salmon')\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave\n\nassert('microwave' is 'closed' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: salmon. You have salmon.\n\nassert('salmon' in 'hands' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave\n\nassert('microwave' is 'opened' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'opened' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'switchoff' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and ON, plate INSIDE microwave, salmon INSIDE microwave\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and ON, plate INSIDE microwave, salmon INSIDE microwave\n\nassert('microwave' is 'switchon' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'closed' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'opened' )\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find microwave\n\tfind('microwave')\n\t# 2: find salmon\n\tfind('salmon')\n\t# 3: grab salmon\n\tassert('close' to 'salmon')\n\t\telse: find('salmon')\n\tgrab('salmon')\n\t# 4: open microwave\n\tfind('microwave')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 5: put salmon in microwave\n\tassert('salmon' in 'hands' )\n\t\telse: find('salmon')\n\t\telse: grab('salmon')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tputin('salmon', 'microwave')\n\t# 6: close microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tclose('microwave')\n\t# 7: switch on microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchoff' )\n\t\telse: switchoff('microwave')\n\tswitchon('microwave')\n\t# 8: wait for salmon to cook (implicit step)\n\t# 9: switch off microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchon' )\n\t\telse: switchon('microwave')\n\tswitchoff('microwave')\n\t# 10: open microwave\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 11: grab cooked salmon\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tgrab('salmon')\n\t# 12: Done",
+    "Let's analyze this step by step:\n1. From the first scene description",
+    "True\n### Reasoning:\nThe observation explicitly states the microwave is **C",
+    "True\nThe observed scene explicitly states \"microwave is OFF and CLOSED\",",
+    "Let's analyze this step by step:\n1. The latest observation states \"",
+    "False\n### Reasoning:\nThe current observation explicitly states the microwave is **",
+    "True\n### Reasoning:\nThe observed state explicitly states \"microwave is",
+    "False\n### Reasoning:\nThe current observation explicitly states the microwave is **",
+    "Let's analyze the given observation and assertion step by step:\n1. The",
+    "True\n### Reasoning:\nThe current observation explicitly states the microwave is **",
+    "Let's analyze the given information step by step:\n1. The observed state",
+    "True\n### Reasoning:\nThe observation states the microwave is **CLO",
+    "Let's analyze the given scene and assertion step by step:\n1. The",
+    "True\n### Reasoning:\nThe observed state explicitly states \"microwave is",
+    "True\nThe observation explicitly states \"microwave is OFF and CLOSED\", so",
+    "False\n### Reasoning:\nThe new observation explicitly states the microwave is **",
+    "Let's check the assertion against the given scene:\nThe scene explicitly states \""
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "from actions import turnright, turnleft, walkforward, walktowards <obj>, walk <obj>, run <obj>, grab <obj>, switchon <obj>, switchoff <obj>, open <obj>, close <obj>, lookat <obj>, sit <obj>, standup, find <obj>, turnto <obj>, drink <obj>, pointat <obj>, watch <obj>, putin <obj> <obj>, putback <obj> <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef microwave_salmon():\n\t",
+      "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+      "raw_output": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find microwave\n\tfind('microwave')\n\t# 2: find salmon\n\tfind('salmon')\n\t# 3: grab salmon\n\tassert('close' to 'salmon')\n\t\telse: find('salmon')\n\tgrab('salmon')\n\t# 4: open microwave\n\tfind('microwave')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 5: put salmon in microwave\n\tassert('salmon' in 'hands' )\n\t\telse: find('salmon')\n\t\telse: grab('salmon')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tputin('salmon', 'microwave')\n\t# 6: close microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tclose('microwave')\n\t# 7: switch on microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchoff' )\n\t\telse: switchoff('microwave')\n\tswitchon('microwave')\n\t# 8: wait for salmon to cook (implicit step)\n\t# 9: switch off microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchon' )\n\t\telse: switchon('microwave')\n\tswitchoff('microwave')\n\t# 10: open microwave\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 11: grab cooked salmon\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tgrab('salmon')\n\t# 12: Done",
+      "output_text": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find microwave\n\tfind('microwave')\n\t# 2: find salmon\n\tfind('salmon')\n\t# 3: grab salmon\n\tassert('close' to 'salmon')\n\t\telse: find('salmon')\n\tgrab('salmon')\n\t# 4: open microwave\n\tfind('microwave')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 5: put salmon in microwave\n\tassert('salmon' in 'hands' )\n\t\telse: find('salmon')\n\t\telse: grab('salmon')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tputin('salmon', 'microwave')\n\t# 6: close microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tclose('microwave')\n\t# 7: switch on microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchoff' )\n\t\telse: switchoff('microwave')\n\tswitchon('microwave')\n\t# 8: wait for salmon to cook (implicit step)\n\t# 9: switch off microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchon' )\n\t\telse: switchon('microwave')\n\tswitchoff('microwave')\n\t# 10: open microwave\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 11: grab cooked salmon\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tgrab('salmon')\n\t# 12: Done",
+      "prompt_tokens": 1955,
+      "completion_tokens": 539,
+      "latency_s": 9.205497454000579,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "def"
+      ],
+      "frequency_penalty": 0.15,
+      "response_id": "resp_021787669374226efc00680cc97b448c97df3ed8237441fbc4023",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: salmon, salmon ON microwave.\n\nassert('close' to 'salmon')\n",
+      "instructions": null,
+      "raw_output": "Let's analyze this step by step:\n1. From the first scene description",
+      "output_text": "Let's analyze this step by step:",
+      "prompt_tokens": 293,
+      "completion_tokens": 16,
+      "latency_s": 2.268767500998365,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669383486efc00680cc97b448c97df3ed8237441fca3643",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe observation explicitly states the microwave is **C",
+      "output_text": "True",
+      "prompt_tokens": 311,
+      "completion_tokens": 16,
+      "latency_s": 1.3673782629994093,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669385831efc00680cc97b448c97df3ed8237441f12c226",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave\n\nassert('microwave' is 'closed' )\n",
+      "instructions": null,
+      "raw_output": "True\nThe observed scene explicitly states \"microwave is OFF and CLOSED\",",
+      "output_text": "True",
+      "prompt_tokens": 311,
+      "completion_tokens": 16,
+      "latency_s": 1.5530735079992155,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669387200efc00680cc97b448c97df3ed8237441f1cb9f5",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: salmon. You have salmon.\n\nassert('salmon' in 'hands' )\n",
+      "instructions": null,
+      "raw_output": "Let's analyze this step by step:\n1. The latest observation states \"",
+      "output_text": "Let's analyze this step by step:",
+      "prompt_tokens": 294,
+      "completion_tokens": 16,
+      "latency_s": 0.781090979999135,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669388762efc00680cc97b448c97df3ed8237441fd2fd26",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "False\n### Reasoning:\nThe current observation explicitly states the microwave is **",
+      "output_text": "False",
+      "prompt_tokens": 310,
+      "completion_tokens": 16,
+      "latency_s": 1.7726199079988874,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669389542efc00680cc97b448c97df3ed8237441f49d788",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave\n\nassert('microwave' is 'opened' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe observed state explicitly states \"microwave is",
+      "output_text": "True",
+      "prompt_tokens": 310,
+      "completion_tokens": 16,
+      "latency_s": 1.4879711440007668,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669391332efc00680cc97b448c97df3ed8237441f7f73c3",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "False\n### Reasoning:\nThe current observation explicitly states the microwave is **",
+      "output_text": "False",
+      "prompt_tokens": 316,
+      "completion_tokens": 16,
+      "latency_s": 1.8088538519987196,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669392837efc00680cc97b448c97df3ed8237441f68d971",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'opened' )\n",
+      "instructions": null,
+      "raw_output": "Let's analyze the given observation and assertion step by step:\n1. The",
+      "output_text": "Let's analyze the given observation and assertion step by step:",
+      "prompt_tokens": 316,
+      "completion_tokens": 16,
+      "latency_s": 2.236257385000499,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669394659efc00680cc97b448c97df3ed8237441fa44fc1",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe current observation explicitly states the microwave is **",
+      "output_text": "True",
+      "prompt_tokens": 317,
+      "completion_tokens": 16,
+      "latency_s": 2.4613027089981188,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669396912efc00680cc97b448c97df3ed8237441fcb284b",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'switchoff' )\n",
+      "instructions": null,
+      "raw_output": "Let's analyze the given information step by step:\n1. The observed state",
+      "output_text": "Let's analyze the given information step by step:",
+      "prompt_tokens": 318,
+      "completion_tokens": 16,
+      "latency_s": 1.8436856079970312,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669399373efc00680cc97b448c97df3ed8237441fc0df50",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and ON, plate INSIDE microwave, salmon INSIDE microwave\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe observation states the microwave is **CLO",
+      "output_text": "True",
+      "prompt_tokens": 316,
+      "completion_tokens": 16,
+      "latency_s": 4.496541770000476,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669401229efc00680cc97b448c97df3ed8237441f18388c",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and ON, plate INSIDE microwave, salmon INSIDE microwave\n\nassert('microwave' is 'switchon' )\n",
+      "instructions": null,
+      "raw_output": "Let's analyze the given scene and assertion step by step:\n1. The",
+      "output_text": "Let's analyze the given scene and assertion step by step:",
+      "prompt_tokens": 317,
+      "completion_tokens": 16,
+      "latency_s": 1.1469260550002218,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669405726efc00680cc97b448c97df3ed8237441f719089",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe observed state explicitly states \"microwave is",
+      "output_text": "True",
+      "prompt_tokens": 317,
+      "completion_tokens": 16,
+      "latency_s": 2.113404388001072,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669406885efc00680cc97b448c97df3ed8237441f6ca8db",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'closed' )\n",
+      "instructions": null,
+      "raw_output": "True\nThe observation explicitly states \"microwave is OFF and CLOSED\", so",
+      "output_text": "True",
+      "prompt_tokens": 317,
+      "completion_tokens": 16,
+      "latency_s": 7.865117586999986,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669409000efc00680cc97b448c97df3ed8237441f3e68c2",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('close' to 'microwave' )\n",
+      "instructions": null,
+      "raw_output": "False\n### Reasoning:\nThe new observation explicitly states the microwave is **",
+      "output_text": "False",
+      "prompt_tokens": 316,
+      "completion_tokens": 16,
+      "latency_s": 1.4149100549984723,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669416875efc00680cc97b448c97df3ed8237441f4b33ba",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and OPEN, plate INSIDE microwave, salmon INSIDE microwave.\n\nassert('microwave' is 'opened' )\n",
+      "instructions": null,
+      "raw_output": "Let's check the assertion against the given scene:\nThe scene explicitly states \"",
+      "output_text": "Let's check the assertion against the given scene:",
+      "prompt_tokens": 316,
+      "completion_tokens": 16,
+      "latency_s": 1.05858999100019,
+      "temperature": 0.0,
+      "max_tokens": 16,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787669418353efc00680cc97b448c97df3ed8237441f8c7692",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find microwave\n\tfind('microwave')\n\t# 2: find salmon\n\tfind('salmon')\n\t# 3: grab salmon\n\tassert('close' to 'salmon')\n\t\telse: find('salmon')\n\tgrab('salmon')\n\t# 4: open microwave\n\tfind('microwave')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 5: put salmon in microwave\n\tassert('salmon' in 'hands' )\n\t\telse: find('salmon')\n\t\telse: grab('salmon')\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tputin('salmon', 'microwave')\n\t# 6: close microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tclose('microwave')\n\t# 7: switch on microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchoff' )\n\t\telse: switchoff('microwave')\n\tswitchon('microwave')\n\t# 8: wait for salmon to cook (implicit step)\n\t# 9: switch off microwave\n\tassert('close' to 'microwave' )\n\t\telse: find('microwave')\n\tassert('microwave' is 'switchon' )\n\t\telse: switchon('microwave')\n\tswitchoff('microwave')\n\t# 10: open microwave\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'closed' )\n\t\telse: close('microwave')\n\topen('microwave')\n\t# 11: grab cooked salmon\n\tassert('close' to 'microwave' )  \n\t\telse: find('microwave')\n\tassert('microwave' is 'opened' )\n\t\telse: open('microwave')\n\tgrab('salmon')\n\t# 12: Done",
+  "compiled_virtualhome_actions": [
+    "<char0> [walk] <kitchen> (205)",
+    "<char0> [find] <microwave> (313)",
+    "<char0> [find] <salmon> (327)",
+    "<char0> [grab] <salmon> (327)",
+    "<char0> [find] <microwave> (313)",
+    "<char0> [open] <microwave> (313)",
+    "<char0> [find] <microwave> (313)",
+    "<char0> [putin] <salmon> (327) <microwave> (313)",
+    "<char0> [find] <microwave> (313)",
+    "<char0> [close] <microwave> (313)",
+    "<char0> [switchon] <microwave> (313)",
+    "<char0> [switchoff] <microwave> (313)",
+    "<char0> [open] <microwave> (313)",
+    "<char0> [find] <microwave> (313)",
+    "<char0> [grab] <salmon> (327)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# 0: walk to kitchen",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "0: walk to kitchen",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('kitchen')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "0: walk to kitchen",
+      "compiled_action": "<char0> [walk] <kitchen> (205)"
+    },
+    {
+      "line": "# 1: find microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "1: find microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "find('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "1: find microwave",
+      "compiled_action": "<char0> [find] <microwave> (313)"
+    },
+    {
+      "line": "# 2: find salmon",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "2: find salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "find('salmon')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "2: find salmon",
+      "compiled_action": "<char0> [find] <salmon> (327)"
+    },
+    {
+      "line": "# 3: grab salmon",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'salmon')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's analyze this step by step:",
+      "subgoal": "3: grab salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('salmon')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "3: grab salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('salmon')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab salmon",
+      "compiled_action": "<char0> [grab] <salmon> (327)"
+    },
+    {
+      "line": "# 4: open microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "find('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: open microwave",
+      "compiled_action": "<char0> [find] <microwave> (313)"
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('microwave' is 'closed' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: close('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "open('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: open microwave",
+      "compiled_action": "<char0> [open] <microwave> (313)"
+    },
+    {
+      "line": "# 5: put salmon in microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('salmon' in 'hands' )",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's analyze this step by step:",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('salmon')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: grab('salmon')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "find('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": "<char0> [find] <microwave> (313)"
+    },
+    {
+      "line": "assert('microwave' is 'opened' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: open('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('salmon', 'microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: put salmon in microwave",
+      "compiled_action": "<char0> [putin] <salmon> (327) <microwave> (313)"
+    },
+    {
+      "line": "# 6: close microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "6: close microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "6: close microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "find('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "6: close microwave",
+      "compiled_action": "<char0> [find] <microwave> (313)"
+    },
+    {
+      "line": "assert('microwave' is 'opened' )",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's analyze the given observation and assertion step by step:",
+      "subgoal": "6: close microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: open('microwave')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "6: close microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "close('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "6: close microwave",
+      "compiled_action": "<char0> [close] <microwave> (313)"
+    },
+    {
+      "line": "# 7: switch on microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "7: switch on microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "7: switch on microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "7: switch on microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('microwave' is 'switchoff' )",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's analyze the given information step by step:",
+      "subgoal": "7: switch on microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: switchoff('microwave')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "7: switch on microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "7: switch on microwave",
+      "compiled_action": "<char0> [switchon] <microwave> (313)"
+    },
+    {
+      "line": "# 8: wait for salmon to cook (implicit step)",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "8: wait for salmon to cook (implicit step)",
+      "compiled_action": null
+    },
+    {
+      "line": "# 9: switch off microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "9: switch off microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "9: switch off microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "9: switch off microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('microwave' is 'switchon' )",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's analyze the given scene and assertion step by step:",
+      "subgoal": "9: switch off microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: switchon('microwave')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "9: switch off microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "switchoff('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "9: switch off microwave",
+      "compiled_action": "<char0> [switchoff] <microwave> (313)"
+    },
+    {
+      "line": "# 10: open microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "10: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "10: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "10: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('microwave' is 'closed' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "10: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "else: close('microwave')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "True",
+      "subgoal": "10: open microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "open('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "10: open microwave",
+      "compiled_action": "<char0> [open] <microwave> (313)"
+    },
+    {
+      "line": "# 11: grab cooked salmon",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "11: grab cooked salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'microwave' )",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "11: grab cooked salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "find('microwave')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "11: grab cooked salmon",
+      "compiled_action": "<char0> [find] <microwave> (313)"
+    },
+    {
+      "line": "assert('microwave' is 'opened' )",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's check the assertion against the given scene:",
+      "subgoal": "11: grab cooked salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "else: open('microwave')",
+      "event": "action",
+      "success": false,
+      "detail": "hallucinated action: else",
+      "subgoal": "11: grab cooked salmon",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('salmon')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "11: grab cooked salmon",
+      "compiled_action": "<char0> [grab] <salmon> (327)"
+    },
+    {
+      "line": "# 12: Done",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "12: Done",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [walk] <kitchen> (205)",
+      "parsed_action": "[WALK] <kitchen> (205) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <microwave> (313)",
+      "parsed_action": "[FIND] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <salmon> (327)",
+      "parsed_action": "[FIND] <salmon> (327) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: find('salmon')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <salmon> (327)",
+      "parsed_action": "[GRAB] <salmon> (327) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <microwave> (313)",
+      "parsed_action": "[FIND] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <microwave> (313)",
+      "parsed_action": "[OPEN] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: find('salmon')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: grab('salmon')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <microwave> (313)",
+      "parsed_action": "[FIND] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <salmon> (327) <microwave> (313)",
+      "parsed_action": "[PUTIN] <salmon> (327) <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <microwave> (313)",
+      "parsed_action": "[FIND] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: open('microwave')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <microwave> (313)",
+      "parsed_action": "[CLOSE] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: switchoff('microwave')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <microwave> (313)",
+      "parsed_action": "[SWITCHON] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: switchon('microwave')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <microwave> (313)",
+      "parsed_action": "[SWITCHOFF] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <microwave> (313)",
+      "parsed_action": "[OPEN] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <microwave> (313)",
+      "parsed_action": "[FIND] <microwave> (313) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: open('microwave')",
+      "parsed_action": null,
+      "success": false,
+      "error": "hallucinated action: else",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <salmon> (327)",
+      "parsed_action": "[GRAB] <salmon> (327) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 0,
+  "GCR": 0.33333333333333337,
+  "PSR": 0.33333333333333337,
+  "Precision": 0.9120171673819742,
+  "Exec": 0.6818181818181818,
+  "program_length": 22,
+  "llm_calls": 17,
+  "prompt_tokens": 6950,
+  "completion_tokens": 795,
+  "planning_latency": 44.881988157991145,
+  "wall_clock_total_s": 46.059260471000016,
+  "error_type": "hallucinated_action",
+  "error_message": "hallucinated action: else",
+  "errors": [
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: find('salmon')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: find('salmon')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: grab('salmon')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: open('microwave')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: switchoff('microwave')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: switchon('microwave')"
+    },
+    {
+      "error_type": "hallucinated_action",
+      "message": "hallucinated action: else",
+      "line": "else: open('microwave')"
+    }
+  ],
+  "missing_goal_relations": [
+    "character CLOSE kitchencabinet",
+    "kitchencabinet CLOSE character"
+  ],
+  "missing_goal_states": []
+}

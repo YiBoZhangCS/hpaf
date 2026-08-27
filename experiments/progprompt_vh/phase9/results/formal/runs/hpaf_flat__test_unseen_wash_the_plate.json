@@ -1,0 +1,496 @@
+{
+  "run_id": "vh40_formal_2026-08-26T133020.386695_0000_hpaf_flat_test_unseen_wash_the_plate",
+  "phase": "vh40_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T13:30:20.386695+00:00",
+  "task_id": "test_unseen::wash_the_plate",
+  "task": "wash the plate",
+  "split": "test_unseen",
+  "scene": 0,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+  "generated_programs": [
+    "# Locate and pick up the plate from the kitchen table\nfind('plate')\ngrab('plate')\n# Move to the sink and place the plate inside\nfind('sink')\nputin('plate', 'sink')\n# Turn on the faucet to get water\nfind('faucet')\nswitchon('faucet')\n# Grab the washing sponge to clean the plate\nfind('washingsponge')\ngrab('washingsponge')\n# Use the sponge on the plate in the sink to wash it\nfind('plate')\n# Turn off the faucet after washing\nfind('faucet')\nswitchoff('faucet')\n# Put the sponge back on the kitchen counter\nfind('kitchencounter')\nputback('washingsponge', 'kitchencounter')"
+  ],
+  "generated_program": "# Locate and pick up the plate from the kitchen table\nfind('plate')\ngrab('plate')\n# Move to the sink and place the plate inside\nfind('sink')\nputin('plate', 'sink')\n# Turn on the faucet to get water\nfind('faucet')\nswitchon('faucet')\n# Grab the washing sponge to clean the plate\nfind('washingsponge')\ngrab('washingsponge')\n# Use the sponge on the plate in the sink to wash it\nfind('plate')\n# Turn off the faucet after washing\nfind('faucet')\nswitchoff('faucet')\n# Put the sponge back on the kitchen counter\nfind('kitchencounter')\nputback('washingsponge', 'kitchencounter')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"wash the plate\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, faucet ON kitchencounter, faucet is OFF, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, plate is WASHED, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, washingsponge, washingsponge ON kitchencounter, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate INSIDE sink; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT OBJECT CLASSES: [\"plate\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and pick up the plate from the kitchen table\\nfind('plate')\\ngrab('plate')\\n# Move to the sink and place the plate inside\\nfind('sink')\\nputin('plate', 'sink')\\n# Turn on the faucet to get water\\nfind('faucet')\\nswitchon('faucet')\\n# Grab the washing sponge to clean the plate\\nfind('washingsponge')\\ngrab('washingsponge')\\n# Use the sponge on the plate in the sink to wash it\\nfind('plate')\\n# Turn off the faucet after washing\\nfind('faucet')\\nswitchoff('faucet')\\n# Put the sponge back on the kitchen counter\\nfind('kitchencounter')\\nputback('washingsponge', 'kitchencounter')\", \"execution_trace\": [{\"line\": \"find('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plate> (285)\"}, {\"line\": \"grab('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plate> (285)\"}, {\"line\": \"find('sink')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sink> (247)\"}, {\"line\": \"putin('plate', 'sink')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <plate> (285) <sink> (247)\"}, {\"line\": \"find('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <faucet> (248)\"}, {\"line\": \"switchon('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <faucet> (248)\"}, {\"line\": \"find('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingsponge> (266)\"}, {\"line\": \"grab('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <washingsponge> (266)\"}, {\"line\": \"find('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plate> (273)\"}, {\"line\": \"find('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <faucet> (248)\"}, {\"line\": \"switchoff('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <faucet> (248)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"putback('washingsponge', 'kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <washingsponge> (266) <kitchencounter> (238)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The program located the plate, placed it in the sink, turned on the faucet, and grabbed the sponge, but never executed a wash/scrub action on the plate; the only plate action after grabbing the sponge was another find, then the faucet was turned off and the sponge was put back. The current state lists plate as WASHED, but the execution trace does not show a successful washing interaction completing the process.\",\"failure_stage\":\"main washing interaction\",\"regeneration_hint\":\"After grabbing the washingsponge and finding the plate, add an action that uses the sponge to wash/scrub the plate (e.g., wash('plate') or scrub plate with sponge) before switching off the faucet and returning the sponge.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The program located the plate, placed it in the sink, turned on the faucet, and grabbed the sponge, but never executed a wash/scrub action on the plate; the only plate action after grabbing the sponge was another find, then the faucet was turned off and the sponge was put back. The current state lists plate as WASHED, but the execution trace does not show a successful washing interaction completing the process.\",\"failure_stage\":\"main washing interaction\",\"regeneration_hint\":\"After grabbing the washingsponge and finding the plate, add an action that uses the sponge to wash/scrub the plate (e.g., wash('plate') or scrub plate with sponge) before switching off the faucet and returning the sponge.\"}",
+      "prompt_tokens": 1682,
+      "completion_tokens": 153,
+      "latency_s": 9.12894701899495,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877510378602de38e8299405d0a4d8e2bf74997350eb605bd",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "wash the plate",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, faucet ON kitchencounter, faucet is OFF, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, plate is WASHED, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, washingsponge, washingsponge ON kitchencounter, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate INSIDE sink; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The program located the plate, placed it in the sink, turned on the faucet, and grabbed the sponge, but never executed a wash/scrub action on the plate; the only plate action after grabbing the sponge was another find, then the faucet was turned off and the sponge was put back. The current state lists plate as WASHED, but the execution trace does not show a successful washing interaction completing the process.\",\"failure_stage\":\"main washing interaction\",\"regeneration_hint\":\"After grabbing the washingsponge and finding the plate, add an action that uses the sponge to wash/scrub the plate (e.g., wash('plate') or scrub plate with sponge) before switching off the faucet and returning the sponge.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Locate and pick up the plate from the kitchen table",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the plate from the kitchen table",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the plate from the kitchen table",
+      "compiled_action": "<char0> [find] <plate> (285)"
+    },
+    {
+      "line": "grab('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the plate from the kitchen table",
+      "compiled_action": "<char0> [grab] <plate> (285)"
+    },
+    {
+      "line": "# Move to the sink and place the plate inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move to the sink and place the plate inside",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sink')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move to the sink and place the plate inside",
+      "compiled_action": "<char0> [find] <sink> (247)"
+    },
+    {
+      "line": "putin('plate', 'sink')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Move to the sink and place the plate inside",
+      "compiled_action": "<char0> [putin] <plate> (285) <sink> (247)"
+    },
+    {
+      "line": "# Turn on the faucet to get water",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn on the faucet to get water",
+      "compiled_action": null
+    },
+    {
+      "line": "find('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn on the faucet to get water",
+      "compiled_action": "<char0> [find] <faucet> (248)"
+    },
+    {
+      "line": "switchon('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn on the faucet to get water",
+      "compiled_action": "<char0> [switchon] <faucet> (248)"
+    },
+    {
+      "line": "# Grab the washing sponge to clean the plate",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Grab the washing sponge to clean the plate",
+      "compiled_action": null
+    },
+    {
+      "line": "find('washingsponge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Grab the washing sponge to clean the plate",
+      "compiled_action": "<char0> [find] <washingsponge> (266)"
+    },
+    {
+      "line": "grab('washingsponge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Grab the washing sponge to clean the plate",
+      "compiled_action": "<char0> [grab] <washingsponge> (266)"
+    },
+    {
+      "line": "# Use the sponge on the plate in the sink to wash it",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Use the sponge on the plate in the sink to wash it",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plate')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Use the sponge on the plate in the sink to wash it",
+      "compiled_action": "<char0> [find] <plate> (273)"
+    },
+    {
+      "line": "# Turn off the faucet after washing",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn off the faucet after washing",
+      "compiled_action": null
+    },
+    {
+      "line": "find('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn off the faucet after washing",
+      "compiled_action": "<char0> [find] <faucet> (248)"
+    },
+    {
+      "line": "switchoff('faucet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Turn off the faucet after washing",
+      "compiled_action": "<char0> [switchoff] <faucet> (248)"
+    },
+    {
+      "line": "# Put the sponge back on the kitchen counter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put the sponge back on the kitchen counter",
+      "compiled_action": null
+    },
+    {
+      "line": "find('kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put the sponge back on the kitchen counter",
+      "compiled_action": "<char0> [find] <kitchencounter> (238)"
+    },
+    {
+      "line": "putback('washingsponge', 'kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put the sponge back on the kitchen counter",
+      "compiled_action": "<char0> [putback] <washingsponge> (266) <kitchencounter> (238)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <plate> (285)",
+      "parsed_action": "[FIND] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <plate> (285)",
+      "parsed_action": "[GRAB] <plate> (285) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sink> (247)",
+      "parsed_action": "[FIND] <sink> (247) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <plate> (285) <sink> (247)",
+      "parsed_action": "[PUTIN] <plate> (285) <sink> (247) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <faucet> (248)",
+      "parsed_action": "[FIND] <faucet> (248) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <faucet> (248)",
+      "parsed_action": "[SWITCHON] <faucet> (248) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <washingsponge> (266)",
+      "parsed_action": "[FIND] <washingsponge> (266) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <washingsponge> (266)",
+      "parsed_action": "[GRAB] <washingsponge> (266) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <plate> (273)",
+      "parsed_action": "[FIND] <plate> (273) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <faucet> (248)",
+      "parsed_action": "[FIND] <faucet> (248) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <faucet> (248)",
+      "parsed_action": "[SWITCHOFF] <faucet> (248) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <kitchencounter> (238)",
+      "parsed_action": "[FIND] <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <washingsponge> (266) <kitchencounter> (238)",
+      "parsed_action": "[PUTBACK] <washingsponge> (266) <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <plate> (285)",
+    "<char0> [grab] <plate> (285)",
+    "<char0> [find] <sink> (247)",
+    "<char0> [putin] <plate> (285) <sink> (247)",
+    "<char0> [find] <faucet> (248)",
+    "<char0> [switchon] <faucet> (248)",
+    "<char0> [find] <washingsponge> (266)",
+    "<char0> [grab] <washingsponge> (266)",
+    "<char0> [find] <plate> (273)",
+    "<char0> [find] <faucet> (248)",
+    "<char0> [switchoff] <faucet> (248)",
+    "<char0> [find] <kitchencounter> (238)",
+    "<char0> [putback] <washingsponge> (266) <kitchencounter> (238)"
+  ],
+  "program_length": 13,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(plate, WASHED)",
+        "predicate": "STATE",
+        "object": "plate",
+        "value": "WASHED",
+        "rationale": "The released benchmark augmentation persistently marks an object washed when it is in a sink while a faucet is on."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[285]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 0,
+  "official_GCR": 0.4545454545454546,
+  "official_PSR": 0.4545454545454546,
+  "official_Precision": 1.0,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1520,
+  "generation_completion_tokens": 222,
+  "verification_prompt_tokens": 1682,
+  "verification_completion_tokens": 153,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 3202,
+  "completion_tokens": 375,
+  "total_prompt_tokens": 3202,
+  "total_completion_tokens": 375,
+  "total_tokens": 3577,
+  "planning_latency": 8.07579277199693,
+  "verification_latency": 9.12894701899495,
+  "total_llm_latency": 17.20473979099188,
+  "wall_clock_total_s": 18.342097301996546,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: wash the plate\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Navigate to a plate, retrieve it, bring it to the sink, use water and a washing sponge to wash it, then finish by turning the faucet off.\",\"program\":\"# Locate and pick up the plate from the kitchen table\\nfind('plate')\\ngrab('plate')\\n# Move to the sink and place the plate inside\\nfind('sink')\\nputin('plate', 'sink')\\n# Turn on the faucet to get water\\nfind('faucet')\\nswitchon('faucet')\\n# Grab the washing sponge to clean the plate\\nfind('washingsponge')\\ngrab('washingsponge')\\n# Use the sponge on the plate in the sink to wash it\\nfind('plate')\\n# Turn off the faucet after washing\\nfind('faucet')\\nswitchoff('faucet')\\n# Put the sponge back on the kitchen counter\\nfind('kitchencounter')\\nputback('washingsponge', 'kitchencounter')\"}",
+      "output_text": "{\"plan_brief\":\"Navigate to a plate, retrieve it, bring it to the sink, use water and a washing sponge to wash it, then finish by turning the faucet off.\",\"program\":\"# Locate and pick up the plate from the kitchen table\\nfind('plate')\\ngrab('plate')\\n# Move to the sink and place the plate inside\\nfind('sink')\\nputin('plate', 'sink')\\n# Turn on the faucet to get water\\nfind('faucet')\\nswitchon('faucet')\\n# Grab the washing sponge to clean the plate\\nfind('washingsponge')\\ngrab('washingsponge')\\n# Use the sponge on the plate in the sink to wash it\\nfind('plate')\\n# Turn off the faucet after washing\\nfind('faucet')\\nswitchoff('faucet')\\n# Put the sponge back on the kitchen counter\\nfind('kitchencounter')\\nputback('washingsponge', 'kitchencounter')\"}",
+      "prompt_tokens": 1520,
+      "completion_tokens": 222,
+      "latency_s": 8.07579277199693,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877510294922de38e8299405d0a4d8e2bf74997350e771437",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"wash the plate\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, faucet ON kitchencounter, faucet is OFF, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, plate is WASHED, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, washingsponge, washingsponge ON kitchencounter, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate INSIDE sink; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT OBJECT CLASSES: [\"plate\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and pick up the plate from the kitchen table\\nfind('plate')\\ngrab('plate')\\n# Move to the sink and place the plate inside\\nfind('sink')\\nputin('plate', 'sink')\\n# Turn on the faucet to get water\\nfind('faucet')\\nswitchon('faucet')\\n# Grab the washing sponge to clean the plate\\nfind('washingsponge')\\ngrab('washingsponge')\\n# Use the sponge on the plate in the sink to wash it\\nfind('plate')\\n# Turn off the faucet after washing\\nfind('faucet')\\nswitchoff('faucet')\\n# Put the sponge back on the kitchen counter\\nfind('kitchencounter')\\nputback('washingsponge', 'kitchencounter')\", \"execution_trace\": [{\"line\": \"find('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plate> (285)\"}, {\"line\": \"grab('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plate> (285)\"}, {\"line\": \"find('sink')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sink> (247)\"}, {\"line\": \"putin('plate', 'sink')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <plate> (285) <sink> (247)\"}, {\"line\": \"find('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <faucet> (248)\"}, {\"line\": \"switchon('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <faucet> (248)\"}, {\"line\": \"find('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingsponge> (266)\"}, {\"line\": \"grab('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <washingsponge> (266)\"}, {\"line\": \"find('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plate> (273)\"}, {\"line\": \"find('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <faucet> (248)\"}, {\"line\": \"switchoff('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <faucet> (248)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"putback('washingsponge', 'kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <washingsponge> (266) <kitchencounter> (238)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The program located the plate, placed it in the sink, turned on the faucet, and grabbed the sponge, but never executed a wash/scrub action on the plate; the only plate action after grabbing the sponge was another find, then the faucet was turned off and the sponge was put back. The current state lists plate as WASHED, but the execution trace does not show a successful washing interaction completing the process.\",\"failure_stage\":\"main washing interaction\",\"regeneration_hint\":\"After grabbing the washingsponge and finding the plate, add an action that uses the sponge to wash/scrub the plate (e.g., wash('plate') or scrub plate with sponge) before switching off the faucet and returning the sponge.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The program located the plate, placed it in the sink, turned on the faucet, and grabbed the sponge, but never executed a wash/scrub action on the plate; the only plate action after grabbing the sponge was another find, then the faucet was turned off and the sponge was put back. The current state lists plate as WASHED, but the execution trace does not show a successful washing interaction completing the process.\",\"failure_stage\":\"main washing interaction\",\"regeneration_hint\":\"After grabbing the washingsponge and finding the plate, add an action that uses the sponge to wash/scrub the plate (e.g., wash('plate') or scrub plate with sponge) before switching off the faucet and returning the sponge.\"}",
+      "prompt_tokens": 1682,
+      "completion_tokens": 153,
+      "latency_s": 9.12894701899495,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877510378602de38e8299405d0a4d8e2bf74997350eb605bd",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: wash the plate\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"wash the plate\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, faucet ON kitchencounter, faucet is OFF, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is OFF and CLOSED, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, plate is WASHED, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, washingsponge, washingsponge ON kitchencounter, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate INSIDE sink; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT OBJECT CLASSES: [\"plate\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and pick up the plate from the kitchen table\\nfind('plate')\\ngrab('plate')\\n# Move to the sink and place the plate inside\\nfind('sink')\\nputin('plate', 'sink')\\n# Turn on the faucet to get water\\nfind('faucet')\\nswitchon('faucet')\\n# Grab the washing sponge to clean the plate\\nfind('washingsponge')\\ngrab('washingsponge')\\n# Use the sponge on the plate in the sink to wash it\\nfind('plate')\\n# Turn off the faucet after washing\\nfind('faucet')\\nswitchoff('faucet')\\n# Put the sponge back on the kitchen counter\\nfind('kitchencounter')\\nputback('washingsponge', 'kitchencounter')\", \"execution_trace\": [{\"line\": \"find('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plate> (285)\"}, {\"line\": \"grab('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plate> (285)\"}, {\"line\": \"find('sink')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <sink> (247)\"}, {\"line\": \"putin('plate', 'sink')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <plate> (285) <sink> (247)\"}, {\"line\": \"find('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <faucet> (248)\"}, {\"line\": \"switchon('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <faucet> (248)\"}, {\"line\": \"find('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingsponge> (266)\"}, {\"line\": \"grab('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <washingsponge> (266)\"}, {\"line\": \"find('plate')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plate> (273)\"}, {\"line\": \"find('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <faucet> (248)\"}, {\"line\": \"switchoff('faucet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <faucet> (248)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"putback('washingsponge', 'kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <washingsponge> (266) <kitchencounter> (238)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Navigate to a plate, retrieve it, bring it to the sink, use water and a washing sponge to wash it, then finish by turning the faucet off.\",\"program\":\"# Locate and pick up the plate from the kitchen table\\nfind('plate')\\ngrab('plate')\\n# Move to the sink and place the plate inside\\nfind('sink')\\nputin('plate', 'sink')\\n# Turn on the faucet to get water\\nfind('faucet')\\nswitchon('faucet')\\n# Grab the washing sponge to clean the plate\\nfind('washingsponge')\\ngrab('washingsponge')\\n# Use the sponge on the plate in the sink to wash it\\nfind('plate')\\n# Turn off the faucet after washing\\nfind('faucet')\\nswitchoff('faucet')\\n# Put the sponge back on the kitchen counter\\nfind('kitchencounter')\\nputback('washingsponge', 'kitchencounter')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The program located the plate, placed it in the sink, turned on the faucet, and grabbed the sponge, but never executed a wash/scrub action on the plate; the only plate action after grabbing the sponge was another find, then the faucet was turned off and the sponge was put back. The current state lists plate as WASHED, but the execution trace does not show a successful washing interaction completing the process.\",\"failure_stage\":\"main washing interaction\",\"regeneration_hint\":\"After grabbing the washingsponge and finding the plate, add an action that uses the sponge to wash/scrub the plate (e.g., wash('plate') or scrub plate with sponge) before switching off the faucet and returning the sponge.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug."
+}

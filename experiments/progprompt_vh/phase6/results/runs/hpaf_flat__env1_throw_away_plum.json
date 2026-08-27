@@ -1,0 +1,334 @@
+{
+  "run_id": "formal_2026-08-26T034005.411702_0000_hpaf_flat_env1_throw_away_plum",
+  "phase": "formal",
+  "timestamp": "2026-08-26T03:40:05.411702+00:00",
+  "task_id": "env1::throw_away_plum",
+  "task": "throw away plum",
+  "split": "env1",
+  "scene": 1,
+  "gt_action_length": 6,
+  "horizon": "Medium",
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "f89d5ad507f69d8d6588c94d38c00d0e75b795b5bcca3d22d7773caf3355e1bb",
+  "task_manifest_sha256": "b030e18ebc284885389c9f3ac23bac4ed15110dd08db1d0bc297ab18d154e5b1",
+  "semantic_goals_sha256": "26f96ce7f68d5424beca17341be3d7f12c045628b42526d3890193fa2a2a3704",
+  "long_horizon_manifest_sha256": "464b7e4056717e5237f5f1f3b033289b6b79fb70f4de63dedd414b20e9ba8d8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0daf61072d16151050ee62ad58010cc2e189f1c89f0b1ee83d31afe254891222",
+  "generated_programs": [
+    "# locate the plum\nfind('plum')\n# pick up the plum\ngrab('plum')\n# locate the garbage can\nfind('garbagecan')\n# throw the plum into the garbage can\nputin('plum', 'garbagecan')"
+  ],
+  "generated_program": "# locate the plum\nfind('plum')\n# pick up the plum\ngrab('plum')\n# locate the garbage can\nfind('garbagecan')\n# throw the plum into the garbage can\nputin('plum', 'garbagecan')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nthrow away plum\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['plum']. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED, plum. You have plum. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"plum\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate the plum\\nfind('plum')\\n# pick up the plum\\ngrab('plum')\\n# locate the garbage can\\nfind('garbagecan')\\n# throw the plum into the garbage can\\nputin('plum', 'garbagecan')\", \"execution_trace\": [{\"line\": \"find('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plum> (120)\"}, {\"line\": \"grab('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plum> (120)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (183)\"}, {\"line\": \"putin('plum', 'garbagecan')\", \"event\": \"action\", \"success\": false, \"detail\": \"<garbagecan> (183) is not open or is not openable when executing \\\"[PUTIN] <plum> (120) <garbagecan> (183) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <plum> (120) <garbagecan> (183)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<garbagecan> (183) is not open or is not openable when executing \\\"[PUTIN] <plum> (120) <garbagecan> (183) [0]\\\"\", \"line\": \"putin('plum', 'garbagecan')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First open the garbage can, then put the plum into the open garbage can.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First open the garbage can, then put the plum into the open garbage can.\"}",
+      "prompt_tokens": 768,
+      "completion_tokens": 75,
+      "latency_s": 3.392874510999718,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771562818714713b2deea0810671b986a10f293e396010c8",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task": "throw away plum",
+      "observation": "Character room=kitchen; states=[]; holds=['plum']. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED, plum. You have plum. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor.",
+      "result": {
+        "done": false,
+        "reason": "The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.",
+        "failure_stage": "interaction",
+        "regeneration_hint": "First open the garbage can, then put the plum into the open garbage can."
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First open the garbage can, then put the plum into the open garbage can.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# locate the plum",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the plum",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plum')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the plum",
+      "compiled_action": "<char0> [find] <plum> (120)"
+    },
+    {
+      "line": "# pick up the plum",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the plum",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('plum')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "pick up the plum",
+      "compiled_action": "<char0> [grab] <plum> (120)"
+    },
+    {
+      "line": "# locate the garbage can",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the garbage can",
+      "compiled_action": null
+    },
+    {
+      "line": "find('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "locate the garbage can",
+      "compiled_action": "<char0> [find] <garbagecan> (183)"
+    },
+    {
+      "line": "# throw the plum into the garbage can",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "throw the plum into the garbage can",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('plum', 'garbagecan')",
+      "event": "action",
+      "success": false,
+      "detail": "<garbagecan> (183) is not open or is not openable when executing \"[PUTIN] <plum> (120) <garbagecan> (183) [0]\"",
+      "subgoal": "throw the plum into the garbage can",
+      "compiled_action": "<char0> [putin] <plum> (120) <garbagecan> (183)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <plum> (120)",
+      "parsed_action": "[FIND] <plum> (120) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <plum> (120)",
+      "parsed_action": "[GRAB] <plum> (120) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <garbagecan> (183)",
+      "parsed_action": "[FIND] <garbagecan> (183) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <plum> (120) <garbagecan> (183)",
+      "parsed_action": "[PUTIN] <plum> (120) <garbagecan> (183) [0]",
+      "success": false,
+      "error": "<garbagecan> (183) is not open or is not openable when executing \"[PUTIN] <plum> (120) <garbagecan> (183) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <plum> (120)",
+    "<char0> [grab] <plum> (120)",
+    "<char0> [find] <garbagecan> (183)",
+    "<char0> [putin] <plum> (120) <garbagecan> (183)"
+  ],
+  "program_length": 4,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 0,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "INSIDE(plum, garbagecan)",
+        "predicate": "RELATION",
+        "subject": "plum",
+        "relation": "INSIDE",
+        "object": "garbagecan",
+        "rationale": "Disposal is represented by containment in the garbage can."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "condition": "INSIDE(plum, garbagecan)",
+      "predicate": "RELATION",
+      "subject": "plum",
+      "relation": "INSIDE",
+      "object": "garbagecan",
+      "rationale": "Disposal is represented by containment in the garbage can."
+    }
+  ],
+  "official_SR": 0,
+  "official_GCR": 0.6666666666666667,
+  "official_PSR": 0.6666666666666667,
+  "official_Precision": 1.0,
+  "Exec": 0.75,
+  "official_goal_condition_count": 9,
+  "official_missing_goal_relations": [
+    "garbagecan CLOSE plum",
+    "plum CLOSE garbagecan",
+    "plum INSIDE garbagecan"
+  ],
+  "official_missing_goal_states": [],
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1171,
+  "generation_completion_tokens": 90,
+  "verification_prompt_tokens": 768,
+  "verification_completion_tokens": 75,
+  "repair_tokens": 0,
+  "prompt_tokens": 1939,
+  "completion_tokens": 165,
+  "total_prompt_tokens": 1939,
+  "total_completion_tokens": 165,
+  "total_tokens": 2104,
+  "planning_latency": 3.9849876990001576,
+  "verification_latency": 3.392874510999718,
+  "total_llm_latency": 7.377862209999876,
+  "wall_clock_total_s": 8.237124789000518,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nthrow away plum\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity.\n- The simulator observation persistently marks food HEATED after it is inside an ON\n  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.\n  Establish those causal conditions with the shared primitives when the instruction\n  requests heating or washing.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Locate the plum, pick it up, find the garbage can, and discard the plum inside it.\",\"program\":\"# locate the plum\\nfind('plum')\\n# pick up the plum\\ngrab('plum')\\n# locate the garbage can\\nfind('garbagecan')\\n# throw the plum into the garbage can\\nputin('plum', 'garbagecan')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the plum, pick it up, find the garbage can, and discard the plum inside it.\",\"program\":\"# locate the plum\\nfind('plum')\\n# pick up the plum\\ngrab('plum')\\n# locate the garbage can\\nfind('garbagecan')\\n# throw the plum into the garbage can\\nputin('plum', 'garbagecan')\"}",
+      "prompt_tokens": 1171,
+      "completion_tokens": 90,
+      "latency_s": 3.9849876990001576,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771562411514713b2deea0810671b986a10f293e39f73d89",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nthrow away plum\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['plum']. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED, plum. You have plum. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"plum\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate the plum\\nfind('plum')\\n# pick up the plum\\ngrab('plum')\\n# locate the garbage can\\nfind('garbagecan')\\n# throw the plum into the garbage can\\nputin('plum', 'garbagecan')\", \"execution_trace\": [{\"line\": \"find('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plum> (120)\"}, {\"line\": \"grab('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plum> (120)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (183)\"}, {\"line\": \"putin('plum', 'garbagecan')\", \"event\": \"action\", \"success\": false, \"detail\": \"<garbagecan> (183) is not open or is not openable when executing \\\"[PUTIN] <plum> (120) <garbagecan> (183) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <plum> (120) <garbagecan> (183)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<garbagecan> (183) is not open or is not openable when executing \\\"[PUTIN] <plum> (120) <garbagecan> (183) [0]\\\"\", \"line\": \"putin('plum', 'garbagecan')\"}]}\n",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "raw_output": "{\"done\":false,\"reason\":\"The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First open the garbage can, then put the plum into the open garbage can.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First open the garbage can, then put the plum into the open garbage can.\"}",
+      "prompt_tokens": 768,
+      "completion_tokens": 75,
+      "latency_s": 3.392874510999718,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178771562818714713b2deea0810671b986a10f293e396010c8",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the strict JSON object requested by the HPAF ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nGenerate one complete executable program for the WHOLE ORIGINAL TASK. This is\nthe flat ablation: there is no TaskAgent, atomic decomposition, or manually\nsupplied intermediate goal. Plan naturally and return one program.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nthrow away plum\n\nCURRENT INITIAL SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\n\nSHARED PRIMITIVE ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity.\n- The simulator observation persistently marks food HEATED after it is inside an ON\n  microwave. It marks an object WASHED after it is inside a sink while a faucet is ON.\n  Establish those causal conditions with the shared primitives when the instruction\n  requests heating or washing.\n- There is no direct heat(), wash(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program. Do not emit assertions, functions, loops,\n  instance IDs, frozen goal predicates, or an LLM-authored success claim.\n\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the strict JSON object requested by the online verifier protocol.",
+      "input": "You are the online HPAF execution verifier for VirtualHome.\n\nJudge whether the CURRENT TASK is complete using only the post-execution symbolic\nobservation and execution context below. Do not assume an action succeeded merely\nbecause it was generated. Do not request future work outside the current task.\nPersistent states/relations in the observation are evidence; a successful trace\nmay support that an event occurred, but never invent an unseen object or state.\nObject-class names can refer to multiple simulator instances. For a singular or\notherwise unspecified object request, a successful interaction with one instance\nplus a matching observed outcome is sufficient; another same-class instance that\nretains an opposite state is not a contradiction. Require every instance only\nwhen the task explicitly says all/every/both.\n\nReturn strict JSON only:\n{\"done\":true,\"reason\":\"short explanation\",\"failure_stage\":\"perception|alignment|interaction|verification|none\",\"regeneration_hint\":\"short repair suggestion\"}\n\nCURRENT TASK:\nthrow away plum\n\nPOST-EXECUTION SYMBOLIC OBSERVATION:\nCharacter room=kitchen; states=[]; holds=['plum']. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED, plum. You have plum. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor.\n\nRELEVANT/AVAILABLE OBJECT CLASSES:\n[\"plum\"]\n\nCURRENT EXECUTION CONTEXT:\n{\"generated_program\": \"# locate the plum\\nfind('plum')\\n# pick up the plum\\ngrab('plum')\\n# locate the garbage can\\nfind('garbagecan')\\n# throw the plum into the garbage can\\nputin('plum', 'garbagecan')\", \"execution_trace\": [{\"line\": \"find('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plum> (120)\"}, {\"line\": \"grab('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plum> (120)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (183)\"}, {\"line\": \"putin('plum', 'garbagecan')\", \"event\": \"action\", \"success\": false, \"detail\": \"<garbagecan> (183) is not open or is not openable when executing \\\"[PUTIN] <plum> (120) <garbagecan> (183) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <plum> (120) <garbagecan> (183)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<garbagecan> (183) is not open or is not openable when executing \\\"[PUTIN] <plum> (120) <garbagecan> (183) [0]\\\"\", \"line\": \"putin('plum', 'garbagecan')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate the plum, pick it up, find the garbage can, and discard the plum inside it.\",\"program\":\"# locate the plum\\nfind('plum')\\n# pick up the plum\\ngrab('plum')\\n# locate the garbage can\\nfind('garbagecan')\\n# throw the plum into the garbage can\\nputin('plum', 'garbagecan')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The plum is still held by the character and the garbage can is closed, so the plum was not thrown away into the garbage can. The putin action failed because the garbage can was not open.\",\"failure_stage\":\"interaction\",\"regeneration_hint\":\"First open the garbage can, then put the plum into the open garbage can.\"}"
+    }
+  ],
+  "error_type": "precondition_failure",
+  "error_message": "<garbagecan> (183) is not open or is not openable when executing \"[PUTIN] <plum> (120) <garbagecan> (183) [0]\"",
+  "errors": [
+    {
+      "error_type": "precondition_failure",
+      "message": "<garbagecan> (183) is not open or is not openable when executing \"[PUTIN] <plum> (120) <garbagecan> (183) [0]\"",
+      "line": "putin('plum', 'garbagecan')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate."
+}

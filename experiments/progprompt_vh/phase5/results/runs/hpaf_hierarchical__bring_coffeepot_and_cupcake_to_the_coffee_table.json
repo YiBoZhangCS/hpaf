@@ -1,0 +1,726 @@
+{
+  "run_id": "formal_2026-08-26T015425.764649_0000_hpaf_hierarchical_bring_coffeepot_and_cupcake_to_the_coffee_table",
+  "phase": "formal",
+  "timestamp": "2026-08-26T01:54:25.764649+00:00",
+  "task": "bring coffeepot and cupcake to the coffee table",
+  "method": "HPAF-Hierarchical",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "semantic_goal_sha256": "67adf22f4df9f1432a824c5e04b0d88a4515d5a38866bafc7e5a8e1fe7734cdd",
+  "decomposition_sha256": "d29a0d3dcea6b7f01edd444138058399316c8e26ddfae49dcff3d6b2a9adcc4e",
+  "ground_truth_action_length": 8,
+  "difficulty_bucket": "Medium",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "Place the coffeepot on the coffee table.",
+      "primary_goal_condition": {
+        "predicate": "RELATION",
+        "subject": "coffeepot",
+        "relation": "ON",
+        "object": "coffeetable"
+      },
+      "supporting_conditions": []
+    },
+    {
+      "id": 2,
+      "instruction": "Place the cupcake on the coffee table.",
+      "primary_goal_condition": {
+        "predicate": "RELATION",
+        "subject": "cupcake",
+        "relation": "ON",
+        "object": "coffeetable"
+      },
+      "supporting_conditions": []
+    }
+  ],
+  "number_of_atomic_tasks": 2,
+  "atomic_tasks_attempted": 2,
+  "atomic_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Place the coffeepot on the coffee table.",
+        "primary_goal_condition": {
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "supporting_conditions": []
+      },
+      "initial_program": "# Locate and approach the coffeepot on the kitchen counter\nfind('coffeepot')\n# Pick up the coffeepot\ngrab('coffeepot')\n# Navigate to the coffee table\nfind('coffeetable')\n# Place the coffeepot on the coffee table\nputback('coffeepot', 'coffeetable')",
+      "repair_program": "",
+      "retry_used": false
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "instruction": "Place the cupcake on the coffee table.",
+        "primary_goal_condition": {
+          "predicate": "RELATION",
+          "subject": "cupcake",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "supporting_conditions": []
+      },
+      "initial_program": "# find and retrieve the cupcake\nfind('cupcake')\ngrab('cupcake')\n# place the cupcake on the coffee table\nputback('cupcake', 'coffeetable')",
+      "repair_program": "# local repair\nfind('coffeetable')\nwalk('coffeetable')\nputback('cupcake', 'coffeetable')\n",
+      "retry_used": true
+    }
+  ],
+  "atomic_verifications": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Place the coffeepot on the coffee table.",
+        "primary_goal_condition": {
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "supporting_conditions": []
+      },
+      "state_used": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+      "initial_prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT FROZEN SEMANTIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, modify the frozen\ngoal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the coffeepot on the coffee table.\n\nPRIMARY SEMANTIC GOAL (verified independently after execution):\n{\"predicate\": \"RELATION\", \"subject\": \"coffeepot\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nSUPPORTING CONDITIONS:\n[]\n\nCURRENT SYMBOLIC STATE:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "initial_program": "# Locate and approach the coffeepot on the kitchen counter\nfind('coffeepot')\n# Pick up the coffeepot\ngrab('coffeepot')\n# Navigate to the coffee table\nfind('coffeetable')\n# Place the coffeepot on the coffee table\nputback('coffeepot', 'coffeetable')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and approach the coffeepot on the kitchen counter",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and approach the coffeepot on the kitchen counter",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and approach the coffeepot on the kitchen counter",
+          "compiled_action": "<char0> [find] <coffeepot> (307)"
+        },
+        {
+          "line": "# Pick up the coffeepot",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Pick up the coffeepot",
+          "compiled_action": null
+        },
+        {
+          "line": "grab('coffeepot')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Pick up the coffeepot",
+          "compiled_action": "<char0> [grab] <coffeepot> (307)"
+        },
+        {
+          "line": "# Navigate to the coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Navigate to the coffee table",
+          "compiled_action": "<char0> [find] <coffeetable> (371)"
+        },
+        {
+          "line": "# Place the coffeepot on the coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the coffeepot on the coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('coffeepot', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Place the coffeepot on the coffee table",
+          "compiled_action": "<char0> [putback] <coffeepot> (307) <coffeetable> (371)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "initial_attempted_actions": 4,
+      "initial_successful_actions": 4,
+      "initial_boundary_executable": true,
+      "first_verified": true,
+      "first_verification_detail": {
+        "condition": {
+          "predicate": "RELATION",
+          "subject": "coffeepot",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "satisfied": true,
+        "evidence": "matching edges=['307-ON-371']"
+      },
+      "retry_used": false,
+      "repair_prompt": "",
+      "repair_program": "",
+      "repair_generation_error": null,
+      "repair_execution_trace": [],
+      "repair_typed_errors": [],
+      "repair_attempted_actions": 0,
+      "repair_successful_actions": 0,
+      "repair_boundary_executable": false,
+      "repair_verified": null,
+      "repair_verification_detail": null,
+      "final_verified": true,
+      "can_continue": true,
+      "verified_but_stopped": false
+    },
+    {
+      "atomic_task": {
+        "id": 2,
+        "instruction": "Place the cupcake on the coffee table.",
+        "primary_goal_condition": {
+          "predicate": "RELATION",
+          "subject": "cupcake",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "supporting_conditions": []
+      },
+      "state_used": "Character room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable, coffeetable ON rug, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; cellphone ON coffeetable; coffeepot ON coffeetable; coffeetable ON rug; dishbowl ON coffeetable; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; sofa ON rug.",
+      "initial_prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT FROZEN SEMANTIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, modify the frozen\ngoal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the cupcake on the coffee table.\n\nPRIMARY SEMANTIC GOAL (verified independently after execution):\n{\"predicate\": \"RELATION\", \"subject\": \"cupcake\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nSUPPORTING CONDITIONS:\n[]\n\nCURRENT SYMBOLIC STATE:\nCharacter room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable, coffeetable ON rug, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; cellphone ON coffeetable; coffeepot ON coffeetable; coffeetable ON rug; dishbowl ON coffeetable; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; sofa ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "initial_program": "# find and retrieve the cupcake\nfind('cupcake')\ngrab('cupcake')\n# place the cupcake on the coffee table\nputback('cupcake', 'coffeetable')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# find and retrieve the cupcake",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "find and retrieve the cupcake",
+          "compiled_action": null
+        },
+        {
+          "line": "find('cupcake')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "find and retrieve the cupcake",
+          "compiled_action": "<char0> [find] <cupcake> (196)"
+        },
+        {
+          "line": "grab('cupcake')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "find and retrieve the cupcake",
+          "compiled_action": "<char0> [grab] <cupcake> (196)"
+        },
+        {
+          "line": "# place the cupcake on the coffee table",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "place the cupcake on the coffee table",
+          "compiled_action": null
+        },
+        {
+          "line": "putback('cupcake', 'coffeetable')",
+          "event": "action",
+          "success": false,
+          "detail": "<character> (1) is not close to <coffeetable> (111) when executing \"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\"",
+          "subgoal": "place the cupcake on the coffee table",
+          "compiled_action": "<char0> [putback] <cupcake> (196) <coffeetable> (111)"
+        }
+      ],
+      "initial_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<character> (1) is not close to <coffeetable> (111) when executing \"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\"",
+          "line": "putback('cupcake', 'coffeetable')"
+        }
+      ],
+      "initial_attempted_actions": 3,
+      "initial_successful_actions": 2,
+      "initial_boundary_executable": false,
+      "first_verified": false,
+      "first_verification_detail": {
+        "condition": {
+          "predicate": "RELATION",
+          "subject": "cupcake",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "satisfied": false,
+        "evidence": ""
+      },
+      "retry_used": true,
+      "repair_prompt": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one VirtualHome atomic task.\n\nRepair ONLY the current atomic task from the CURRENT post-failure graph. Do not\nreplay successful actions blindly, replan the remaining full task, alter the\nfrozen decomposition/goal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# local repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the cupcake on the coffee table.\n\nPRIMARY SEMANTIC GOAL:\n{\"predicate\": \"RELATION\", \"subject\": \"cupcake\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nCURRENT SYMBOLIC STATE:\nCharacter room=bedroom; states=[]; holds=['cupcake']. Nearby visible graph: cupcake, desk is CLOSED. You have cupcake. One-hop INSIDE/ON relations connected to nearby objects: cpuscreen ON desk; cupcake ON desk; keyboard ON desk; mouse ON desk; mousemat ON desk; mug ON desk; plate ON desk.\n\nPREVIOUS GENERATED PROGRAM:\n# find and retrieve the cupcake\nfind('cupcake')\ngrab('cupcake')\n# place the cupcake on the coffee table\nputback('cupcake', 'coffeetable')\n\nCURRENT-ATOMIC EXECUTION TRACE:\n[{\"line\": \"# find and retrieve the cupcake\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": null}, {\"line\": \"find('cupcake')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": \"<char0> [find] <cupcake> (196)\"}, {\"line\": \"grab('cupcake')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": \"<char0> [grab] <cupcake> (196)\"}, {\"line\": \"# place the cupcake on the coffee table\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": null}, {\"line\": \"putback('cupcake', 'coffeetable')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": \"<char0> [putback] <cupcake> (196) <coffeetable> (111)\"}]\n\nFAILED ACTIONS:\n[{\"line\": \"putback('cupcake', 'coffeetable')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": \"<char0> [putback] <cupcake> (196) <coffeetable> (111)\"}]\n\nTYPED ERRORS:\n[{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"line\": \"putback('cupcake', 'coffeetable')\"}]\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "repair_program": "# local repair\nfind('coffeetable')\nwalk('coffeetable')\nputback('cupcake', 'coffeetable')\n",
+      "repair_generation_error": null,
+      "repair_execution_trace": [
+        {
+          "line": "# local repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [find] <coffeetable> (111)"
+        },
+        {
+          "line": "walk('coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [walk] <coffeetable> (111)"
+        },
+        {
+          "line": "putback('cupcake', 'coffeetable')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "local repair",
+          "compiled_action": "<char0> [putback] <cupcake> (196) <coffeetable> (111)"
+        }
+      ],
+      "repair_typed_errors": [],
+      "repair_attempted_actions": 3,
+      "repair_successful_actions": 3,
+      "repair_boundary_executable": true,
+      "repair_verified": true,
+      "repair_verification_detail": {
+        "condition": {
+          "predicate": "RELATION",
+          "subject": "cupcake",
+          "relation": "ON",
+          "object": "coffeetable"
+        },
+        "satisfied": true,
+        "evidence": "matching edges=['196-ON-111']"
+      },
+      "final_verified": true,
+      "can_continue": true,
+      "verified_but_stopped": false
+    }
+  ],
+  "retry_count": 1,
+  "early_stop_count": 0,
+  "verified_but_stopped_count": 0,
+  "raw_prompts": [
+    {
+      "instructions": "Return only the strict JSON object requested by the ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT FROZEN SEMANTIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, modify the frozen\ngoal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the coffeepot on the coffee table.\n\nPRIMARY SEMANTIC GOAL (verified independently after execution):\n{\"predicate\": \"RELATION\", \"subject\": \"coffeepot\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nSUPPORTING CONDITIONS:\n[]\n\nCURRENT SYMBOLIC STATE:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n"
+    },
+    {
+      "instructions": "Return only the strict JSON object requested by the ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT FROZEN SEMANTIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, modify the frozen\ngoal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the cupcake on the coffee table.\n\nPRIMARY SEMANTIC GOAL (verified independently after execution):\n{\"predicate\": \"RELATION\", \"subject\": \"cupcake\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nSUPPORTING CONDITIONS:\n[]\n\nCURRENT SYMBOLIC STATE:\nCharacter room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable, coffeetable ON rug, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; cellphone ON coffeetable; coffeepot ON coffeetable; coffeetable ON rug; dishbowl ON coffeetable; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; sofa ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n"
+    },
+    {
+      "instructions": "Return only the strict JSON object requested by the Retry-1 ProgramAgent protocol.",
+      "input": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one VirtualHome atomic task.\n\nRepair ONLY the current atomic task from the CURRENT post-failure graph. Do not\nreplay successful actions blindly, replan the remaining full task, alter the\nfrozen decomposition/goal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# local repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the cupcake on the coffee table.\n\nPRIMARY SEMANTIC GOAL:\n{\"predicate\": \"RELATION\", \"subject\": \"cupcake\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nCURRENT SYMBOLIC STATE:\nCharacter room=bedroom; states=[]; holds=['cupcake']. Nearby visible graph: cupcake, desk is CLOSED. You have cupcake. One-hop INSIDE/ON relations connected to nearby objects: cpuscreen ON desk; cupcake ON desk; keyboard ON desk; mouse ON desk; mousemat ON desk; mug ON desk; plate ON desk.\n\nPREVIOUS GENERATED PROGRAM:\n# find and retrieve the cupcake\nfind('cupcake')\ngrab('cupcake')\n# place the cupcake on the coffee table\nputback('cupcake', 'coffeetable')\n\nCURRENT-ATOMIC EXECUTION TRACE:\n[{\"line\": \"# find and retrieve the cupcake\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": null}, {\"line\": \"find('cupcake')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": \"<char0> [find] <cupcake> (196)\"}, {\"line\": \"grab('cupcake')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": \"<char0> [grab] <cupcake> (196)\"}, {\"line\": \"# place the cupcake on the coffee table\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": null}, {\"line\": \"putback('cupcake', 'coffeetable')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": \"<char0> [putback] <cupcake> (196) <coffeetable> (111)\"}]\n\nFAILED ACTIONS:\n[{\"line\": \"putback('cupcake', 'coffeetable')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": \"<char0> [putback] <cupcake> (196) <coffeetable> (111)\"}]\n\nTYPED ERRORS:\n[{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"line\": \"putback('cupcake', 'coffeetable')\"}]\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "{\"plan_brief\":\"Pick up the coffeepot from the kitchen counter, move to the coffee table, and place the coffeepot on it.\",\"program\":\"# Locate and approach the coffeepot on the kitchen counter\\nfind('coffeepot')\\n# Pick up the coffeepot\\ngrab('coffeepot')\\n# Navigate to the coffee table\\nfind('coffeetable')\\n# Place the coffeepot on the coffee table\\nputback('coffeepot', 'coffeetable')\"}",
+    "{\"plan_brief\":\"Locate the cupcake, pick it up, then place it onto the nearby coffee table.\",\"program\":\"# find and retrieve the cupcake\\nfind('cupcake')\\ngrab('cupcake')\\n# place the cupcake on the coffee table\\nputback('cupcake', 'coffeetable')\"}",
+    "{\"repair_brief\":\"The character is holding the cupcake in the bedroom and is not close to the coffee table, so navigate to the coffee table before placing the cupcake on it.\",\"program\":\"# local repair\\nfind('coffeetable')\\nwalk('coffeetable')\\nputback('cupcake', 'coffeetable')\\n\"}"
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT FROZEN SEMANTIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, modify the frozen\ngoal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the coffeepot on the coffee table.\n\nPRIMARY SEMANTIC GOAL (verified independently after execution):\n{\"predicate\": \"RELATION\", \"subject\": \"coffeepot\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nSUPPORTING CONDITIONS:\n[]\n\nCURRENT SYMBOLIC STATE:\nCharacter room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "instructions": "Return only the strict JSON object requested by the ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Pick up the coffeepot from the kitchen counter, move to the coffee table, and place the coffeepot on it.\",\"program\":\"# Locate and approach the coffeepot on the kitchen counter\\nfind('coffeepot')\\n# Pick up the coffeepot\\ngrab('coffeepot')\\n# Navigate to the coffee table\\nfind('coffeetable')\\n# Place the coffeepot on the coffee table\\nputback('coffeepot', 'coffeetable')\"}",
+      "output_text": "{\"plan_brief\":\"Pick up the coffeepot from the kitchen counter, move to the coffee table, and place the coffeepot on it.\",\"program\":\"# Locate and approach the coffeepot on the kitchen counter\\nfind('coffeepot')\\n# Pick up the coffeepot\\ngrab('coffeepot')\\n# Navigate to the coffee table\\nfind('coffeetable')\\n# Place the coffeepot on the coffee table\\nputback('coffeepot', 'coffeetable')\"}",
+      "prompt_tokens": 1624,
+      "completion_tokens": 121,
+      "latency_s": 3.7038036630000306,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787709277383e9cb6370e1c023d3432663e680fc5c29c3e1ad",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\n\nCompile only the CURRENT FROZEN SEMANTIC ATOMIC TASK into a short executable\nprogram. Do not redo earlier atomics, plan future atomics, modify the frozen\ngoal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# concise comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the cupcake on the coffee table.\n\nPRIMARY SEMANTIC GOAL (verified independently after execution):\n{\"predicate\": \"RELATION\", \"subject\": \"cupcake\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nSUPPORTING CONDITIONS:\n[]\n\nCURRENT SYMBOLIC STATE:\nCharacter room=livingroom; states=[]; holds=[]. Nearby visible graph: coffeetable, coffeetable ON rug, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON coffeetable; cellphone ON coffeetable; coffeepot ON coffeetable; coffeetable ON rug; dishbowl ON coffeetable; lime ON coffeetable; peach ON coffeetable; plum ON coffeetable; sofa ON rug.\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "instructions": "Return only the strict JSON object requested by the ProgramAgent protocol.",
+      "raw_output": "{\"plan_brief\":\"Locate the cupcake, pick it up, then place it onto the nearby coffee table.\",\"program\":\"# find and retrieve the cupcake\\nfind('cupcake')\\ngrab('cupcake')\\n# place the cupcake on the coffee table\\nputback('cupcake', 'coffeetable')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the cupcake, pick it up, then place it onto the nearby coffee table.\",\"program\":\"# find and retrieve the cupcake\\nfind('cupcake')\\ngrab('cupcake')\\n# place the cupcake on the coffee table\\nputback('cupcake', 'coffeetable')\"}",
+      "prompt_tokens": 1259,
+      "completion_tokens": 71,
+      "latency_s": 3.877147986000068,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787709281209e9cb6370e1c023d3432663e680fc5c294ac8fa",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one VirtualHome atomic task.\n\nRepair ONLY the current atomic task from the CURRENT post-failure graph. Do not\nreplay successful actions blindly, replan the remaining full task, alter the\nfrozen decomposition/goal, or emit assertions/functions/loops/instance IDs.\n\nReturn strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# local repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK:\nbring coffeepot and cupcake to the coffee table\n\nCURRENT ATOMIC INSTRUCTION:\nPlace the cupcake on the coffee table.\n\nPRIMARY SEMANTIC GOAL:\n{\"predicate\": \"RELATION\", \"subject\": \"cupcake\", \"relation\": \"ON\", \"object\": \"coffeetable\"}\n\nCURRENT SYMBOLIC STATE:\nCharacter room=bedroom; states=[]; holds=['cupcake']. Nearby visible graph: cupcake, desk is CLOSED. You have cupcake. One-hop INSIDE/ON relations connected to nearby objects: cpuscreen ON desk; cupcake ON desk; keyboard ON desk; mouse ON desk; mousemat ON desk; mug ON desk; plate ON desk.\n\nPREVIOUS GENERATED PROGRAM:\n# find and retrieve the cupcake\nfind('cupcake')\ngrab('cupcake')\n# place the cupcake on the coffee table\nputback('cupcake', 'coffeetable')\n\nCURRENT-ATOMIC EXECUTION TRACE:\n[{\"line\": \"# find and retrieve the cupcake\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": null}, {\"line\": \"find('cupcake')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": \"<char0> [find] <cupcake> (196)\"}, {\"line\": \"grab('cupcake')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"subgoal\": \"find and retrieve the cupcake\", \"compiled_action\": \"<char0> [grab] <cupcake> (196)\"}, {\"line\": \"# place the cupcake on the coffee table\", \"event\": \"comment\", \"success\": true, \"detail\": \"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": null}, {\"line\": \"putback('cupcake', 'coffeetable')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": \"<char0> [putback] <cupcake> (196) <coffeetable> (111)\"}]\n\nFAILED ACTIONS:\n[{\"line\": \"putback('cupcake', 'coffeetable')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"subgoal\": \"place the cupcake on the coffee table\", \"compiled_action\": \"<char0> [putback] <cupcake> (196) <coffeetable> (111)\"}]\n\nTYPED ERRORS:\n[{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <coffeetable> (111) when executing \\\"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\\\"\", \"line\": \"putback('cupcake', 'coffeetable')\"}]\n\nAVAILABLE OBJECTS:\n[\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\n\nGRAPH_SUPPORTED_ACTIONS:\n[\"close(object)\", \"drink(object)\", \"find(object)\", \"grab(object)\", \"lookat(object)\", \"open(object)\", \"pointat(object)\", \"putback(object, object)\", \"putin(object, object)\", \"run(object)\", \"sit(object)\", \"standup()\", \"switchoff(object)\", \"switchon(object)\", \"turnto(object)\", \"walk(object)\", \"watch(object)\"]\n\nGeneric VirtualHome execution rules:\n- Use only the listed lowercase primitive calls and available object class names.\n- Ground and approach a target with find('target') or walk('target') before interaction.\n- If the character is SITTING/LYING, call standup() before navigating elsewhere.\n- grab requires the object to be close, accessible (not inside a closed container),\n  and a free hand. Open a containing object only when needed and not already OPEN.\n- open requires proximity, CLOSED state, and a free hand. close requires proximity\n  and OPEN state. Do not repeat open/close or switch actions whose effect is true.\n- putin/putback require the source object already held and the destination close;\n  an openable putin destination must be OPEN. Put down held objects before a third grab.\n- switchon/switchoff and sit require proximity. turnto can establish facing for lookat.\n- Evaluator augmentation is causal and persistent: food INSIDE an ON microwave\n  becomes HEATED; an object INSIDE a sink while a faucet is ON becomes WASHED.\n  Establish those graph conditions with putin/switchon. There is no direct\n  wash(), heat(), eat(), use(), wait(), or other unlisted primitive.\n- Use current-state evidence to omit redundant actions. Never invent an action.\n- Comments may organize the program, but verification happens after execution from\n  the graph; never output an LLM-authored success claim or condition.\n\n",
+      "instructions": "Return only the strict JSON object requested by the Retry-1 ProgramAgent protocol.",
+      "raw_output": "{\"repair_brief\":\"The character is holding the cupcake in the bedroom and is not close to the coffee table, so navigate to the coffee table before placing the cupcake on it.\",\"program\":\"# local repair\\nfind('coffeetable')\\nwalk('coffeetable')\\nputback('cupcake', 'coffeetable')\\n\"}",
+      "output_text": "{\"repair_brief\":\"The character is holding the cupcake in the bedroom and is not close to the coffee table, so navigate to the coffee table before placing the cupcake on it.\",\"program\":\"# local repair\\nfind('coffeetable')\\nwalk('coffeetable')\\nputback('cupcake', 'coffeetable')\\n\"}",
+      "prompt_tokens": 1870,
+      "completion_tokens": 75,
+      "latency_s": 6.614875776999952,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787709285128e9cb6370e1c023d3432663e680fc5c29e8c2f4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# atomic 1: Place the coffeepot on the coffee table.\n# Locate and approach the coffeepot on the kitchen counter\nfind('coffeepot')\n# Pick up the coffeepot\ngrab('coffeepot')\n# Navigate to the coffee table\nfind('coffeetable')\n# Place the coffeepot on the coffee table\nputback('coffeepot', 'coffeetable')\n# atomic 2: Place the cupcake on the coffee table.\n# find and retrieve the cupcake\nfind('cupcake')\ngrab('cupcake')\n# place the cupcake on the coffee table\nputback('cupcake', 'coffeetable')\n# atomic 2 Retry-1\n# local repair\nfind('coffeetable')\nwalk('coffeetable')\nputback('cupcake', 'coffeetable')\n",
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <coffeepot> (307)",
+    "<char0> [grab] <coffeepot> (307)",
+    "<char0> [find] <coffeetable> (371)",
+    "<char0> [putback] <coffeepot> (307) <coffeetable> (371)",
+    "<char0> [find] <cupcake> (196)",
+    "<char0> [grab] <cupcake> (196)",
+    "<char0> [putback] <cupcake> (196) <coffeetable> (111)",
+    "<char0> [find] <coffeetable> (111)",
+    "<char0> [walk] <coffeetable> (111)",
+    "<char0> [putback] <cupcake> (196) <coffeetable> (111)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# Locate and approach the coffeepot on the kitchen counter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and approach the coffeepot on the kitchen counter",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeepot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and approach the coffeepot on the kitchen counter",
+      "compiled_action": "<char0> [find] <coffeepot> (307)"
+    },
+    {
+      "line": "# Pick up the coffeepot",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Pick up the coffeepot",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('coffeepot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Pick up the coffeepot",
+      "compiled_action": "<char0> [grab] <coffeepot> (307)"
+    },
+    {
+      "line": "# Navigate to the coffee table",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the coffee table",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Navigate to the coffee table",
+      "compiled_action": "<char0> [find] <coffeetable> (371)"
+    },
+    {
+      "line": "# Place the coffeepot on the coffee table",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the coffeepot on the coffee table",
+      "compiled_action": null
+    },
+    {
+      "line": "putback('coffeepot', 'coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place the coffeepot on the coffee table",
+      "compiled_action": "<char0> [putback] <coffeepot> (307) <coffeetable> (371)"
+    },
+    {
+      "line": "# find and retrieve the cupcake",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "find and retrieve the cupcake",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cupcake')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "find and retrieve the cupcake",
+      "compiled_action": "<char0> [find] <cupcake> (196)"
+    },
+    {
+      "line": "grab('cupcake')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "find and retrieve the cupcake",
+      "compiled_action": "<char0> [grab] <cupcake> (196)"
+    },
+    {
+      "line": "# place the cupcake on the coffee table",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "place the cupcake on the coffee table",
+      "compiled_action": null
+    },
+    {
+      "line": "putback('cupcake', 'coffeetable')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <coffeetable> (111) when executing \"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\"",
+      "subgoal": "place the cupcake on the coffee table",
+      "compiled_action": "<char0> [putback] <cupcake> (196) <coffeetable> (111)"
+    },
+    {
+      "line": "# local repair",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": "<char0> [find] <coffeetable> (111)"
+    },
+    {
+      "line": "walk('coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": "<char0> [walk] <coffeetable> (111)"
+    },
+    {
+      "line": "putback('cupcake', 'coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "local repair",
+      "compiled_action": "<char0> [putback] <cupcake> (196) <coffeetable> (111)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <coffeepot> (307)",
+      "parsed_action": "[FIND] <coffeepot> (307) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <coffeepot> (307)",
+      "parsed_action": "[GRAB] <coffeepot> (307) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <coffeetable> (371)",
+      "parsed_action": "[FIND] <coffeetable> (371) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <coffeepot> (307) <coffeetable> (371)",
+      "parsed_action": "[PUTBACK] <coffeepot> (307) <coffeetable> (371) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cupcake> (196)",
+      "parsed_action": "[FIND] <cupcake> (196) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <cupcake> (196)",
+      "parsed_action": "[GRAB] <cupcake> (196) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <cupcake> (196) <coffeetable> (111)",
+      "parsed_action": "[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <coffeetable> (111) when executing \"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <coffeetable> (111)",
+      "parsed_action": "[FIND] <coffeetable> (111) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <coffeetable> (111)",
+      "parsed_action": "[WALK] <coffeetable> (111) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <cupcake> (196) <coffeetable> (111)",
+      "parsed_action": "[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 0,
+  "GCR": 0.8125,
+  "PSR": 0.8125,
+  "Precision": 1.0,
+  "Exec": 0.9,
+  "goal_condition_count": 16,
+  "missing_goal_relations": [
+    "character CLOSE coffeepot",
+    "coffeepot CLOSE character",
+    "coffeepot INSIDE bedroom"
+  ],
+  "missing_goal_states": [],
+  "Semantic_SR": 1,
+  "Semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 2,
+  "semantic_satisfied_condition_count": 2,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "ON(coffeepot, coffeetable)",
+        "predicate": "RELATION",
+        "subject": "coffeepot",
+        "relation": "ON",
+        "object": "coffeetable",
+        "rationale": "The coffeepot's requested destination is the coffee table surface."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['307-ON-371']"
+    },
+    {
+      "condition": {
+        "condition": "ON(cupcake, coffeetable)",
+        "predicate": "RELATION",
+        "subject": "cupcake",
+        "relation": "ON",
+        "object": "coffeetable",
+        "rationale": "The cupcake's requested destination is the coffee table surface."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['196-ON-111']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "semantic_goal_ambiguity": "Both objects are conjunctive goals. Character location and object room containment are excluded demonstration endpoints.",
+  "program_length": 10,
+  "llm_calls": 3,
+  "prompt_tokens": 4753,
+  "completion_tokens": 267,
+  "total_tokens": 5020,
+  "planning_latency": 14.19582742600005,
+  "wall_clock_total_s": 15.282643322000013,
+  "error_type": "precondition_failure",
+  "error_message": "<character> (1) is not close to <coffeetable> (111) when executing \"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\"",
+  "errors": [
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <coffeetable> (111) when executing \"[PUTBACK] <cupcake> (196) <coffeetable> (111) [0]\"",
+      "line": "putback('cupcake', 'coffeetable')"
+    }
+  ]
+}

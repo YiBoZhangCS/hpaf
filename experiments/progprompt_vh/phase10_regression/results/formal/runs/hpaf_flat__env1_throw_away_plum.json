@@ -1,0 +1,365 @@
+{
+  "run_id": "phase10r_formal_2026-08-27T022953.759624_0000_hpaf_flat_env1_throw_away_plum",
+  "phase": "phase10r_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-27T02:29:53.759624+00:00",
+  "task_id": "env1::throw_away_plum",
+  "task": "throw away plum",
+  "split": "env1",
+  "scene": 1,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "f89d5ad507f69d8d6588c94d38c00d0e75b795b5bcca3d22d7773caf3355e1bb",
+  "task_manifest_sha256": "9e19aa990131c34b22b5e8db9dadd3d56dd324a80546ba8f6932ecbd52690d4b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# Locate and acquire the plum\nfind('plum')\ngrab('plum')\n# Locate the garbage can and prepare it for disposal\nfind('garbagecan')\nopen('garbagecan')\n# Dispose of the plum and close the garbage can\nputin('plum','garbagecan')\nclose('garbagecan')"
+  ],
+  "generated_program": "# Locate and acquire the plum\nfind('plum')\ngrab('plum')\n# Locate the garbage can and prepare it for disposal\nfind('garbagecan')\nopen('garbagecan')\n# Dispose of the plum and close the garbage can\nputin('plum','garbagecan')\nclose('garbagecan')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"throw away plum\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor; plum INSIDE garbagecan.\nRELEVANT OBJECT CLASSES: [\"plum\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the plum\\nfind('plum')\\ngrab('plum')\\n# Locate the garbage can and prepare it for disposal\\nfind('garbagecan')\\nopen('garbagecan')\\n# Dispose of the plum and close the garbage can\\nputin('plum','garbagecan')\\nclose('garbagecan')\", \"execution_trace\": [{\"line\": \"find('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plum> (119)\"}, {\"line\": \"grab('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plum> (119)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (183)\"}, {\"line\": \"open('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <garbagecan> (183)\"}, {\"line\": \"putin('plum','garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <plum> (119) <garbagecan> (183)\"}, {\"line\": \"close('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <garbagecan> (183)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 772,
+      "completion_tokens": 62,
+      "latency_s": 3.6252971500002786,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877978167700730b6660d857180baac0c56a1cd6448a15024",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "throw away plum",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor; plum INSIDE garbagecan.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Locate and acquire the plum",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the plum",
+      "compiled_action": null
+    },
+    {
+      "line": "find('plum')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the plum",
+      "compiled_action": "<char0> [find] <plum> (119)"
+    },
+    {
+      "line": "grab('plum')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and acquire the plum",
+      "compiled_action": "<char0> [grab] <plum> (119)"
+    },
+    {
+      "line": "# Locate the garbage can and prepare it for disposal",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the garbage can and prepare it for disposal",
+      "compiled_action": null
+    },
+    {
+      "line": "find('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the garbage can and prepare it for disposal",
+      "compiled_action": "<char0> [find] <garbagecan> (183)"
+    },
+    {
+      "line": "open('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the garbage can and prepare it for disposal",
+      "compiled_action": "<char0> [open] <garbagecan> (183)"
+    },
+    {
+      "line": "# Dispose of the plum and close the garbage can",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Dispose of the plum and close the garbage can",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('plum','garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Dispose of the plum and close the garbage can",
+      "compiled_action": "<char0> [putin] <plum> (119) <garbagecan> (183)"
+    },
+    {
+      "line": "close('garbagecan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Dispose of the plum and close the garbage can",
+      "compiled_action": "<char0> [close] <garbagecan> (183)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <plum> (119)",
+      "parsed_action": "[FIND] <plum> (119) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <plum> (119)",
+      "parsed_action": "[GRAB] <plum> (119) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <garbagecan> (183)",
+      "parsed_action": "[FIND] <garbagecan> (183) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <garbagecan> (183)",
+      "parsed_action": "[OPEN] <garbagecan> (183) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <plum> (119) <garbagecan> (183)",
+      "parsed_action": "[PUTIN] <plum> (119) <garbagecan> (183) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <garbagecan> (183)",
+      "parsed_action": "[CLOSE] <garbagecan> (183) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <plum> (119)",
+    "<char0> [grab] <plum> (119)",
+    "<char0> [find] <garbagecan> (183)",
+    "<char0> [open] <garbagecan> (183)",
+    "<char0> [putin] <plum> (119) <garbagecan> (183)",
+    "<char0> [close] <garbagecan> (183)"
+  ],
+  "program_length": 6,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "INSIDE(plum, garbagecan)",
+        "predicate": "RELATION",
+        "subject": "plum",
+        "relation": "INSIDE",
+        "object": "garbagecan",
+        "rationale": "Disposal is represented by containment in the garbage can."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['119-INSIDE-183']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 1.0,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1143,
+  "generation_completion_tokens": 124,
+  "verification_prompt_tokens": 772,
+  "verification_completion_tokens": 62,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 1915,
+  "completion_tokens": 186,
+  "total_prompt_tokens": 1915,
+  "total_completion_tokens": 186,
+  "total_tokens": 2101,
+  "planning_latency": 3.7788663390001602,
+  "verification_latency": 3.6252971500002786,
+  "total_llm_latency": 7.404163489000439,
+  "wall_clock_total_s": 8.315885562000403,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: throw away plum\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the plum, pick it up, find a garbage can, open it if needed, place the plum inside, and close the garbage can to finish throwing it away.\",\"program\":\"# Locate and acquire the plum\\nfind('plum')\\ngrab('plum')\\n# Locate the garbage can and prepare it for disposal\\nfind('garbagecan')\\nopen('garbagecan')\\n# Dispose of the plum and close the garbage can\\nputin('plum','garbagecan')\\nclose('garbagecan')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the plum, pick it up, find a garbage can, open it if needed, place the plum inside, and close the garbage can to finish throwing it away.\",\"program\":\"# Locate and acquire the plum\\nfind('plum')\\ngrab('plum')\\n# Locate the garbage can and prepare it for disposal\\nfind('garbagecan')\\nopen('garbagecan')\\n# Dispose of the plum and close the garbage can\\nputin('plum','garbagecan')\\nclose('garbagecan')\"}",
+      "prompt_tokens": 1143,
+      "completion_tokens": 124,
+      "latency_s": 3.7788663390001602,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877978129250730b6660d857180baac0c56a1cd6448c22da0",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": "",
+      "parsed_output": {
+        "plan_brief": "Locate the plum, pick it up, find a garbage can, open it if needed, place the plum inside, and close the garbage can to finish throwing it away.",
+        "program": "# Locate and acquire the plum\nfind('plum')\ngrab('plum')\n# Locate the garbage can and prepare it for disposal\nfind('garbagecan')\nopen('garbagecan')\n# Dispose of the plum and close the garbage can\nputin('plum','garbagecan')\nclose('garbagecan')"
+      }
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"throw away plum\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor; plum INSIDE garbagecan.\nRELEVANT OBJECT CLASSES: [\"plum\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the plum\\nfind('plum')\\ngrab('plum')\\n# Locate the garbage can and prepare it for disposal\\nfind('garbagecan')\\nopen('garbagecan')\\n# Dispose of the plum and close the garbage can\\nputin('plum','garbagecan')\\nclose('garbagecan')\", \"execution_trace\": [{\"line\": \"find('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plum> (119)\"}, {\"line\": \"grab('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plum> (119)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (183)\"}, {\"line\": \"open('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <garbagecan> (183)\"}, {\"line\": \"putin('plum','garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <plum> (119) <garbagecan> (183)\"}, {\"line\": \"close('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <garbagecan> (183)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 772,
+      "completion_tokens": 62,
+      "latency_s": 3.6252971500002786,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877978167700730b6660d857180baac0c56a1cd6448a15024",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": "",
+      "parsed_output": {
+        "done": true,
+        "reason": "All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.",
+        "failure_stage": "none",
+        "regeneration_hint": ""
+      }
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: throw away plum\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"throw away plum\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, garbagecan ON floor, garbagecan is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: garbagecan ON floor; plum INSIDE garbagecan.\nRELEVANT OBJECT CLASSES: [\"plum\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and acquire the plum\\nfind('plum')\\ngrab('plum')\\n# Locate the garbage can and prepare it for disposal\\nfind('garbagecan')\\nopen('garbagecan')\\n# Dispose of the plum and close the garbage can\\nputin('plum','garbagecan')\\nclose('garbagecan')\", \"execution_trace\": [{\"line\": \"find('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <plum> (119)\"}, {\"line\": \"grab('plum')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <plum> (119)\"}, {\"line\": \"find('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <garbagecan> (183)\"}, {\"line\": \"open('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <garbagecan> (183)\"}, {\"line\": \"putin('plum','garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <plum> (119) <garbagecan> (183)\"}, {\"line\": \"close('garbagecan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <garbagecan> (183)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate the plum, pick it up, find a garbage can, open it if needed, place the plum inside, and close the garbage can to finish throwing it away.\",\"program\":\"# Locate and acquire the plum\\nfind('plum')\\ngrab('plum')\\n# Locate the garbage can and prepare it for disposal\\nfind('garbagecan')\\nopen('garbagecan')\\n# Dispose of the plum and close the garbage can\\nputin('plum','garbagecan')\\nclose('garbagecan')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"All disposal actions succeeded: plum was found, grabbed, placed inside the garbage can, and the garbage can was closed. Current state confirms plum is INSIDE the closed garbagecan and character no longer holds it.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.",
+  "instruction": "throw away plum",
+  "task_source": "third_party/progprompt-vh/data/new_env/env1_annotated.json",
+  "official_or_extension": "official_source",
+  "horizon": "Medium",
+  "is_long_horizon": false,
+  "evaluator_type": "persistent_state",
+  "benchmark_semantic_complexity": {
+    "task_id": "env1::throw_away_plum",
+    "semantic_atomic_count": 1,
+    "dependency_depth": 1,
+    "source": "frozen_benchmark_semantics_phase10_analysis",
+    "method_output_used": false,
+    "rationale": "One dominant official-source semantic commitment; multiple co-target objects, when present, are one coupled commitment."
+  },
+  "current_ready_nodes": [],
+  "validator_result": null
+}

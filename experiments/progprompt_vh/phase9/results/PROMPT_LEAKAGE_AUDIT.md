@@ -1,0 +1,10 @@
+# Prompt Leakage Audit
+
+{
+  "own_instruction_missing": [],
+  "cross_instruction_hits": [],
+  "task_id_hits": [],
+  "reference_marker_hits": [],
+  "evaluator_condition_hits": [],
+  "pass": true
+}

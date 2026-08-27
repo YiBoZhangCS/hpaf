@@ -1,0 +1,638 @@
+{
+  "run_id": "phase9_compression_candidate_b_2026-08-26T131616.378927_0000_hpaf_full_test_unseen_turn_off_light",
+  "phase": "phase9_compression_candidate_b",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T13:16:16.378927+00:00",
+  "task_id": "test_unseen::turn_off_light",
+  "task": "turn off light",
+  "split": "test_unseen",
+  "scene": 0,
+  "goal_count": null,
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "switch off the lightswitch",
+        "manipulated_object": "lightswitch",
+        "target_object": null,
+        "completion_mode": "process",
+        "process_intent": "the light is turned off"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+      "initial_program": "# switch off the nearby kitchen lightswitch\nfind('lightswitch')\nswitchoff('lightswitch')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# switch off the nearby kitchen lightswitch",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "switch off the nearby kitchen lightswitch",
+          "compiled_action": null
+        },
+        {
+          "line": "find('lightswitch')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "switch off the nearby kitchen lightswitch",
+          "compiled_action": "<char0> [find] <lightswitch> (261)"
+        },
+        {
+          "line": "switchoff('lightswitch')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "switch off the nearby kitchen lightswitch",
+          "compiled_action": "<char0> [switchoff] <lightswitch> (261)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off."
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nfind('lightswitch')\nswitchoff('lightswitch')",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('lightswitch')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [find] <lightswitch> (261)"
+        },
+        {
+          "line": "switchoff('lightswitch')",
+          "event": "action",
+          "success": false,
+          "detail": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [switchoff] <lightswitch> (261)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+          "line": "switchoff('lightswitch')"
+        }
+      ],
+      "repair_verifier": {
+        "done": false,
+        "failure_stage": "interaction",
+        "regeneration_hint": "The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off."
+      },
+      "final_done": false
+    }
+  ],
+  "generated_program": "# atomic 1: switch off the lightswitch\n# switch off the nearby kitchen lightswitch\nfind('lightswitch')\nswitchoff('lightswitch')\n# atomic 1 Retry-1\n# repair\nfind('lightswitch')\nswitchoff('lightswitch')",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "switch off the lightswitch",
+      "manipulated_object": "lightswitch",
+      "target_object": null,
+      "completion_mode": "process",
+      "process_intent": "the light is turned off"
+    }
+  ],
+  "number_of_atomic_tasks": 1,
+  "atomic_tasks_attempted": 1,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "switch off the lightswitch",
+        "manipulated_object": "lightswitch",
+        "target_object": null,
+        "completion_mode": "process",
+        "process_intent": "the light is turned off"
+      },
+      "initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+      "initial_program": "# switch off the nearby kitchen lightswitch\nfind('lightswitch')\nswitchoff('lightswitch')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# switch off the nearby kitchen lightswitch",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "switch off the nearby kitchen lightswitch",
+          "compiled_action": null
+        },
+        {
+          "line": "find('lightswitch')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "switch off the nearby kitchen lightswitch",
+          "compiled_action": "<char0> [find] <lightswitch> (261)"
+        },
+        {
+          "line": "switchoff('lightswitch')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "switch off the nearby kitchen lightswitch",
+          "compiled_action": "<char0> [switchoff] <lightswitch> (261)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off."
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nfind('lightswitch')\nswitchoff('lightswitch')",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('lightswitch')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [find] <lightswitch> (261)"
+        },
+        {
+          "line": "switchoff('lightswitch')",
+          "event": "action",
+          "success": false,
+          "detail": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [switchoff] <lightswitch> (261)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+          "line": "switchoff('lightswitch')"
+        }
+      ],
+      "repair_verifier": {
+        "done": false,
+        "failure_stage": "interaction",
+        "regeneration_hint": "The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off."
+      },
+      "final_done": false
+    }
+  ],
+  "retry_count": 1,
+  "early_stop_count": 1,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true} OR {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"actionable hint\"}\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT CLASSES: [\"lightswitch\"]\nATTEMPT: {\"program\": \"# switch off the nearby kitchen lightswitch\\nfind('lightswitch')\\nswitchoff('lightswitch')\", \"execution_trace\": [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}], \"errors\": []}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}",
+      "prompt_tokens": 880,
+      "completion_tokens": 84,
+      "latency_s": 4.111576946997957,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750191817cb43b51ad7a6f2b3d703638489b11c03dc0f87",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true} OR {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"actionable hint\"}\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT CLASSES: [\"lightswitch\"]\nATTEMPT: {\"program\": \"# repair\\nfind('lightswitch')\\nswitchoff('lightswitch')\", \"execution_trace\": [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": false, \"detail\": \"<lightswitch> (261) is not on when executing \\\"[SWITCHOFF] <lightswitch> (261) [0]\\\"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<lightswitch> (261) is not on when executing \\\"[SWITCHOFF] <lightswitch> (261) [0]\\\"\", \"line\": \"switchoff('lightswitch')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off.\"}",
+      "prompt_tokens": 1060,
+      "completion_tokens": 80,
+      "latency_s": 4.79446322300646,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750198210cb43b51ad7a6f2b3d703638489b11c03460654",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": 1,
+      "attempt": "initial",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off."
+      },
+      "raw_output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}"
+    },
+    {
+      "atomic_id": 1,
+      "attempt": "repair",
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.",
+      "result": {
+        "done": false,
+        "failure_stage": "interaction",
+        "regeneration_hint": "The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off."
+      },
+      "raw_output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off.\"}"
+    }
+  ],
+  "online_verification_count": 2,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# switch off the nearby kitchen lightswitch",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "switch off the nearby kitchen lightswitch",
+      "compiled_action": null
+    },
+    {
+      "line": "find('lightswitch')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "switch off the nearby kitchen lightswitch",
+      "compiled_action": "<char0> [find] <lightswitch> (261)"
+    },
+    {
+      "line": "switchoff('lightswitch')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "switch off the nearby kitchen lightswitch",
+      "compiled_action": "<char0> [switchoff] <lightswitch> (261)"
+    },
+    {
+      "line": "# repair",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": null
+    },
+    {
+      "line": "find('lightswitch')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [find] <lightswitch> (261)"
+    },
+    {
+      "line": "switchoff('lightswitch')",
+      "event": "action",
+      "success": false,
+      "detail": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [switchoff] <lightswitch> (261)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <lightswitch> (261)",
+      "parsed_action": "[FIND] <lightswitch> (261) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <lightswitch> (261)",
+      "parsed_action": "[SWITCHOFF] <lightswitch> (261) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <lightswitch> (261)",
+      "parsed_action": "[FIND] <lightswitch> (261) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <lightswitch> (261)",
+      "parsed_action": "[SWITCHOFF] <lightswitch> (261) [0]",
+      "success": false,
+      "error": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <lightswitch> (261)",
+    "<char0> [switchoff] <lightswitch> (261)",
+    "<char0> [find] <lightswitch> (261)",
+    "<char0> [switchoff] <lightswitch> (261)"
+  ],
+  "program_length": 4,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(lightswitch, OFF)",
+        "predicate": "STATE",
+        "object": "lightswitch",
+        "value": "OFF",
+        "rationale": "The instruction explicitly requests the controlled light switch to be off."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[261]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 0,
+  "official_GCR": 0.5,
+  "official_PSR": 0.5,
+  "official_Precision": 1.0,
+  "Exec": 0.75,
+  "generation_calls": 2,
+  "verification_calls": 2,
+  "repair_calls": 1,
+  "total_calls": 5,
+  "generation_prompt_tokens": 2296,
+  "generation_completion_tokens": 95,
+  "verification_prompt_tokens": 1940,
+  "verification_completion_tokens": 164,
+  "repair_prompt_tokens": 1725,
+  "repair_completion_tokens": 56,
+  "repair_tokens": 1781,
+  "prompt_tokens": 5961,
+  "completion_tokens": 315,
+  "total_prompt_tokens": 5961,
+  "total_completion_tokens": 315,
+  "total_tokens": 6276,
+  "planning_latency": 5.996589162998134,
+  "verification_latency": 8.906040170004417,
+  "total_llm_latency": 14.902629333002551,
+  "wall_clock_total_s": 16.01749913799722,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF VirtualHome TaskAgent. Decompose WHAT is required into the\nfewest ordered object-centric semantic operations; ProgramAgent handles navigation\nand preconditions.\nRules: (1) one operation per atomic, centered on one manipulated object and optional\ntarget; (2) no locate/find/walk atomics, and prerequisite open/close is not an atomic;\n(3) completion_mode=state for persistent state/relation, process for a completed\noperation; keep one lifecycle in one process atomic; (4) process_intent is natural\nlanguage completion intent only, never calls/evaluator/GT/answers; null for state;\n(5) no primitive calls, IDs, invented objects, or time; (6) 1-6 atomics using exact\navailable object classes.\nJSON only: {\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\nTASK: turn off light\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the lightswitch\",\"manipulated_object\":\"lightswitch\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the light is turned off\"}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the lightswitch\",\"manipulated_object\":\"lightswitch\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the light is turned off\"}]}",
+      "prompt_tokens": 836,
+      "completion_tokens": 48,
+      "latency_s": 1.7990982240007725,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750188087cb43b51ad7a6f2b3d703638489b11c0348411b",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF VirtualHome ProgramAgent. Compile only the current atomic into\na short executable program; do not redo earlier or plan future atomics.\nJSON only: {\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off light\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions.",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the kitchen lightswitch and switch it off to turn off the light.\",\"program\":\"# switch off the nearby kitchen lightswitch\\nfind('lightswitch')\\nswitchoff('lightswitch')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the kitchen lightswitch and switch it off to turn off the light.\",\"program\":\"# switch off the nearby kitchen lightswitch\\nfind('lightswitch')\\nswitchoff('lightswitch')\"}",
+      "prompt_tokens": 1460,
+      "completion_tokens": 47,
+      "latency_s": 1.9476080130043556,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750189788cb43b51ad7a6f2b3d703638489b11c03fcfa9a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true} OR {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"actionable hint\"}\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT CLASSES: [\"lightswitch\"]\nATTEMPT: {\"program\": \"# switch off the nearby kitchen lightswitch\\nfind('lightswitch')\\nswitchoff('lightswitch')\", \"execution_trace\": [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}], \"errors\": []}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}",
+      "prompt_tokens": 880,
+      "completion_tokens": 84,
+      "latency_s": 4.111576946997957,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750191817cb43b51ad7a6f2b3d703638489b11c03dc0f87",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "repair_program_agent",
+      "broad_role": "repair",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF VirtualHome ProgramAgent, single local Retry-1 for the current\natomic. Repair from current state; do not blindly replay successes or plan future atomics.\nJSON only: {\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off light\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nPREVIOUS PROGRAM: # switch off the nearby kitchen lightswitch\nfind('lightswitch')\nswitchoff('lightswitch')\nCURRENT-ATOMIC TRACE: [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}]\nTYPED ERRORS: []\nVERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions.",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "raw_output": "{\"repair_brief\":\"Re-approach the lightswitch and re-execute switchoff to resolve the conflicting ON/OFF state, ensuring the lightswitch is unambiguously OFF.\",\"program\":\"# repair\\nfind('lightswitch')\\nswitchoff('lightswitch')\"}",
+      "output_text": "{\"repair_brief\":\"Re-approach the lightswitch and re-execute switchoff to resolve the conflicting ON/OFF state, ensuring the lightswitch is unambiguously OFF.\",\"program\":\"# repair\\nfind('lightswitch')\\nswitchoff('lightswitch')\"}",
+      "prompt_tokens": 1725,
+      "completion_tokens": 56,
+      "latency_s": 2.249882925993006,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750195937cb43b51ad7a6f2b3d703638489b11c03f08d5d",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true} OR {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"actionable hint\"}\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT CLASSES: [\"lightswitch\"]\nATTEMPT: {\"program\": \"# repair\\nfind('lightswitch')\\nswitchoff('lightswitch')\", \"execution_trace\": [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": false, \"detail\": \"<lightswitch> (261) is not on when executing \\\"[SWITCHOFF] <lightswitch> (261) [0]\\\"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<lightswitch> (261) is not on when executing \\\"[SWITCHOFF] <lightswitch> (261) [0]\\\"\", \"line\": \"switchoff('lightswitch')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}}",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off.\"}",
+      "prompt_tokens": 1060,
+      "completion_tokens": 80,
+      "latency_s": 4.79446322300646,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787750198210cb43b51ad7a6f2b3d703638489b11c03460654",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "input": "HPAF VirtualHome TaskAgent. Decompose WHAT is required into the\nfewest ordered object-centric semantic operations; ProgramAgent handles navigation\nand preconditions.\nRules: (1) one operation per atomic, centered on one manipulated object and optional\ntarget; (2) no locate/find/walk atomics, and prerequisite open/close is not an atomic;\n(3) completion_mode=state for persistent state/relation, process for a completed\noperation; keep one lifecycle in one process atomic; (4) process_intent is natural\nlanguage completion intent only, never calls/evaluator/GT/answers; null for state;\n(5) no primitive calls, IDs, invented objects, or time; (6) 1-6 atomics using exact\navailable object classes.\nJSON only: {\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\nTASK: turn off light\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "HPAF VirtualHome ProgramAgent. Compile only the current atomic into\na short executable program; do not redo earlier or plan future atomics.\nJSON only: {\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off light\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions."
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true} OR {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"actionable hint\"}\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT CLASSES: [\"lightswitch\"]\nATTEMPT: {\"program\": \"# switch off the nearby kitchen lightswitch\\nfind('lightswitch')\\nswitchoff('lightswitch')\", \"execution_trace\": [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}], \"errors\": []}"
+    },
+    {
+      "role": "repair_program_agent",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "input": "HPAF VirtualHome ProgramAgent, single local Retry-1 for the current\natomic. Repair from current state; do not blindly replay successes or plan future atomics.\nJSON only: {\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\nORIGINAL TASK: turn off light\nATOMIC: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nPREVIOUS PROGRAM: # switch off the nearby kitchen lightswitch\nfind('lightswitch')\nswitchoff('lightswitch')\nCURRENT-ATOMIC TRACE: [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}]\nTYPED ERRORS: []\nVERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}\nOBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nCALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\nExecution invariants:\n1. Listed lowercase calls/classes only. Stand up before navigation if seated/lying.\n2. Before interact(X), establish CLOSE(X) with find/walk immediately beforehand and\npreserve it; never align an unrelated object between alignment and interaction.\n3. grab(src): close + accessible + free hand; open its container only when needed.\n4. Transfer: align src > grab src > align dst > satisfy dst state > put src. Never\nalign dst before acquisition. putin/putback require held(src)+close(dst); open an\nopenable putin target. Movement invalidates prior proximity.\n5. Do not repeat satisfied open/close/switch states. Repair the typed failed\nprecondition before retrying the failed interaction.\n6. No direct heat/wash/eat/use/wait primitives. Comments may organize output; no\nassertions, functions, loops, instance IDs, evaluator predicates, or success claims.\nProcess contract: if the request denotes a completed process, emit its full executable lifecycle, including the terminal operation after activation when closure is required. A requested interaction needs a successful interaction event. Preserve object/device preconditions. Use no invented wait/time/actions."
+    },
+    {
+      "role": "post_repair_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "HPAF online verifier for the current VirtualHome task. Judge only\ncurrent symbolic state and current-attempt trace/errors; no evaluator, GT, final\ngraph, future atomic, or score. An emitted action counts only when trace success is\ntrue. Persistent state/relation proves state mode. For process mode require completed\nprocess/interaction evidence, including a terminal operation for a closed lifecycle;\nactivation alone is insufficient. Infer mode from task text only when mode=infer.\nJSON only: {\"done\":true} OR {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"actionable hint\"}\nTASK CONTRACT: {\"id\": 1, \"instruction\": \"switch off the lightswitch\", \"manipulated_object\": \"lightswitch\", \"target_object\": null, \"completion_mode\": \"process\", \"process_intent\": \"the light is turned off\"}\nSTATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, breadslice, breadslice INSIDE toaster, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is OFF, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate INSIDE microwave, plate ON kitchencounter, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nRELEVANT CLASSES: [\"lightswitch\"]\nATTEMPT: {\"program\": \"# repair\\nfind('lightswitch')\\nswitchoff('lightswitch')\", \"execution_trace\": [{\"line\": \"find('lightswitch')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <lightswitch> (261)\"}, {\"line\": \"switchoff('lightswitch')\", \"event\": \"action\", \"success\": false, \"detail\": \"<lightswitch> (261) is not on when executing \\\"[SWITCHOFF] <lightswitch> (261) [0]\\\"\", \"compiled_action\": \"<char0> [switchoff] <lightswitch> (261)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<lightswitch> (261) is not on when executing \\\"[SWITCHOFF] <lightswitch> (261) [0]\\\"\", \"line\": \"switchoff('lightswitch')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}}"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the lightswitch\",\"manipulated_object\":\"lightswitch\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the light is turned off\"}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the kitchen lightswitch and switch it off to turn off the light.\",\"program\":\"# switch off the nearby kitchen lightswitch\\nfind('lightswitch')\\nswitchoff('lightswitch')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the lightswitch state after the switchoff action: the current state still lists conflicting 'lightswitch is ON' alongside 'lightswitch is OFF', so re-execute or confirm the switchoff action to ensure the lightswitch is unambiguously OFF with no remaining ON state, completing the closed process lifecycle of turning the light off.\"}"
+    },
+    {
+      "role": "repair_program_agent",
+      "output": "{\"repair_brief\":\"Re-approach the lightswitch and re-execute switchoff to resolve the conflicting ON/OFF state, ensuring the lightswitch is unambiguously OFF.\",\"program\":\"# repair\\nfind('lightswitch')\\nswitchoff('lightswitch')\"}"
+    },
+    {
+      "role": "post_repair_verifier",
+      "output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"The switchoff action failed because the targeted lightswitch instance was not on. Resolve the conflicting lightswitch states (both ON and OFF are listed for nearby lightswitches): locate the lightswitch that is currently ON, then successfully execute switchoff on that ON lightswitch to complete the process of turning the light off.\"}"
+    }
+  ],
+  "error_type": "atomic_online_verification_failure",
+  "error_message": "Atomic 1 remained done=false after Retry-1",
+  "errors": [
+    {
+      "error_type": "atomic_online_verification_failure",
+      "message": "Atomic 1 remained done=false after Retry-1"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<lightswitch> (261) is not on when executing \"[SWITCHOFF] <lightswitch> (261) [0]\"",
+      "line": "switchoff('lightswitch')"
+    }
+  ],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"switch off the lightswitch\",\"manipulated_object\":\"lightswitch\",\"target_object\":null,\"completion_mode\":\"process\",\"process_intent\":\"the light is turned off\"}]}"
+}

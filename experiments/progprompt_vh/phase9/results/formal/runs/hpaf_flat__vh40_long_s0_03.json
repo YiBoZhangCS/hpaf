@@ -1,0 +1,661 @@
+{
+  "run_id": "vh40_formal_2026-08-26T135219.128255_0000_hpaf_flat_vh40_long_s0_03",
+  "phase": "vh40_formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T13:52:19.128255+00:00",
+  "task_id": "vh40_long_s0_03",
+  "task": "Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.",
+  "split": "phase9_long_extension",
+  "scene": 0,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "619d25cdb764d0943986fff47a99063c9b4d38576d915bb14569ff17602fb36d",
+  "generated_programs": [
+    "# Locate the fridge and open it to stage items inside\nfind('fridge')\nopen('fridge')\n# Retrieve salmon from the microwave\nfind('salmon')\ngrab('salmon')\n# Place salmon into the open fridge\nfind('fridge')\nputin('salmon','fridge')\n# Retrieve whippedcream from the kitchentable\nfind('whippedcream')\ngrab('whippedcream')\n# Stage whippedcream with salmon inside the fridge\nfind('fridge')\nputin('whippedcream','fridge')\n# Take whippedcream back out to deliver it to the counter\nfind('whippedcream')\ngrab('whippedcream')\n# Close the fridge with salmon remaining stored inside\nclose('fridge')\n# Deliver whippedcream to the kitchencounter\nfind('kitchencounter')\nputback('whippedcream','kitchencounter')"
+  ],
+  "generated_program": "# Locate the fridge and open it to stage items inside\nfind('fridge')\nopen('fridge')\n# Retrieve salmon from the microwave\nfind('salmon')\ngrab('salmon')\n# Place salmon into the open fridge\nfind('fridge')\nputin('salmon','fridge')\n# Retrieve whippedcream from the kitchentable\nfind('whippedcream')\ngrab('whippedcream')\n# Stage whippedcream with salmon inside the fridge\nfind('fridge')\nputin('whippedcream','fridge')\n# Take whippedcream back out to deliver it to the counter\nfind('whippedcream')\ngrab('whippedcream')\n# Close the fridge with salmon remaining stored inside\nclose('fridge')\n# Deliver whippedcream to the kitchencounter\nfind('kitchencounter')\nputback('whippedcream','kitchencounter')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, whippedcream, whippedcream ON kitchencounter. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; washingsponge ON kitchencounter; whippedcream ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"fridge\", \"kitchen\", \"kitchencounter\", \"salmon\", \"whippedcream\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate the fridge and open it to stage items inside\\nfind('fridge')\\nopen('fridge')\\n# Retrieve salmon from the microwave\\nfind('salmon')\\ngrab('salmon')\\n# Place salmon into the open fridge\\nfind('fridge')\\nputin('salmon','fridge')\\n# Retrieve whippedcream from the kitchentable\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Stage whippedcream with salmon inside the fridge\\nfind('fridge')\\nputin('whippedcream','fridge')\\n# Take whippedcream back out to deliver it to the counter\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Close the fridge with salmon remaining stored inside\\nclose('fridge')\\n# Deliver whippedcream to the kitchencounter\\nfind('kitchencounter')\\nputback('whippedcream','kitchencounter')\", \"execution_trace\": [{\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"open('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <fridge> (305)\"}, {\"line\": \"find('salmon')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <salmon> (327)\"}, {\"line\": \"grab('salmon')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <salmon> (327)\"}, {\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"putin('salmon','fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <salmon> (327) <fridge> (305)\"}, {\"line\": \"find('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <whippedcream> (318)\"}, {\"line\": \"grab('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <whippedcream> (318)\"}, {\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"putin('whippedcream','fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <whippedcream> (318) <fridge> (305)\"}, {\"line\": \"find('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <whippedcream> (318)\"}, {\"line\": \"grab('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <whippedcream> (318)\"}, {\"line\": \"close('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <fridge> (305)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"putback('whippedcream','kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <whippedcream> (318) <kitchencounter> (238)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: salmon was placed in the fridge, whippedcream was staged with it in the fridge, whippedcream was removed and placed on the kitchencounter, and the fridge was closed. Current observation confirms whippedcream is on the kitchencounter and the character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All requested steps completed successfully: salmon was placed in the fridge, whippedcream was staged with it in the fridge, whippedcream was removed and placed on the kitchencounter, and the fridge was closed. Current observation confirms whippedcream is on the kitchencounter and the character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1472,
+      "completion_tokens": 76,
+      "latency_s": 2.4777890740006114,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877523633312de38e8299405d0a4d8e2bf74997350ed7db6f",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, whippedcream, whippedcream ON kitchencounter. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; washingsponge ON kitchencounter; whippedcream ON kitchencounter.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: salmon was placed in the fridge, whippedcream was staged with it in the fridge, whippedcream was removed and placed on the kitchencounter, and the fridge was closed. Current observation confirms whippedcream is on the kitchencounter and the character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Locate the fridge and open it to stage items inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the fridge and open it to stage items inside",
+      "compiled_action": null
+    },
+    {
+      "line": "find('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the fridge and open it to stage items inside",
+      "compiled_action": "<char0> [find] <fridge> (305)"
+    },
+    {
+      "line": "open('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the fridge and open it to stage items inside",
+      "compiled_action": "<char0> [open] <fridge> (305)"
+    },
+    {
+      "line": "# Retrieve salmon from the microwave",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve salmon from the microwave",
+      "compiled_action": null
+    },
+    {
+      "line": "find('salmon')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve salmon from the microwave",
+      "compiled_action": "<char0> [find] <salmon> (327)"
+    },
+    {
+      "line": "grab('salmon')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve salmon from the microwave",
+      "compiled_action": "<char0> [grab] <salmon> (327)"
+    },
+    {
+      "line": "# Place salmon into the open fridge",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place salmon into the open fridge",
+      "compiled_action": null
+    },
+    {
+      "line": "find('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place salmon into the open fridge",
+      "compiled_action": "<char0> [find] <fridge> (305)"
+    },
+    {
+      "line": "putin('salmon','fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place salmon into the open fridge",
+      "compiled_action": "<char0> [putin] <salmon> (327) <fridge> (305)"
+    },
+    {
+      "line": "# Retrieve whippedcream from the kitchentable",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve whippedcream from the kitchentable",
+      "compiled_action": null
+    },
+    {
+      "line": "find('whippedcream')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve whippedcream from the kitchentable",
+      "compiled_action": "<char0> [find] <whippedcream> (318)"
+    },
+    {
+      "line": "grab('whippedcream')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Retrieve whippedcream from the kitchentable",
+      "compiled_action": "<char0> [grab] <whippedcream> (318)"
+    },
+    {
+      "line": "# Stage whippedcream with salmon inside the fridge",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage whippedcream with salmon inside the fridge",
+      "compiled_action": null
+    },
+    {
+      "line": "find('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage whippedcream with salmon inside the fridge",
+      "compiled_action": "<char0> [find] <fridge> (305)"
+    },
+    {
+      "line": "putin('whippedcream','fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage whippedcream with salmon inside the fridge",
+      "compiled_action": "<char0> [putin] <whippedcream> (318) <fridge> (305)"
+    },
+    {
+      "line": "# Take whippedcream back out to deliver it to the counter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Take whippedcream back out to deliver it to the counter",
+      "compiled_action": null
+    },
+    {
+      "line": "find('whippedcream')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Take whippedcream back out to deliver it to the counter",
+      "compiled_action": "<char0> [find] <whippedcream> (318)"
+    },
+    {
+      "line": "grab('whippedcream')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Take whippedcream back out to deliver it to the counter",
+      "compiled_action": "<char0> [grab] <whippedcream> (318)"
+    },
+    {
+      "line": "# Close the fridge with salmon remaining stored inside",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the fridge with salmon remaining stored inside",
+      "compiled_action": null
+    },
+    {
+      "line": "close('fridge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close the fridge with salmon remaining stored inside",
+      "compiled_action": "<char0> [close] <fridge> (305)"
+    },
+    {
+      "line": "# Deliver whippedcream to the kitchencounter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver whippedcream to the kitchencounter",
+      "compiled_action": null
+    },
+    {
+      "line": "find('kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver whippedcream to the kitchencounter",
+      "compiled_action": "<char0> [find] <kitchencounter> (238)"
+    },
+    {
+      "line": "putback('whippedcream','kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver whippedcream to the kitchencounter",
+      "compiled_action": "<char0> [putback] <whippedcream> (318) <kitchencounter> (238)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <fridge> (305)",
+      "parsed_action": "[FIND] <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <fridge> (305)",
+      "parsed_action": "[OPEN] <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <salmon> (327)",
+      "parsed_action": "[FIND] <salmon> (327) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <salmon> (327)",
+      "parsed_action": "[GRAB] <salmon> (327) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <fridge> (305)",
+      "parsed_action": "[FIND] <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <salmon> (327) <fridge> (305)",
+      "parsed_action": "[PUTIN] <salmon> (327) <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <whippedcream> (318)",
+      "parsed_action": "[FIND] <whippedcream> (318) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <whippedcream> (318)",
+      "parsed_action": "[GRAB] <whippedcream> (318) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <fridge> (305)",
+      "parsed_action": "[FIND] <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <whippedcream> (318) <fridge> (305)",
+      "parsed_action": "[PUTIN] <whippedcream> (318) <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <whippedcream> (318)",
+      "parsed_action": "[FIND] <whippedcream> (318) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <whippedcream> (318)",
+      "parsed_action": "[GRAB] <whippedcream> (318) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <fridge> (305)",
+      "parsed_action": "[CLOSE] <fridge> (305) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <kitchencounter> (238)",
+      "parsed_action": "[FIND] <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <whippedcream> (318) <kitchencounter> (238)",
+      "parsed_action": "[PUTBACK] <whippedcream> (318) <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <fridge> (305)",
+    "<char0> [open] <fridge> (305)",
+    "<char0> [find] <salmon> (327)",
+    "<char0> [grab] <salmon> (327)",
+    "<char0> [find] <fridge> (305)",
+    "<char0> [putin] <salmon> (327) <fridge> (305)",
+    "<char0> [find] <whippedcream> (318)",
+    "<char0> [grab] <whippedcream> (318)",
+    "<char0> [find] <fridge> (305)",
+    "<char0> [putin] <whippedcream> (318) <fridge> (305)",
+    "<char0> [find] <whippedcream> (318)",
+    "<char0> [grab] <whippedcream> (318)",
+    "<char0> [close] <fridge> (305)",
+    "<char0> [find] <kitchencounter> (238)",
+    "<char0> [putback] <whippedcream> (318) <kitchencounter> (238)"
+  ],
+  "program_length": 15,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 8,
+  "semantic_satisfied_condition_count": 8,
+  "semantic_condition_details": [
+    {
+      "kind": "ordered_event_stage",
+      "stage": 1,
+      "description": "stage first source in shared container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "salmon",
+          "second": "fridge"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "salmon",
+        "first_id": 327,
+        "second": "fridge",
+        "second_id": 305,
+        "ordinal": 6
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 2,
+      "description": "stage second source in shared container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "whippedcream",
+          "second": "fridge"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "whippedcream",
+        "first_id": 318,
+        "second": "fridge",
+        "second_id": 305,
+        "ordinal": 10
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 3,
+      "description": "retrieve second source after shared staging",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "whippedcream"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "whippedcream",
+        "first_id": 318,
+        "second": null,
+        "second_id": null,
+        "ordinal": 12
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 4,
+      "description": "restore shared container state",
+      "expected": [
+        {
+          "verb": "close",
+          "first": "fridge"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "close",
+        "first": "fridge",
+        "first_id": 305,
+        "second": null,
+        "second_id": null,
+        "ordinal": 13
+      }
+    },
+    {
+      "kind": "ordered_event_stage",
+      "stage": 5,
+      "description": "deliver second source to destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "whippedcream",
+          "second": "kitchencounter"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "whippedcream",
+        "first_id": 318,
+        "second": "kitchencounter",
+        "second_id": 238,
+        "ordinal": 15
+      }
+    },
+    {
+      "kind": "final_state_condition",
+      "condition": {
+        "condition": "INSIDE(salmon, fridge)",
+        "predicate": "RELATION",
+        "subject": "salmon",
+        "relation": "INSIDE",
+        "object": "fridge",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['327-INSIDE-305']"
+    },
+    {
+      "kind": "final_state_condition",
+      "condition": {
+        "condition": "ON(whippedcream, kitchencounter)",
+        "predicate": "RELATION",
+        "subject": "whippedcream",
+        "relation": "ON",
+        "object": "kitchencounter",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['318-ON-238']"
+    },
+    {
+      "kind": "final_state_condition",
+      "condition": {
+        "condition": "STATE(fridge, CLOSED)",
+        "predicate": "STATE",
+        "object": "fridge",
+        "value": "CLOSED",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[305]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1549,
+  "generation_completion_tokens": 274,
+  "verification_prompt_tokens": 1472,
+  "verification_completion_tokens": 76,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 3021,
+  "completion_tokens": 350,
+  "total_prompt_tokens": 3021,
+  "total_completion_tokens": 350,
+  "total_tokens": 3371,
+  "planning_latency": 7.271530508995056,
+  "verification_latency": 2.4777890740006114,
+  "total_llm_latency": 9.749319582995668,
+  "wall_clock_total_s": 10.947139893003623,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"First, locate and open the fridge, retrieve the salmon from the microwave and the whippedcream from the kitchentable, place both inside the fridge to stage them together, then remove only the whippedcream, close the fridge, and set the whippedcream on the kitchencounter while leaving the salmon stored inside the closed fridge.\",\"program\":\"# Locate the fridge and open it to stage items inside\\nfind('fridge')\\nopen('fridge')\\n# Retrieve salmon from the microwave\\nfind('salmon')\\ngrab('salmon')\\n# Place salmon into the open fridge\\nfind('fridge')\\nputin('salmon','fridge')\\n# Retrieve whippedcream from the kitchentable\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Stage whippedcream with salmon inside the fridge\\nfind('fridge')\\nputin('whippedcream','fridge')\\n# Take whippedcream back out to deliver it to the counter\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Close the fridge with salmon remaining stored inside\\nclose('fridge')\\n# Deliver whippedcream to the kitchencounter\\nfind('kitchencounter')\\nputback('whippedcream','kitchencounter')\"}",
+      "output_text": "{\"plan_brief\":\"First, locate and open the fridge, retrieve the salmon from the microwave and the whippedcream from the kitchentable, place both inside the fridge to stage them together, then remove only the whippedcream, close the fridge, and set the whippedcream on the kitchencounter while leaving the salmon stored inside the closed fridge.\",\"program\":\"# Locate the fridge and open it to stage items inside\\nfind('fridge')\\nopen('fridge')\\n# Retrieve salmon from the microwave\\nfind('salmon')\\ngrab('salmon')\\n# Place salmon into the open fridge\\nfind('fridge')\\nputin('salmon','fridge')\\n# Retrieve whippedcream from the kitchentable\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Stage whippedcream with salmon inside the fridge\\nfind('fridge')\\nputin('whippedcream','fridge')\\n# Take whippedcream back out to deliver it to the counter\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Close the fridge with salmon remaining stored inside\\nclose('fridge')\\n# Deliver whippedcream to the kitchencounter\\nfind('kitchencounter')\\nputback('whippedcream','kitchencounter')\"}",
+      "prompt_tokens": 1549,
+      "completion_tokens": 274,
+      "latency_s": 7.271530508995056,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877523556722de38e8299405d0a4d8e2bf74997350e93c0e7",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, whippedcream, whippedcream ON kitchencounter. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; washingsponge ON kitchencounter; whippedcream ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"fridge\", \"kitchen\", \"kitchencounter\", \"salmon\", \"whippedcream\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate the fridge and open it to stage items inside\\nfind('fridge')\\nopen('fridge')\\n# Retrieve salmon from the microwave\\nfind('salmon')\\ngrab('salmon')\\n# Place salmon into the open fridge\\nfind('fridge')\\nputin('salmon','fridge')\\n# Retrieve whippedcream from the kitchentable\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Stage whippedcream with salmon inside the fridge\\nfind('fridge')\\nputin('whippedcream','fridge')\\n# Take whippedcream back out to deliver it to the counter\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Close the fridge with salmon remaining stored inside\\nclose('fridge')\\n# Deliver whippedcream to the kitchencounter\\nfind('kitchencounter')\\nputback('whippedcream','kitchencounter')\", \"execution_trace\": [{\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"open('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <fridge> (305)\"}, {\"line\": \"find('salmon')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <salmon> (327)\"}, {\"line\": \"grab('salmon')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <salmon> (327)\"}, {\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"putin('salmon','fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <salmon> (327) <fridge> (305)\"}, {\"line\": \"find('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <whippedcream> (318)\"}, {\"line\": \"grab('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <whippedcream> (318)\"}, {\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"putin('whippedcream','fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <whippedcream> (318) <fridge> (305)\"}, {\"line\": \"find('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <whippedcream> (318)\"}, {\"line\": \"grab('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <whippedcream> (318)\"}, {\"line\": \"close('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <fridge> (305)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"putback('whippedcream','kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <whippedcream> (318) <kitchencounter> (238)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: salmon was placed in the fridge, whippedcream was staged with it in the fridge, whippedcream was removed and placed on the kitchencounter, and the fridge was closed. Current observation confirms whippedcream is on the kitchencounter and the character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All requested steps completed successfully: salmon was placed in the fridge, whippedcream was staged with it in the fridge, whippedcream was removed and placed on the kitchencounter, and the fridge was closed. Current observation confirms whippedcream is on the kitchencounter and the character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1472,
+      "completion_tokens": 76,
+      "latency_s": 2.4777890740006114,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877523633312de38e8299405d0a4d8e2bf74997350ed7db6f",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the salmon and whippedcream together in the fridge, then leave the salmon stored there and deliver the whippedcream to the kitchencounter, with the fridge closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: kitchencounter is CLOSED, whippedcream, whippedcream ON kitchencounter. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; microwave ON kitchencounter; plate ON kitchencounter; toaster ON kitchencounter; washingsponge ON kitchencounter; whippedcream ON kitchencounter.\nRELEVANT OBJECT CLASSES: [\"fridge\", \"kitchen\", \"kitchencounter\", \"salmon\", \"whippedcream\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate the fridge and open it to stage items inside\\nfind('fridge')\\nopen('fridge')\\n# Retrieve salmon from the microwave\\nfind('salmon')\\ngrab('salmon')\\n# Place salmon into the open fridge\\nfind('fridge')\\nputin('salmon','fridge')\\n# Retrieve whippedcream from the kitchentable\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Stage whippedcream with salmon inside the fridge\\nfind('fridge')\\nputin('whippedcream','fridge')\\n# Take whippedcream back out to deliver it to the counter\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Close the fridge with salmon remaining stored inside\\nclose('fridge')\\n# Deliver whippedcream to the kitchencounter\\nfind('kitchencounter')\\nputback('whippedcream','kitchencounter')\", \"execution_trace\": [{\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"open('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <fridge> (305)\"}, {\"line\": \"find('salmon')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <salmon> (327)\"}, {\"line\": \"grab('salmon')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <salmon> (327)\"}, {\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"putin('salmon','fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <salmon> (327) <fridge> (305)\"}, {\"line\": \"find('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <whippedcream> (318)\"}, {\"line\": \"grab('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <whippedcream> (318)\"}, {\"line\": \"find('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fridge> (305)\"}, {\"line\": \"putin('whippedcream','fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <whippedcream> (318) <fridge> (305)\"}, {\"line\": \"find('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <whippedcream> (318)\"}, {\"line\": \"grab('whippedcream')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <whippedcream> (318)\"}, {\"line\": \"close('fridge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <fridge> (305)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"putback('whippedcream','kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <whippedcream> (318) <kitchencounter> (238)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"First, locate and open the fridge, retrieve the salmon from the microwave and the whippedcream from the kitchentable, place both inside the fridge to stage them together, then remove only the whippedcream, close the fridge, and set the whippedcream on the kitchencounter while leaving the salmon stored inside the closed fridge.\",\"program\":\"# Locate the fridge and open it to stage items inside\\nfind('fridge')\\nopen('fridge')\\n# Retrieve salmon from the microwave\\nfind('salmon')\\ngrab('salmon')\\n# Place salmon into the open fridge\\nfind('fridge')\\nputin('salmon','fridge')\\n# Retrieve whippedcream from the kitchentable\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Stage whippedcream with salmon inside the fridge\\nfind('fridge')\\nputin('whippedcream','fridge')\\n# Take whippedcream back out to deliver it to the counter\\nfind('whippedcream')\\ngrab('whippedcream')\\n# Close the fridge with salmon remaining stored inside\\nclose('fridge')\\n# Deliver whippedcream to the kitchencounter\\nfind('kitchencounter')\\nputback('whippedcream','kitchencounter')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"All requested steps completed successfully: salmon was placed in the fridge, whippedcream was staged with it in the fridge, whippedcream was removed and placed on the kitchencounter, and the fridge was closed. Current observation confirms whippedcream is on the kitchencounter and the character holds nothing.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug."
+}

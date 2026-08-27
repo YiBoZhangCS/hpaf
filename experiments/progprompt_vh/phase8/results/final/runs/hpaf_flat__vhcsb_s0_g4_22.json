@@ -1,0 +1,642 @@
+{
+  "run_id": "formal_2026-08-26T110717.854076_0000_hpaf_flat_vhcsb_s0_g4_22",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T11:07:17.854076+00:00",
+  "task_id": "vhcsb_s0_g4_22",
+  "task": "Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.",
+  "split": "synthetic_composition",
+  "scene": 0,
+  "goal_count": 4,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "9eb12933135939eb6465e81090247155293cd641d5772face2adde30e1f3f36e",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    "# Place washingsponge on bed first since it is visible on kitchencounter nearby\nfind('washingsponge')\ngrab('washingsponge')\nfind('bed')\nwalk('bed')\nputback('washingsponge','bed')\n# Return to kitchen and place barsoap on kitchencounter\nfind('barsoap')\ngrab('barsoap')\nfind('kitchencounter')\nwalk('kitchencounter')\nputback('barsoap','kitchencounter')\n# Place candybar on fryingpan\nfind('candybar')\ngrab('candybar')\nfind('fryingpan')\nwalk('fryingpan')\nputback('candybar','fryingpan')\n# Place crackers in toilet\nfind('crackers')\ngrab('crackers')\nfind('toilet')\nwalk('toilet')\nputin('crackers','toilet')\n"
+  ],
+  "generated_program": "# Place washingsponge on bed first since it is visible on kitchencounter nearby\nfind('washingsponge')\ngrab('washingsponge')\nfind('bed')\nwalk('bed')\nputback('washingsponge','bed')\n# Return to kitchen and place barsoap on kitchencounter\nfind('barsoap')\ngrab('barsoap')\nfind('kitchencounter')\nwalk('kitchencounter')\nputback('barsoap','kitchencounter')\n# Place candybar on fryingpan\nfind('candybar')\ngrab('candybar')\nfind('fryingpan')\nwalk('fryingpan')\nputback('candybar','fryingpan')\n# Place crackers in toilet\nfind('crackers')\ngrab('crackers')\nfind('toilet')\nwalk('toilet')\nputin('crackers','toilet')\n",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=['crackers']. Nearby visible graph: crackers, toilet is CLOSED. You have crackers. One-hop INSIDE/ON relations connected to nearby objects: none.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"bed\", \"candybar\", \"crackers\", \"fryingpan\", \"kitchen\", \"kitchencounter\", \"toilet\", \"washingsponge\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Place washingsponge on bed first since it is visible on kitchencounter nearby\\nfind('washingsponge')\\ngrab('washingsponge')\\nfind('bed')\\nwalk('bed')\\nputback('washingsponge','bed')\\n# Return to kitchen and place barsoap on kitchencounter\\nfind('barsoap')\\ngrab('barsoap')\\nfind('kitchencounter')\\nwalk('kitchencounter')\\nputback('barsoap','kitchencounter')\\n# Place candybar on fryingpan\\nfind('candybar')\\ngrab('candybar')\\nfind('fryingpan')\\nwalk('fryingpan')\\nputback('candybar','fryingpan')\\n# Place crackers in toilet\\nfind('crackers')\\ngrab('crackers')\\nfind('toilet')\\nwalk('toilet')\\nputin('crackers','toilet')\\n\", \"execution_trace\": [{\"line\": \"find('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingsponge> (266)\"}, {\"line\": \"grab('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <washingsponge> (266)\"}, {\"line\": \"find('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bed> (109)\"}, {\"line\": \"walk('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bed> (109)\"}, {\"line\": \"putback('washingsponge','bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <washingsponge> (266) <bed> (109)\"}, {\"line\": \"find('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <barsoap> (66)\"}, {\"line\": \"grab('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <barsoap> (66)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"walk('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <kitchencounter> (238)\"}, {\"line\": \"putback('barsoap','kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <barsoap> (66) <kitchencounter> (238)\"}, {\"line\": \"find('candybar')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <candybar> (330)\"}, {\"line\": \"grab('candybar')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <candybar> (330)\"}, {\"line\": \"find('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fryingpan> (269)\"}, {\"line\": \"walk('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <fryingpan> (269)\"}, {\"line\": \"putback('candybar','fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <candybar> (330) <fryingpan> (269)\"}, {\"line\": \"find('crackers')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <crackers> (332)\"}, {\"line\": \"grab('crackers')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <crackers> (332)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (45)\"}, {\"line\": \"walk('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <toilet> (45)\"}, {\"line\": \"putin('crackers','toilet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toilet> (45) is not open or is not openable when executing \\\"[PUTIN] <crackers> (332) <toilet> (45) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <crackers> (332) <toilet> (45)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toilet> (45) is not open or is not openable when executing \\\"[PUTIN] <crackers> (332) <toilet> (45) [0]\\\"\", \"line\": \"putin('crackers','toilet')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The first three placements succeeded, but putting crackers in the toilet failed because the toilet is closed; crackers are still held and not placed in the toilet.\",\"failure_stage\":\"final placement of crackers into toilet\",\"regeneration_hint\":\"Open the toilet before executing putin('crackers','toilet'), e.g., add open('toilet') after walking to the toilet, then put the crackers inside.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The first three placements succeeded, but putting crackers in the toilet failed because the toilet is closed; crackers are still held and not placed in the toilet.\",\"failure_stage\":\"final placement of crackers into toilet\",\"regeneration_hint\":\"Open the toilet before executing putin('crackers','toilet'), e.g., add open('toilet') after walking to the toilet, then put the crackers inside.\"}",
+      "prompt_tokens": 1796,
+      "completion_tokens": 90,
+      "latency_s": 8.689161205002165,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774245570515a741db9058723ed34b56d0ce5c7d9cee1594",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=bathroom; states=[]; holds=['crackers']. Nearby visible graph: crackers, toilet is CLOSED. You have crackers. One-hop INSIDE/ON relations connected to nearby objects: none.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The first three placements succeeded, but putting crackers in the toilet failed because the toilet is closed; crackers are still held and not placed in the toilet.\",\"failure_stage\":\"final placement of crackers into toilet\",\"regeneration_hint\":\"Open the toilet before executing putin('crackers','toilet'), e.g., add open('toilet') after walking to the toilet, then put the crackers inside.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "compiled_action": null
+    },
+    {
+      "line": "find('washingsponge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "compiled_action": "<char0> [find] <washingsponge> (266)"
+    },
+    {
+      "line": "grab('washingsponge')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "compiled_action": "<char0> [grab] <washingsponge> (266)"
+    },
+    {
+      "line": "find('bed')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "compiled_action": "<char0> [find] <bed> (109)"
+    },
+    {
+      "line": "walk('bed')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "compiled_action": "<char0> [walk] <bed> (109)"
+    },
+    {
+      "line": "putback('washingsponge','bed')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place washingsponge on bed first since it is visible on kitchencounter nearby",
+      "compiled_action": "<char0> [putback] <washingsponge> (266) <bed> (109)"
+    },
+    {
+      "line": "# Return to kitchen and place barsoap on kitchencounter",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to kitchen and place barsoap on kitchencounter",
+      "compiled_action": null
+    },
+    {
+      "line": "find('barsoap')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to kitchen and place barsoap on kitchencounter",
+      "compiled_action": "<char0> [find] <barsoap> (66)"
+    },
+    {
+      "line": "grab('barsoap')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to kitchen and place barsoap on kitchencounter",
+      "compiled_action": "<char0> [grab] <barsoap> (66)"
+    },
+    {
+      "line": "find('kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to kitchen and place barsoap on kitchencounter",
+      "compiled_action": "<char0> [find] <kitchencounter> (238)"
+    },
+    {
+      "line": "walk('kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to kitchen and place barsoap on kitchencounter",
+      "compiled_action": "<char0> [walk] <kitchencounter> (238)"
+    },
+    {
+      "line": "putback('barsoap','kitchencounter')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Return to kitchen and place barsoap on kitchencounter",
+      "compiled_action": "<char0> [putback] <barsoap> (66) <kitchencounter> (238)"
+    },
+    {
+      "line": "# Place candybar on fryingpan",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place candybar on fryingpan",
+      "compiled_action": null
+    },
+    {
+      "line": "find('candybar')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place candybar on fryingpan",
+      "compiled_action": "<char0> [find] <candybar> (330)"
+    },
+    {
+      "line": "grab('candybar')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place candybar on fryingpan",
+      "compiled_action": "<char0> [grab] <candybar> (330)"
+    },
+    {
+      "line": "find('fryingpan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place candybar on fryingpan",
+      "compiled_action": "<char0> [find] <fryingpan> (269)"
+    },
+    {
+      "line": "walk('fryingpan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place candybar on fryingpan",
+      "compiled_action": "<char0> [walk] <fryingpan> (269)"
+    },
+    {
+      "line": "putback('candybar','fryingpan')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place candybar on fryingpan",
+      "compiled_action": "<char0> [putback] <candybar> (330) <fryingpan> (269)"
+    },
+    {
+      "line": "# Place crackers in toilet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place crackers in toilet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('crackers')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place crackers in toilet",
+      "compiled_action": "<char0> [find] <crackers> (332)"
+    },
+    {
+      "line": "grab('crackers')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place crackers in toilet",
+      "compiled_action": "<char0> [grab] <crackers> (332)"
+    },
+    {
+      "line": "find('toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place crackers in toilet",
+      "compiled_action": "<char0> [find] <toilet> (45)"
+    },
+    {
+      "line": "walk('toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place crackers in toilet",
+      "compiled_action": "<char0> [walk] <toilet> (45)"
+    },
+    {
+      "line": "putin('crackers','toilet')",
+      "event": "action",
+      "success": false,
+      "detail": "<toilet> (45) is not open or is not openable when executing \"[PUTIN] <crackers> (332) <toilet> (45) [0]\"",
+      "subgoal": "Place crackers in toilet",
+      "compiled_action": "<char0> [putin] <crackers> (332) <toilet> (45)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <washingsponge> (266)",
+      "parsed_action": "[FIND] <washingsponge> (266) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <washingsponge> (266)",
+      "parsed_action": "[GRAB] <washingsponge> (266) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <bed> (109)",
+      "parsed_action": "[FIND] <bed> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <bed> (109)",
+      "parsed_action": "[WALK] <bed> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <washingsponge> (266) <bed> (109)",
+      "parsed_action": "[PUTBACK] <washingsponge> (266) <bed> (109) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <barsoap> (66)",
+      "parsed_action": "[FIND] <barsoap> (66) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <barsoap> (66)",
+      "parsed_action": "[GRAB] <barsoap> (66) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <kitchencounter> (238)",
+      "parsed_action": "[FIND] <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <kitchencounter> (238)",
+      "parsed_action": "[WALK] <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <barsoap> (66) <kitchencounter> (238)",
+      "parsed_action": "[PUTBACK] <barsoap> (66) <kitchencounter> (238) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <candybar> (330)",
+      "parsed_action": "[FIND] <candybar> (330) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <candybar> (330)",
+      "parsed_action": "[GRAB] <candybar> (330) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <fryingpan> (269)",
+      "parsed_action": "[FIND] <fryingpan> (269) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <fryingpan> (269)",
+      "parsed_action": "[WALK] <fryingpan> (269) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <candybar> (330) <fryingpan> (269)",
+      "parsed_action": "[PUTBACK] <candybar> (330) <fryingpan> (269) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <crackers> (332)",
+      "parsed_action": "[FIND] <crackers> (332) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <crackers> (332)",
+      "parsed_action": "[GRAB] <crackers> (332) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toilet> (45)",
+      "parsed_action": "[FIND] <toilet> (45) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [walk] <toilet> (45)",
+      "parsed_action": "[WALK] <toilet> (45) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <crackers> (332) <toilet> (45)",
+      "parsed_action": "[PUTIN] <crackers> (332) <toilet> (45) [0]",
+      "success": false,
+      "error": "<toilet> (45) is not open or is not openable when executing \"[PUTIN] <crackers> (332) <toilet> (45) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <washingsponge> (266)",
+    "<char0> [grab] <washingsponge> (266)",
+    "<char0> [find] <bed> (109)",
+    "<char0> [walk] <bed> (109)",
+    "<char0> [putback] <washingsponge> (266) <bed> (109)",
+    "<char0> [find] <barsoap> (66)",
+    "<char0> [grab] <barsoap> (66)",
+    "<char0> [find] <kitchencounter> (238)",
+    "<char0> [walk] <kitchencounter> (238)",
+    "<char0> [putback] <barsoap> (66) <kitchencounter> (238)",
+    "<char0> [find] <candybar> (330)",
+    "<char0> [grab] <candybar> (330)",
+    "<char0> [find] <fryingpan> (269)",
+    "<char0> [walk] <fryingpan> (269)",
+    "<char0> [putback] <candybar> (330) <fryingpan> (269)",
+    "<char0> [find] <crackers> (332)",
+    "<char0> [grab] <crackers> (332)",
+    "<char0> [find] <toilet> (45)",
+    "<char0> [walk] <toilet> (45)",
+    "<char0> [putin] <crackers> (332) <toilet> (45)"
+  ],
+  "program_length": 20,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.75,
+  "semantic_goal_condition_count": 4,
+  "semantic_satisfied_condition_count": 3,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "ON(barsoap, kitchencounter)",
+        "predicate": "RELATION",
+        "subject": "barsoap",
+        "relation": "ON",
+        "object": "kitchencounter",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['66-ON-238']"
+    },
+    {
+      "condition": {
+        "condition": "ON(candybar, fryingpan)",
+        "predicate": "RELATION",
+        "subject": "candybar",
+        "relation": "ON",
+        "object": "fryingpan",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['330-ON-269']"
+    },
+    {
+      "condition": {
+        "condition": "ON(washingsponge, bed)",
+        "predicate": "RELATION",
+        "subject": "washingsponge",
+        "relation": "ON",
+        "object": "bed",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['266-ON-109']"
+    },
+    {
+      "condition": {
+        "condition": "INSIDE(crackers, toilet)",
+        "predicate": "RELATION",
+        "subject": "crackers",
+        "relation": "INSIDE",
+        "object": "toilet",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "condition": "INSIDE(crackers, toilet)",
+      "predicate": "RELATION",
+      "subject": "crackers",
+      "relation": "INSIDE",
+      "object": "toilet",
+      "rationale": "Direct persistent relation requested by the generated atomic goal."
+    }
+  ],
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 0.95,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1552,
+  "generation_completion_tokens": 276,
+  "verification_prompt_tokens": 1796,
+  "verification_completion_tokens": 90,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 3348,
+  "completion_tokens": 366,
+  "total_prompt_tokens": 3348,
+  "total_completion_tokens": 366,
+  "total_tokens": 3714,
+  "planning_latency": 6.348961657997279,
+  "verification_latency": 8.689161205002165,
+  "total_llm_latency": 15.038122862999444,
+  "wall_clock_total_s": 16.302163233005558,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Start in kitchen, place the visible washingsponge onto the bed in the bedroom, then place barsoap on the kitchencounter, candybar on the fryingpan, and crackers in the toilet by navigating to each object, grabbing it, moving to the target, and placing it.\",\"program\":\"# Place washingsponge on bed first since it is visible on kitchencounter nearby\\nfind('washingsponge')\\ngrab('washingsponge')\\nfind('bed')\\nwalk('bed')\\nputback('washingsponge','bed')\\n# Return to kitchen and place barsoap on kitchencounter\\nfind('barsoap')\\ngrab('barsoap')\\nfind('kitchencounter')\\nwalk('kitchencounter')\\nputback('barsoap','kitchencounter')\\n# Place candybar on fryingpan\\nfind('candybar')\\ngrab('candybar')\\nfind('fryingpan')\\nwalk('fryingpan')\\nputback('candybar','fryingpan')\\n# Place crackers in toilet\\nfind('crackers')\\ngrab('crackers')\\nfind('toilet')\\nwalk('toilet')\\nputin('crackers','toilet')\\n\"}",
+      "output_text": "{\"plan_brief\":\"Start in kitchen, place the visible washingsponge onto the bed in the bedroom, then place barsoap on the kitchencounter, candybar on the fryingpan, and crackers in the toilet by navigating to each object, grabbing it, moving to the target, and placing it.\",\"program\":\"# Place washingsponge on bed first since it is visible on kitchencounter nearby\\nfind('washingsponge')\\ngrab('washingsponge')\\nfind('bed')\\nwalk('bed')\\nputback('washingsponge','bed')\\n# Return to kitchen and place barsoap on kitchencounter\\nfind('barsoap')\\ngrab('barsoap')\\nfind('kitchencounter')\\nwalk('kitchencounter')\\nputback('barsoap','kitchencounter')\\n# Place candybar on fryingpan\\nfind('candybar')\\ngrab('candybar')\\nfind('fryingpan')\\nwalk('fryingpan')\\nputback('candybar','fryingpan')\\n# Place crackers in toilet\\nfind('crackers')\\ngrab('crackers')\\nfind('toilet')\\nwalk('toilet')\\nputin('crackers','toilet')\\n\"}",
+      "prompt_tokens": 1552,
+      "completion_tokens": 276,
+      "latency_s": 6.348961657997279,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774244892415a741db9058723ed34b56d0ce5c7d9cefefcb",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=['crackers']. Nearby visible graph: crackers, toilet is CLOSED. You have crackers. One-hop INSIDE/ON relations connected to nearby objects: none.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"bed\", \"candybar\", \"crackers\", \"fryingpan\", \"kitchen\", \"kitchencounter\", \"toilet\", \"washingsponge\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Place washingsponge on bed first since it is visible on kitchencounter nearby\\nfind('washingsponge')\\ngrab('washingsponge')\\nfind('bed')\\nwalk('bed')\\nputback('washingsponge','bed')\\n# Return to kitchen and place barsoap on kitchencounter\\nfind('barsoap')\\ngrab('barsoap')\\nfind('kitchencounter')\\nwalk('kitchencounter')\\nputback('barsoap','kitchencounter')\\n# Place candybar on fryingpan\\nfind('candybar')\\ngrab('candybar')\\nfind('fryingpan')\\nwalk('fryingpan')\\nputback('candybar','fryingpan')\\n# Place crackers in toilet\\nfind('crackers')\\ngrab('crackers')\\nfind('toilet')\\nwalk('toilet')\\nputin('crackers','toilet')\\n\", \"execution_trace\": [{\"line\": \"find('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingsponge> (266)\"}, {\"line\": \"grab('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <washingsponge> (266)\"}, {\"line\": \"find('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bed> (109)\"}, {\"line\": \"walk('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bed> (109)\"}, {\"line\": \"putback('washingsponge','bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <washingsponge> (266) <bed> (109)\"}, {\"line\": \"find('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <barsoap> (66)\"}, {\"line\": \"grab('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <barsoap> (66)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"walk('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <kitchencounter> (238)\"}, {\"line\": \"putback('barsoap','kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <barsoap> (66) <kitchencounter> (238)\"}, {\"line\": \"find('candybar')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <candybar> (330)\"}, {\"line\": \"grab('candybar')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <candybar> (330)\"}, {\"line\": \"find('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fryingpan> (269)\"}, {\"line\": \"walk('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <fryingpan> (269)\"}, {\"line\": \"putback('candybar','fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <candybar> (330) <fryingpan> (269)\"}, {\"line\": \"find('crackers')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <crackers> (332)\"}, {\"line\": \"grab('crackers')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <crackers> (332)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (45)\"}, {\"line\": \"walk('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <toilet> (45)\"}, {\"line\": \"putin('crackers','toilet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toilet> (45) is not open or is not openable when executing \\\"[PUTIN] <crackers> (332) <toilet> (45) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <crackers> (332) <toilet> (45)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toilet> (45) is not open or is not openable when executing \\\"[PUTIN] <crackers> (332) <toilet> (45) [0]\\\"\", \"line\": \"putin('crackers','toilet')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The first three placements succeeded, but putting crackers in the toilet failed because the toilet is closed; crackers are still held and not placed in the toilet.\",\"failure_stage\":\"final placement of crackers into toilet\",\"regeneration_hint\":\"Open the toilet before executing putin('crackers','toilet'), e.g., add open('toilet') after walking to the toilet, then put the crackers inside.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The first three placements succeeded, but putting crackers in the toilet failed because the toilet is closed; crackers are still held and not placed in the toilet.\",\"failure_stage\":\"final placement of crackers into toilet\",\"regeneration_hint\":\"Open the toilet before executing putin('crackers','toilet'), e.g., add open('toilet') after walking to the toilet, then put the crackers inside.\"}",
+      "prompt_tokens": 1796,
+      "completion_tokens": 90,
+      "latency_s": 8.689161205002165,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774245570515a741db9058723ed34b56d0ce5c7d9cee1594",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bellpepper\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"candybar\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"cereal\", \"chair\", \"character\", \"chips\", \"chocolatesyrup\", \"clock\", \"closet\", \"closetdrawer\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cpuscreen\", \"crackers\", \"creamybuns\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"paper\", \"peach\", \"perfume\", \"photoframe\", \"pie\", \"pillow\", \"plate\", \"plum\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"washingsponge\", \"waterglass\", \"whippedcream\", \"window\", \"wineglass\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Place the barsoap on the kitchencounter, place the candybar on the fryingpan, place the washingsponge on the bed, and put the crackers in the toilet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=['crackers']. Nearby visible graph: crackers, toilet is CLOSED. You have crackers. One-hop INSIDE/ON relations connected to nearby objects: none.\nRELEVANT OBJECT CLASSES: [\"barsoap\", \"bed\", \"candybar\", \"crackers\", \"fryingpan\", \"kitchen\", \"kitchencounter\", \"toilet\", \"washingsponge\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Place washingsponge on bed first since it is visible on kitchencounter nearby\\nfind('washingsponge')\\ngrab('washingsponge')\\nfind('bed')\\nwalk('bed')\\nputback('washingsponge','bed')\\n# Return to kitchen and place barsoap on kitchencounter\\nfind('barsoap')\\ngrab('barsoap')\\nfind('kitchencounter')\\nwalk('kitchencounter')\\nputback('barsoap','kitchencounter')\\n# Place candybar on fryingpan\\nfind('candybar')\\ngrab('candybar')\\nfind('fryingpan')\\nwalk('fryingpan')\\nputback('candybar','fryingpan')\\n# Place crackers in toilet\\nfind('crackers')\\ngrab('crackers')\\nfind('toilet')\\nwalk('toilet')\\nputin('crackers','toilet')\\n\", \"execution_trace\": [{\"line\": \"find('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingsponge> (266)\"}, {\"line\": \"grab('washingsponge')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <washingsponge> (266)\"}, {\"line\": \"find('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <bed> (109)\"}, {\"line\": \"walk('bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <bed> (109)\"}, {\"line\": \"putback('washingsponge','bed')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <washingsponge> (266) <bed> (109)\"}, {\"line\": \"find('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <barsoap> (66)\"}, {\"line\": \"grab('barsoap')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <barsoap> (66)\"}, {\"line\": \"find('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchencounter> (238)\"}, {\"line\": \"walk('kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <kitchencounter> (238)\"}, {\"line\": \"putback('barsoap','kitchencounter')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <barsoap> (66) <kitchencounter> (238)\"}, {\"line\": \"find('candybar')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <candybar> (330)\"}, {\"line\": \"grab('candybar')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <candybar> (330)\"}, {\"line\": \"find('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <fryingpan> (269)\"}, {\"line\": \"walk('fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <fryingpan> (269)\"}, {\"line\": \"putback('candybar','fryingpan')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <candybar> (330) <fryingpan> (269)\"}, {\"line\": \"find('crackers')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <crackers> (332)\"}, {\"line\": \"grab('crackers')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <crackers> (332)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (45)\"}, {\"line\": \"walk('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [walk] <toilet> (45)\"}, {\"line\": \"putin('crackers','toilet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<toilet> (45) is not open or is not openable when executing \\\"[PUTIN] <crackers> (332) <toilet> (45) [0]\\\"\", \"compiled_action\": \"<char0> [putin] <crackers> (332) <toilet> (45)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<toilet> (45) is not open or is not openable when executing \\\"[PUTIN] <crackers> (332) <toilet> (45) [0]\\\"\", \"line\": \"putin('crackers','toilet')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Start in kitchen, place the visible washingsponge onto the bed in the bedroom, then place barsoap on the kitchencounter, candybar on the fryingpan, and crackers in the toilet by navigating to each object, grabbing it, moving to the target, and placing it.\",\"program\":\"# Place washingsponge on bed first since it is visible on kitchencounter nearby\\nfind('washingsponge')\\ngrab('washingsponge')\\nfind('bed')\\nwalk('bed')\\nputback('washingsponge','bed')\\n# Return to kitchen and place barsoap on kitchencounter\\nfind('barsoap')\\ngrab('barsoap')\\nfind('kitchencounter')\\nwalk('kitchencounter')\\nputback('barsoap','kitchencounter')\\n# Place candybar on fryingpan\\nfind('candybar')\\ngrab('candybar')\\nfind('fryingpan')\\nwalk('fryingpan')\\nputback('candybar','fryingpan')\\n# Place crackers in toilet\\nfind('crackers')\\ngrab('crackers')\\nfind('toilet')\\nwalk('toilet')\\nputin('crackers','toilet')\\n\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The first three placements succeeded, but putting crackers in the toilet failed because the toilet is closed; crackers are still held and not placed in the toilet.\",\"failure_stage\":\"final placement of crackers into toilet\",\"regeneration_hint\":\"Open the toilet before executing putin('crackers','toilet'), e.g., add open('toilet') after walking to the toilet, then put the crackers inside.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<toilet> (45) is not open or is not openable when executing \"[PUTIN] <crackers> (332) <toilet> (45) [0]\"",
+      "line": "putin('crackers','toilet')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bellpepper, bellpepper ON kitchencounter, bellpepper ON kitchencounterdrawer, bench, bench ON rug, book ON kitchentable, book ON rug, book is CLOSED, clock is OFF, cutleryfork, cutleryfork ON kitchentable, cutleryknife, cutleryknife ON kitchentable, dishbowl, dishbowl ON kitchencounter, garbagecan is CLOSED, kitchencounter is CLOSED, kitchencounterdrawer, kitchencounterdrawer ON kitchencounter, kitchencounterdrawer ON kitchencounterdrawer, kitchentable, lightswitch is ON, microwave ON kitchencounter, microwave ON kitchencounterdrawer, microwave is CLOSED and OFF, pie, pie ON kitchentable, pie ON rug, plate, plate ON kitchentable, powersocket, rug, rug ON kitchentable, salmon, salmon ON microwave, sink, toaster ON kitchencounter, toaster is OFF, wallphone is OFF, wallpictureframe, wallpictureframe ON wallpictureframe, waterglass, waterglass ON kitchentable, waterglass ON rug, whippedcream, whippedcream ON kitchentable, whippedcream ON rug. One-hop INSIDE/ON relations connected to nearby objects: bellpepper ON kitchencounter; bellpepper ON kitchencounterdrawer; bench ON rug; book ON kitchentable; book ON rug; breadslice INSIDE toaster; coffeemaker ON kitchencounter; coffeepot ON kitchencounter; cutleryfork ON kitchentable; cutleryknife ON kitchentable; dishbowl ON kitchencounter; dishwashingliquid ON kitchencounter; faucet ON kitchencounter; kitchencounterdrawer ON kitchencounter; kitchencounterdrawer ON kitchencounterdrawer; microwave ON kitchencounter; microwave ON kitchencounterdrawer; pie ON kitchentable; pie ON rug; plate INSIDE microwave; plate ON kitchencounter; plate ON kitchentable; rug ON kitchentable; salmon ON microwave; toaster ON kitchencounter; wallpictureframe ON wallpictureframe; washingsponge ON kitchencounter; waterglass ON kitchentable; waterglass ON rug; whippedcream ON kitchentable; whippedcream ON rug."
+}

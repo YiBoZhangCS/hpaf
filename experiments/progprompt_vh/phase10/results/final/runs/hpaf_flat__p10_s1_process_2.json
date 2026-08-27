@@ -1,0 +1,708 @@
+{
+  "run_id": "formal_2026-08-26T162935.530483_0000_hpaf_flat_p10_s1_process_2",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T16:29:35.530483+00:00",
+  "task_id": "p10_s1_process_2",
+  "task": "Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.",
+  "split": "phase10_final_holdout",
+  "scene": 1,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "42472000c74754de8055ef41fe7bea90875bc325b7bd4ebeecd6ed75d7a6f80b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# Locate the mug to be cleaned\nfind('mug')\ngrab('mug')\n# Locate the dishwasher and open it to load the mug\nfind('dishwasher')\nopen('dishwasher')\nputin('mug','dishwasher')\n# Close and run the dishwasher to complete the cleaning cycle\nclose('dishwasher')\nswitchon('dishwasher')\nrun('dishwasher')\n# After the cycle, open the dishwasher to retrieve the mug\nopen('dishwasher')\ngrab('mug')\n# Carry the cleaned mug to the kitchentable and place it there\nfind('kitchentable')\nputback('mug','kitchentable')"
+  ],
+  "generated_program": "# Locate the mug to be cleaned\nfind('mug')\ngrab('mug')\n# Locate the dishwasher and open it to load the mug\nfind('dishwasher')\nopen('dishwasher')\nputin('mug','dishwasher')\n# Close and run the dishwasher to complete the cleaning cycle\nclose('dishwasher')\nswitchon('dishwasher')\nrun('dishwasher')\n# After the cycle, open the dishwasher to retrieve the mug\nopen('dishwasher')\ngrab('mug')\n# Carry the cleaned mug to the kitchentable and place it there\nfind('kitchentable')\nputback('mug','kitchentable')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.\nRELEVANT OBJECT CLASSES: [\"dishwasher\", \"kitchen\", \"kitchentable\", \"mug\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate the mug to be cleaned\\nfind('mug')\\ngrab('mug')\\n# Locate the dishwasher and open it to load the mug\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('mug','dishwasher')\\n# Close and run the dishwasher to complete the cleaning cycle\\nclose('dishwasher')\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# After the cycle, open the dishwasher to retrieve the mug\\nopen('dishwasher')\\ngrab('mug')\\n# Carry the cleaned mug to the kitchentable and place it there\\nfind('kitchentable')\\nputback('mug','kitchentable')\", \"execution_trace\": [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('mug','dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (228)\"}, {\"line\": \"run('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [run] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": false, \"detail\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": false, \"detail\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\",<mug> (102) is inside other closed thing when executing \\\"[GRAB] <mug> (102) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('mug','kitchentable')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: mug\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\"\", \"line\": \"open('dishwasher')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\",<mug> (102) is inside other closed thing when executing \\\"[GRAB] <mug> (102) [0]\\\"\", \"line\": \"grab('mug')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: mug\", \"line\": \"putback('mug','kitchentable')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The dishwasher was switched on and run, but the attempt to open it afterward failed because it was still on; the mug remained inside the closed/on dishwasher, was never retrieved, and was not placed on the kitchentable.\",\"failure_stage\":\"post-cycle retrieval/placement\",\"regeneration_hint\":\"After running the dishwasher, switch it off (and wait/ensure the cycle is complete) before opening it, then grab the mug from inside and place it on the kitchentable.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The dishwasher was switched on and run, but the attempt to open it afterward failed because it was still on; the mug remained inside the closed/on dishwasher, was never retrieved, and was not placed on the kitchentable.\",\"failure_stage\":\"post-cycle retrieval/placement\",\"regeneration_hint\":\"After running the dishwasher, switch it off (and wait/ensure the cycle is complete) before opening it, then grab the mug from inside and place it on the kitchentable.\"}",
+      "prompt_tokens": 1510,
+      "completion_tokens": 104,
+      "latency_s": 3.329077786000198,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776179832508bad97b19aecd1d2e685dea670f3cae9bcd4e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The dishwasher was switched on and run, but the attempt to open it afterward failed because it was still on; the mug remained inside the closed/on dishwasher, was never retrieved, and was not placed on the kitchentable.\",\"failure_stage\":\"post-cycle retrieval/placement\",\"regeneration_hint\":\"After running the dishwasher, switch it off (and wait/ensure the cycle is complete) before opening it, then grab the mug from inside and place it on the kitchentable.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Locate the mug to be cleaned",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the mug to be cleaned",
+      "compiled_action": null
+    },
+    {
+      "line": "find('mug')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the mug to be cleaned",
+      "compiled_action": "<char0> [find] <mug> (102)"
+    },
+    {
+      "line": "grab('mug')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the mug to be cleaned",
+      "compiled_action": "<char0> [grab] <mug> (102)"
+    },
+    {
+      "line": "# Locate the dishwasher and open it to load the mug",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it to load the mug",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it to load the mug",
+      "compiled_action": "<char0> [find] <dishwasher> (228)"
+    },
+    {
+      "line": "open('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it to load the mug",
+      "compiled_action": "<char0> [open] <dishwasher> (228)"
+    },
+    {
+      "line": "putin('mug','dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate the dishwasher and open it to load the mug",
+      "compiled_action": "<char0> [putin] <mug> (102) <dishwasher> (228)"
+    },
+    {
+      "line": "# Close and run the dishwasher to complete the cleaning cycle",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close and run the dishwasher to complete the cleaning cycle",
+      "compiled_action": null
+    },
+    {
+      "line": "close('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close and run the dishwasher to complete the cleaning cycle",
+      "compiled_action": "<char0> [close] <dishwasher> (228)"
+    },
+    {
+      "line": "switchon('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close and run the dishwasher to complete the cleaning cycle",
+      "compiled_action": "<char0> [switchon] <dishwasher> (228)"
+    },
+    {
+      "line": "run('dishwasher')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Close and run the dishwasher to complete the cleaning cycle",
+      "compiled_action": "<char0> [run] <dishwasher> (228)"
+    },
+    {
+      "line": "# After the cycle, open the dishwasher to retrieve the mug",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "After the cycle, open the dishwasher to retrieve the mug",
+      "compiled_action": null
+    },
+    {
+      "line": "open('dishwasher')",
+      "event": "action",
+      "success": false,
+      "detail": "<dishwasher> (228) is still on when executing \"[OPEN] <dishwasher> (228) [0]\"",
+      "subgoal": "After the cycle, open the dishwasher to retrieve the mug",
+      "compiled_action": "<char0> [open] <dishwasher> (228)"
+    },
+    {
+      "line": "grab('mug')",
+      "event": "action",
+      "success": false,
+      "detail": "<dishwasher> (228) is still on when executing \"[OPEN] <dishwasher> (228) [0]\",<mug> (102) is inside other closed thing when executing \"[GRAB] <mug> (102) [0]\"",
+      "subgoal": "After the cycle, open the dishwasher to retrieve the mug",
+      "compiled_action": "<char0> [grab] <mug> (102)"
+    },
+    {
+      "line": "# Carry the cleaned mug to the kitchentable and place it there",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Carry the cleaned mug to the kitchentable and place it there",
+      "compiled_action": null
+    },
+    {
+      "line": "find('kitchentable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Carry the cleaned mug to the kitchentable and place it there",
+      "compiled_action": "<char0> [find] <kitchentable> (199)"
+    },
+    {
+      "line": "putback('mug','kitchentable')",
+      "event": "action",
+      "success": false,
+      "detail": "object not in hand: mug",
+      "subgoal": "Carry the cleaned mug to the kitchentable and place it there",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <mug> (102)",
+      "parsed_action": "[FIND] <mug> (102) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <mug> (102)",
+      "parsed_action": "[GRAB] <mug> (102) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwasher> (228)",
+      "parsed_action": "[FIND] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <dishwasher> (228)",
+      "parsed_action": "[OPEN] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <mug> (102) <dishwasher> (228)",
+      "parsed_action": "[PUTIN] <mug> (102) <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <dishwasher> (228)",
+      "parsed_action": "[CLOSE] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <dishwasher> (228)",
+      "parsed_action": "[SWITCHON] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [run] <dishwasher> (228)",
+      "parsed_action": "[RUN] <dishwasher> (228) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <dishwasher> (228)",
+      "parsed_action": "[OPEN] <dishwasher> (228) [0]",
+      "success": false,
+      "error": "<dishwasher> (228) is still on when executing \"[OPEN] <dishwasher> (228) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <mug> (102)",
+      "parsed_action": "[GRAB] <mug> (102) [0]",
+      "success": false,
+      "error": "<dishwasher> (228) is still on when executing \"[OPEN] <dishwasher> (228) [0]\",<mug> (102) is inside other closed thing when executing \"[GRAB] <mug> (102) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <kitchentable> (199)",
+      "parsed_action": "[FIND] <kitchentable> (199) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "putback('mug','kitchentable')",
+      "parsed_action": null,
+      "success": false,
+      "error": "object not in hand: mug",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <mug> (102)",
+    "<char0> [grab] <mug> (102)",
+    "<char0> [find] <dishwasher> (228)",
+    "<char0> [open] <dishwasher> (228)",
+    "<char0> [putin] <mug> (102) <dishwasher> (228)",
+    "<char0> [close] <dishwasher> (228)",
+    "<char0> [switchon] <dishwasher> (228)",
+    "<char0> [run] <dishwasher> (228)",
+    "<char0> [open] <dishwasher> (228)",
+    "<char0> [grab] <mug> (102)",
+    "<char0> [find] <kitchentable> (199)"
+  ],
+  "program_length": 12,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.36363636363636365,
+  "semantic_goal_condition_count": 11,
+  "semantic_satisfied_condition_count": 4,
+  "semantic_condition_details": [
+    {
+      "kind": "semantic_event",
+      "id": "E1",
+      "description": "load source into appliance",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "mug",
+          "second": "dishwasher"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putin",
+        "first": "mug",
+        "first_id": 102,
+        "second": "dishwasher",
+        "second_id": 228,
+        "ordinal": 5
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E2",
+      "description": "start appliance",
+      "expected": [
+        {
+          "verb": "switchon",
+          "first": "dishwasher"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "switchon",
+        "first": "dishwasher",
+        "first_id": 228,
+        "second": null,
+        "second_id": null,
+        "ordinal": 7
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E3",
+      "description": "complete appliance cycle",
+      "expected": [
+        {
+          "verb": "switchoff",
+          "first": "dishwasher"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E4",
+      "description": "retrieve processed source",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "mug"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "mug",
+        "first_id": 102,
+        "second": null,
+        "second_id": null,
+        "ordinal": 2
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "place processed source at destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "mug",
+          "second": "kitchentable"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E1",
+      "after": "E2",
+      "satisfied": true,
+      "evidence": {
+        "before_ordinal": 5,
+        "after_ordinal": 7
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E2",
+      "after": "E3",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 7,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E4",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": null,
+        "after_ordinal": 2
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E4",
+      "after": "E5",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 2,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(dishwasher, OFF)",
+        "predicate": "STATE",
+        "object": "dishwasher",
+        "value": "OFF",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": false,
+      "evidence": ""
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "ON(mug, kitchentable)",
+        "predicate": "RELATION",
+        "subject": "mug",
+        "relation": "ON",
+        "object": "kitchentable",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "semantic_event",
+      "id": "E3",
+      "description": "complete appliance cycle",
+      "expected": [
+        {
+          "verb": "switchoff",
+          "first": "dishwasher"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "place processed source at destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "mug",
+          "second": "kitchentable"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E2",
+      "after": "E3",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 7,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E4",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": null,
+        "after_ordinal": 2
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E4",
+      "after": "E5",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 2,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(dishwasher, OFF)",
+        "predicate": "STATE",
+        "object": "dishwasher",
+        "value": "OFF",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": false,
+      "evidence": ""
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "ON(mug, kitchentable)",
+        "predicate": "RELATION",
+        "subject": "mug",
+        "relation": "ON",
+        "object": "kitchentable",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "partial_order_assignment": {
+    "E1": 5,
+    "E2": 7,
+    "E4": 2
+  },
+  "implementation_rejection": false,
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 0.75,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1197,
+  "generation_completion_tokens": 203,
+  "verification_prompt_tokens": 1510,
+  "verification_completion_tokens": 104,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2707,
+  "completion_tokens": 307,
+  "total_prompt_tokens": 2707,
+  "total_completion_tokens": 307,
+  "total_tokens": 3014,
+  "planning_latency": 4.473999163999906,
+  "verification_latency": 3.329077786000198,
+  "total_llm_latency": 7.803076950000104,
+  "wall_clock_total_s": 8.885624892000124,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the mug, place it inside the dishwasher, close the dishwasher, run the cleaning cycle, then retrieve the cleaned mug and place it on the kitchentable.\",\"program\":\"# Locate the mug to be cleaned\\nfind('mug')\\ngrab('mug')\\n# Locate the dishwasher and open it to load the mug\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('mug','dishwasher')\\n# Close and run the dishwasher to complete the cleaning cycle\\nclose('dishwasher')\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# After the cycle, open the dishwasher to retrieve the mug\\nopen('dishwasher')\\ngrab('mug')\\n# Carry the cleaned mug to the kitchentable and place it there\\nfind('kitchentable')\\nputback('mug','kitchentable')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the mug, place it inside the dishwasher, close the dishwasher, run the cleaning cycle, then retrieve the cleaned mug and place it on the kitchentable.\",\"program\":\"# Locate the mug to be cleaned\\nfind('mug')\\ngrab('mug')\\n# Locate the dishwasher and open it to load the mug\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('mug','dishwasher')\\n# Close and run the dishwasher to complete the cleaning cycle\\nclose('dishwasher')\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# After the cycle, open the dishwasher to retrieve the mug\\nopen('dishwasher')\\ngrab('mug')\\n# Carry the cleaned mug to the kitchentable and place it there\\nfind('kitchentable')\\nputback('mug','kitchentable')\"}",
+      "prompt_tokens": 1197,
+      "completion_tokens": 203,
+      "latency_s": 4.473999163999906,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776179367608bad97b19aecd1d2e685dea670f3cae78db33",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.\nRELEVANT OBJECT CLASSES: [\"dishwasher\", \"kitchen\", \"kitchentable\", \"mug\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate the mug to be cleaned\\nfind('mug')\\ngrab('mug')\\n# Locate the dishwasher and open it to load the mug\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('mug','dishwasher')\\n# Close and run the dishwasher to complete the cleaning cycle\\nclose('dishwasher')\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# After the cycle, open the dishwasher to retrieve the mug\\nopen('dishwasher')\\ngrab('mug')\\n# Carry the cleaned mug to the kitchentable and place it there\\nfind('kitchentable')\\nputback('mug','kitchentable')\", \"execution_trace\": [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('mug','dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (228)\"}, {\"line\": \"run('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [run] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": false, \"detail\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": false, \"detail\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\",<mug> (102) is inside other closed thing when executing \\\"[GRAB] <mug> (102) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('mug','kitchentable')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: mug\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\"\", \"line\": \"open('dishwasher')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\",<mug> (102) is inside other closed thing when executing \\\"[GRAB] <mug> (102) [0]\\\"\", \"line\": \"grab('mug')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: mug\", \"line\": \"putback('mug','kitchentable')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The dishwasher was switched on and run, but the attempt to open it afterward failed because it was still on; the mug remained inside the closed/on dishwasher, was never retrieved, and was not placed on the kitchentable.\",\"failure_stage\":\"post-cycle retrieval/placement\",\"regeneration_hint\":\"After running the dishwasher, switch it off (and wait/ensure the cycle is complete) before opening it, then grab the mug from inside and place it on the kitchentable.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The dishwasher was switched on and run, but the attempt to open it afterward failed because it was still on; the mug remained inside the closed/on dishwasher, was never retrieved, and was not placed on the kitchentable.\",\"failure_stage\":\"post-cycle retrieval/placement\",\"regeneration_hint\":\"After running the dishwasher, switch it off (and wait/ensure the cycle is complete) before opening it, then grab the mug from inside and place it on the kitchentable.\"}",
+      "prompt_tokens": 1510,
+      "completion_tokens": 104,
+      "latency_s": 3.329077786000198,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178776179832508bad97b19aecd1d2e685dea670f3cae9bcd4e",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Clean the mug in the dishwasher, complete the cycle, then place the mug on the kitchentable.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: floor, kitchentable, kitchentable ON floor, kitchentable ON rug, rug, rug ON floor. One-hop INSIDE/ON relations connected to nearby objects: apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON floor; kitchentable ON rug; plate ON kitchentable; poundcake ON kitchentable; rug ON floor.\nRELEVANT OBJECT CLASSES: [\"dishwasher\", \"kitchen\", \"kitchentable\", \"mug\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate the mug to be cleaned\\nfind('mug')\\ngrab('mug')\\n# Locate the dishwasher and open it to load the mug\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('mug','dishwasher')\\n# Close and run the dishwasher to complete the cleaning cycle\\nclose('dishwasher')\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# After the cycle, open the dishwasher to retrieve the mug\\nopen('dishwasher')\\ngrab('mug')\\n# Carry the cleaned mug to the kitchentable and place it there\\nfind('kitchentable')\\nputback('mug','kitchentable')\", \"execution_trace\": [{\"line\": \"find('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mug> (102)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"putin('mug','dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <mug> (102) <dishwasher> (228)\"}, {\"line\": \"close('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <dishwasher> (228)\"}, {\"line\": \"switchon('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [switchon] <dishwasher> (228)\"}, {\"line\": \"run('dishwasher')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [run] <dishwasher> (228)\"}, {\"line\": \"open('dishwasher')\", \"event\": \"action\", \"success\": false, \"detail\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\"\", \"compiled_action\": \"<char0> [open] <dishwasher> (228)\"}, {\"line\": \"grab('mug')\", \"event\": \"action\", \"success\": false, \"detail\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\",<mug> (102) is inside other closed thing when executing \\\"[GRAB] <mug> (102) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <mug> (102)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('mug','kitchentable')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: mug\", \"compiled_action\": null}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\"\", \"line\": \"open('dishwasher')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<dishwasher> (228) is still on when executing \\\"[OPEN] <dishwasher> (228) [0]\\\",<mug> (102) is inside other closed thing when executing \\\"[GRAB] <mug> (102) [0]\\\"\", \"line\": \"grab('mug')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: mug\", \"line\": \"putback('mug','kitchentable')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate the mug, place it inside the dishwasher, close the dishwasher, run the cleaning cycle, then retrieve the cleaned mug and place it on the kitchentable.\",\"program\":\"# Locate the mug to be cleaned\\nfind('mug')\\ngrab('mug')\\n# Locate the dishwasher and open it to load the mug\\nfind('dishwasher')\\nopen('dishwasher')\\nputin('mug','dishwasher')\\n# Close and run the dishwasher to complete the cleaning cycle\\nclose('dishwasher')\\nswitchon('dishwasher')\\nrun('dishwasher')\\n# After the cycle, open the dishwasher to retrieve the mug\\nopen('dishwasher')\\ngrab('mug')\\n# Carry the cleaned mug to the kitchentable and place it there\\nfind('kitchentable')\\nputback('mug','kitchentable')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The dishwasher was switched on and run, but the attempt to open it afterward failed because it was still on; the mug remained inside the closed/on dishwasher, was never retrieved, and was not placed on the kitchentable.\",\"failure_stage\":\"post-cycle retrieval/placement\",\"regeneration_hint\":\"After running the dishwasher, switch it off (and wait/ensure the cycle is complete) before opening it, then grab the mug from inside and place it on the kitchentable.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<dishwasher> (228) is still on when executing \"[OPEN] <dishwasher> (228) [0]\"",
+      "line": "open('dishwasher')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<dishwasher> (228) is still on when executing \"[OPEN] <dishwasher> (228) [0]\",<mug> (102) is inside other closed thing when executing \"[GRAB] <mug> (102) [0]\"",
+      "line": "grab('mug')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "object not in hand: mug",
+      "line": "putback('mug','kitchentable')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate."
+}

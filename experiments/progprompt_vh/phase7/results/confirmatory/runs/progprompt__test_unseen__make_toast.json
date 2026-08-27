@@ -1,0 +1,1202 @@
+{
+  "run_id": "confirmatory_formal_2026-08-26T081927.505154_0000_progprompt_test_unseen_make_toast",
+  "phase": "confirmatory_formal",
+  "timestamp": "2026-08-26T08:19:27.505154+00:00",
+  "task_id": "test_unseen::make_toast",
+  "task": "make toast",
+  "split": "test_unseen",
+  "scene": 0,
+  "gt_action_length": 8,
+  "horizon": "Medium",
+  "method": "ProgPrompt",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "task_manifest_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "semantic_goals_sha256": "75092389ded0cfb8dccb5b2eb8f8ef3174409daf3d5322cbed25b143f8d74076",
+  "long_horizon_manifest_sha256": "0e7ec66f08f397d777632474e3a2847fe98148c77261d629ec65267f6f424987",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "1ff91d8ef302acf6a349659834ee1e5900f344fc6cca0b0e6b25d6a3c9578546",
+  "generated_programs": [
+    "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find toaster\n\tfind('toaster')\n\t# 2: find breadslice\n\tfind('breadslice')\n\t# 3: grab breadslice\n\tassert('close' to 'breadslice')\n\t\telse: find('breadslice')\n\tgrab('breadslice')\n\t# 4: put breadslice in toaster\n\tassert('breadslice' in 'hands')\n\t\telse: find('breadslice')\n\t\telse: grab('breadslice')\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tputin('breadslice', 'toaster')\n\t# 5: switch on toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchoff')\n\t\telse: switchoff('toaster')\n\tswitchon('toaster')\n\t# 6: wait for toast to finish (watch toaster)\n\twatch('toaster')\n\t# 7: switch off toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchon')\n\t\telse: switchon('toaster')\n\tswitchoff('toaster')\n\t# 8: grab finished toast from toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tgrab('breadslice')\n\t# 9: Done"
+  ],
+  "generated_program": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find toaster\n\tfind('toaster')\n\t# 2: find breadslice\n\tfind('breadslice')\n\t# 3: grab breadslice\n\tassert('close' to 'breadslice')\n\t\telse: find('breadslice')\n\tgrab('breadslice')\n\t# 4: put breadslice in toaster\n\tassert('breadslice' in 'hands')\n\t\telse: find('breadslice')\n\t\telse: grab('breadslice')\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tputin('breadslice', 'toaster')\n\t# 5: switch on toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchoff')\n\t\telse: switchoff('toaster')\n\tswitchon('toaster')\n\t# 6: wait for toast to finish (watch toaster)\n\twatch('toaster')\n\t# 7: switch off toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchon')\n\t\telse: switchon('toaster')\n\tswitchoff('toaster')\n\t# 8: grab finished toast from toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tgrab('breadslice')\n\t# 9: Done",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice, breadslice INSIDE toaster\n\nassert('close' to 'breadslice')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 296,
+      "completion_tokens": 2,
+      "latency_s": 1.6667467350016523,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323832088f5df55c078e9f0cf923961e89d651d1e2a464",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice, toaster is OFF. You have breadslice.\n\nassert('breadslice' in 'hands')\n",
+      "instructions": null,
+      "raw_output": "Let's",
+      "output_text": "Let's",
+      "prompt_tokens": 300,
+      "completion_tokens": 2,
+      "latency_s": 0.7812084520010103,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323848958f5df55c078e9f0cf923961e89d651d1654754",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: toaster is OFF. You have breadslice.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 297,
+      "completion_tokens": 2,
+      "latency_s": 0.8187960629984445,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323856768f5df55c078e9f0cf923961e89d651d1a0d333",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "False",
+      "output_text": "False",
+      "prompt_tokens": 299,
+      "completion_tokens": 2,
+      "latency_s": 1.4045764260008582,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323865108f5df55c078e9f0cf923961e89d651d1fb2be4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('toaster' is 'switchoff')\n",
+      "instructions": null,
+      "raw_output": "Let's",
+      "output_text": "Let's",
+      "prompt_tokens": 300,
+      "completion_tokens": 2,
+      "latency_s": 0.7524679620000825,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323879298f5df55c078e9f0cf923961e89d651d1e40017",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is ON.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 299,
+      "completion_tokens": 2,
+      "latency_s": 2.2459973200020613,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323886998f5df55c078e9f0cf923961e89d651d114dcac",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is ON.\n\nassert('toaster' is 'switchon')\n",
+      "instructions": null,
+      "raw_output": "Let's",
+      "output_text": "Let's",
+      "prompt_tokens": 300,
+      "completion_tokens": 2,
+      "latency_s": 2.0008055750004132,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323909458f5df55c078e9f0cf923961e89d651d12822dd",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 299,
+      "completion_tokens": 2,
+      "latency_s": 0.8646199419999903,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323930058f5df55c078e9f0cf923961e89d651d185b272",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "line": "assert('close' to 'breadslice')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "3: grab breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('breadslice' in 'hands')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('toaster' is 'switchoff')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('toaster' is 'switchon')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "8: grab finished toast from toaster",
+      "compiled_action": null
+    }
+  ],
+  "online_verification_count": 8,
+  "final_online_done": null,
+  "execution_trace": [
+    {
+      "line": "# 0: walk to kitchen",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "0: walk to kitchen",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('kitchen')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "0: walk to kitchen",
+      "compiled_action": "<char0> [walk] <kitchen> (205)"
+    },
+    {
+      "line": "# 1: find toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "1: find toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "1: find toaster",
+      "compiled_action": "<char0> [find] <toaster> (308)"
+    },
+    {
+      "line": "# 2: find breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "2: find breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "find('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "2: find breadslice",
+      "compiled_action": "<char0> [find] <breadslice> (310)"
+    },
+    {
+      "line": "# 3: grab breadslice",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'breadslice')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "3: grab breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('breadslice')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "3: grab breadslice",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab breadslice",
+      "compiled_action": "<char0> [grab] <breadslice> (310)"
+    },
+    {
+      "line": "# 4: put breadslice in toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('breadslice' in 'hands')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('breadslice')",
+      "event": "recovery_unknown",
+      "success": false,
+      "detail": "non-binary assertion output",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: grab('breadslice')",
+      "event": "recovery_unknown",
+      "success": false,
+      "detail": "non-binary assertion output",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('toaster')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "putin('breadslice', 'toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: put breadslice in toaster",
+      "compiled_action": "<char0> [putin] <breadslice> (310) <toaster> (308)"
+    },
+    {
+      "line": "# 5: switch on toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": "<char0> [find] <toaster> (308)"
+    },
+    {
+      "line": "assert('toaster' is 'switchoff')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: switchoff('toaster')",
+      "event": "recovery_unknown",
+      "success": false,
+      "detail": "non-binary assertion output",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: switch on toaster",
+      "compiled_action": "<char0> [switchon] <toaster> (308)"
+    },
+    {
+      "line": "# 6: wait for toast to finish (watch toaster)",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "6: wait for toast to finish (watch toaster)",
+      "compiled_action": null
+    },
+    {
+      "line": "watch('toaster')",
+      "event": "action",
+      "success": false,
+      "detail": "<toaster> (308) not lookable when executing \"[WATCH] <toaster> (308) [0]\"",
+      "subgoal": "6: wait for toast to finish (watch toaster)",
+      "compiled_action": "<char0> [watch] <toaster> (308)"
+    },
+    {
+      "line": "# 7: switch off toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('toaster')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('toaster' is 'switchon')",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: switchon('toaster')",
+      "event": "recovery_unknown",
+      "success": false,
+      "detail": "non-binary assertion output",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "switchoff('toaster')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "7: switch off toaster",
+      "compiled_action": "<char0> [switchoff] <toaster> (308)"
+    },
+    {
+      "line": "# 8: grab finished toast from toaster",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "8: grab finished toast from toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'toaster')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "8: grab finished toast from toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('toaster')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "8: grab finished toast from toaster",
+      "compiled_action": null
+    },
+    {
+      "line": "grab('breadslice')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "8: grab finished toast from toaster",
+      "compiled_action": "<char0> [grab] <breadslice> (310)"
+    },
+    {
+      "line": "# 9: Done",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "9: Done",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [walk] <kitchen> (205)",
+      "parsed_action": "[WALK] <kitchen> (205) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toaster> (308)",
+      "parsed_action": "[FIND] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <breadslice> (310)",
+      "parsed_action": "[FIND] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <breadslice> (310)",
+      "parsed_action": "[GRAB] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: find('breadslice')",
+      "parsed_action": null,
+      "success": false,
+      "error": "non-binary assertion output",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: grab('breadslice')",
+      "parsed_action": null,
+      "success": false,
+      "error": "non-binary assertion output",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <breadslice> (310) <toaster> (308)",
+      "parsed_action": "[PUTIN] <breadslice> (310) <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toaster> (308)",
+      "parsed_action": "[FIND] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: switchoff('toaster')",
+      "parsed_action": null,
+      "success": false,
+      "error": "non-binary assertion output",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <toaster> (308)",
+      "parsed_action": "[SWITCHON] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [watch] <toaster> (308)",
+      "parsed_action": "[WATCH] <toaster> (308) [0]",
+      "success": false,
+      "error": "<toaster> (308) not lookable when executing \"[WATCH] <toaster> (308) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "else: switchon('toaster')",
+      "parsed_action": null,
+      "success": false,
+      "error": "non-binary assertion output",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <toaster> (308)",
+      "parsed_action": "[SWITCHOFF] <toaster> (308) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <breadslice> (310)",
+      "parsed_action": "[GRAB] <breadslice> (310) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [walk] <kitchen> (205)",
+    "<char0> [find] <toaster> (308)",
+    "<char0> [find] <breadslice> (310)",
+    "<char0> [grab] <breadslice> (310)",
+    "<char0> [putin] <breadslice> (310) <toaster> (308)",
+    "<char0> [find] <toaster> (308)",
+    "<char0> [switchon] <toaster> (308)",
+    "<char0> [watch] <toaster> (308)",
+    "<char0> [switchoff] <toaster> (308)",
+    "<char0> [grab] <breadslice> (310)"
+  ],
+  "program_length": 14,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "trace_goal": {
+        "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+        "item": "breadslice",
+        "appliance": "toaster",
+        "controller": "toaster",
+        "load_required": true,
+        "rationale": "A generic loaded-appliance ON->OFF cycle is the only stable simulator event surrogate."
+      },
+      "satisfied": true,
+      "evidence": "load=[{'verb': 'putin', 'first': 'breadslice', 'first_id': 310, 'second': 'toaster', 'second_id': 308, 'ordinal': 5}]; on=[{'verb': 'switchon', 'first': 'toaster', 'first_id': 308, 'second': None, 'second_id': None, 'ordinal': 7}]; off=[{'verb': 'switchoff', 'first': 'toaster', 'first_id': 308, 'second': None, 'second_id': None, 'ordinal': 8}]; output=none"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 1.0,
+  "Exec": 0.6428571428571429,
+  "official_goal_condition_count": 1,
+  "official_missing_goal_relations": [],
+  "official_missing_goal_states": [],
+  "generation_calls": 1,
+  "verification_calls": 8,
+  "repair_calls": 0,
+  "total_calls": 9,
+  "generation_prompt_tokens": 1939,
+  "generation_completion_tokens": 334,
+  "verification_prompt_tokens": 2390,
+  "verification_completion_tokens": 16,
+  "repair_tokens": 0,
+  "prompt_tokens": 4329,
+  "completion_tokens": 350,
+  "total_prompt_tokens": 4329,
+  "total_completion_tokens": 350,
+  "total_tokens": 4679,
+  "planning_latency": 6.692205580999143,
+  "verification_latency": 10.535218475004513,
+  "total_llm_latency": 17.227424056003656,
+  "wall_clock_total_s": 18.269872605000273,
+  "llm_call_records": [
+    {
+      "call_role": "whole_program_generation",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef make_toast():\n\t",
+      "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+      "raw_output": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find toaster\n\tfind('toaster')\n\t# 2: find breadslice\n\tfind('breadslice')\n\t# 3: grab breadslice\n\tassert('close' to 'breadslice')\n\t\telse: find('breadslice')\n\tgrab('breadslice')\n\t# 4: put breadslice in toaster\n\tassert('breadslice' in 'hands')\n\t\telse: find('breadslice')\n\t\telse: grab('breadslice')\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tputin('breadslice', 'toaster')\n\t# 5: switch on toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchoff')\n\t\telse: switchoff('toaster')\n\tswitchon('toaster')\n\t# 6: wait for toast to finish (watch toaster)\n\twatch('toaster')\n\t# 7: switch off toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchon')\n\t\telse: switchon('toaster')\n\tswitchoff('toaster')\n\t# 8: grab finished toast from toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tgrab('breadslice')\n\t# 9: Done",
+      "output_text": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find toaster\n\tfind('toaster')\n\t# 2: find breadslice\n\tfind('breadslice')\n\t# 3: grab breadslice\n\tassert('close' to 'breadslice')\n\t\telse: find('breadslice')\n\tgrab('breadslice')\n\t# 4: put breadslice in toaster\n\tassert('breadslice' in 'hands')\n\t\telse: find('breadslice')\n\t\telse: grab('breadslice')\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tputin('breadslice', 'toaster')\n\t# 5: switch on toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchoff')\n\t\telse: switchoff('toaster')\n\tswitchon('toaster')\n\t# 6: wait for toast to finish (watch toaster)\n\twatch('toaster')\n\t# 7: switch off toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchon')\n\t\telse: switchon('toaster')\n\tswitchoff('toaster')\n\t# 8: grab finished toast from toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tgrab('breadslice')\n\t# 9: Done",
+      "prompt_tokens": 1939,
+      "completion_tokens": 334,
+      "latency_s": 6.692205580999143,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "def"
+      ],
+      "frequency_penalty": 0.15,
+      "response_id": "resp_0217877323764038f5df55c078e9f0cf923961e89d651d1d13aa5",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice, breadslice INSIDE toaster\n\nassert('close' to 'breadslice')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 296,
+      "completion_tokens": 2,
+      "latency_s": 1.6667467350016523,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323832088f5df55c078e9f0cf923961e89d651d1e2a464",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice, toaster is OFF. You have breadslice.\n\nassert('breadslice' in 'hands')\n",
+      "instructions": null,
+      "raw_output": "Let's",
+      "output_text": "Let's",
+      "prompt_tokens": 300,
+      "completion_tokens": 2,
+      "latency_s": 0.7812084520010103,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323848958f5df55c078e9f0cf923961e89d651d1654754",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: toaster is OFF. You have breadslice.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 297,
+      "completion_tokens": 2,
+      "latency_s": 0.8187960629984445,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323856768f5df55c078e9f0cf923961e89d651d1a0d333",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "False",
+      "output_text": "False",
+      "prompt_tokens": 299,
+      "completion_tokens": 2,
+      "latency_s": 1.4045764260008582,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323865108f5df55c078e9f0cf923961e89d651d1fb2be4",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('toaster' is 'switchoff')\n",
+      "instructions": null,
+      "raw_output": "Let's",
+      "output_text": "Let's",
+      "prompt_tokens": 300,
+      "completion_tokens": 2,
+      "latency_s": 0.7524679620000825,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323879298f5df55c078e9f0cf923961e89d651d1e40017",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is ON.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 299,
+      "completion_tokens": 2,
+      "latency_s": 2.2459973200020613,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323886998f5df55c078e9f0cf923961e89d651d114dcac",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is ON.\n\nassert('toaster' is 'switchon')\n",
+      "instructions": null,
+      "raw_output": "Let's",
+      "output_text": "Let's",
+      "prompt_tokens": 300,
+      "completion_tokens": 2,
+      "latency_s": 2.0008055750004132,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323909458f5df55c078e9f0cf923961e89d651d12822dd",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "assertion_verification",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('close' to 'toaster')\n",
+      "instructions": null,
+      "raw_output": "True",
+      "output_text": "True",
+      "prompt_tokens": 299,
+      "completion_tokens": 2,
+      "latency_s": 0.8646199419999903,
+      "temperature": 0.0,
+      "max_tokens": 2,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_0217877323930058f5df55c078e9f0cf923961e89d651d185b272",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "whole_program_generation",
+      "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+      "input": "from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef make_toast():\n\t"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice, breadslice INSIDE toaster\n\nassert('close' to 'breadslice')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice, toaster is OFF. You have breadslice.\n\nassert('breadslice' in 'hands')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: toaster is OFF. You have breadslice.\n\nassert('close' to 'toaster')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('close' to 'toaster')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('toaster' is 'switchoff')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is ON.\n\nassert('close' to 'toaster')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is ON.\n\nassert('toaster' is 'switchon')\n"
+    },
+    {
+      "role": "assertion_verification",
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: breadslice INSIDE toaster, toaster is OFF.\n\nassert('close' to 'toaster')\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "whole_program_generation",
+      "output": "# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find toaster\n\tfind('toaster')\n\t# 2: find breadslice\n\tfind('breadslice')\n\t# 3: grab breadslice\n\tassert('close' to 'breadslice')\n\t\telse: find('breadslice')\n\tgrab('breadslice')\n\t# 4: put breadslice in toaster\n\tassert('breadslice' in 'hands')\n\t\telse: find('breadslice')\n\t\telse: grab('breadslice')\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tputin('breadslice', 'toaster')\n\t# 5: switch on toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchoff')\n\t\telse: switchoff('toaster')\n\tswitchon('toaster')\n\t# 6: wait for toast to finish (watch toaster)\n\twatch('toaster')\n\t# 7: switch off toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tassert('toaster' is 'switchon')\n\t\telse: switchon('toaster')\n\tswitchoff('toaster')\n\t# 8: grab finished toast from toaster\n\tassert('close' to 'toaster')\n\t\telse: find('toaster')\n\tgrab('breadslice')\n\t# 9: Done"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "True"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "Let's"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "True"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "False"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "Let's"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "True"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "Let's"
+    },
+    {
+      "role": "assertion_verification",
+      "output": "True"
+    }
+  ],
+  "error_type": "assertion_parse_failure",
+  "error_message": "non-binary assertion output",
+  "errors": [
+    {
+      "error_type": "assertion_parse_failure",
+      "message": "non-binary assertion output",
+      "line": "else: find('breadslice')"
+    },
+    {
+      "error_type": "assertion_parse_failure",
+      "message": "non-binary assertion output",
+      "line": "else: grab('breadslice')"
+    },
+    {
+      "error_type": "assertion_parse_failure",
+      "message": "non-binary assertion output",
+      "line": "else: switchoff('toaster')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<toaster> (308) not lookable when executing \"[WATCH] <toaster> (308) [0]\"",
+      "line": "watch('toaster')"
+    },
+    {
+      "error_type": "assertion_parse_failure",
+      "message": "non-binary assertion output",
+      "line": "else: switchon('toaster')"
+    }
+  ],
+  "phase7_set": "confirmatory",
+  "evaluator_type": "generic_trace",
+  "trace_goal": {
+    "kind": "SUCCESSFUL_APPLIANCE_CYCLE",
+    "item": "breadslice",
+    "appliance": "toaster",
+    "controller": "toaster",
+    "load_required": true,
+    "rationale": "A generic loaded-appliance ON->OFF cycle is the only stable simulator event surrogate."
+  }
+}

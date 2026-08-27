@@ -1,0 +1,638 @@
+{
+  "run_id": "development_compression_2026-08-26T101317.829367_0000_hpaf_full_env2_open_the_curtains",
+  "phase": "development_compression",
+  "representation": "compressed",
+  "timestamp": "2026-08-26T10:13:17.829367+00:00",
+  "task_id": "env2::open_the_curtains",
+  "task": "open the curtains",
+  "split": "env2",
+  "scene": 2,
+  "goal_count": null,
+  "method": "HPAF-Full",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+  "task_manifest_sha256": "ff329d2ff6e8fef85ffe2925cdf1d6958906f4985207ba903d4608865ff7bc8a",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Open the curtains.",
+        "manipulated_object": "curtains",
+        "target_object": null,
+        "completion_mode": "state",
+        "process_intent": null
+      },
+      "initial_observation": "character(room=kitchen;state=none;holds=none). objects: bench[n=1;state=none;props=SITTABLE+SURFACES]; candle[n=1;state=OFF;props=GRABBABLE+HAS_SWITCH]; curtains[n=12;state=CLOSED;props=CAN_OPEN]; cutleryfork[n=1;state=none;props=GRABBABLE]; cutleryknife[n=1;state=none;props=GRABBABLE]; lightswitch[n=1;state=ON;props=HAS_SWITCH]; orchid[n=1;state=none;props=none]; plate[n=2;state=none;props=GRABBABLE+SURFACES]; rug[n=2;state=none;props=GRABBABLE+SITTABLE+SURFACES]; tvstand[n=1;state=none;props=SURFACES]. relations: bench CLOSE character; bench INSIDE kitchen; bench ON rug; candle CLOSE character; candle INSIDE kitchen; candle ON tvstand; character CLOSE bench; character CLOSE candle; character CLOSE cutleryfork; character CLOSE cutleryknife; character CLOSE lightswitch; character CLOSE orchid; character CLOSE plate; character CLOSE rug; character CLOSE tvstand; character INSIDE kitchen; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom; cutleryfork CLOSE character; cutleryfork INSIDE kitchen; cutleryknife CLOSE character; cutleryknife INSIDE kitchen; lightswitch CLOSE character; lightswitch INSIDE bedroom; orchid CLOSE character; orchid INSIDE kitchen; orchid ON tvstand; plate CLOSE character; plate INSIDE kitchen; plate ON tvstand; rug CLOSE character; rug INSIDE kitchen; tvstand CLOSE character; tvstand INSIDE kitchen.",
+      "initial_program": "# Locate and open the closed curtains in the current kitchen\nfind('curtains')\nopen('curtains')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and open the closed curtains in the current kitchen",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and open the closed curtains in the current kitchen",
+          "compiled_action": null
+        },
+        {
+          "line": "find('curtains')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and open the closed curtains in the current kitchen",
+          "compiled_action": "<char0> [find] <curtains> (128)"
+        },
+        {
+          "line": "open('curtains')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and open the closed curtains in the current kitchen",
+          "compiled_action": "<char0> [open] <curtains> (128)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN."
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nfind('curtains')\nopen('curtains')",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('curtains')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [find] <curtains> (128)"
+        },
+        {
+          "line": "open('curtains')",
+          "event": "action",
+          "success": false,
+          "detail": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [open] <curtains> (128)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+          "line": "open('curtains')"
+        }
+      ],
+      "repair_verifier": {
+        "done": false,
+        "failure_stage": "interaction",
+        "regeneration_hint": "Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED."
+      },
+      "final_done": false
+    }
+  ],
+  "generated_program": "# atomic 1: Open the curtains.\n# Locate and open the closed curtains in the current kitchen\nfind('curtains')\nopen('curtains')\n# atomic 1 Retry-1\n# repair\nfind('curtains')\nopen('curtains')",
+  "atomic_tasks": [
+    {
+      "id": 1,
+      "instruction": "Open the curtains.",
+      "manipulated_object": "curtains",
+      "target_object": null,
+      "completion_mode": "state",
+      "process_intent": null
+    }
+  ],
+  "number_of_atomic_tasks": 1,
+  "atomic_tasks_attempted": 1,
+  "atomic_records": [
+    {
+      "atomic_task": {
+        "id": 1,
+        "instruction": "Open the curtains.",
+        "manipulated_object": "curtains",
+        "target_object": null,
+        "completion_mode": "state",
+        "process_intent": null
+      },
+      "initial_observation": "character(room=kitchen;state=none;holds=none). objects: bench[n=1;state=none;props=SITTABLE+SURFACES]; candle[n=1;state=OFF;props=GRABBABLE+HAS_SWITCH]; curtains[n=12;state=CLOSED;props=CAN_OPEN]; cutleryfork[n=1;state=none;props=GRABBABLE]; cutleryknife[n=1;state=none;props=GRABBABLE]; lightswitch[n=1;state=ON;props=HAS_SWITCH]; orchid[n=1;state=none;props=none]; plate[n=2;state=none;props=GRABBABLE+SURFACES]; rug[n=2;state=none;props=GRABBABLE+SITTABLE+SURFACES]; tvstand[n=1;state=none;props=SURFACES]. relations: bench CLOSE character; bench INSIDE kitchen; bench ON rug; candle CLOSE character; candle INSIDE kitchen; candle ON tvstand; character CLOSE bench; character CLOSE candle; character CLOSE cutleryfork; character CLOSE cutleryknife; character CLOSE lightswitch; character CLOSE orchid; character CLOSE plate; character CLOSE rug; character CLOSE tvstand; character INSIDE kitchen; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom; cutleryfork CLOSE character; cutleryfork INSIDE kitchen; cutleryknife CLOSE character; cutleryknife INSIDE kitchen; lightswitch CLOSE character; lightswitch INSIDE bedroom; orchid CLOSE character; orchid INSIDE kitchen; orchid ON tvstand; plate CLOSE character; plate INSIDE kitchen; plate ON tvstand; rug CLOSE character; rug INSIDE kitchen; tvstand CLOSE character; tvstand INSIDE kitchen.",
+      "initial_program": "# Locate and open the closed curtains in the current kitchen\nfind('curtains')\nopen('curtains')",
+      "initial_generation_error": null,
+      "initial_execution_trace": [
+        {
+          "line": "# Locate and open the closed curtains in the current kitchen",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and open the closed curtains in the current kitchen",
+          "compiled_action": null
+        },
+        {
+          "line": "find('curtains')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and open the closed curtains in the current kitchen",
+          "compiled_action": "<char0> [find] <curtains> (128)"
+        },
+        {
+          "line": "open('curtains')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "Locate and open the closed curtains in the current kitchen",
+          "compiled_action": "<char0> [open] <curtains> (128)"
+        }
+      ],
+      "initial_typed_errors": [],
+      "first_verifier": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN."
+      },
+      "first_done": false,
+      "retry_used": true,
+      "repair_program": "# repair\nfind('curtains')\nopen('curtains')",
+      "repair_execution_trace": [
+        {
+          "line": "# repair",
+          "event": "comment",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": null
+        },
+        {
+          "line": "find('curtains')",
+          "event": "action",
+          "success": true,
+          "detail": "",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [find] <curtains> (128)"
+        },
+        {
+          "line": "open('curtains')",
+          "event": "action",
+          "success": false,
+          "detail": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+          "subgoal": "repair",
+          "compiled_action": "<char0> [open] <curtains> (128)"
+        }
+      ],
+      "repair_typed_errors": [
+        {
+          "error_type": "precondition_failure",
+          "message": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+          "line": "open('curtains')"
+        }
+      ],
+      "repair_verifier": {
+        "done": false,
+        "failure_stage": "interaction",
+        "regeneration_hint": "Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED."
+      },
+      "final_done": false
+    }
+  ],
+  "retry_count": 1,
+  "early_stop_count": 1,
+  "online_verification_calls": [
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true} OR, only on failure, {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nRELEVANT OBJECT CLASSES: [\"curtains\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and open the closed curtains in the current kitchen\\nfind('curtains')\\nopen('curtains')\", \"execution_trace\": [{\"line\": \"find('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <curtains> (128)\"}, {\"line\": \"open('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <curtains> (128)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}",
+      "prompt_tokens": 541,
+      "completion_tokens": 49,
+      "latency_s": 2.8905049939967284,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739215560a10e5427f14403173c1858eb68257f66f4a267",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true} OR, only on failure, {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nRELEVANT OBJECT CLASSES: [\"curtains\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# repair\\nfind('curtains')\\nopen('curtains')\", \"execution_trace\": [{\"line\": \"find('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <curtains> (128)\"}, {\"line\": \"open('curtains')\", \"event\": \"action\", \"success\": false, \"detail\": \"<curtains> (128) is not closed when executing \\\"[OPEN] <curtains> (128) [0]\\\"\", \"compiled_action\": \"<char0> [open] <curtains> (128)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<curtains> (128) is not closed when executing \\\"[OPEN] <curtains> (128) [0]\\\"\", \"line\": \"open('curtains')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED.\"}",
+      "prompt_tokens": 675,
+      "completion_tokens": 56,
+      "latency_s": 3.0528689619968645,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739221253a10e5427f14403173c1858eb68257f66520c75",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "atomic_id": 1,
+      "attempt": "initial",
+      "observation": "character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN."
+      },
+      "raw_output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}"
+    },
+    {
+      "atomic_id": 1,
+      "attempt": "repair",
+      "observation": "character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.",
+      "result": {
+        "done": false,
+        "failure_stage": "interaction",
+        "regeneration_hint": "Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED."
+      },
+      "raw_output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED.\"}"
+    }
+  ],
+  "online_verification_count": 2,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Locate and open the closed curtains in the current kitchen",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the closed curtains in the current kitchen",
+      "compiled_action": null
+    },
+    {
+      "line": "find('curtains')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the closed curtains in the current kitchen",
+      "compiled_action": "<char0> [find] <curtains> (128)"
+    },
+    {
+      "line": "open('curtains')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and open the closed curtains in the current kitchen",
+      "compiled_action": "<char0> [open] <curtains> (128)"
+    },
+    {
+      "line": "# repair",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": null
+    },
+    {
+      "line": "find('curtains')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [find] <curtains> (128)"
+    },
+    {
+      "line": "open('curtains')",
+      "event": "action",
+      "success": false,
+      "detail": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+      "subgoal": "repair",
+      "compiled_action": "<char0> [open] <curtains> (128)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <curtains> (128)",
+      "parsed_action": "[FIND] <curtains> (128) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <curtains> (128)",
+      "parsed_action": "[OPEN] <curtains> (128) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <curtains> (128)",
+      "parsed_action": "[FIND] <curtains> (128) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <curtains> (128)",
+      "parsed_action": "[OPEN] <curtains> (128) [0]",
+      "success": false,
+      "error": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <curtains> (128)",
+    "<char0> [open] <curtains> (128)",
+    "<char0> [find] <curtains> (128)",
+    "<char0> [open] <curtains> (128)"
+  ],
+  "program_length": 4,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(curtains, OPEN)",
+        "predicate": "STATE",
+        "object": "curtains",
+        "value": "OPEN",
+        "rationale": "The instruction explicitly requests open curtains."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[128]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": 1,
+  "official_GCR": 1.0,
+  "official_PSR": 1.0,
+  "official_Precision": 1.0,
+  "Exec": 0.75,
+  "generation_calls": 2,
+  "verification_calls": 2,
+  "repair_calls": 1,
+  "total_calls": 5,
+  "generation_prompt_tokens": 2203,
+  "generation_completion_tokens": 91,
+  "verification_prompt_tokens": 1216,
+  "verification_completion_tokens": 105,
+  "repair_prompt_tokens": 1088,
+  "repair_completion_tokens": 59,
+  "repair_tokens": 1147,
+  "prompt_tokens": 4507,
+  "completion_tokens": 255,
+  "total_prompt_tokens": 4507,
+  "total_completion_tokens": 255,
+  "total_tokens": 4762,
+  "planning_latency": 7.6888613069968414,
+  "verification_latency": 5.943373955993593,
+  "total_llm_latency": 13.632235262990434,
+  "wall_clock_total_s": 14.50454215499849,
+  "llm_call_records": [
+    {
+      "call_role": "task_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: open the curtains\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Open the curtains.\",\"manipulated_object\":\"curtains\",\"target_object\":null,\"completion_mode\":\"state\",\"process_intent\":null}]}",
+      "output_text": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Open the curtains.\",\"manipulated_object\":\"curtains\",\"target_object\":null,\"completion_mode\":\"state\",\"process_intent\":null}]}",
+      "prompt_tokens": 881,
+      "completion_tokens": 44,
+      "latency_s": 2.61009337699943,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739210575a10e5427f14403173c1858eb68257f66e33c3a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: open the curtains\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: bench[n=1;state=none;props=SITTABLE+SURFACES]; candle[n=1;state=OFF;props=GRABBABLE+HAS_SWITCH]; curtains[n=12;state=CLOSED;props=CAN_OPEN]; cutleryfork[n=1;state=none;props=GRABBABLE]; cutleryknife[n=1;state=none;props=GRABBABLE]; lightswitch[n=1;state=ON;props=HAS_SWITCH]; orchid[n=1;state=none;props=none]; plate[n=2;state=none;props=GRABBABLE+SURFACES]; rug[n=2;state=none;props=GRABBABLE+SITTABLE+SURFACES]; tvstand[n=1;state=none;props=SURFACES]. relations: bench CLOSE character; bench INSIDE kitchen; bench ON rug; candle CLOSE character; candle INSIDE kitchen; candle ON tvstand; character CLOSE bench; character CLOSE candle; character CLOSE cutleryfork; character CLOSE cutleryknife; character CLOSE lightswitch; character CLOSE orchid; character CLOSE plate; character CLOSE rug; character CLOSE tvstand; character INSIDE kitchen; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom; cutleryfork CLOSE character; cutleryfork INSIDE kitchen; cutleryknife CLOSE character; cutleryknife INSIDE kitchen; lightswitch CLOSE character; lightswitch INSIDE bedroom; orchid CLOSE character; orchid INSIDE kitchen; orchid ON tvstand; plate CLOSE character; plate INSIDE kitchen; plate ON tvstand; rug CLOSE character; rug INSIDE kitchen; tvstand CLOSE character; tvstand INSIDE kitchen.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\n\nRules: listed calls/classes only; standup before moving if seated/lying.\nBefore interact(X), find/walk(X) and do not align elsewhere first. Transfer:\nalign source > grab source > align target > meet target state > put source.\nputin/putback require held source + close target; open an openable putin target.\nMovement cancels prior proximity. Avoid redundant state actions. Repair failed\npreconditions before retry. No invented calls, assertions, loops, IDs, evaluator\npredicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the kitchen curtains and open them to complete the task.\",\"program\":\"# Locate and open the closed curtains in the current kitchen\\nfind('curtains')\\nopen('curtains')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the kitchen curtains and open them to complete the task.\",\"program\":\"# Locate and open the closed curtains in the current kitchen\\nfind('curtains')\\nopen('curtains')\"}",
+      "prompt_tokens": 1322,
+      "completion_tokens": 47,
+      "latency_s": 2.29956663700068,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739213190a10e5427f14403173c1858eb68257f66ea8b73",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "atomic_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true} OR, only on failure, {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nRELEVANT OBJECT CLASSES: [\"curtains\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and open the closed curtains in the current kitchen\\nfind('curtains')\\nopen('curtains')\", \"execution_trace\": [{\"line\": \"find('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <curtains> (128)\"}, {\"line\": \"open('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <curtains> (128)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}",
+      "prompt_tokens": 541,
+      "completion_tokens": 49,
+      "latency_s": 2.8905049939967284,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739215560a10e5427f14403173c1858eb68257f66f4a267",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "repair_program_agent",
+      "broad_role": "repair",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one current atomic. Repair from current state. Do not replay\nsuccessful work blindly or plan future atomics. Return strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK: open the curtains\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nPREVIOUS ATTEMPTED PROGRAM: # Locate and open the closed curtains in the current kitchen\nfind('curtains')\nopen('curtains')\nFAILED ACTIONS: []\nTYPED ERRORS: []\nPREVIOUS VERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\n\nRules: listed calls/classes only; standup before moving if seated/lying.\nBefore interact(X), find/walk(X) and do not align elsewhere first. Transfer:\nalign source > grab source > align target > meet target state > put source.\nputin/putback require held source + close target; open an openable putin target.\nMovement cancels prior proximity. Avoid redundant state actions. Repair failed\npreconditions before retry. No invented calls, assertions, loops, IDs, evaluator\npredicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "raw_output": "{\"repair_brief\":\"Re-execute open on the located kitchen curtains to fully transition their state from mixed CLOSED+OPEN to only OPEN, as the prior open did not complete the state change.\",\"program\":\"# repair\\nfind('curtains')\\nopen('curtains')\"}",
+      "output_text": "{\"repair_brief\":\"Re-execute open on the located kitchen curtains to fully transition their state from mixed CLOSED+OPEN to only OPEN, as the prior open did not complete the state change.\",\"program\":\"# repair\\nfind('curtains')\\nopen('curtains')\"}",
+      "prompt_tokens": 1088,
+      "completion_tokens": 59,
+      "latency_s": 2.7792012929967314,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739218456a10e5427f14403173c1858eb68257f662b6f71",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "post_repair_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true} OR, only on failure, {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nRELEVANT OBJECT CLASSES: [\"curtains\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# repair\\nfind('curtains')\\nopen('curtains')\", \"execution_trace\": [{\"line\": \"find('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <curtains> (128)\"}, {\"line\": \"open('curtains')\", \"event\": \"action\", \"success\": false, \"detail\": \"<curtains> (128) is not closed when executing \\\"[OPEN] <curtains> (128) [0]\\\"\", \"compiled_action\": \"<char0> [open] <curtains> (128)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<curtains> (128) is not closed when executing \\\"[OPEN] <curtains> (128) [0]\\\"\", \"line\": \"open('curtains')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED.\"}",
+      "output_text": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED.\"}",
+      "prompt_tokens": 675,
+      "completion_tokens": 56,
+      "latency_s": 3.0528689619968645,
+      "temperature": 0.0,
+      "max_tokens": 120,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_021787739221253a10e5427f14403173c1858eb68257f66520c75",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "task_agent",
+      "instructions": "Return only the requested strict TaskAgent JSON object.",
+      "input": "You are the HPAF TaskAgent for a VirtualHome household task.\nDecompose WHAT is required into the fewest ordered object-centric semantic\noperations. A separate ProgramAgent handles navigation and action preconditions.\n\nRules:\n1. Each atomic is one understandable operation centered on one manipulated\n   object and optional target/reference object.\n2. Never create locate/find/walk/navigation atomics. Opening/closing is an\n   atomic only when it is the requested outcome, not merely a prerequisite.\n3. Classify `completion_mode` as `state` for a persistent requested state or\n   relation, and `process` when the requested operation must be completed rather\n   than merely initiated. Keep one lifecycle as one process atomic rather than\n   splitting its start and completion into disconnected static atomics.\n4. For process mode, `process_intent` states only the natural-language completion\n   intent. It must not contain primitive sequences, evaluator predicates, GT, or\n   verification answers. Use null for state mode.\n5. Do not output primitive calls, instance IDs, invented objects, or time steps.\n6. Use 1-6 atomics and exact AVAILABLE OBJECT CLASSES in object fields.\n\nReturn strict JSON only:\n{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"...\",\"manipulated_object\":\"object_class\",\"target_object\":null,\"completion_mode\":\"state|process\",\"process_intent\":null}]}\n\nORIGINAL TASK: open the curtains\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPROGRAMAGENT ACTION NAMES: [\"close\", \"drink\", \"find\", \"grab\", \"lookat\", \"open\", \"pointat\", \"putback\", \"putin\", \"run\", \"sit\", \"standup\", \"switchoff\", \"switchon\", \"turnto\", \"walk\", \"watch\"]\n"
+    },
+    {
+      "role": "atomic_program_agent",
+      "instructions": "Return only the requested strict atomic ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nCompile only the current object-centric atomic into a short executable program.\nDo not redo earlier atomics or plan future atomics. Return strict JSON only:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nORIGINAL TASK: open the curtains\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: bench[n=1;state=none;props=SITTABLE+SURFACES]; candle[n=1;state=OFF;props=GRABBABLE+HAS_SWITCH]; curtains[n=12;state=CLOSED;props=CAN_OPEN]; cutleryfork[n=1;state=none;props=GRABBABLE]; cutleryknife[n=1;state=none;props=GRABBABLE]; lightswitch[n=1;state=ON;props=HAS_SWITCH]; orchid[n=1;state=none;props=none]; plate[n=2;state=none;props=GRABBABLE+SURFACES]; rug[n=2;state=none;props=GRABBABLE+SITTABLE+SURFACES]; tvstand[n=1;state=none;props=SURFACES]. relations: bench CLOSE character; bench INSIDE kitchen; bench ON rug; candle CLOSE character; candle INSIDE kitchen; candle ON tvstand; character CLOSE bench; character CLOSE candle; character CLOSE cutleryfork; character CLOSE cutleryknife; character CLOSE lightswitch; character CLOSE orchid; character CLOSE plate; character CLOSE rug; character CLOSE tvstand; character INSIDE kitchen; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom; cutleryfork CLOSE character; cutleryfork INSIDE kitchen; cutleryknife CLOSE character; cutleryknife INSIDE kitchen; lightswitch CLOSE character; lightswitch INSIDE bedroom; orchid CLOSE character; orchid INSIDE kitchen; orchid ON tvstand; plate CLOSE character; plate INSIDE kitchen; plate ON tvstand; rug CLOSE character; rug INSIDE kitchen; tvstand CLOSE character; tvstand INSIDE kitchen.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\n\nRules: listed calls/classes only; standup before moving if seated/lying.\nBefore interact(X), find/walk(X) and do not align elsewhere first. Transfer:\nalign source > grab source > align target > meet target state > put source.\nputin/putback require held source + close target; open an openable putin target.\nMovement cancels prior proximity. Avoid redundant state actions. Repair failed\npreconditions before retry. No invented calls, assertions, loops, IDs, evaluator\npredicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "atomic_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true} OR, only on failure, {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nRELEVANT OBJECT CLASSES: [\"curtains\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and open the closed curtains in the current kitchen\\nfind('curtains')\\nopen('curtains')\", \"execution_trace\": [{\"line\": \"find('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <curtains> (128)\"}, {\"line\": \"open('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <curtains> (128)\"}], \"errors\": []}\n"
+    },
+    {
+      "role": "repair_program_agent",
+      "instructions": "Return only the requested strict Retry-1 JSON object.",
+      "input": "You are the HPAF ProgramAgent performing the single allowed\nlocal repair for one current atomic. Repair from current state. Do not replay\nsuccessful work blindly or plan future atomics. Return strict JSON only:\n{\"repair_brief\":\"...\",\"program\":\"# repair\\nfind('object')\\n...\"}\n\nORIGINAL TASK: open the curtains\nCURRENT ATOMIC: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nPREVIOUS ATTEMPTED PROGRAM: # Locate and open the closed curtains in the current kitchen\nfind('curtains')\nopen('curtains')\nFAILED ACTIONS: []\nTYPED ERRORS: []\nPREVIOUS VERIFIER: {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: close(obj), drink(obj), find(obj), grab(obj), lookat(obj), open(obj), pointat(obj), putback(obj,obj), putin(obj,obj), run(obj), sit(obj), standup(), switchoff(obj), switchon(obj), turnto(obj), walk(obj), watch(obj)\n\nRules: listed calls/classes only; standup before moving if seated/lying.\nBefore interact(X), find/walk(X) and do not align elsewhere first. Transfer:\nalign source > grab source > align target > meet target state > put source.\nputin/putback require held source + close target; open an openable putin target.\nMovement cancels prior proximity. Avoid redundant state actions. Repair failed\npreconditions before retry. No invented calls, assertions, loops, IDs, evaluator\npredicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "post_repair_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true} OR, only on failure, {\"done\":false,\"failure_stage\":\"perception|alignment|interaction|process|verification\",\"regeneration_hint\":\"short actionable hint\"}\n\nCURRENT TASK CONTRACT: {\"id\": 1, \"instruction\": \"Open the curtains.\", \"manipulated_object\": \"curtains\", \"target_object\": null, \"completion_mode\": \"state\", \"process_intent\": null}\nCURRENT STATE: character(room=kitchen;state=none;holds=none). objects: curtains[n=12;state=CLOSED+OPEN;props=CAN_OPEN]. relations: character CLOSE curtains; character INSIDE kitchen; curtains CLOSE character; curtains INSIDE bathroom; curtains INSIDE bedroom; curtains INSIDE kitchen; curtains INSIDE livingroom.\nRELEVANT OBJECT CLASSES: [\"curtains\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# repair\\nfind('curtains')\\nopen('curtains')\", \"execution_trace\": [{\"line\": \"find('curtains')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <curtains> (128)\"}, {\"line\": \"open('curtains')\", \"event\": \"action\", \"success\": false, \"detail\": \"<curtains> (128) is not closed when executing \\\"[OPEN] <curtains> (128) [0]\\\"\", \"compiled_action\": \"<char0> [open] <curtains> (128)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<curtains> (128) is not closed when executing \\\"[OPEN] <curtains> (128) [0]\\\"\", \"line\": \"open('curtains')\"}], \"previous_verifier\": {\"done\": false, \"failure_stage\": \"verification\", \"regeneration_hint\": \"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "task_agent",
+      "output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Open the curtains.\",\"manipulated_object\":\"curtains\",\"target_object\":null,\"completion_mode\":\"state\",\"process_intent\":null}]}"
+    },
+    {
+      "role": "atomic_program_agent",
+      "output": "{\"plan_brief\":\"Locate the kitchen curtains and open them to complete the task.\",\"program\":\"# Locate and open the closed curtains in the current kitchen\\nfind('curtains')\\nopen('curtains')\"}"
+    },
+    {
+      "role": "atomic_verifier",
+      "output": "{\"done\":false,\"failure_stage\":\"verification\",\"regeneration_hint\":\"Verify the curtains are fully open; current state still lists curtains as CLOSED, so re-execute open on the closed curtains until their state is only OPEN.\"}"
+    },
+    {
+      "role": "repair_program_agent",
+      "output": "{\"repair_brief\":\"Re-execute open on the located kitchen curtains to fully transition their state from mixed CLOSED+OPEN to only OPEN, as the prior open did not complete the state change.\",\"program\":\"# repair\\nfind('curtains')\\nopen('curtains')\"}"
+    },
+    {
+      "role": "post_repair_verifier",
+      "output": "{\"done\":false,\"failure_stage\":\"interaction\",\"regeneration_hint\":\"Target the specific closed curtains instance (the one that is actually closed, not the already open one) and execute the open action on that closed curtains until its state is OPEN and no longer CLOSED.\"}"
+    }
+  ],
+  "error_type": "atomic_online_verification_failure",
+  "error_message": "Atomic 1 remained done=false after Retry-1",
+  "errors": [
+    {
+      "error_type": "atomic_online_verification_failure",
+      "message": "Atomic 1 remained done=false after Retry-1"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<curtains> (128) is not closed when executing \"[OPEN] <curtains> (128) [0]\"",
+      "line": "open('curtains')"
+    }
+  ],
+  "taskagent_raw_output": "{\"atomic_tasks\":[{\"id\":1,\"instruction\":\"Open the curtains.\",\"manipulated_object\":\"curtains\",\"target_object\":null,\"completion_mode\":\"state\",\"process_intent\":null}]}"
+}

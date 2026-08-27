@@ -1,0 +1,744 @@
+{
+  "run_id": "formal_2026-08-27T015405.463356_0000_hpaf_flat_p10_s2_crossloc_3",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-27T01:54:05.463356+00:00",
+  "task_id": "p10_s2_crossloc_3",
+  "task": "Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.",
+  "split": "phase10_final_holdout",
+  "scene": 2,
+  "goal_count": null,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "a25364301064c4cf1f2bc9e394d1156959463909453ba50f475c17d4b297acb4",
+  "task_manifest_sha256": "42472000c74754de8055ef41fe7bea90875bc325b7bd4ebeecd6ed75d7a6f80b",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "0e420a681b918d10b584528df2778274202869e1006de592dd6b989911623fee",
+  "generated_programs": [
+    "# Locate and pick up the toy\nfind('toy')\ngrab('toy')\n# Stage the toy on the coffeetable\nfind('coffeetable')\nputback('toy','coffeetable')\n# Temporarily store the toy in the cabinet\nfind('cabinet')\nopen('cabinet')\ngrab('toy')\nputin('toy','cabinet')\nclose('cabinet')\n# Deliver the toy to the mousemat\nopen('cabinet')\ngrab('toy')\nclose('cabinet')\nfind('mousemat')\nputback('toy','mousemat')\n# Leave the cabinet closed\nfind('cabinet')\nclose('cabinet')"
+  ],
+  "generated_program": "# Locate and pick up the toy\nfind('toy')\ngrab('toy')\n# Stage the toy on the coffeetable\nfind('coffeetable')\nputback('toy','coffeetable')\n# Temporarily store the toy in the cabinet\nfind('cabinet')\nopen('cabinet')\ngrab('toy')\nputin('toy','cabinet')\nclose('cabinet')\n# Deliver the toy to the mousemat\nopen('cabinet')\ngrab('toy')\nclose('cabinet')\nfind('mousemat')\nputback('toy','mousemat')\n# Leave the cabinet closed\nfind('cabinet')\nclose('cabinet')",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and pick up the toy\\nfind('toy')\\ngrab('toy')\\n# Stage the toy on the coffeetable\\nfind('coffeetable')\\nputback('toy','coffeetable')\\n# Temporarily store the toy in the cabinet\\nfind('cabinet')\\nopen('cabinet')\\ngrab('toy')\\nputin('toy','cabinet')\\nclose('cabinet')\\n# Deliver the toy to the mousemat\\nopen('cabinet')\\ngrab('toy')\\nclose('cabinet')\\nfind('mousemat')\\nputback('toy','mousemat')\\n# Leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toy> (387)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"putback('toy','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <coffeetable> (215)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"putin('toy','cabinet')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: toy\", \"compiled_action\": null}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}, {\"line\": \"find('mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mousemat> (399)\"}, {\"line\": \"putback('toy','mousemat')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: toy\", \"compiled_action\": null}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<cabinet> (396) is not open when executing \\\"[CLOSE] <cabinet> (396) [0]\\\"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"line\": \"grab('toy')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: toy\", \"line\": \"putin('toy','cabinet')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"line\": \"grab('toy')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: toy\", \"line\": \"putback('toy','mousemat')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<cabinet> (396) is not open when executing \\\"[CLOSE] <cabinet> (396) [0]\\\"\", \"line\": \"close('cabinet')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The toy was staged on the coffeetable, but subsequent steps failed: the character did not move close enough to grab the toy from the coffeetable, so the toy was never stored in the cabinet, never delivered to the mousemat, and the final cabinet close failed because the cabinet was already closed.\",\"failure_stage\":\"temporary storage in cabinet (grab after staging)\",\"regeneration_hint\":\"After putting the toy on the coffeetable, navigate to the coffeetable/toy before grabbing it, then successfully put the toy into the opened cabinet, close it, reopen to retrieve the toy, navigate to the mousemat and place the toy there, then ensure the cabinet is closed at the end.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The toy was staged on the coffeetable, but subsequent steps failed: the character did not move close enough to grab the toy from the coffeetable, so the toy was never stored in the cabinet, never delivered to the mousemat, and the final cabinet close failed because the cabinet was already closed.\",\"failure_stage\":\"temporary storage in cabinet (grab after staging)\",\"regeneration_hint\":\"After putting the toy on the coffeetable, navigate to the coffeetable/toy before grabbing it, then successfully put the toy into the opened cabinet, close it, reopen to retrieve the toy, navigate to the mousemat and place the toy there, then ensure the cabinet is closed at the end.\"}",
+      "prompt_tokens": 1701,
+      "completion_tokens": 155,
+      "latency_s": 5.506521698000029,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956666103668eba1a5ab869c4433ad7bc82b08d34a73b6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.",
+      "result": {
+        "done": false,
+        "failure_stage": "verification",
+        "regeneration_hint": "verifier failure fields violate schema"
+      },
+      "raw_output": "{\"done\":false,\"reason\":\"The toy was staged on the coffeetable, but subsequent steps failed: the character did not move close enough to grab the toy from the coffeetable, so the toy was never stored in the cabinet, never delivered to the mousemat, and the final cabinet close failed because the cabinet was already closed.\",\"failure_stage\":\"temporary storage in cabinet (grab after staging)\",\"regeneration_hint\":\"After putting the toy on the coffeetable, navigate to the coffeetable/toy before grabbing it, then successfully put the toy into the opened cabinet, close it, reopen to retrieve the toy, navigate to the mousemat and place the toy there, then ensure the cabinet is closed at the end.\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": false,
+  "execution_trace": [
+    {
+      "line": "# Locate and pick up the toy",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the toy",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toy')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the toy",
+      "compiled_action": "<char0> [find] <toy> (387)"
+    },
+    {
+      "line": "grab('toy')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Locate and pick up the toy",
+      "compiled_action": "<char0> [grab] <toy> (387)"
+    },
+    {
+      "line": "# Stage the toy on the coffeetable",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage the toy on the coffeetable",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage the toy on the coffeetable",
+      "compiled_action": "<char0> [find] <coffeetable> (215)"
+    },
+    {
+      "line": "putback('toy','coffeetable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Stage the toy on the coffeetable",
+      "compiled_action": "<char0> [putback] <toy> (387) <coffeetable> (215)"
+    },
+    {
+      "line": "# Temporarily store the toy in the cabinet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store the toy in the cabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store the toy in the cabinet",
+      "compiled_action": "<char0> [find] <cabinet> (396)"
+    },
+    {
+      "line": "open('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store the toy in the cabinet",
+      "compiled_action": "<char0> [open] <cabinet> (396)"
+    },
+    {
+      "line": "grab('toy')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <toy> (387) when executing \"[GRAB] <toy> (387) [0]\"",
+      "subgoal": "Temporarily store the toy in the cabinet",
+      "compiled_action": "<char0> [grab] <toy> (387)"
+    },
+    {
+      "line": "putin('toy','cabinet')",
+      "event": "action",
+      "success": false,
+      "detail": "object not in hand: toy",
+      "subgoal": "Temporarily store the toy in the cabinet",
+      "compiled_action": null
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Temporarily store the toy in the cabinet",
+      "compiled_action": "<char0> [close] <cabinet> (396)"
+    },
+    {
+      "line": "# Deliver the toy to the mousemat",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver the toy to the mousemat",
+      "compiled_action": null
+    },
+    {
+      "line": "open('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver the toy to the mousemat",
+      "compiled_action": "<char0> [open] <cabinet> (396)"
+    },
+    {
+      "line": "grab('toy')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <toy> (387) when executing \"[GRAB] <toy> (387) [0]\"",
+      "subgoal": "Deliver the toy to the mousemat",
+      "compiled_action": "<char0> [grab] <toy> (387)"
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver the toy to the mousemat",
+      "compiled_action": "<char0> [close] <cabinet> (396)"
+    },
+    {
+      "line": "find('mousemat')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Deliver the toy to the mousemat",
+      "compiled_action": "<char0> [find] <mousemat> (399)"
+    },
+    {
+      "line": "putback('toy','mousemat')",
+      "event": "action",
+      "success": false,
+      "detail": "object not in hand: toy",
+      "subgoal": "Deliver the toy to the mousemat",
+      "compiled_action": null
+    },
+    {
+      "line": "# Leave the cabinet closed",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Leave the cabinet closed",
+      "compiled_action": null
+    },
+    {
+      "line": "find('cabinet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Leave the cabinet closed",
+      "compiled_action": "<char0> [find] <cabinet> (396)"
+    },
+    {
+      "line": "close('cabinet')",
+      "event": "action",
+      "success": false,
+      "detail": "<cabinet> (396) is not open when executing \"[CLOSE] <cabinet> (396) [0]\"",
+      "subgoal": "Leave the cabinet closed",
+      "compiled_action": "<char0> [close] <cabinet> (396)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <toy> (387)",
+      "parsed_action": "[FIND] <toy> (387) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toy> (387)",
+      "parsed_action": "[GRAB] <toy> (387) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <coffeetable> (215)",
+      "parsed_action": "[FIND] <coffeetable> (215) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toy> (387) <coffeetable> (215)",
+      "parsed_action": "[PUTBACK] <toy> (387) <coffeetable> (215) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (396)",
+      "parsed_action": "[FIND] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <cabinet> (396)",
+      "parsed_action": "[OPEN] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toy> (387)",
+      "parsed_action": "[GRAB] <toy> (387) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <toy> (387) when executing \"[GRAB] <toy> (387) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "putin('toy','cabinet')",
+      "parsed_action": null,
+      "success": false,
+      "error": "object not in hand: toy",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (396)",
+      "parsed_action": "[CLOSE] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <cabinet> (396)",
+      "parsed_action": "[OPEN] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toy> (387)",
+      "parsed_action": "[GRAB] <toy> (387) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <toy> (387) when executing \"[GRAB] <toy> (387) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (396)",
+      "parsed_action": "[CLOSE] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <mousemat> (399)",
+      "parsed_action": "[FIND] <mousemat> (399) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "putback('toy','mousemat')",
+      "parsed_action": null,
+      "success": false,
+      "error": "object not in hand: toy",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <cabinet> (396)",
+      "parsed_action": "[FIND] <cabinet> (396) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <cabinet> (396)",
+      "parsed_action": "[CLOSE] <cabinet> (396) [0]",
+      "success": false,
+      "error": "<cabinet> (396) is not open when executing \"[CLOSE] <cabinet> (396) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <toy> (387)",
+    "<char0> [grab] <toy> (387)",
+    "<char0> [find] <coffeetable> (215)",
+    "<char0> [putback] <toy> (387) <coffeetable> (215)",
+    "<char0> [find] <cabinet> (396)",
+    "<char0> [open] <cabinet> (396)",
+    "<char0> [grab] <toy> (387)",
+    "<char0> [close] <cabinet> (396)",
+    "<char0> [open] <cabinet> (396)",
+    "<char0> [grab] <toy> (387)",
+    "<char0> [close] <cabinet> (396)",
+    "<char0> [find] <mousemat> (399)",
+    "<char0> [find] <cabinet> (396)",
+    "<char0> [close] <cabinet> (396)"
+  ],
+  "program_length": 16,
+  "final_semantic_SR": 0,
+  "semantic_GCR": 0.3333333333333333,
+  "semantic_goal_condition_count": 9,
+  "semantic_satisfied_condition_count": 3,
+  "semantic_condition_details": [
+    {
+      "kind": "semantic_event",
+      "id": "E1",
+      "description": "stage source at waypoint",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toy",
+          "second": "coffeetable"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "putback",
+        "first": "toy",
+        "first_id": 387,
+        "second": "coffeetable",
+        "second_id": 215,
+        "ordinal": 4
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E2",
+      "description": "store source in intermediate container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "toy",
+          "second": "cabinet"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E3",
+      "description": "retrieve source from intermediate container",
+      "expected": [
+        {
+          "verb": "grab",
+          "first": "toy"
+        }
+      ],
+      "satisfied": true,
+      "evidence": {
+        "verb": "grab",
+        "first": "toy",
+        "first_id": 387,
+        "second": null,
+        "second_id": null,
+        "ordinal": 2
+      }
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "deliver source to final destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toy",
+          "second": "mousemat"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E1",
+      "after": "E2",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 4,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E2",
+      "after": "E3",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": null,
+        "after_ordinal": 2
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E5",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 2,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "terminal_constraint",
+      "condition": {
+        "condition": "STATE(cabinet, CLOSED)",
+        "predicate": "STATE",
+        "object": "cabinet",
+        "value": "CLOSED",
+        "rationale": "Frozen terminal state required by the deterministic task template."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[396]"
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "ON(toy, mousemat)",
+        "predicate": "RELATION",
+        "subject": "toy",
+        "relation": "ON",
+        "object": "mousemat",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "semantic_missing_conditions": [
+    {
+      "kind": "semantic_event",
+      "id": "E2",
+      "description": "store source in intermediate container",
+      "expected": [
+        {
+          "verb": "putin",
+          "first": "toy",
+          "second": "cabinet"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "semantic_event",
+      "id": "E5",
+      "description": "deliver source to final destination",
+      "expected": [
+        {
+          "verb": "putback",
+          "first": "toy",
+          "second": "mousemat"
+        }
+      ],
+      "satisfied": false,
+      "evidence": null
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E1",
+      "after": "E2",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 4,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E2",
+      "after": "E3",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": null,
+        "after_ordinal": 2
+      }
+    },
+    {
+      "kind": "required_dependency",
+      "before": "E3",
+      "after": "E5",
+      "satisfied": false,
+      "evidence": {
+        "before_ordinal": 2,
+        "after_ordinal": null
+      }
+    },
+    {
+      "kind": "final_persistent_goal",
+      "condition": {
+        "condition": "ON(toy, mousemat)",
+        "predicate": "RELATION",
+        "subject": "toy",
+        "relation": "ON",
+        "object": "mousemat",
+        "rationale": "Frozen final relation required by the deterministic task template."
+      },
+      "satisfied": false,
+      "evidence": ""
+    }
+  ],
+  "partial_order_assignment": {
+    "E1": 4,
+    "E3": 2
+  },
+  "implementation_rejection": false,
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 0.6875,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1130,
+  "generation_completion_tokens": 209,
+  "verification_prompt_tokens": 1701,
+  "verification_completion_tokens": 155,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2831,
+  "completion_tokens": 364,
+  "total_prompt_tokens": 2831,
+  "total_completion_tokens": 364,
+  "total_tokens": 3195,
+  "planning_latency": 5.015651794000007,
+  "verification_latency": 5.506521698000029,
+  "total_llm_latency": 10.522173492000036,
+  "wall_clock_total_s": 11.521115725000016,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Locate the toy, place it on the coffeetable, temporarily store it inside the cabinet, then move it to the mousemat and ensure the cabinet is closed.\",\"program\":\"# Locate and pick up the toy\\nfind('toy')\\ngrab('toy')\\n# Stage the toy on the coffeetable\\nfind('coffeetable')\\nputback('toy','coffeetable')\\n# Temporarily store the toy in the cabinet\\nfind('cabinet')\\nopen('cabinet')\\ngrab('toy')\\nputin('toy','cabinet')\\nclose('cabinet')\\n# Deliver the toy to the mousemat\\nopen('cabinet')\\ngrab('toy')\\nclose('cabinet')\\nfind('mousemat')\\nputback('toy','mousemat')\\n# Leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\"}",
+      "output_text": "{\"plan_brief\":\"Locate the toy, place it on the coffeetable, temporarily store it inside the cabinet, then move it to the mousemat and ensure the cabinet is closed.\",\"program\":\"# Locate and pick up the toy\\nfind('toy')\\ngrab('toy')\\n# Stage the toy on the coffeetable\\nfind('coffeetable')\\nputback('toy','coffeetable')\\n# Temporarily store the toy in the cabinet\\nfind('cabinet')\\nopen('cabinet')\\ngrab('toy')\\nputin('toy','cabinet')\\nclose('cabinet')\\n# Deliver the toy to the mousemat\\nopen('cabinet')\\ngrab('toy')\\nclose('cabinet')\\nfind('mousemat')\\nputback('toy','mousemat')\\n# Leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\"}",
+      "prompt_tokens": 1130,
+      "completion_tokens": 209,
+      "latency_s": 5.015651794000007,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956614113668eba1a5ab869c4433ad7bc82b08d3d0c6e1",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and pick up the toy\\nfind('toy')\\ngrab('toy')\\n# Stage the toy on the coffeetable\\nfind('coffeetable')\\nputback('toy','coffeetable')\\n# Temporarily store the toy in the cabinet\\nfind('cabinet')\\nopen('cabinet')\\ngrab('toy')\\nputin('toy','cabinet')\\nclose('cabinet')\\n# Deliver the toy to the mousemat\\nopen('cabinet')\\ngrab('toy')\\nclose('cabinet')\\nfind('mousemat')\\nputback('toy','mousemat')\\n# Leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toy> (387)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"putback('toy','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <coffeetable> (215)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"putin('toy','cabinet')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: toy\", \"compiled_action\": null}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}, {\"line\": \"find('mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mousemat> (399)\"}, {\"line\": \"putback('toy','mousemat')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: toy\", \"compiled_action\": null}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<cabinet> (396) is not open when executing \\\"[CLOSE] <cabinet> (396) [0]\\\"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"line\": \"grab('toy')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: toy\", \"line\": \"putin('toy','cabinet')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"line\": \"grab('toy')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: toy\", \"line\": \"putback('toy','mousemat')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<cabinet> (396) is not open when executing \\\"[CLOSE] <cabinet> (396) [0]\\\"\", \"line\": \"close('cabinet')\"}]}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":false,\"reason\":\"The toy was staged on the coffeetable, but subsequent steps failed: the character did not move close enough to grab the toy from the coffeetable, so the toy was never stored in the cabinet, never delivered to the mousemat, and the final cabinet close failed because the cabinet was already closed.\",\"failure_stage\":\"temporary storage in cabinet (grab after staging)\",\"regeneration_hint\":\"After putting the toy on the coffeetable, navigate to the coffeetable/toy before grabbing it, then successfully put the toy into the opened cabinet, close it, reopen to retrieve the toy, navigate to the mousemat and place the toy there, then ensure the cabinet is closed at the end.\"}",
+      "output_text": "{\"done\":false,\"reason\":\"The toy was staged on the coffeetable, but subsequent steps failed: the character did not move close enough to grab the toy from the coffeetable, so the toy was never stored in the cabinet, never delivered to the mousemat, and the final cabinet close failed because the cabinet was already closed.\",\"failure_stage\":\"temporary storage in cabinet (grab after staging)\",\"regeneration_hint\":\"After putting the toy on the coffeetable, navigate to the coffeetable/toy before grabbing it, then successfully put the toy into the opened cabinet, close it, reopen to retrieve the toy, navigate to the mousemat and place the toy there, then ensure the cabinet is closed at the end.\"}",
+      "prompt_tokens": 1701,
+      "completion_tokens": 155,
+      "latency_s": 5.506521698000029,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_0217877956666103668eba1a5ab869c4433ad7bc82b08d34a73b6",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand.\nAVAILABLE OBJECT CLASSES: [\"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bathtub\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"closet\", \"clothespile\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentbottle\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"cupcake\", \"curtains\", \"cutleryfork\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"juice\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"livingroom\", \"microwave\", \"milk\", \"mincedmeat\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"painkillers\", \"perfume\", \"photoframe\", \"pillow\", \"plate\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"salmon\", \"sink\", \"slippers\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toothbrush\", \"toothpaste\", \"towel\", \"towelrack\", \"toy\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"wallshelf\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Stage the toy on the coffeetable, store the toy temporarily in the cabinet, then deliver the toy to the mousemat and leave the cabinet closed.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bedroom; states=[]; holds=[]. Nearby visible graph: cabinet ON floor, cabinet is CLOSED, floor. One-hop INSIDE/ON relations connected to nearby objects: cabinet ON floor; radio ON cabinet.\nRELEVANT OBJECT CLASSES: [\"cabinet\", \"coffeetable\", \"mouse\", \"mousemat\", \"toy\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Locate and pick up the toy\\nfind('toy')\\ngrab('toy')\\n# Stage the toy on the coffeetable\\nfind('coffeetable')\\nputback('toy','coffeetable')\\n# Temporarily store the toy in the cabinet\\nfind('cabinet')\\nopen('cabinet')\\ngrab('toy')\\nputin('toy','cabinet')\\nclose('cabinet')\\n# Deliver the toy to the mousemat\\nopen('cabinet')\\ngrab('toy')\\nclose('cabinet')\\nfind('mousemat')\\nputback('toy','mousemat')\\n# Leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\", \"execution_trace\": [{\"line\": \"find('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toy> (387)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"find('coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeetable> (215)\"}, {\"line\": \"putback('toy','coffeetable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toy> (387) <coffeetable> (215)\"}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"putin('toy','cabinet')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: toy\", \"compiled_action\": null}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}, {\"line\": \"open('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <cabinet> (396)\"}, {\"line\": \"grab('toy')\", \"event\": \"action\", \"success\": false, \"detail\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"compiled_action\": \"<char0> [grab] <toy> (387)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}, {\"line\": \"find('mousemat')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <mousemat> (399)\"}, {\"line\": \"putback('toy','mousemat')\", \"event\": \"action\", \"success\": false, \"detail\": \"object not in hand: toy\", \"compiled_action\": null}, {\"line\": \"find('cabinet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <cabinet> (396)\"}, {\"line\": \"close('cabinet')\", \"event\": \"action\", \"success\": false, \"detail\": \"<cabinet> (396) is not open when executing \\\"[CLOSE] <cabinet> (396) [0]\\\"\", \"compiled_action\": \"<char0> [close] <cabinet> (396)\"}], \"errors\": [{\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"line\": \"grab('toy')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: toy\", \"line\": \"putin('toy','cabinet')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<character> (1) is not close to <toy> (387) when executing \\\"[GRAB] <toy> (387) [0]\\\"\", \"line\": \"grab('toy')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"object not in hand: toy\", \"line\": \"putback('toy','mousemat')\"}, {\"error_type\": \"precondition_failure\", \"message\": \"<cabinet> (396) is not open when executing \\\"[CLOSE] <cabinet> (396) [0]\\\"\", \"line\": \"close('cabinet')\"}]}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Locate the toy, place it on the coffeetable, temporarily store it inside the cabinet, then move it to the mousemat and ensure the cabinet is closed.\",\"program\":\"# Locate and pick up the toy\\nfind('toy')\\ngrab('toy')\\n# Stage the toy on the coffeetable\\nfind('coffeetable')\\nputback('toy','coffeetable')\\n# Temporarily store the toy in the cabinet\\nfind('cabinet')\\nopen('cabinet')\\ngrab('toy')\\nputin('toy','cabinet')\\nclose('cabinet')\\n# Deliver the toy to the mousemat\\nopen('cabinet')\\ngrab('toy')\\nclose('cabinet')\\nfind('mousemat')\\nputback('toy','mousemat')\\n# Leave the cabinet closed\\nfind('cabinet')\\nclose('cabinet')\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":false,\"reason\":\"The toy was staged on the coffeetable, but subsequent steps failed: the character did not move close enough to grab the toy from the coffeetable, so the toy was never stored in the cabinet, never delivered to the mousemat, and the final cabinet close failed because the cabinet was already closed.\",\"failure_stage\":\"temporary storage in cabinet (grab after staging)\",\"regeneration_hint\":\"After putting the toy on the coffeetable, navigate to the coffeetable/toy before grabbing it, then successfully put the toy into the opened cabinet, close it, reopen to retrieve the toy, navigate to the mousemat and place the toy there, then ensure the cabinet is closed at the end.\"}"
+    }
+  ],
+  "error_type": "verifier_parse_failure",
+  "error_message": "verifier failure fields violate schema",
+  "errors": [
+    {
+      "error_type": "verifier_parse_failure",
+      "message": "verifier failure fields violate schema"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <toy> (387) when executing \"[GRAB] <toy> (387) [0]\"",
+      "line": "grab('toy')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "object not in hand: toy",
+      "line": "putin('toy','cabinet')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <toy> (387) when executing \"[GRAB] <toy> (387) [0]\"",
+      "line": "grab('toy')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "object not in hand: toy",
+      "line": "putback('toy','mousemat')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<cabinet> (396) is not open when executing \"[CLOSE] <cabinet> (396) [0]\"",
+      "line": "close('cabinet')"
+    }
+  ],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: bench, bench ON rug, candle ON tvstand, candle is OFF, cutleryfork, cutleryknife, orchid, orchid ON tvstand, plate, plate ON tvstand, rug, tvstand. One-hop INSIDE/ON relations connected to nearby objects: bench ON rug; candle ON tvstand; kitchentable ON rug; orchid ON tvstand; plate ON tvstand."
+}

@@ -1,0 +1,50 @@
+benchmark:
+  test_set: test_unseen
+  scene: 0
+  seed: 0
+  methods:
+    - ProgPrompt-Full
+    - HPAF-Decomp-Static
+    - HPAF-Decomp-ClosedLoop
+
+virtualhome:
+  executable: third_party/virtualhome/unity/linux_exec.v2.3.0.x86_64
+  port: 8091
+  no_graphics: true
+  render_unity_actions: false
+  backend: unity_initialization_plus_evolving_graph_action_execution
+
+progprompt:
+  prompt_num_examples: 3
+  prompt_examples:
+    - put_the_wine_glass_in_the_kitchen_cabinet
+    - throw_away_the_lime
+    - wash_mug
+  max_tokens: 600
+  temperature: 0.0
+  frequency_penalty: 0.15
+  stop:
+    - def
+
+llm:
+  active_provider: fallback
+  primary:
+    provider: codex
+    api_key_env: CODEX_KEY
+    model_env: CODEX_MODEL
+    base_url_env: CODEX_BASE_URL
+    timeout_s: 180
+    wall_clock_timeout_s: 240
+  fallback:
+    provider: ark
+    api_key_env: ARK_API_KEY
+    model_env: ARK_MODEL
+    default_model: doubao-seed-2-1-pro-260628
+    base_url: https://ark.cn-beijing.volces.com/api/v3
+    extra_body:
+      thinking:
+        type: disabled
+  temperature: 0.0
+  max_tokens: 600
+  state_check_max_tokens: 16
+  seed: null

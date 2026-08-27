@@ -1,0 +1,665 @@
+{
+  "run_id": "formal_2026-08-26T014553.269014_0000_progprompt_graphcompatible_watch_tv",
+  "phase": "formal",
+  "timestamp": "2026-08-26T01:45:53.269014+00:00",
+  "task": "watch tv",
+  "method": "ProgPrompt-GraphCompatible",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "seed": null,
+  "scene": 0,
+  "initial_state_sha256": "6ebd404fdbb03bd2dcaaf5ad6566606ceeacae3bf5f6829d02a6716cbcd2afd8",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "semantic_goal_sha256": "67adf22f4df9f1432a824c5e04b0d88a4515d5a38866bafc7e5a8e1fe7734cdd",
+  "decomposition_sha256": "d29a0d3dcea6b7f01edd444138058399316c8e26ddfae49dcff3d6b2a9adcc4e",
+  "ground_truth_action_length": 3,
+  "difficulty_bucket": "Short",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_programs": [],
+  "atomic_verifications": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "verified_but_stopped_count": 0,
+  "raw_prompts": [
+    {
+      "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+      "input": "from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef watch_tv():\n\t"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: remotecontrol ON tvstand, remotecontrol is OFF\n\nassert('close' to 'remotecontrol')\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: remotecontrol is OFF, tvstand. You have remotecontrol.\n\nassert('remotecontrol' in 'hands' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: tv ON tvstand, tv is OFF, tvstand. You have remotecontrol.\n\nassert('close' to 'tv' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: tv ON tvstand, tv is OFF, tvstand. You have remotecontrol.\n\nassert('tv' is 'switchoff' )\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: sofa, sofa ON rug. You have remotecontrol.\n\nassert('close' to 'sofa')\n"
+    },
+    {
+      "instructions": null,
+      "input": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: \n\nassert('tv' is 'switchon' )\n"
+    }
+  ],
+  "raw_model_outputs": [
+    "# 0: walk to living room\n\twalk('livingroom')\n\t# 1: find tv\n\tfind('tv')\n\t# 2: find remote control\n\tfind('remotecontrol')\n\t# 3: grab remote control\n\tassert('close' to 'remotecontrol')\n\t\telse: find('remotecontrol')\n\tgrab('remotecontrol')\n\t# 4: turn on tv\n\tassert('remotecontrol' in 'hands' )\n\t\telse: find('remotecontrol')\n\t\telse: grab('remotecontrol')\n\tassert('close' to 'tv' )\n\t\telse: find('tv')\n\tassert('tv' is 'switchoff' )\n\t\telse: switchoff('tv')\n\tswitchon('tv')\n\t# 5: find sofa\n\tfind('sofa')\n\t# 6: sit on sofa\n\tassert('close' to 'sofa')\n\t\telse: find('sofa')\n\tsit('sofa')\n\t# 7: watch tv\n\tassert('tv' is 'switchon' )\n\t\telse: switchon('tv')\n\twatch('tv')\n\t# 8: Done",
+    "False\n### Reasoning:\n1. First, from the new scene description, the only given information about the remote control is that it is **on the tvstand** and it is off. There is no information indicating that the observer (or the reference point for \"close\") is near the tvstand/remote control.\n2. Looking at the pattern from the first example:\n   - \"close to microwave\" was True because the microwave was on the kitchen counter (a nearby accessible surface in the scene context), while \"close to mug\" was False because the mug was not present/nearby at all.\n   - For the remote control here, there is no supporting context that it is close to the reference point (it is placed on a tvstand with no indication of proximity, unlike the microwave which was on a core kitchen surface in the prior scene where the observer was implied to be). There is no evidence to support it being close, so the assertion is False.",
+    "True\n### Reasoning:\nThe observation explicitly states \"You have remotecontrol\", which means the remote control is held in your hands, matching the assertion that 'remotecontrol' is in 'hands'.",
+    "True\n### Reasoning:\n1. From the new observation, the tv is placed on the tvstand, and you are holding the remotecontrol for the tv, which means you are in a position close enough to interact with the tv (consistent with the prior assertion logic: being able to interact with/being adjacent to an object counts as \"close\" — e.g. the microwave was close when it was on the nearby kitchen counter in the first scene).\n2. There is no indication of being far from the tv, and having the tv remote further confirms you are within close proximity to operate it, so the assertion that you are close to the tv is True.",
+    "Let's analyze the current state:\nThe observation states \"tv is OFF\", which matches the state \"switchoff\" (meaning the TV is in the off state).\n\nSo the result is True.",
+    "True\n### Reasoning:\nThe current observation shows the sofa is present in the scene (it is on the rug, and there is no indication it is far away; the prior context shows \"close\" assertions return True for objects that are present/nearby in the immediate scene, like the microwave was in the first scene, and False for objects not present like the mug). The sofa is directly observed in the current environment, so it is close.",
+    "False\n### Reasoning:\nThere is no mention of a tv or its state (switchon/on) in the provided scene description. There is no evidence to support that the tv is switched on, so the assertion is false."
+  ],
+  "llm_call_records": [
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "from actions import close <obj>, drink <obj>, find <obj>, grab <obj>, lookat <obj>, open <obj>, pointat <obj>, putback <obj> <obj>, putin <obj> <obj>, run <obj>, sit <obj>, standup, switchoff <obj>, switchon <obj>, turnto <obj>, walk <obj>, watch <obj>\n\nobjects = ['apple', 'bananas', 'barsoap', 'bathroom', 'bathroomcabinet', 'bathroomcounter', 'bathtub', 'bed', 'bedroom', 'bellpepper', 'bench', 'book', 'bookshelf', 'box', 'breadslice', 'cabinet', 'candle', 'candybar', 'ceiling', 'ceilinglamp', 'cellphone', 'cereal', 'chair', 'character', 'chips', 'chocolatesyrup', 'clock', 'closet', 'closetdrawer', 'clothespants', 'clothespile', 'clothesshirt', 'coffeemaker', 'coffeepot', 'coffeetable', 'computer', 'condimentbottle', 'condimentshaker', 'cpuscreen', 'crackers', 'creamybuns', 'cupcake', 'curtains', 'cutleryfork', 'cutleryknife', 'deodorant', 'desk', 'dishbowl', 'dishwashingliquid', 'door', 'doorjamb', 'facecream', 'faucet', 'floor', 'folder', 'fridge', 'fryingpan', 'garbagecan', 'hairproduct', 'hanger', 'keyboard', 'kitchen', 'kitchencabinet', 'kitchencounter', 'kitchencounterdrawer', 'kitchentable', 'lightswitch', 'lime', 'livingroom', 'microwave', 'mouse', 'mousemat', 'mug', 'nightstand', 'orchid', 'oventray', 'painkillers', 'paper', 'peach', 'perfume', 'photoframe', 'pie', 'pillow', 'plate', 'plum', 'powersocket', 'radio', 'remotecontrol', 'rug', 'salmon', 'sink', 'slippers', 'sofa', 'stall', 'stove', 'stovefan', 'tablelamp', 'toaster', 'toilet', 'toothbrush', 'toothpaste', 'towel', 'towelrack', 'tv', 'tvstand', 'wall', 'walllamp', 'wallphone', 'wallpictureframe', 'wallshelf', 'washingmachine', 'washingsponge', 'waterglass', 'whippedcream', 'window', 'wineglass']\n\ndef put_the_wine_glass_in_the_kitchen_cabinet():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find wine glass\n\tfind('wineglass')\n\t# 2: grab wine glass\n\tassert('close' to 'wineglass')\n\t\telse: find('wineglass')\n\tgrab('wineglass')\n\t# 3: find kitchen cabinet\n\tfind('kitchencabinet')\n\t# 4: open kitchen cabinet\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'closed' )\n\t\telse: close('kitchencabinet')\n\topen('kitchencabinet')\n\t# 5: put wine glass in kitchen cabinet\n\tassert('wineglass' in 'hands' )\n\t\telse: find('wineglass')\n\t\telse: grab('wineglass')\n\tassert('close' to 'kitchencabinet' )  \n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tputin('wineglass', 'kitchencabinet')\n\t# 6: close kitchen cabinet\n\tassert('close' to 'kitchencabinet' )\n\t\telse: find('kitchencabinet')\n\tassert('kitchencabinet' is 'opened' )\n\t\telse: open('kitchencabinet')\n\tclose('kitchencabinet')\n\t# 7: Done\n\ndef throw_away_the_lime():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find garbage can\n\tfind('garbagecan')\n\t# 2: grab lime\n\tfind('lime')\n\tassert('close' to 'lime')\n\t\telse: find('lime')\n\tgrab('lime')\n\t# 3: put lime in garbage can\n\tfind('garbagecan')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'closed' )\n\t\telse: close('garbagecan')\n\topen('garbagecan')\n\tassert('lime' in 'hands' )\n\t\telse: find('lime')\n\t\telse: grab('lime')\n\tassert('close' to 'garbagecan' )  \n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tputin('lime', 'garbagecan')\n\tassert('close' to 'garbagecan' )\n\t\telse: find('garbagecan')\n\tassert('garbagecan' is 'opened' )\n\t\telse: open('garbagecan')\n\tclose('garbagecan')\n\t# 4: Done\n\ndef wash_mug():\n\t# 0: walk to kitchen\n\twalk('kitchen')\n\t# 1: find sink\n\tfind('sink')\n\t# 2: turn on faucet\n\tfind('faucet')\n\tfind('faucet')\n\tfind('faucet')\n\tassert('close' to 'faucet' )  \n\t\telse: find('faucet')\n\tassert('faucet' is 'switchoff' )\n\t\telse: switchoff('faucet')\n\tswitchon('faucet')\n\t# 3: put mug under water\n\tfind('mug')\n\tfind('mug')\n\tfind('mug')\n\tassert('close' to 'mug')\n\t\telse: find('mug')\n\tgrab('mug')\n\tfind('sink')\n\tassert('mug' in 'hands' )\n\t\telse: find('mug')\n\t\telse: grab('mug')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('mug', 'sink')\n\t# 4: grab dishwashing liquid\n\tfind('dishwashingliquid')\n\tassert('close' to 'dishwashingliquid')\n\t\telse: find('dishwashingliquid')\n\tgrab('dishwashingliquid')\n\t# 5: put dishwashing liquid on mug\n\tfind('sink')\n\tassert('dishwashingliquid' in 'hands' )\n\t\telse: find('dishwashingliquid')\n\t\telse: grab('dishwashingliquid')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('dishwashingliquid', 'sink')\n\t# 6: grab washingsponge\n\tfind('washingsponge')\n\tassert('close' to 'washingsponge')\n\t\telse: find('washingsponge')\n\tgrab('washingsponge')\n\t# 7: start scrubbing mug\n\tfind('sink')\n\tassert('washingsponge' in 'hands' )\n\t\telse: find('washingsponge')\n\t\telse: grab('washingsponge')\n\tassert('close' to 'sink' )  \n\t\telse: find('sink')\n\tputin('washingsponge', 'sink')\n\t# 8: rinse mug off with water 1\n\t# 9: dry mug with towel 1\n\t# 10: Done\n\tfind('faucet')\n\tassert('close' to 'faucet' )\n\t\telse: find('faucet')\n\tassert('faucet' is 'switchon' )\n\t\telse: switchon('faucet')\n\tswitchoff('faucet')\n\ndef watch_tv():\n\t",
+      "instructions": "Complete only the body of the final unfinished ProgPrompt action-DSL function in the supplied text. Output DSL body lines only: comments, available action calls, assertions, and indented else recovery calls. Do not discuss Python syntax, ask questions, use Markdown, repeat earlier functions, or emit a new def.",
+      "raw_output": "# 0: walk to living room\n\twalk('livingroom')\n\t# 1: find tv\n\tfind('tv')\n\t# 2: find remote control\n\tfind('remotecontrol')\n\t# 3: grab remote control\n\tassert('close' to 'remotecontrol')\n\t\telse: find('remotecontrol')\n\tgrab('remotecontrol')\n\t# 4: turn on tv\n\tassert('remotecontrol' in 'hands' )\n\t\telse: find('remotecontrol')\n\t\telse: grab('remotecontrol')\n\tassert('close' to 'tv' )\n\t\telse: find('tv')\n\tassert('tv' is 'switchoff' )\n\t\telse: switchoff('tv')\n\tswitchon('tv')\n\t# 5: find sofa\n\tfind('sofa')\n\t# 6: sit on sofa\n\tassert('close' to 'sofa')\n\t\telse: find('sofa')\n\tsit('sofa')\n\t# 7: watch tv\n\tassert('tv' is 'switchon' )\n\t\telse: switchon('tv')\n\twatch('tv')\n\t# 8: Done",
+      "output_text": "# 0: walk to living room\n\twalk('livingroom')\n\t# 1: find tv\n\tfind('tv')\n\t# 2: find remote control\n\tfind('remotecontrol')\n\t# 3: grab remote control\n\tassert('close' to 'remotecontrol')\n\t\telse: find('remotecontrol')\n\tgrab('remotecontrol')\n\t# 4: turn on tv\n\tassert('remotecontrol' in 'hands' )\n\t\telse: find('remotecontrol')\n\t\telse: grab('remotecontrol')\n\tassert('close' to 'tv' )\n\t\telse: find('tv')\n\tassert('tv' is 'switchoff' )\n\t\telse: switchoff('tv')\n\tswitchon('tv')\n\t# 5: find sofa\n\tfind('sofa')\n\t# 6: sit on sofa\n\tassert('close' to 'sofa')\n\t\telse: find('sofa')\n\tsit('sofa')\n\t# 7: watch tv\n\tassert('tv' is 'switchon' )\n\t\telse: switchon('tv')\n\twatch('tv')\n\t# 8: Done",
+      "prompt_tokens": 1939,
+      "completion_tokens": 253,
+      "latency_s": 6.308269229999979,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "def"
+      ],
+      "frequency_penalty": 0.15,
+      "response_id": "resp_021787708741457e9cb6370e1c023d3432663e680fc5c298a513d",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: remotecontrol ON tvstand, remotecontrol is OFF\n\nassert('close' to 'remotecontrol')\n",
+      "instructions": null,
+      "raw_output": "False\n### Reasoning:\n1. First, from the new scene description, the only given information about the remote control is that it is **on the tvstand** and it is off. There is no information indicating that the observer (or the reference point for \"close\") is near the tvstand/remote control.\n2. Looking at the pattern from the first example:\n   - \"close to microwave\" was True because the microwave was on the kitchen counter (a nearby accessible surface in the scene context), while \"close to mug\" was False because the mug was not present/nearby at all.\n   - For the remote control here, there is no supporting context that it is close to the reference point (it is placed on a tvstand with no indication of proximity, unlike the microwave which was on a core kitchen surface in the prior scene where the observer was implied to be). There is no evidence to support it being close, so the assertion is False.",
+      "output_text": "False",
+      "prompt_tokens": 297,
+      "completion_tokens": 200,
+      "latency_s": 7.47997831699999,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787708747339e9cb6370e1c023d3432663e680fc5c29111d22",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: remotecontrol is OFF, tvstand. You have remotecontrol.\n\nassert('remotecontrol' in 'hands' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe observation explicitly states \"You have remotecontrol\", which means the remote control is held in your hands, matching the assertion that 'remotecontrol' is in 'hands'.",
+      "output_text": "True",
+      "prompt_tokens": 301,
+      "completion_tokens": 41,
+      "latency_s": 1.952650867999978,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787708754848e9cb6370e1c023d3432663e680fc5c29a3bb51",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: tv ON tvstand, tv is OFF, tvstand. You have remotecontrol.\n\nassert('close' to 'tv' )\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\n1. From the new observation, the tv is placed on the tvstand, and you are holding the remotecontrol for the tv, which means you are in a position close enough to interact with the tv (consistent with the prior assertion logic: being able to interact with/being adjacent to an object counts as \"close\" — e.g. the microwave was close when it was on the nearby kitchen counter in the first scene).\n2. There is no indication of being far from the tv, and having the tv remote further confirms you are within close proximity to operate it, so the assertion that you are close to the tv is True.",
+      "output_text": "True",
+      "prompt_tokens": 304,
+      "completion_tokens": 137,
+      "latency_s": 4.715328338000006,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787708756801e9cb6370e1c023d3432663e680fc5c29e8946f",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: tv ON tvstand, tv is OFF, tvstand. You have remotecontrol.\n\nassert('tv' is 'switchoff' )\n",
+      "instructions": null,
+      "raw_output": "Let's analyze the current state:\nThe observation states \"tv is OFF\", which matches the state \"switchoff\" (meaning the TV is in the off state).\n\nSo the result is True.",
+      "output_text": "Let's analyze the current state:",
+      "prompt_tokens": 305,
+      "completion_tokens": 41,
+      "latency_s": 2.350657089000009,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787708761516e9cb6370e1c023d3432663e680fc5c29f6be3a",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: sofa, sofa ON rug. You have remotecontrol.\n\nassert('close' to 'sofa')\n",
+      "instructions": null,
+      "raw_output": "True\n### Reasoning:\nThe current observation shows the sofa is present in the scene (it is on the rug, and there is no indication it is far away; the prior context shows \"close\" assertions return True for objects that are present/nearby in the immediate scene, like the microwave was in the first scene, and False for objects not present like the mug). The sofa is directly observed in the current environment, so it is close.",
+      "output_text": "True",
+      "prompt_tokens": 298,
+      "completion_tokens": 92,
+      "latency_s": 7.908144944000014,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787708763945e9cb6370e1c023d3432663e680fc5c29a6c01d",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You see: microwave is OFF and CLOSED, lightswitch is ON, cereal, bookshelf, book is CLOSED, bookshelf ON floor, microwave ON kitchencounterdrawer, salmon ON microwave, book INSIDE bookshelf, dishbowl INSIDE bookshelf, clothespile INSIDE bookshelf, bananas INSIDE bookshelf, box ON bookshelf, book ON kitchentable, dishbowl ON bookshelf, condimentshaker INSIDE bookshelf, box INSIDE bookshelf, character HOLD_RH book, book ON rug, cereal ON wallshelf, plate INSIDE microwave, condimentbottle INSIDE bookshelf, microwave ON kitchencounter, paper INSIDE bookshelf\n\nassert('close' to 'mug' )\nFalse\nassert('close' to 'microwave' )\nTrue\nassert('book' is 'closed' )\nTrue\nassert('lightswitch' is 'OFF')\nFalse\nassert('book' in 'bookshelf')\nTrue\nassert('book' in 'hands')\nTrue\nassert('cereal' on 'bookshelf')\nFalse\n\nYou see: \n\nassert('tv' is 'switchon' )\n",
+      "instructions": null,
+      "raw_output": "False\n### Reasoning:\nThere is no mention of a tv or its state (switchon/on) in the provided scene description. There is no evidence to support that the tv is switched on, so the assertion is false.",
+      "output_text": "False",
+      "prompt_tokens": 288,
+      "completion_tokens": 48,
+      "latency_s": 7.457589925999997,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": [
+        "\n"
+      ],
+      "frequency_penalty": 0.0,
+      "response_id": "resp_021787708771872e9cb6370e1c023d3432663e680fc5c29f01540",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "generated_program": "# 0: walk to living room\n\twalk('livingroom')\n\t# 1: find tv\n\tfind('tv')\n\t# 2: find remote control\n\tfind('remotecontrol')\n\t# 3: grab remote control\n\tassert('close' to 'remotecontrol')\n\t\telse: find('remotecontrol')\n\tgrab('remotecontrol')\n\t# 4: turn on tv\n\tassert('remotecontrol' in 'hands' )\n\t\telse: find('remotecontrol')\n\t\telse: grab('remotecontrol')\n\tassert('close' to 'tv' )\n\t\telse: find('tv')\n\tassert('tv' is 'switchoff' )\n\t\telse: switchoff('tv')\n\tswitchon('tv')\n\t# 5: find sofa\n\tfind('sofa')\n\t# 6: sit on sofa\n\tassert('close' to 'sofa')\n\t\telse: find('sofa')\n\tsit('sofa')\n\t# 7: watch tv\n\tassert('tv' is 'switchon' )\n\t\telse: switchon('tv')\n\twatch('tv')\n\t# 8: Done",
+  "compiled_virtualhome_actions": [
+    "<char0> [walk] <livingroom> (335)",
+    "<char0> [find] <tv> (426)",
+    "<char0> [find] <remotecontrol> (452)",
+    "<char0> [find] <remotecontrol> (452)",
+    "<char0> [grab] <remotecontrol> (452)",
+    "<char0> [switchoff] <tv> (426)",
+    "<char0> [switchon] <tv> (426)",
+    "<char0> [find] <sofa> (368)",
+    "<char0> [sit] <sofa> (368)",
+    "<char0> [switchon] <tv> (426)",
+    "<char0> [watch] <tv> (426)"
+  ],
+  "execution_trace": [
+    {
+      "line": "# 0: walk to living room",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "0: walk to living room",
+      "compiled_action": null
+    },
+    {
+      "line": "walk('livingroom')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "0: walk to living room",
+      "compiled_action": "<char0> [walk] <livingroom> (335)"
+    },
+    {
+      "line": "# 1: find tv",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "1: find tv",
+      "compiled_action": null
+    },
+    {
+      "line": "find('tv')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "1: find tv",
+      "compiled_action": "<char0> [find] <tv> (426)"
+    },
+    {
+      "line": "# 2: find remote control",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "2: find remote control",
+      "compiled_action": null
+    },
+    {
+      "line": "find('remotecontrol')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "2: find remote control",
+      "compiled_action": "<char0> [find] <remotecontrol> (452)"
+    },
+    {
+      "line": "# 3: grab remote control",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab remote control",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'remotecontrol')",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "3: grab remote control",
+      "compiled_action": null
+    },
+    {
+      "line": "find('remotecontrol')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab remote control",
+      "compiled_action": "<char0> [find] <remotecontrol> (452)"
+    },
+    {
+      "line": "grab('remotecontrol')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "3: grab remote control",
+      "compiled_action": "<char0> [grab] <remotecontrol> (452)"
+    },
+    {
+      "line": "# 4: turn on tv",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('remotecontrol' in 'hands' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('remotecontrol')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "else: grab('remotecontrol')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'tv' )",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('tv')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('tv' is 'switchoff' )",
+      "event": "assert",
+      "success": true,
+      "detail": "Let's analyze the current state:",
+      "subgoal": "4: turn on tv",
+      "compiled_action": null
+    },
+    {
+      "line": "switchoff('tv')",
+      "event": "action",
+      "success": false,
+      "detail": "<tv> (426) is not on when executing \"[SWITCHOFF] <tv> (426) [0]\"",
+      "subgoal": "4: turn on tv",
+      "compiled_action": "<char0> [switchoff] <tv> (426)"
+    },
+    {
+      "line": "switchon('tv')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "4: turn on tv",
+      "compiled_action": "<char0> [switchon] <tv> (426)"
+    },
+    {
+      "line": "# 5: find sofa",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: find sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "find('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "5: find sofa",
+      "compiled_action": "<char0> [find] <sofa> (368)"
+    },
+    {
+      "line": "# 6: sit on sofa",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "6: sit on sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('close' to 'sofa')",
+      "event": "assert",
+      "success": true,
+      "detail": "True",
+      "subgoal": "6: sit on sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "else: find('sofa')",
+      "event": "recovery_skip",
+      "success": true,
+      "detail": "assertion true",
+      "subgoal": "6: sit on sofa",
+      "compiled_action": null
+    },
+    {
+      "line": "sit('sofa')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "6: sit on sofa",
+      "compiled_action": "<char0> [sit] <sofa> (368)"
+    },
+    {
+      "line": "# 7: watch tv",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "7: watch tv",
+      "compiled_action": null
+    },
+    {
+      "line": "assert('tv' is 'switchon' )",
+      "event": "assert",
+      "success": true,
+      "detail": "False",
+      "subgoal": "7: watch tv",
+      "compiled_action": null
+    },
+    {
+      "line": "switchon('tv')",
+      "event": "action",
+      "success": false,
+      "detail": "<character> (1) is not close to <tv> (426) when executing \"[SWITCHON] <tv> (426) [0]\"",
+      "subgoal": "7: watch tv",
+      "compiled_action": "<char0> [switchon] <tv> (426)"
+    },
+    {
+      "line": "watch('tv')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "7: watch tv",
+      "compiled_action": "<char0> [watch] <tv> (426)"
+    },
+    {
+      "line": "# 8: Done",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "8: Done",
+      "compiled_action": null
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [walk] <livingroom> (335)",
+      "parsed_action": "[WALK] <livingroom> (335) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <tv> (426)",
+      "parsed_action": "[FIND] <tv> (426) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <remotecontrol> (452)",
+      "parsed_action": "[FIND] <remotecontrol> (452) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <remotecontrol> (452)",
+      "parsed_action": "[FIND] <remotecontrol> (452) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <remotecontrol> (452)",
+      "parsed_action": "[GRAB] <remotecontrol> (452) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchoff] <tv> (426)",
+      "parsed_action": "[SWITCHOFF] <tv> (426) [0]",
+      "success": false,
+      "error": "<tv> (426) is not on when executing \"[SWITCHOFF] <tv> (426) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <tv> (426)",
+      "parsed_action": "[SWITCHON] <tv> (426) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <sofa> (368)",
+      "parsed_action": "[FIND] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [sit] <sofa> (368)",
+      "parsed_action": "[SIT] <sofa> (368) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [switchon] <tv> (426)",
+      "parsed_action": "[SWITCHON] <tv> (426) [0]",
+      "success": false,
+      "error": "<character> (1) is not close to <tv> (426) when executing \"[SWITCHON] <tv> (426) [0]\"",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [watch] <tv> (426)",
+      "parsed_action": "[WATCH] <tv> (426) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "SR": 0,
+  "GCR": 0.33333333333333337,
+  "PSR": 0.33333333333333337,
+  "Precision": 0.9927884615384616,
+  "Exec": 0.8181818181818182,
+  "goal_condition_count": 6,
+  "missing_goal_relations": [
+    "character CLOSE tv",
+    "character CLOSE tvstand",
+    "tv CLOSE character",
+    "tvstand CLOSE character"
+  ],
+  "missing_goal_states": [],
+  "Semantic_SR": 1,
+  "Semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 1,
+  "semantic_satisfied_condition_count": 1,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "STATE(tv, ON)",
+        "predicate": "STATE",
+        "object": "tv",
+        "value": "ON",
+        "rationale": "Watching requires a powered television; ON is the persistent graph effect used by the task annotation."
+      },
+      "satisfied": true,
+      "evidence": "matching node ids=[426]"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "semantic_goal_ambiguity": "WATCH is an executable event but leaves no persistent WATCHED state. TV ON is a disclosed operational surrogate and does not prove viewing duration.",
+  "program_length": 11,
+  "llm_calls": 7,
+  "prompt_tokens": 3732,
+  "completion_tokens": 812,
+  "total_tokens": 4544,
+  "planning_latency": 38.172618711999974,
+  "wall_clock_total_s": 39.50965086399998,
+  "error_type": "precondition_failure",
+  "error_message": "<tv> (426) is not on when executing \"[SWITCHOFF] <tv> (426) [0]\"",
+  "errors": [
+    {
+      "error_type": "precondition_failure",
+      "message": "<tv> (426) is not on when executing \"[SWITCHOFF] <tv> (426) [0]\"",
+      "line": "switchoff('tv')"
+    },
+    {
+      "error_type": "precondition_failure",
+      "message": "<character> (1) is not close to <tv> (426) when executing \"[SWITCHON] <tv> (426) [0]\"",
+      "line": "switchon('tv')"
+    }
+  ]
+}

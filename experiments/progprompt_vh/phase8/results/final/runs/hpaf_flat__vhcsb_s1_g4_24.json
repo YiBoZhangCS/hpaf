@@ -1,0 +1,621 @@
+{
+  "run_id": "formal_2026-08-26T110945.180184_0000_hpaf_flat_vhcsb_s1_g4_24",
+  "phase": "formal",
+  "representation": "uncompressed",
+  "timestamp": "2026-08-26T11:09:45.180184+00:00",
+  "task_id": "vhcsb_s1_g4_24",
+  "task": "Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.",
+  "split": "synthetic_composition",
+  "scene": 1,
+  "goal_count": 4,
+  "method": "HPAF-Flat",
+  "provider": "ark",
+  "model": "doubao-seed-2-1-pro-260628",
+  "api_interface": "responses.create",
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_tokens": 600,
+  "initial_state_sha256": "b3283fdd60ae98769ca0e8f7051cd19a0f9b6a663466f1dfcbf3ce76cb36494d",
+  "task_manifest_sha256": "9eb12933135939eb6465e81090247155293cd641d5772face2adde30e1f3f36e",
+  "action_set_sha256": "e9d00393e42c1da2b945e3f300f84ba6bfb174c833925e706d802f1423f7c93c",
+  "implementation_sha256": "b7fe88449f390df4a653249e3f634982813335a3c431dfacb04731d5d1d73fd4",
+  "generated_programs": [
+    "# Place coffeepot on kitchentable while in kitchen\nfind('coffeepot')\ngrab('coffeepot')\nfind('kitchentable')\nputback('coffeepot','kitchentable')\n# Place toiletpaper on stove\nfind('toiletpaper')\ngrab('toiletpaper')\nfind('stove')\nputback('toiletpaper','stove')\n# Put dishwashingliquid in washingmachine\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\nfind('washingmachine')\nopen('washingmachine')\nputin('dishwashingliquid','washingmachine')\nclose('washingmachine')\n# Put chicken in toilet\nfind('chicken')\ngrab('chicken')\nfind('toilet')\nopen('toilet')\nputin('chicken','toilet')\nclose('toilet')\n"
+  ],
+  "generated_program": "# Place coffeepot on kitchentable while in kitchen\nfind('coffeepot')\ngrab('coffeepot')\nfind('kitchentable')\nputback('coffeepot','kitchentable')\n# Place toiletpaper on stove\nfind('toiletpaper')\ngrab('toiletpaper')\nfind('stove')\nputback('toiletpaper','stove')\n# Put dishwashingliquid in washingmachine\nfind('dishwashingliquid')\ngrab('dishwashingliquid')\nfind('washingmachine')\nopen('washingmachine')\nputin('dishwashingliquid','washingmachine')\nclose('washingmachine')\n# Put chicken in toilet\nfind('chicken')\ngrab('chicken')\nfind('toilet')\nopen('toilet')\nputin('chicken','toilet')\nclose('toilet')\n",
+  "atomic_tasks": [],
+  "number_of_atomic_tasks": 0,
+  "atomic_tasks_attempted": 0,
+  "atomic_records": [],
+  "retry_count": 0,
+  "early_stop_count": 0,
+  "online_verification_calls": [
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=[]. Nearby visible graph: chicken, chicken INSIDE toilet, toilet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: chicken INSIDE toilet.\nRELEVANT OBJECT CLASSES: [\"chicken\", \"coffeepot\", \"dishwashingliquid\", \"kitchen\", \"kitchentable\", \"paper\", \"stove\", \"toilet\", \"toiletpaper\", \"washingmachine\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Place coffeepot on kitchentable while in kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\nfind('kitchentable')\\nputback('coffeepot','kitchentable')\\n# Place toiletpaper on stove\\nfind('toiletpaper')\\ngrab('toiletpaper')\\nfind('stove')\\nputback('toiletpaper','stove')\\n# Put dishwashingliquid in washingmachine\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\nfind('washingmachine')\\nopen('washingmachine')\\nputin('dishwashingliquid','washingmachine')\\nclose('washingmachine')\\n# Put chicken in toilet\\nfind('chicken')\\ngrab('chicken')\\nfind('toilet')\\nopen('toilet')\\nputin('chicken','toilet')\\nclose('toilet')\\n\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('coffeepot','kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <kitchentable> (199)\"}, {\"line\": \"find('toiletpaper')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toiletpaper> (40)\"}, {\"line\": \"grab('toiletpaper')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toiletpaper> (40)\"}, {\"line\": \"find('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <stove> (226)\"}, {\"line\": \"putback('toiletpaper','stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toiletpaper> (40) <stove> (226)\"}, {\"line\": \"find('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwashingliquid> (174)\"}, {\"line\": \"grab('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <dishwashingliquid> (174)\"}, {\"line\": \"find('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingmachine> (49)\"}, {\"line\": \"open('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <washingmachine> (49)\"}, {\"line\": \"putin('dishwashingliquid','washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <dishwashingliquid> (174) <washingmachine> (49)\"}, {\"line\": \"close('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <washingmachine> (49)\"}, {\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (24)\"}, {\"line\": \"open('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <toilet> (24)\"}, {\"line\": \"putin('chicken','toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <chicken> (241) <toilet> (24)\"}, {\"line\": \"close('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <toilet> (24)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All four requested placements completed successfully per trace: coffeepot put on kitchentable, toiletpaper put on stove, dishwashingliquid put in closed washingmachine, and chicken is observed inside the closed toilet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All four requested placements completed successfully per trace: coffeepot put on kitchentable, toiletpaper put on stove, dishwashingliquid put in closed washingmachine, and chicken is observed inside the closed toilet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1688,
+      "completion_tokens": 62,
+      "latency_s": 2.883658432001539,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774260884315a741db9058723ed34b56d0ce5c7d9cf767b1",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "online_verification_outputs": [
+    {
+      "task_contract": {
+        "instruction": "Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.",
+        "completion_mode": "infer",
+        "process_intent": "Infer whether the requested operation needs completed process evidence."
+      },
+      "observation": "Character room=bathroom; states=[]; holds=[]. Nearby visible graph: chicken, chicken INSIDE toilet, toilet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: chicken INSIDE toilet.",
+      "result": {
+        "done": true
+      },
+      "raw_output": "{\"done\":true,\"reason\":\"All four requested placements completed successfully per trace: coffeepot put on kitchentable, toiletpaper put on stove, dishwashingliquid put in closed washingmachine, and chicken is observed inside the closed toilet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "online_verification_count": 1,
+  "final_online_done": true,
+  "execution_trace": [
+    {
+      "line": "# Place coffeepot on kitchentable while in kitchen",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place coffeepot on kitchentable while in kitchen",
+      "compiled_action": null
+    },
+    {
+      "line": "find('coffeepot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place coffeepot on kitchentable while in kitchen",
+      "compiled_action": "<char0> [find] <coffeepot> (230)"
+    },
+    {
+      "line": "grab('coffeepot')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place coffeepot on kitchentable while in kitchen",
+      "compiled_action": "<char0> [grab] <coffeepot> (230)"
+    },
+    {
+      "line": "find('kitchentable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place coffeepot on kitchentable while in kitchen",
+      "compiled_action": "<char0> [find] <kitchentable> (199)"
+    },
+    {
+      "line": "putback('coffeepot','kitchentable')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place coffeepot on kitchentable while in kitchen",
+      "compiled_action": "<char0> [putback] <coffeepot> (230) <kitchentable> (199)"
+    },
+    {
+      "line": "# Place toiletpaper on stove",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place toiletpaper on stove",
+      "compiled_action": null
+    },
+    {
+      "line": "find('toiletpaper')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place toiletpaper on stove",
+      "compiled_action": "<char0> [find] <toiletpaper> (40)"
+    },
+    {
+      "line": "grab('toiletpaper')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place toiletpaper on stove",
+      "compiled_action": "<char0> [grab] <toiletpaper> (40)"
+    },
+    {
+      "line": "find('stove')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place toiletpaper on stove",
+      "compiled_action": "<char0> [find] <stove> (226)"
+    },
+    {
+      "line": "putback('toiletpaper','stove')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Place toiletpaper on stove",
+      "compiled_action": "<char0> [putback] <toiletpaper> (40) <stove> (226)"
+    },
+    {
+      "line": "# Put dishwashingliquid in washingmachine",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": null
+    },
+    {
+      "line": "find('dishwashingliquid')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": "<char0> [find] <dishwashingliquid> (174)"
+    },
+    {
+      "line": "grab('dishwashingliquid')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": "<char0> [grab] <dishwashingliquid> (174)"
+    },
+    {
+      "line": "find('washingmachine')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": "<char0> [find] <washingmachine> (49)"
+    },
+    {
+      "line": "open('washingmachine')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": "<char0> [open] <washingmachine> (49)"
+    },
+    {
+      "line": "putin('dishwashingliquid','washingmachine')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": "<char0> [putin] <dishwashingliquid> (174) <washingmachine> (49)"
+    },
+    {
+      "line": "close('washingmachine')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put dishwashingliquid in washingmachine",
+      "compiled_action": "<char0> [close] <washingmachine> (49)"
+    },
+    {
+      "line": "# Put chicken in toilet",
+      "event": "comment",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": null
+    },
+    {
+      "line": "find('chicken')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": "<char0> [find] <chicken> (241)"
+    },
+    {
+      "line": "grab('chicken')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": "<char0> [grab] <chicken> (241)"
+    },
+    {
+      "line": "find('toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": "<char0> [find] <toilet> (24)"
+    },
+    {
+      "line": "open('toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": "<char0> [open] <toilet> (24)"
+    },
+    {
+      "line": "putin('chicken','toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": "<char0> [putin] <chicken> (241) <toilet> (24)"
+    },
+    {
+      "line": "close('toilet')",
+      "event": "action",
+      "success": true,
+      "detail": "",
+      "subgoal": "Put chicken in toilet",
+      "compiled_action": "<char0> [close] <toilet> (24)"
+    }
+  ],
+  "graph_execution_trace": [
+    {
+      "source_action": "<char0> [find] <coffeepot> (230)",
+      "parsed_action": "[FIND] <coffeepot> (230) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <coffeepot> (230)",
+      "parsed_action": "[GRAB] <coffeepot> (230) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <kitchentable> (199)",
+      "parsed_action": "[FIND] <kitchentable> (199) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <coffeepot> (230) <kitchentable> (199)",
+      "parsed_action": "[PUTBACK] <coffeepot> (230) <kitchentable> (199) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toiletpaper> (40)",
+      "parsed_action": "[FIND] <toiletpaper> (40) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <toiletpaper> (40)",
+      "parsed_action": "[GRAB] <toiletpaper> (40) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <stove> (226)",
+      "parsed_action": "[FIND] <stove> (226) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putback] <toiletpaper> (40) <stove> (226)",
+      "parsed_action": "[PUTBACK] <toiletpaper> (40) <stove> (226) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <dishwashingliquid> (174)",
+      "parsed_action": "[FIND] <dishwashingliquid> (174) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <dishwashingliquid> (174)",
+      "parsed_action": "[GRAB] <dishwashingliquid> (174) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <washingmachine> (49)",
+      "parsed_action": "[FIND] <washingmachine> (49) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <washingmachine> (49)",
+      "parsed_action": "[OPEN] <washingmachine> (49) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <dishwashingliquid> (174) <washingmachine> (49)",
+      "parsed_action": "[PUTIN] <dishwashingliquid> (174) <washingmachine> (49) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <washingmachine> (49)",
+      "parsed_action": "[CLOSE] <washingmachine> (49) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <chicken> (241)",
+      "parsed_action": "[FIND] <chicken> (241) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [grab] <chicken> (241)",
+      "parsed_action": "[GRAB] <chicken> (241) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [find] <toilet> (24)",
+      "parsed_action": "[FIND] <toilet> (24) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [open] <toilet> (24)",
+      "parsed_action": "[OPEN] <toilet> (24) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [putin] <chicken> (241) <toilet> (24)",
+      "parsed_action": "[PUTIN] <chicken> (241) <toilet> (24) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    },
+    {
+      "source_action": "<char0> [close] <toilet> (24)",
+      "parsed_action": "[CLOSE] <toilet> (24) [0]",
+      "success": true,
+      "error": "",
+      "unity_success": null,
+      "unity_message": ""
+    }
+  ],
+  "compiled_virtualhome_actions": [
+    "<char0> [find] <coffeepot> (230)",
+    "<char0> [grab] <coffeepot> (230)",
+    "<char0> [find] <kitchentable> (199)",
+    "<char0> [putback] <coffeepot> (230) <kitchentable> (199)",
+    "<char0> [find] <toiletpaper> (40)",
+    "<char0> [grab] <toiletpaper> (40)",
+    "<char0> [find] <stove> (226)",
+    "<char0> [putback] <toiletpaper> (40) <stove> (226)",
+    "<char0> [find] <dishwashingliquid> (174)",
+    "<char0> [grab] <dishwashingliquid> (174)",
+    "<char0> [find] <washingmachine> (49)",
+    "<char0> [open] <washingmachine> (49)",
+    "<char0> [putin] <dishwashingliquid> (174) <washingmachine> (49)",
+    "<char0> [close] <washingmachine> (49)",
+    "<char0> [find] <chicken> (241)",
+    "<char0> [grab] <chicken> (241)",
+    "<char0> [find] <toilet> (24)",
+    "<char0> [open] <toilet> (24)",
+    "<char0> [putin] <chicken> (241) <toilet> (24)",
+    "<char0> [close] <toilet> (24)"
+  ],
+  "program_length": 20,
+  "final_semantic_SR": 1,
+  "semantic_GCR": 1.0,
+  "semantic_goal_condition_count": 4,
+  "semantic_satisfied_condition_count": 4,
+  "semantic_condition_details": [
+    {
+      "condition": {
+        "condition": "ON(toiletpaper, stove)",
+        "predicate": "RELATION",
+        "subject": "toiletpaper",
+        "relation": "ON",
+        "object": "stove",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['40-ON-226']"
+    },
+    {
+      "condition": {
+        "condition": "INSIDE(dishwashingliquid, washingmachine)",
+        "predicate": "RELATION",
+        "subject": "dishwashingliquid",
+        "relation": "INSIDE",
+        "object": "washingmachine",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['174-INSIDE-49']"
+    },
+    {
+      "condition": {
+        "condition": "ON(coffeepot, kitchentable)",
+        "predicate": "RELATION",
+        "subject": "coffeepot",
+        "relation": "ON",
+        "object": "kitchentable",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['230-ON-199']"
+    },
+    {
+      "condition": {
+        "condition": "INSIDE(chicken, toilet)",
+        "predicate": "RELATION",
+        "subject": "chicken",
+        "relation": "INSIDE",
+        "object": "toilet",
+        "rationale": "Direct persistent relation requested by the generated atomic goal."
+      },
+      "satisfied": true,
+      "evidence": "matching edges=['241-INSIDE-24']"
+    }
+  ],
+  "semantic_missing_conditions": [],
+  "official_SR": null,
+  "official_GCR": null,
+  "official_PSR": null,
+  "official_Precision": null,
+  "Exec": 1.0,
+  "generation_calls": 1,
+  "verification_calls": 1,
+  "repair_calls": 0,
+  "total_calls": 2,
+  "generation_prompt_tokens": 1214,
+  "generation_completion_tokens": 286,
+  "verification_prompt_tokens": 1688,
+  "verification_completion_tokens": 62,
+  "repair_prompt_tokens": 0,
+  "repair_completion_tokens": 0,
+  "repair_tokens": 0,
+  "prompt_tokens": 2902,
+  "completion_tokens": 348,
+  "total_prompt_tokens": 2902,
+  "total_completion_tokens": 348,
+  "total_tokens": 3250,
+  "planning_latency": 7.295842534993426,
+  "verification_latency": 2.883658432001539,
+  "total_llm_latency": 10.179500966994965,
+  "wall_clock_total_s": 11.202542989005451,
+  "llm_call_records": [
+    {
+      "call_role": "flat_program_agent",
+      "broad_role": "generation",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "raw_output": "{\"plan_brief\":\"Start in the kitchen, locate and place the coffeepot on the nearby kitchentable first, then find the stove and place toiletpaper on it, next locate the washingmachine, open it, put dishwashingliquid inside, close it, then find the toilet, open it, put chicken inside, and close it to complete all placements.\",\"program\":\"# Place coffeepot on kitchentable while in kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\nfind('kitchentable')\\nputback('coffeepot','kitchentable')\\n# Place toiletpaper on stove\\nfind('toiletpaper')\\ngrab('toiletpaper')\\nfind('stove')\\nputback('toiletpaper','stove')\\n# Put dishwashingliquid in washingmachine\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\nfind('washingmachine')\\nopen('washingmachine')\\nputin('dishwashingliquid','washingmachine')\\nclose('washingmachine')\\n# Put chicken in toilet\\nfind('chicken')\\ngrab('chicken')\\nfind('toilet')\\nopen('toilet')\\nputin('chicken','toilet')\\nclose('toilet')\\n\"}",
+      "output_text": "{\"plan_brief\":\"Start in the kitchen, locate and place the coffeepot on the nearby kitchentable first, then find the stove and place toiletpaper on it, next locate the washingmachine, open it, put dishwashingliquid inside, close it, then find the toilet, open it, put chicken inside, and close it to complete all placements.\",\"program\":\"# Place coffeepot on kitchentable while in kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\nfind('kitchentable')\\nputback('coffeepot','kitchentable')\\n# Place toiletpaper on stove\\nfind('toiletpaper')\\ngrab('toiletpaper')\\nfind('stove')\\nputback('toiletpaper','stove')\\n# Put dishwashingliquid in washingmachine\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\nfind('washingmachine')\\nopen('washingmachine')\\nputin('dishwashingliquid','washingmachine')\\nclose('washingmachine')\\n# Put chicken in toilet\\nfind('chicken')\\ngrab('chicken')\\nfind('toilet')\\nopen('toilet')\\nputin('chicken','toilet')\\nclose('toilet')\\n\"}",
+      "prompt_tokens": 1214,
+      "completion_tokens": 286,
+      "latency_s": 7.295842534993426,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774260125415a741db9058723ed34b56d0ce5c7d9cd810e1",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    },
+    {
+      "call_role": "flat_verifier",
+      "broad_role": "verification",
+      "provider": "ark",
+      "model": "doubao-seed-2-1-pro-260628",
+      "api_interface": "responses.create",
+      "prompt": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=[]. Nearby visible graph: chicken, chicken INSIDE toilet, toilet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: chicken INSIDE toilet.\nRELEVANT OBJECT CLASSES: [\"chicken\", \"coffeepot\", \"dishwashingliquid\", \"kitchen\", \"kitchentable\", \"paper\", \"stove\", \"toilet\", \"toiletpaper\", \"washingmachine\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Place coffeepot on kitchentable while in kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\nfind('kitchentable')\\nputback('coffeepot','kitchentable')\\n# Place toiletpaper on stove\\nfind('toiletpaper')\\ngrab('toiletpaper')\\nfind('stove')\\nputback('toiletpaper','stove')\\n# Put dishwashingliquid in washingmachine\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\nfind('washingmachine')\\nopen('washingmachine')\\nputin('dishwashingliquid','washingmachine')\\nclose('washingmachine')\\n# Put chicken in toilet\\nfind('chicken')\\ngrab('chicken')\\nfind('toilet')\\nopen('toilet')\\nputin('chicken','toilet')\\nclose('toilet')\\n\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('coffeepot','kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <kitchentable> (199)\"}, {\"line\": \"find('toiletpaper')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toiletpaper> (40)\"}, {\"line\": \"grab('toiletpaper')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toiletpaper> (40)\"}, {\"line\": \"find('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <stove> (226)\"}, {\"line\": \"putback('toiletpaper','stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toiletpaper> (40) <stove> (226)\"}, {\"line\": \"find('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwashingliquid> (174)\"}, {\"line\": \"grab('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <dishwashingliquid> (174)\"}, {\"line\": \"find('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingmachine> (49)\"}, {\"line\": \"open('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <washingmachine> (49)\"}, {\"line\": \"putin('dishwashingliquid','washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <dishwashingliquid> (174) <washingmachine> (49)\"}, {\"line\": \"close('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <washingmachine> (49)\"}, {\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (24)\"}, {\"line\": \"open('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <toilet> (24)\"}, {\"line\": \"putin('chicken','toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <chicken> (241) <toilet> (24)\"}, {\"line\": \"close('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <toilet> (24)\"}], \"errors\": []}\n",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "raw_output": "{\"done\":true,\"reason\":\"All four requested placements completed successfully per trace: coffeepot put on kitchentable, toiletpaper put on stove, dishwashingliquid put in closed washingmachine, and chicken is observed inside the closed toilet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "output_text": "{\"done\":true,\"reason\":\"All four requested placements completed successfully per trace: coffeepot put on kitchentable, toiletpaper put on stove, dishwashingliquid put in closed washingmachine, and chicken is observed inside the closed toilet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}",
+      "prompt_tokens": 1688,
+      "completion_tokens": 62,
+      "latency_s": 2.883658432001539,
+      "temperature": 0.0,
+      "max_tokens": 600,
+      "seed": null,
+      "stop": null,
+      "frequency_penalty": null,
+      "response_id": "resp_02178774260884315a741db9058723ed34b56d0ce5c7d9cf767b1",
+      "wall_clock_timeout_s": 240.0,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "error_type": "",
+      "error_message": ""
+    }
+  ],
+  "raw_prompts": [
+    {
+      "role": "flat_program_agent",
+      "instructions": "Return only the requested strict ProgramAgent JSON object.",
+      "input": "You are the HPAF ProgramAgent for VirtualHome.\nGenerate one complete executable program for the whole task. Infer whether each\nrequested outcome is a static state or a completed process. Return strict JSON:\n{\"plan_brief\":\"...\",\"program\":\"# comments\\nfind('object')\\n...\"}\n\nTASK: Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.\nCURRENT STATE: Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate.\nAVAILABLE OBJECT CLASSES: [\"apple\", \"bananas\", \"barsoap\", \"bathroom\", \"bathroomcabinet\", \"bathroomcounter\", \"bed\", \"bedroom\", \"bench\", \"book\", \"bookshelf\", \"box\", \"breadslice\", \"cabinet\", \"candle\", \"ceiling\", \"ceilinglamp\", \"cellphone\", \"chair\", \"character\", \"chicken\", \"chips\", \"chocolatesyrup\", \"closet\", \"clothespants\", \"clothespile\", \"clothesshirt\", \"coffeemaker\", \"coffeepot\", \"coffeetable\", \"computer\", \"condimentshaker\", \"cookingpot\", \"cpuscreen\", \"creamybuns\", \"curtains\", \"cutleryknife\", \"cutlets\", \"deodorant\", \"desk\", \"dishbowl\", \"dishwasher\", \"dishwashingliquid\", \"door\", \"doorjamb\", \"facecream\", \"faucet\", \"floor\", \"folder\", \"fridge\", \"fryingpan\", \"garbagecan\", \"hairproduct\", \"hanger\", \"keyboard\", \"kitchen\", \"kitchencabinet\", \"kitchencounter\", \"kitchencounterdrawer\", \"kitchentable\", \"knifeblock\", \"lightswitch\", \"lime\", \"livingroom\", \"microwave\", \"mouse\", \"mousemat\", \"mug\", \"nightstand\", \"orchid\", \"oventray\", \"paper\", \"papertray\", \"peach\", \"photoframe\", \"pillow\", \"plate\", \"plum\", \"poundcake\", \"powersocket\", \"radio\", \"remotecontrol\", \"rug\", \"sink\", \"sofa\", \"stall\", \"stove\", \"stovefan\", \"tablelamp\", \"toaster\", \"toilet\", \"toiletpaper\", \"toothbrush\", \"toothpaste\", \"tv\", \"tvstand\", \"wall\", \"walllamp\", \"wallphone\", \"wallpictureframe\", \"washingmachine\", \"waterglass\", \"window\"]\nPRIMITIVE CALLS: - close(obj)\n- drink(obj)\n- find(obj)\n- grab(obj)\n- lookat(obj)\n- open(obj)\n- pointat(obj)\n- putback(obj,obj)\n- putin(obj,obj)\n- run(obj)\n- sit(obj)\n- standup()\n- switchoff(obj)\n- switchon(obj)\n- turnto(obj)\n- walk(obj)\n- watch(obj)\n\nGeneric VirtualHome execution rules:\n- Use only listed lowercase calls and available object class names.\n- Establish proximity with find or walk immediately before interaction. If the\n  character is sitting/lying, stand up before navigating.\n- grab needs a close accessible source and free hand. Open a containing object\n  only when needed. Do not repeat an already-satisfied open/close/switch action.\n- Preserve alignment to object X until interaction(X) completes.\n- Transfer order is: align source, acquire source, align target, satisfy target\n  prerequisites, place source. Never align target before acquiring source.\n- putin/putback need the source held and target close; an openable putin target\n  must be open. Movement invalidates earlier proximity assumptions.\n- A repair restores failed preconditions before retrying the interaction.\n- There are no direct heat, wash, eat, use, or wait primitives. Never invent calls.\n- Comments may organize output. Do not emit assertions, functions, loops,\n  instance IDs, evaluator predicates, or success claims.\n\nSome requested operations are completed processes, not merely static states.\nFor a process-oriented task, do not stop after initiation: generate the complete\nexecutable lifecycle reasonably needed to finish it. Preserve object/device\npreconditions throughout. When completion requires a closed lifecycle, include\nthe necessary terminal operation after activation. For a requested interaction\nevent, require the interaction itself to execute successfully. Use only simulator\ncapabilities; never invent waiting, time, or unsupported actions.\n"
+    },
+    {
+      "role": "flat_verifier",
+      "instructions": "Return only the requested strict online-verifier JSON object.",
+      "input": "You are the online HPAF verifier for one current VirtualHome task.\nJudge completion only from the current symbolic observation and current-attempt\ntrace/errors. Never read or infer an external evaluator, GT program, final graph,\nfuture atomic, or score. Do not treat a generated action as successful unless the\ntrace says it succeeded. Persistent relations/states are evidence for state mode.\n\nFor `completion_mode=process`, require evidence that the requested process or\ninteraction completed. Merely activating/starting it is not completion. When the\noperation reasonably requires a closed lifecycle, require its terminal operation;\nfor an interaction event, require a successful matching interaction. Do not invent\nunsupported time or hidden effects. If mode is `infer`, classify from the task text.\n\nReturn strict JSON only: {\"done\":true,\"reason\":\"short evidence\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"} or the same fields with done=false and a repair hint\n\nCURRENT TASK CONTRACT: {\"instruction\": \"Place the toiletpaper on the stove, put the dishwashingliquid in the washingmachine, place the coffeepot on the kitchentable, and put the chicken in the toilet.\", \"completion_mode\": \"infer\", \"process_intent\": \"Infer whether the requested operation needs completed process evidence.\"}\nCURRENT STATE: Character room=bathroom; states=[]; holds=[]. Nearby visible graph: chicken, chicken INSIDE toilet, toilet is CLOSED. One-hop INSIDE/ON relations connected to nearby objects: chicken INSIDE toilet.\nRELEVANT OBJECT CLASSES: [\"chicken\", \"coffeepot\", \"dishwashingliquid\", \"kitchen\", \"kitchentable\", \"paper\", \"stove\", \"toilet\", \"toiletpaper\", \"washingmachine\"]\nCURRENT ATTEMPT CONTEXT: {\"program\": \"# Place coffeepot on kitchentable while in kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\nfind('kitchentable')\\nputback('coffeepot','kitchentable')\\n# Place toiletpaper on stove\\nfind('toiletpaper')\\ngrab('toiletpaper')\\nfind('stove')\\nputback('toiletpaper','stove')\\n# Put dishwashingliquid in washingmachine\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\nfind('washingmachine')\\nopen('washingmachine')\\nputin('dishwashingliquid','washingmachine')\\nclose('washingmachine')\\n# Put chicken in toilet\\nfind('chicken')\\ngrab('chicken')\\nfind('toilet')\\nopen('toilet')\\nputin('chicken','toilet')\\nclose('toilet')\\n\", \"execution_trace\": [{\"line\": \"find('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <coffeepot> (230)\"}, {\"line\": \"grab('coffeepot')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <coffeepot> (230)\"}, {\"line\": \"find('kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <kitchentable> (199)\"}, {\"line\": \"putback('coffeepot','kitchentable')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <coffeepot> (230) <kitchentable> (199)\"}, {\"line\": \"find('toiletpaper')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toiletpaper> (40)\"}, {\"line\": \"grab('toiletpaper')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <toiletpaper> (40)\"}, {\"line\": \"find('stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <stove> (226)\"}, {\"line\": \"putback('toiletpaper','stove')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putback] <toiletpaper> (40) <stove> (226)\"}, {\"line\": \"find('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <dishwashingliquid> (174)\"}, {\"line\": \"grab('dishwashingliquid')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <dishwashingliquid> (174)\"}, {\"line\": \"find('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <washingmachine> (49)\"}, {\"line\": \"open('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <washingmachine> (49)\"}, {\"line\": \"putin('dishwashingliquid','washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <dishwashingliquid> (174) <washingmachine> (49)\"}, {\"line\": \"close('washingmachine')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <washingmachine> (49)\"}, {\"line\": \"find('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <chicken> (241)\"}, {\"line\": \"grab('chicken')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [grab] <chicken> (241)\"}, {\"line\": \"find('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [find] <toilet> (24)\"}, {\"line\": \"open('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [open] <toilet> (24)\"}, {\"line\": \"putin('chicken','toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [putin] <chicken> (241) <toilet> (24)\"}, {\"line\": \"close('toilet')\", \"event\": \"action\", \"success\": true, \"detail\": \"\", \"compiled_action\": \"<char0> [close] <toilet> (24)\"}], \"errors\": []}\n"
+    }
+  ],
+  "raw_model_outputs": [
+    {
+      "role": "flat_program_agent",
+      "output": "{\"plan_brief\":\"Start in the kitchen, locate and place the coffeepot on the nearby kitchentable first, then find the stove and place toiletpaper on it, next locate the washingmachine, open it, put dishwashingliquid inside, close it, then find the toilet, open it, put chicken inside, and close it to complete all placements.\",\"program\":\"# Place coffeepot on kitchentable while in kitchen\\nfind('coffeepot')\\ngrab('coffeepot')\\nfind('kitchentable')\\nputback('coffeepot','kitchentable')\\n# Place toiletpaper on stove\\nfind('toiletpaper')\\ngrab('toiletpaper')\\nfind('stove')\\nputback('toiletpaper','stove')\\n# Put dishwashingliquid in washingmachine\\nfind('dishwashingliquid')\\ngrab('dishwashingliquid')\\nfind('washingmachine')\\nopen('washingmachine')\\nputin('dishwashingliquid','washingmachine')\\nclose('washingmachine')\\n# Put chicken in toilet\\nfind('chicken')\\ngrab('chicken')\\nfind('toilet')\\nopen('toilet')\\nputin('chicken','toilet')\\nclose('toilet')\\n\"}"
+    },
+    {
+      "role": "flat_verifier",
+      "output": "{\"done\":true,\"reason\":\"All four requested placements completed successfully per trace: coffeepot put on kitchentable, toiletpaper put on stove, dishwashingliquid put in closed washingmachine, and chicken is observed inside the closed toilet.\",\"failure_stage\":\"none\",\"regeneration_hint\":\"\"}"
+    }
+  ],
+  "error_type": "",
+  "error_message": "",
+  "errors": [],
+  "flat_initial_observation": "Character room=kitchen; states=[]; holds=[]. Nearby visible graph: apple, apple ON apple, apple ON dishbowl, apple ON kitchentable, bench, bench ON rug, dishbowl, dishbowl ON kitchentable, fridge is CLOSED, kitchentable, kitchentable ON rug, lightswitch is ON, pillow, pillow ON bench, plate, plate ON kitchentable, poundcake, poundcake ON kitchentable, poundcake ON plate, powersocket, rug. One-hop INSIDE/ON relations connected to nearby objects: apple ON apple; apple ON dishbowl; apple ON kitchentable; bench ON rug; cellphone ON kitchentable; condimentshaker ON kitchentable; dishbowl ON kitchentable; kitchentable ON rug; pillow ON bench; plate ON kitchentable; poundcake ON kitchentable; poundcake ON plate."
+}
